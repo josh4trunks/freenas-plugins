@@ -69,7 +69,7 @@ do_create_plugin()
 		PBI_LOCAL_DIRS="${plugins_pbi_wrapper}" \
 		PBI_DELETE_BUILD=0 \
 		MAKEOBJDIRPREFIX="${plugins_builddir}/obj" \
-		echo pbi_makeport \
+		pbi_makeport \
 			-d "${plugins_portsdir}" \
 			-c "${plugins_dir}/${plugin}" \
 			-o "${plugins_outdir}" \
