@@ -59,12 +59,11 @@ do_create_plugin()
 		archflags="-32"
 	fi
 
+	#PBI_BUILDFLAGS="-DNO_CLEAN -j 8" \
 	env PATH="${plugins_sbin}:${PATH}" \
 		PBI_BUILDSRC="${plugins_src}/FreeBSD" \
 		PBI_OSREL="9.0-RELEASE" \
 		PBI_APPDIR="${plugins_pbidir}" \
-		PBI_BINDIR="${plugins_sbin}" \
-		PBI_BUILDFLAGS="-DNO_CLEAN -j 8" \
 		PBI_BUILDLOG="${plugins_builddir}/buildworld.log" \
 		PBI_LOCAL_DIRS="${plugins_pbi_wrapper}" \
 		PBI_DELETE_BUILD=0 \
