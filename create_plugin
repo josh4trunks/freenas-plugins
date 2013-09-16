@@ -1,0 +1,223 @@
+#!/bin/sh
+
+plugins_top="$(pwd)"
+plugins_sbin="${plugins_top}/sbin"
+plugins_build="/FNP"
+plugins_pbidir="${plugins_build}/pbi"
+plugins_src="${plugins_top}/src"
+plugins_dir="${plugins_top}/plugins"
+plugins_builddir="${plugins_top}/build"
+plugins_pbi_manager="${plugins_src}/pbi-manager"
+plugins_libsh="${plugins_src}/libsh"
+plugins_pbi_wrapper="${plugins_src}/pbi-wrapper"
+
+#
+# These can be set via command line switches
+#
+plugins_portsdir=""
+plugins_pkgdir=""
+plugins_outdir=""
+plugins_arch=""
+plugins_osrelease=""
+
+install_pbi_manager()
+{
+	local links="pbi_add pbi_addrepo pbi_browser pbi_autobuild \
+		pbi_delete pbi_deleterepo pbi_icon pbi_info pbi_indextool \
+		pbi_listrepo pbi_makepatch pbi_makeport pbi_makerepo \
+		pbi_metatool pbi_patch pbi_update pbi_update_hashdir pbid"
+
+	cp "${plugins_libsh}/functions.sh" "${plugins_sbin}/functions.sh"
+	cp "${plugins_pbi_manager}/pbi-manager" "${plugins_sbin}/pbi_create"
+	chmod 755 "${plugins_sbin}/pbi_create"
+
+	for l in ${links}
+	do
+		rm -f "${plugins_sbin}/${l}"
+		ln -f "${plugins_sbin}/pbi_create" "${plugins_sbin}/${l}"
+	done
+}
+
+do_create_plugin()
+{
+	local plugin="${1}"
+	local archflags=""
+
+	if [ ! -d "${plugins_outdir}" ]
+	then
+		mkdir -p "${plugins_outdir}"
+	fi
+	if [ ! -d "${plugins_pkgdir}" ]
+	then
+		mkdir -p "${plugins_pkgdir}"
+	fi
+
+	local realarch="$(uname -m)"
+	realarch="$(get_arch "${realarch}")"
+	if [ "${plugins_arch}" = "x32" ]
+	then
+		archflags="-32"
+	fi
+
+	env PATH="${plugins_sbin}:${PATH}" \
+		PBI_BUILDSRC="${plugins_src}/FreeBSD" \
+		PBI_OSREL="9.0-RELEASE" \
+		PBI_APPDIR="${plugins_pbidir}" \
+		PBI_BINDIR="${plugins_sbin}" \
+		PBI_BUILDFLAGS="-DNO_CLEAN -j 8" \
+		PBI_BUILDLOG="${plugins_builddir}/buildworld.log" \
+		PBI_LOCAL_DIRS="${plugins_pbi_wrapper}" \
+		PBI_DELETE_BUILD=0 \
+		MAKEOBJDIRPREFIX="${plugins_builddir}/obj" \
+		echo pbi_makeport \
+			-d "${plugins_portsdir}" \
+			-c "${plugins_dir}/${plugin}" \
+			-o "${plugins_outdir}" \
+			--pkgdir "${plugins_pkgdir}" \
+			--tmpfs \
+			"${archflags}"
+}
+
+get_arch()
+{
+	local arch="${1}"
+	if [ -z "${arch}" ]
+	then
+		arch="$(uname -m)"
+	fi
+
+	if [ "${arch}" = "amd64" ]
+	then
+		arch="x64"
+	elif [ "${arch}" = "i386" ]
+	then
+		arch="x32"
+	fi
+
+	echo "${arch}"
+}
+
+set_defaults()
+{
+	local plugin="${1}"
+
+	if [ -z "${plugins_arch}" ]
+	then
+		plugins_arch="$(get_arch)"
+	fi
+	if [ -z "${plugins_outdir}" ]
+	then
+		plugins_outdir="${plugins_builddir}/${plugin}"
+	fi
+	if [ -z "${plugins_portsdir}" ]
+	then
+		plugins_portsdir="/usr/ports"
+	fi
+	if [ -z "${plugins_pkgdir}" ]
+	then
+		plugins_pkgdir="${plugins_builddir}/${plugin}/pkgs"
+	fi
+	if [ -z "${plugins_osrelease}" ]
+	then
+		plugins_osrelease="9.0-RELEASE"
+	fi
+}
+
+list_plugins()
+{
+	local plugins="$(ls "${plugins_dir}")"
+	for p in ${plugins}
+	do
+		echo ${p}
+	done
+}
+
+usage()
+{
+	cat <<- __EOF__ 
+usage: $0 [options] <plugin>
+Where option is:
+    -a <plugins architecture>       # Set plugins architecture
+    -h	                            # Display help message
+    -l                              # List available plugins
+    -o <output directory>           # Directory where plugins are output
+    -p <ports directory>            # Directory wher ports are located
+    -P <package directory>          # Directory where packages are stored
+    -r <OS release>                 # FreeBSD OS release
+__EOF__
+}
+
+main()
+{
+	while getopts "a:hlo:p:P:r:" opt
+	do
+		case "${opt}" in
+			a)
+				plugins_arch="$(get_arch "${OPTARG}")"
+				;;
+			h)
+				usage
+				exit 0
+				;;
+			l)
+				list_plugins
+				exit 0
+				;;
+			o)
+				plugins_outdir="${OPTARG}"
+				;;
+			p)
+				plugins_portsdir="${OPTARG}"
+				;;
+			P)
+				plugins_pkgdir="${OPTARG}"
+				;;
+			r)
+				plugins_osrelease="${OPTARG}"
+				;;
+			\?)
+				usage
+				exit 1
+				;;
+		esac
+	done
+
+	shift $(( ${OPTIND} - 1 ))
+
+	local plugin="${1}"
+	if [ -z "${plugin}" ]
+	then
+		usage
+		exit 1
+	fi
+
+	set_defaults "${plugin}"
+
+	if [ ! -d "${plugins_sbin}"  ]
+	then
+		mkdir -p "${plugins_sbin}"
+		chown root:wheel "${plugins_sbin}"
+		chmod 755 "${plugins_sbin}"
+	fi
+
+	if [ -d "${plugins_sbin}" ]
+	then
+		for f in $(ls "${plugins_sbin}")
+		do
+			rm -f "${plugins_sbin}/${f}"
+		done
+		install_pbi_manager
+	fi
+
+	if [ ! -d "${plugins_builddir}" ]
+	then
+		mkdir -p "${plugins_builddir}/obj"
+		chown root:wheel "${plugins_builddir}/obj"
+		chmod 755 "${plugins_builddir}/obj"
+	fi
+
+	do_create_plugin "${plugin}"
+}
+
+
+main $*
