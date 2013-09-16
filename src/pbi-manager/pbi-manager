@@ -7179,9 +7179,14 @@ mk_chroot_file() {
 	    fi
 	fi
 
+    #
+    # XXX Hacky hack. 9.0 code is broken with -j XXX
+    #
+    local flags="$(echo "${PBI_BUILDFLAGS}"|sed -E 's/-j(.+)?[0-9]+//g')"
+
 	echo "Running installworld (into a chroot)"
-        echo make ${PBI_BUILDFLAGS} installworld TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET}
-        make ${PBI_BUILDFLAGS} installworld TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
+        echo make ${flags} installworld TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET}
+        make ${flags} installworld TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
         if [ "$?" != "0" ] ; then
                 cd
                 if [ "${PBI_BUILDSRC}" != "/usr/src" -a "${PBI_DELETE_BUILD}" != "0" ] ; then
@@ -7191,7 +7196,9 @@ mk_chroot_file() {
                 exit_err "Buildworld failed! Logfile saved: ${PBI_BUILDLOG}"
         fi
 
-    # Why do I have to do this? Can't installworld do this? =-(
+    #
+    # XXX Why do I have to do this? Can't installworld do this? =-( XXX
+    #
     for d in ${LOCAL_DIRS} ; do
         local here="$(pwd)"
         cd "${d}"

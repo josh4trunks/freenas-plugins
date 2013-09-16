@@ -10,6 +10,8 @@ plugins_builddir="${plugins_top}/build"
 plugins_pbi_manager="${plugins_src}/pbi-manager"
 plugins_libsh="${plugins_src}/libsh"
 plugins_pbi_wrapper="${plugins_src}/pbi-wrapper"
+plugins_njobs=$(( 2 * $(sysctl -n kern.smp.cpus) + 1 ))
+
 
 #
 # These can be set via command line switches
@@ -42,6 +44,7 @@ do_create_plugin()
 {
 	local plugin="${1}"
 	local archflags=""
+	local buildflags=
 
 	if [ ! -d "${plugins_outdir}" ]
 	then
@@ -59,14 +62,20 @@ do_create_plugin()
 		archflags="-32"
 	fi
 
-	#PBI_BUILDFLAGS="-DNO_CLEAN -j 8" \
+	if [ "${plugins_njobs}" -gt "0" ]
+	then
+		buildflags="-j ${plugins_njobs}"
+	fi
+
 	env PATH="${plugins_sbin}:${PATH}" \
 		PBI_BUILDSRC="${plugins_src}/FreeBSD" \
 		PBI_OSREL="9.0-RELEASE" \
 		PBI_APPDIR="${plugins_pbidir}" \
+		PBI_BINDIR="${plugins_sbin}" \
 		PBI_BUILDLOG="${plugins_builddir}/buildworld.log" \
 		PBI_LOCAL_DIRS="${plugins_pbi_wrapper}" \
 		PBI_DELETE_BUILD=0 \
+		PBI_BUILDFLAGS="${buildflags}" \
 		MAKEOBJDIRPREFIX="${plugins_builddir}/obj" \
 		pbi_makeport \
 			-d "${plugins_portsdir}" \
@@ -137,10 +146,12 @@ usage()
 usage: $0 [options] <plugin>
 Where option is:
     -a <plugins architecture>       # Set plugins architecture
+    -b <plugins build directory>    # Directory where plugins are built
     -h	                            # Display help message
+    -j <make jobs>                  # Number of make jobs 
     -l                              # List available plugins
     -o <output directory>           # Directory where plugins are output
-    -p <ports directory>            # Directory wher ports are located
+    -p <ports directory>            # Directory where ports are located
     -P <package directory>          # Directory where packages are stored
     -r <OS release>                 # FreeBSD OS release
 __EOF__
@@ -148,15 +159,21 @@ __EOF__
 
 main()
 {
-	while getopts "a:hlo:p:P:r:" opt
+	while getopts "a:b:hlo:p:P:r:" opt
 	do
 		case "${opt}" in
 			a)
 				plugins_arch="$(get_arch "${OPTARG}")"
 				;;
+			b)
+				plugins_build="${OPTARG}"
+				;;
 			h)
 				usage
 				exit 0
+				;;
+			j)
+				plugins_njobs="${OPTARG}"
 				;;
 			l)
 				list_plugins
