@@ -1,28 +1,106 @@
 #!/bin/sh
 
 plugins_top="$(pwd)"
+
+#
+# This is the directory where libsh and pbi-manager get installed
+# everytime this tool is ran. This allows plugins to be created on
+# systems without pbi-manager and libsh installed.
+#
 plugins_sbin="${plugins_top}/sbin"
+
+
+#
+# This is the directoy where the PBI world chroot will reside
+# ${zfsroot}/FNP/.pbi-world-${ARCH}.
+#
+# This can be set with -b 
+#
 plugins_build="/FNP"
 plugins_pbidir="${plugins_build}/pbi"
+
+
+#
+# This is where source code that the build system uses resides.
+# The FreeBSD source code is also checked out here.
+#
 plugins_src="${plugins_top}/src"
+
+
+#
+# This is where source code for plugins goes. Plugin source code that is
+# not part of the freenas-plugins source also needs to go here to build.
+#
 plugins_dir="${plugins_top}/plugins"
+
+
+#
+# This is the actual directory where FreeBSD gets built.
+#
 plugins_builddir="${plugins_top}/build"
+
+
+#
+# pbi-manager and libsh locations. These are installed into
+# ${plugins_sbin} and used to create the plugins.
+#
 plugins_pbi_manager="${plugins_src}/pbi-manager"
 plugins_libsh="${plugins_src}/libsh"
+
+
+#
+# Where pbi-wrapper source code is located. This is only set because it
+# gets copied to the FreeBSD source tree and set with LOCAL_DIRS so it
+# can be built with the distribution.
+#
 plugins_pbi_wrapper="${plugins_src}/pbi-wrapper"
+
+
+#
+# Number of make jobs to use. This can be set with -j.
+#
 plugins_njobs=$(( 2 * $(sysctl -n kern.smp.cpus) + 1 ))
 
 
 #
-# These can be set via command line switches
+# What ports directory to use, defaults to /usr/ports.
+# This can be set with -p.
 #
 plugins_portsdir=""
+
+
+#
+# Where packages are cached from plugin builds, defaults to
+# ${plugins_builddir}/${plugin}/pkgs. This can be set with -P.
+#
 plugins_pkgdir=""
+
+
+#
+# Where the actual plugin is to be output! Defaults to
+# "${plugins_builddir}/${plugin}. This can be set with -o.
+#
 plugins_outdir=""
+
+#
+# Plugin architecture to build, Defaults to $(uname -m).
+# This can be set with -a.
+#
 plugins_arch=""
+
+#
+# FreeBSD RELEASE to use, defaults to 9.0-RELEASE.
+# This can be set with -r.
+#
 plugins_osrelease=""
 
+
+#
+# This is for debugging only. Can be set with -n. This will pass
+# -DNO_CLEAN to the FreeBSD buildworld command.
+#
 NO_CLEAN=0
+
 
 install_pbi_manager()
 {
@@ -41,6 +119,7 @@ install_pbi_manager()
 		ln -f "${plugins_sbin}/pbi_create" "${plugins_sbin}/${l}"
 	done
 }
+
 
 do_create_plugin()
 {
@@ -73,6 +152,29 @@ do_create_plugin()
 		buildflags="${buildflags} -DNO_CLEAN"
 	fi
 
+	#
+	# Lots of secret sauce here!
+	#
+	# PBI_BUILDSRC tells pbi-manager where the FreeBSD source code is
+	# PBI_OSREL tells pbi-manager the FreeBSD OS release to checkout
+	# PBI_APPDIR tells pbi-mananger where "/usr/pbi" is
+	# PBI_BINDIR tells pbi-mananger where pbi-mananger is ;-)
+	# PBI_BUILDLOG tells pbi-manager where to (build|install)world output
+	# PBI_LOCAL_DIRS tells FreeBSD to use LOCAL_DIRS
+	# PBI_DELETE_BUILD tells pbi-manager to delete FreeBSD or not
+	# PBI_BUILDFLAGS is passed to FreeBSD (build|install)world
+	# MAKEOBJDIRPREFIX tells FreeBSD where to build
+	#
+	# pbi_makeport:
+	#
+	# -d:       The plugins directory to use
+	# -c:       The plugin directory
+	# -o:       Where to place the created plugin
+	# --pkgdir: Where to save packages created during plugin build
+	# --tmpfs:  Use tmpfs ;-)
+	#
+	# ${archflags}: If set (will be -32), create 32-bit plugin
+	#
 	env PATH="${plugins_sbin}:${PATH}" \
 		PBI_BUILDSRC="${plugins_src}/FreeBSD" \
 		PBI_OSREL="9.0-RELEASE" \
@@ -92,6 +194,7 @@ do_create_plugin()
 			"${archflags}"
 }
 
+
 get_arch()
 {
 	local arch="${1}"
@@ -110,6 +213,7 @@ get_arch()
 
 	echo "${arch}"
 }
+
 
 set_defaults()
 {
@@ -137,6 +241,7 @@ set_defaults()
 	fi
 }
 
+
 list_plugins()
 {
 	local plugins="$(ls "${plugins_dir}")"
@@ -145,6 +250,7 @@ list_plugins()
 		echo ${p}
 	done
 }
+
 
 usage()
 {
@@ -162,6 +268,7 @@ Where option is:
     -r <OS release>                 # FreeBSD OS release
 __EOF__
 }
+
 
 main()
 {
