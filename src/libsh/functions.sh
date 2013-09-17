@@ -785,3 +785,22 @@ run_firstboot()
     rm /var/.pcbsd-firstgui
   fi
 }
+
+get_arch()
+{
+	local arch="${1}"
+	if [ -z "${arch}" ]
+	then
+		arch="$(uname -m)"
+	fi
+
+	if [ "${arch}" = "amd64" ]
+	then
+		arch="x64"
+	elif [ "${arch}" = "i386" ]
+	then
+		arch="x32"
+	fi
+
+	echo "${arch}"
+}

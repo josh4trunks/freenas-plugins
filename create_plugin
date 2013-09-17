@@ -120,7 +120,6 @@ install_pbi_manager()
 	done
 }
 
-
 do_create_plugin()
 {
 	local plugin="${1}"
@@ -194,7 +193,6 @@ do_create_plugin()
 			"${archflags}"
 }
 
-
 get_arch()
 {
 	local arch="${1}"
@@ -213,7 +211,6 @@ get_arch()
 
 	echo "${arch}"
 }
-
 
 set_defaults()
 {
@@ -241,7 +238,6 @@ set_defaults()
 	fi
 }
 
-
 list_plugins()
 {
 	local plugins="$(ls "${plugins_dir}")"
@@ -250,7 +246,6 @@ list_plugins()
 		echo ${p}
 	done
 }
-
 
 usage()
 {
@@ -268,7 +263,6 @@ Where option is:
     -r <OS release>                 # FreeBSD OS release
 __EOF__
 }
-
 
 main()
 {
