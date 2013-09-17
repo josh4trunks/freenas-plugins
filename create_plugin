@@ -22,6 +22,8 @@ plugins_outdir=""
 plugins_arch=""
 plugins_osrelease=""
 
+NO_CLEAN=0
+
 install_pbi_manager()
 {
 	local links="pbi_add pbi_addrepo pbi_browser pbi_autobuild \
@@ -65,6 +67,10 @@ do_create_plugin()
 	if [ "${plugins_njobs}" -gt "0" ]
 	then
 		buildflags="-j ${plugins_njobs}"
+	fi
+	if [ "${NO_CLEAN}" = "1" ]
+	then
+		buildflags="${buildflags} -DNO_CLEAN"
 	fi
 
 	env PATH="${plugins_sbin}:${PATH}" \
@@ -159,7 +165,7 @@ __EOF__
 
 main()
 {
-	while getopts "a:b:hlo:p:P:r:" opt
+	while getopts "a:b:hlno:p:P:r:" opt
 	do
 		case "${opt}" in
 			a)
@@ -178,6 +184,9 @@ main()
 			l)
 				list_plugins
 				exit 0
+				;;
+			n)
+				NO_CLEAN=1
 				;;
 			o)
 				plugins_outdir="${OPTARG}"

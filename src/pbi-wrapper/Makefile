@@ -1,3 +1,6 @@
+
+.PATH: ${.CURDIR}
+
 SRCS=	pbiwrapper.c
 NO_MAN=
 

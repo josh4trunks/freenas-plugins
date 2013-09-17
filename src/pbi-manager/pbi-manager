@@ -7133,26 +7133,26 @@ mk_chroot_file() {
 		fi
 	fi # End of subversion checkout
 
-    LOCAL_DIRS=
+    local localdirs=
     if [ -n "${PBI_LOCAL_DIRS}" ] ; then
         for d in ${PBI_LOCAL_DIRS} ; do
             local dirname="$(basename "${d}")"
             mkdir -p "${PBI_BUILDSRC}/${dirname}"
             cp -R "${d}"/* "${PBI_BUILDSRC}/${dirname}/"
-            LOCAL_DIRS="${LOCAL_DIRS} ${dirname}"
+            localdirs="${localdirs} ${dirname}"
         done
     fi
-    if [ -n "${LOCAL_DIRS}" ] ; then
-        LOCAL_DIRS="$(echo "${LOCAL_DIRS}"|sed -E 's/(^ +| +$)//')"
-        PBI_BUILDFLAGS="${PBI_BUILDFLAGS} LOCAL_DIRS=\"${LOCAL_DIRS}\""
+    if [ -n "${localdirs}" ] ; then
+        localdirs="$(echo "${localdirs}"|sed -E 's/(^ +| +$)//')"
+		localdirsflags="LOCAL_DIRS=${localdirs}"
     fi
 
 	echo "Running buildworld (into a chroot)"
 	touch ${PBI_BUILDSRC}/Makefile
 	cd ${PBI_BUILDSRC}
 
-        echo make ${PBI_BUILDFLAGS} TARGET=$ARCH buildworld
-        make ${PBI_BUILDFLAGS} TARGET=$ARCH buildworld >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
+        echo make ${PBI_BUILDFLAGS} TARGET=$ARCH buildworld ${localdirsflags}
+        make ${PBI_BUILDFLAGS} TARGET=$ARCH buildworld ${localdirsflags} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
         if [ "$?" != "0" ] ; then
                 cd
                 if [ "${PBI_BUILDSRC}" != "/usr/src" -a "${PBI_DELETE_BUILD}" != "0" ] ; then
@@ -7185,8 +7185,8 @@ mk_chroot_file() {
     local flags="$(echo "${PBI_BUILDFLAGS}"|sed -E 's/-j(.+)?[0-9]+//g')"
 
 	echo "Running installworld (into a chroot)"
-        echo make ${flags} installworld TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET}
-        make ${flags} installworld TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
+        echo make ${flags} installworld ${localdirsflags} TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET}
+        make ${flags} installworld ${localdirsflags} TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
         if [ "$?" != "0" ] ; then
                 cd
                 if [ "${PBI_BUILDSRC}" != "/usr/src" -a "${PBI_DELETE_BUILD}" != "0" ] ; then
@@ -7196,19 +7196,9 @@ mk_chroot_file() {
                 exit_err "Buildworld failed! Logfile saved: ${PBI_BUILDLOG}"
         fi
 
-    #
-    # XXX Why do I have to do this? Can't installworld do this? =-( XXX
-    #
-    for d in ${LOCAL_DIRS} ; do
-        local here="$(pwd)"
-        cd "${d}"
-        make install TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
-        cd "${here}"  
-    done
-
 	echo "Running distribuation (into a chroot)"
-        echo make ${PBI_BUILDFLAGS} distribution TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET}
-        make ${PBI_BUILDFLAGS} distribution TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
+        echo make ${PBI_BUILDFLAGS} distribution ${localdirsflags} TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET}
+        make ${PBI_BUILDFLAGS} distribution ${localdirsflags} TARGET=$ARCH DESTDIR=${PBI_BUILDTARGET} >>${PBI_BUILDLOG} 2>>${PBI_BUILDLOG}
         if [ "$?" != "0" ] ; then
                 cd
                 if [ "${PBI_BUILDSRC}" != "/usr/src" -a "${PBI_DELETE_BUILD}" != "0" ] ; then
