@@ -16,7 +16,7 @@ plugins_sbin="${plugins_top}/sbin"
 #
 # This can be set with -b 
 #
-plugins_build="/FNP"
+plugins_build="${HOME}/fnp"
 plugins_pbidir="${plugins_build}/pbi"
 
 
