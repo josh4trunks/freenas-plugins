@@ -28,10 +28,10 @@ help:
 	@echo "                   Available Targets                        "
 	@echo "------------------------------------------------------------"
 .for _p in ${PLUGINS}
-	@printf "%-25s: build ${_p} plugin\n" "${_p}"
+	@printf "%-25s- build ${_p} plugin\n" "${_p}"
 .endfor
-	@printf "%-25s: list all targets\n" list
-	@printf "%-25s: build all targets\n" all
+	@printf "%-25s- list all targets\n" list
+	@printf "%-25s- build all targets\n" all
 	@echo "------------------------------------------------------------"
 
 all: ${PLUGINS}

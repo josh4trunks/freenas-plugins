@@ -16,7 +16,7 @@ plugins_sbin="${plugins_top}/sbin"
 #
 # This can be set with -b 
 #
-plugins_build="${HOME}/fnp"
+plugins_build="${plugins_top}/fnp"
 plugins_pbidir="${plugins_build}/pbi"
 
 
@@ -322,8 +322,6 @@ main()
 	if [ ! -d "${plugins_sbin}"  ]
 	then
 		mkdir -p "${plugins_sbin}"
-		chown root:wheel "${plugins_sbin}"
-		chmod 755 "${plugins_sbin}"
 	fi
 
 	if [ -d "${plugins_sbin}" ]
@@ -338,8 +336,6 @@ main()
 	if [ ! -d "${plugins_builddir}" ]
 	then
 		mkdir -p "${plugins_builddir}/obj"
-		chown root:wheel "${plugins_builddir}/obj"
-		chmod 755 "${plugins_builddir}/obj"
 	fi
 
 	do_create_plugin "${plugin}"
