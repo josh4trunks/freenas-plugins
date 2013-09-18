@@ -7,9 +7,13 @@ owncloud_pbi_path=/usr/pbi/owncloud-$(uname -m)
 
 ${owncloud_pbi_path}/bin/python ${owncloud_pbi_path}/owncloudUI/manage.py syncdb --migrate --noinput
 
-chown www:www ${owncloud_pbi_path}/www/owncloud \
-	${owncloud_pbi_path}/www/owncloud/apps \
-	${owncloud_pbi_path}/www/owncloud/config
+car << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/config.php
+<?php
+\$CONFIG = array (
+  'datadirectory' => '/media',
+);
+?>
+__EOF__
 
 cat << __EOF__ > ${owncloud_pbi_path}/etc/apache22/Includes/owncloud.conf
 AddType application/x-httpd-php .php
@@ -22,3 +26,9 @@ AcceptPathInfo On
     Allow from all
 </Directory>
 __EOF__
+
+chown www:www ${owncloud_pbi_path}/www/owncloud \
+	${owncloud_pbi_path}/www/owncloud/apps \
+	${owncloud_pbi_path}/www/owncloud/config \
+	${owncloud_pbi_path}/www/owncloud/config/config.php \
+	/media
