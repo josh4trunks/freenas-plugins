@@ -12,6 +12,8 @@ chown www:www ${owncloud_pbi_path}/www/owncloud \
 	${owncloud_pbi_path}/www/owncloud/config
 
 cat << __EOF__ > ${owncloud_pbi_path}/etc/apache22/Includes/owncloud.conf
+AddType application/x-httpd-php .php
+
 Alias / ${owncloud_pbi_path}/www/owncloud/
 AcceptPathInfo On
 <Directory ${owncloud_pbi_path}/www/owncloud>
