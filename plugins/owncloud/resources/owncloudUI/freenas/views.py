@@ -303,7 +303,7 @@ def edit(request, plugin_id):
     return JsonResponse(request, form=form)
 
 
-def open(request, plugin_id):
+def open_view(request, plugin_id):
     (owncloud_key,
     owncloud_secret) = utils.get_owncloud_oauth_creds()
     url = utils.get_rpc_url(request)
