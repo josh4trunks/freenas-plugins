@@ -6,7 +6,7 @@ owncloud_etc_path = os.path.join(owncloud_pbi_path, "etc")
 owncloud_mnt_path = os.path.join(owncloud_pbi_path, "mnt")
 owncloud_fcgi_pidfile = "/var/run/owncloud_fcgi_server.pid"
 owncloud_fcgi_wwwdir = os.path.join(owncloud_pbi_path, "www")
-owncloud_control = "/usr/local/etc/rc.d/owncloud"
+owncloud_control = "/usr/local/etc/rc.d/apache22"
 owncloud_icon = os.path.join(owncloud_pbi_path, "default.png")
 owncloud_oauth_file = os.path.join(owncloud_pbi_path, ".oauth")
 
