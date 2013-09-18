@@ -3,6 +3,6 @@
 owncloud_path=/usr/pbi/owncloud-$(uname -m)
 tmpfile=$(mktemp /tmp/.XXXXXX)
 
-grep -v 'owncloud_' /etc/rc.conf > ${tmpfile}
+grep -v 'apache22_' /etc/rc.conf > ${tmpfile}
 cat ${owncloud_path}/etc/rc.conf >> ${tmpfile}
 mv ${tmpfile} /etc/rc.conf

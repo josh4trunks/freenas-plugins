@@ -338,7 +338,8 @@ def treemenu(request, plugin_id):
         'kwargs': {'plugin_name': 'owncloud', 'plugin_id': plugin_id },
     }
 
-    return HttpResponse(json.dumps([plugin]), content_type='application/json')
+    #Empty for now
+    return HttpResponse(json.dumps([]), content_type='application/json')
 
 
 def status(request, plugin_id):
@@ -353,7 +354,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/bin/pgrep", "owncloud-daemon"],
+    proc = Popen(["/usr/bin/pgrep", "httpd"],
         stdout=PIPE,
         stderr=PIPE)
 
