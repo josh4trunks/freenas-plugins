@@ -303,6 +303,21 @@ def edit(request, plugin_id):
     return JsonResponse(request, form=form)
 
 
+def open(request, plugin_id):
+    (owncloud_key,
+    owncloud_secret) = utils.get_owncloud_oauth_creds()
+    url = utils.get_rpc_url(request)
+    trans = OAuthTransport(url, key=owncloud_key,
+        secret=owncloud_secret)
+    server = jsonrpclib.Server(url, transport=trans)
+    jail = json.loads(server.plugins.jail.info(plugin_id))[0]
+    jail_ip = jail['fields']['jail_ipv4'].split('/', 1)[0]
+
+    return render(request, "open.html", {
+        'jail_ip': jail_ip,
+    })
+
+
 def treemenu(request, plugin_id):
     """
     This is how we inject nodes to the Tree Menu
@@ -320,7 +335,7 @@ def treemenu(request, plugin_id):
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
     number = jail_name.rsplit('_', 1)
-    name = "Owncloud"
+    name = "ownCloud"
     if len(number) == 2:
         try:
             number = int(number)
@@ -334,12 +349,11 @@ def treemenu(request, plugin_id):
         'append_to': 'plugins',
         'icon': reverse('treemenu_icon', kwargs={'plugin_id': plugin_id}),
         'type': 'pluginsfcgi',
-        'url': '',
+        'url': reverse('owncloud_open', kwargs={'plugin_id': plugin_id}),
         'kwargs': {'plugin_name': 'owncloud', 'plugin_id': plugin_id },
     }
 
-    #Empty for now
-    return HttpResponse(json.dumps([]), content_type='application/json')
+    return HttpResponse(json.dumps([plugin]), content_type='application/json')
 
 
 def status(request, plugin_id):
