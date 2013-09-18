@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/owncloud-$(uname -m)/bin/python /usr/pbi/owncloud-$(uname -m)/control.py $*
