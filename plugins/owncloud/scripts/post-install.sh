@@ -34,3 +34,17 @@ chown www:www ${owncloud_pbi_path}/www/owncloud \
 	${owncloud_pbi_path}/www/owncloud/config \
 	${owncloud_pbi_path}/www/owncloud/config/config.php \
 	/media
+
+
+# Generate SSL certificate
+if [ ! -f "${owncloud_pbi_path}/etc/apache22/server.crt" ]; then
+
+	tmp=$(mktemp /tmp/tmp.XXXXXX)
+	dd if=/dev/urandom count=16 bs=1 2> /dev/null | uuencode -|head -2 |tail -1 > "${tmp}"
+	/usr/bin/openssl req -batch -passout file:"${tmp}" -new -x509 -keyout ${owncloud_pbi_path}/etc/apache22/server.key.out -out ${owncloud_pbi_path}/etc/apache22/server.crt
+	/usr/bin/openssl rsa -passin file:"${tmp}" -in ${owncloud_pbi_path}/etc/apache22/server.key.out -out ${owncloud_pbi_path}/etc/apache22/server.key
+
+fi
+
+#Enable SSL
+/usr/bin/sed -i '' -E -e 's/^#(.*httpd-ssl.conf)/\1/' httpd.conf
