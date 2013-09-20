@@ -47,4 +47,4 @@ if [ ! -f "${owncloud_pbi_path}/etc/apache22/server.crt" ]; then
 fi
 
 #Enable SSL
-/usr/bin/sed -i '' -E -e 's/^#(.*httpd-ssl.conf)/\1/' httpd.conf
+/usr/bin/sed -i '' -E -e 's/^#(.*httpd-ssl.conf)/\1/' ${owncloud_pbi_path}/etc/apache22/httpd.conf
