@@ -1,0 +1,8 @@
+#!/bin/sh
+
+crashplan_path=/usr/pbi/crashplan-$(uname -m)
+tmpfile=$(mktemp /tmp/.XXXXXX)
+
+grep -v 'apache22_' /etc/rc.conf > ${tmpfile}
+cat ${crashplan_path}/etc/rc.conf >> ${tmpfile}
+mv ${tmpfile} /etc/rc.conf
