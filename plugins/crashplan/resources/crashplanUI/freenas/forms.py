@@ -22,6 +22,14 @@ class CrashplanForm(forms.ModelForm):
         self.jail_path = kwargs.pop('jail_path')
         super(CrashplanForm, self).__init__(*args, **kwargs)
 
+    def clean(self):
+        if self.instance.lic_accepted is False:
+            self.errors['__all__'] = self.error_class([
+                "Accept the license first"
+            ])
+            raise ValueError  #FIXME: workaround
+        return self.cleaned_data
+
     def save(self, *args, **kwargs):
         obj = super(CrashplanForm, self).save(*args, **kwargs)
 
