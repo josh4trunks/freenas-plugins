@@ -1,0 +1,32 @@
+<form data-dojo-type="dijit.form.Form">
+    <script type="dojo/event" data-dojo-event="onSubmit" data-dojo-args="e">
+        doSubmit({
+          form: this,
+          event: e,
+          url: '{{ request.path }}',
+        });
+    </script>
+<table>
+
+    <tr>
+        <td>
+        LICENSE HERE!
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <button data-dojo-type="dijit.form.Button" type="submit"
+                data-dojo-props="type:'submit'" class="submitform">
+                Yes, I Accept
+            </button>
+            <button data-dojo-type="dijit.form.Button" type="button">
+                No
+                <script type="dojo/method" data-dojo-event="onClick" data-dojo-args="evt">
+                    cancelDialog(this);
+                </script>
+            </button>
+        </td>
+    </tr>
+
+</table>

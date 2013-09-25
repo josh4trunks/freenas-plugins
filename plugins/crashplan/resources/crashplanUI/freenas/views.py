@@ -310,11 +310,35 @@ def open_view(request, plugin_id):
     trans = OAuthTransport(url, key=crashplan_key,
         secret=crashplan_secret)
     server = jsonrpclib.Server(url, transport=trans)
-    jail = json.loads(server.plugins.jail.info(plugin_id))[0]
-    jail_ip = jail['fields']['jail_ipv4'].split('/', 1)[0]
+    auth = server.plugins.is_authenticated(
+        request.COOKIES.get("sessionid", "")
+    )
+    jail_path = server.plugins.jail.path(plugin_id)
+    assert auth
+
+    try:
+        crashplan = models.Crashplan.objects.order_by('-id')[0]
+        crashplan.save()
+    except IndexError:
+        crashplan = models.Crashplan.objects.create()
+
+    if crashplan.lic_accepted is False:
+        return license(request, plugin_id, obj=crashplan)
 
     return render(request, "open.html", {
-        'jail_ip': jail_ip,
+        'crashplan': crashplan,
+    })
+
+
+def license(request, plugin_id, obj=None):
+
+    if request.method == 'POST':
+        obj.lic_accepted = True
+        obj.save()
+        return open_view(request, plugin_id)
+
+    return render(request, "license.html", {
+        'crashplan': obj,
     })
 
 
@@ -335,7 +359,7 @@ def treemenu(request, plugin_id):
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
     number = jail_name.rsplit('_', 1)
-    name = "ownCloud"
+    name = "CrashPlan"
     if len(number) == 2:
         try:
             number = int(number)
