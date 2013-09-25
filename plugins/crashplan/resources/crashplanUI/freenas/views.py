@@ -180,6 +180,11 @@ def start(request, plugin_id):
     assert auth
 
     try:
+        server.os.kldload("linux")
+    except:
+        pass
+
+    try:
         crashplan = models.Crashplan.objects.order_by('-id')[0]
         crashplan.enable = True
         crashplan.save()
