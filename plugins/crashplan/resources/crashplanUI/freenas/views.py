@@ -368,7 +368,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/bin/pgrep", "crashplan"],
+    proc = Popen(["/usr/bin/pgrep", "-F", "/var/run/CrashPlanEngine.pid"],
         stdout=PIPE,
         stderr=PIPE)
 
