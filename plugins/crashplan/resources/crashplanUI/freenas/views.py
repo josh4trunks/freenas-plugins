@@ -15,6 +15,16 @@ import oauth2 as oauth
 from crashplanUI.freenas import forms, models, utils
 
 
+def _linux_loaded(server):
+    try:
+        return server.os.kldload("linux")
+    except:
+        # FreeNAS <= 9.1.1 support
+        proc = Popen(["/sbin/kldstat", "-n", "linux"], stdout=PIPE, stderr=PIPE)
+        proc.communicate()
+        return proc.returncode == 0
+
+
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
             secret=None):
@@ -179,10 +189,13 @@ def start(request, plugin_id):
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
 
-    try:
-        server.os.kldload("linux")
-    except:
-        pass
+    kldload = _linux_loaded(server)
+
+    if kldload is False:
+        return HttpResponse(simplejson.dumps({
+            'error': True,
+            'message': 'Add linux_enable=YES to System->Tunables and reboot',
+        }), content_type='application/json')
 
     try:
         crashplan = models.Crashplan.objects.order_by('-id')[0]
@@ -332,6 +345,7 @@ def open_view(request, plugin_id):
 
     return render(request, "open.html", {
         'crashplan': crashplan,
+        'kldload': _linux_loaded(server),
     })
 
 
