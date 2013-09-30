@@ -137,7 +137,7 @@ class FreeNAS_Lib_MiniDLNA {
            0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
            1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
         );
-        $proc = proc_open("/usr/bin/pgrep minidlna", $desc, $pipes);
+        $proc = proc_open("/usr/bin/pgrep minidlnad", $desc, $pipes);
         $pids = stream_get_contents($pipes[1]);
         $retval = proc_close($proc);
         $status = 'STOPPED';
