@@ -5,7 +5,7 @@ minidlna_pbi_path=/usr/pbi/minidlna-$(uname -m)/
 
 mkdir -p ${minidlna_pbi_path}/mnt
 
-mv ${minidlna_pbi_path}/minidlna /usr/local/etc/rc.d/
+cp ${minidlna_pbi_path}/etc/rc.d/minidlna /usr/local/etc/rc.d/
 
 pw user add dlna -d ${minidlna_pbi_path}
 
