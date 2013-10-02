@@ -5,7 +5,8 @@ minidlna_pbi_path=/usr/pbi/minidlna-$(uname -m)/
 
 mkdir -p ${minidlna_pbi_path}/mnt
 
-cp ${minidlna_pbi_path}/etc/rc.d/minidlna /usr/local/etc/rc.d/
+# Workaround LD issue with PBI
+sed -i '.bak' -e 's,^command=.*,command=/usr/local/sbin/minidlnad,' ${minidlna_pbi_path}etc/rc.d/minidlna
 
 pw user add dlna -d ${minidlna_pbi_path}
 
