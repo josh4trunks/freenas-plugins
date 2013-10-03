@@ -194,7 +194,7 @@ def start(request, plugin_id):
     if kldload is False:
         return HttpResponse(simplejson.dumps({
             'error': True,
-            'message': 'Add linux_enable=YES to System->Tunables and reboot',
+            'message': 'Add linux_load="YES" to System->Tunables and reboot',
         }), content_type='application/json')
 
     try:
