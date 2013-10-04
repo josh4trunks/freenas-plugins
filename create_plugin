@@ -1,6 +1,7 @@
 #!/bin/sh
 
 plugins_top="$(pwd)"
+plugins_top="$(realpath ${plugins_top})"
 
 #
 # This is the directory where libsh and pbi-manager get installed
@@ -16,7 +17,8 @@ plugins_sbin="${plugins_top}/sbin"
 #
 # This can be set with -b 
 #
-plugins_build="$(realpath ${plugins_top}/../fnp)"
+
+plugins_build="${plugins_top}/../fnp"
 plugins_pbidir="${plugins_build}/pbi"
 
 
