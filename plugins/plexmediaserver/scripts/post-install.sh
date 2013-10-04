@@ -15,8 +15,6 @@ mkdir -p "${plexmediaserver_media}/Music"
 mkdir -p "${plexmediaserver_media}/Photos"
 mkdir -p "${plexmediaserver_media}/Home Movies"
 
-mv "${plexmediaserver_pbi_path}/Preferences.xml" "${plexmediaserver_pms}/Preferences.xml"
-
 ${plexmediaserver_pbi_path}/bin/python ${plexmediaserver_pbi_path}/plexmediaserverUI/manage.py syncdb --migrate --noinput
 ~
 cp ${plexmediaserver_pbi_path}/etc/rc.d/plexmediaserver /usr/local/etc/rc.d/plexmediaserver
