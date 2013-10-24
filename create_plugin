@@ -72,7 +72,7 @@ plugins_njobs=$(( 2 * $(sysctl -n kern.smp.cpus) + 1 ))
 # What ports directory to use, defaults to /usr/ports.
 # This can be set with -p.
 #
-plugins_portsdir=""
+plugins_portsdir="${PORTSDIR}"
 
 
 #
