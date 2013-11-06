@@ -1,7 +1,6 @@
 #!/bin/sh
 
 plugins_top="$(pwd)"
-mkdir -p "${plugins_top}/../fnp"
 
 #
 # This is the directory where libsh and pbi-manager get installed
@@ -17,14 +16,8 @@ plugins_sbin="${plugins_top}/sbin"
 #
 # This can be set with -b 
 #
-plugins_build="$(realpath ${plugins_top}/../fnp 2>/dev/null)"
-if [ -z "${plugins_build}}" ]
-then
-	top="$(realpath ${plugins_top})"
-	plugins_build="${plugins_top}/../fnp"
-fi
-
-plugins_pbidir="${plugins_build}/pbi"
+plugins_build=""
+plugins_pbidir=""
 
 
 #
@@ -343,6 +336,25 @@ main()
 	if [ ! -d "${plugins_builddir}" ]
 	then
 		mkdir -p "${plugins_builddir}/obj"
+	fi
+
+	#
+	# At this point, pbi-manager and libsh are installed.
+	# We need libsh so we can determine the dataset we're on
+	# and use that for the plugin build and pbi directory.
+	#
+	. ${plugins_sbin}/functions.sh
+
+	local ds="$(getZFSDataset "${plugins_top}")"
+	local mp="$(getZFSMountpoint "${ds}")"
+
+	if [ -z "${plugins_build}" ]
+	then
+		plugins_build="${mp}/fnp"
+	fi
+	if [ -z "${plugins_pbidir}" ] 
+	then
+		plugins_pbidir="${mp}/pbi"
 	fi
 
 	do_create_plugin "${plugin}"
