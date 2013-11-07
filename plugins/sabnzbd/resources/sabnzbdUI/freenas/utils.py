@@ -5,7 +5,9 @@ import platform
 
 sabnzbd_pbi_path = "/usr/pbi/sabnzbd-" + platform.machine()
 sabnzbd_etc_path = os.path.join(sabnzbd_pbi_path, "etc")
+sabnzbd_mnt_path = os.path.join(sabnzbd_pbi_path, "mnt")
 sabnzbd_fcgi_pidfile = "/var/run/sabnzbd_fcgi_server.pid"
+sabnzbd_fcgi_wwwdir = os.path.join(sabnzbd_pbi_path, "www")
 sabnzbd_control = "/usr/local/etc/rc.d/sabnzbd"
 sabnzbd_icon = os.path.join(sabnzbd_pbi_path, "default.png")
 sabnzbd_oauth_file = os.path.join(sabnzbd_pbi_path, ".oauth")

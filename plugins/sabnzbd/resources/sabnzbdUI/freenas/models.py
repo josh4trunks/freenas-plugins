@@ -9,4 +9,3 @@ class Sabnzbd(models.Model):
     """
 
     enable = models.BooleanField(default=False)
-

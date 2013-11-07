@@ -271,8 +271,6 @@ def edit(request, plugin_id):
     try:
         server = jsonrpclib.Server(url, transport=trans)
         jail_path = server.plugins.jail.path(plugin_id)
-        jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
-        jail_ipv4 = jail['jail_ipv4'].split('/')[0]
         auth = server.plugins.is_authenticated(
             request.COOKIES.get("sessionid", "")
             )
@@ -285,7 +283,6 @@ def edit(request, plugin_id):
             jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
-            'ipv4': jail_ipv4
         })
 
     if not request.POST:
