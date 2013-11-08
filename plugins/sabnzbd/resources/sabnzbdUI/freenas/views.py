@@ -181,14 +181,14 @@ def start(request, plugin_id):
     assert auth
 
     try:
-        sabnzbd = models.Sabnzbd.objects.order_by('-id')[0]
+        sabnzbd = models.SABnzbd.objects.order_by('-id')[0]
         sabnzbd.enable = True
         sabnzbd.save()
     except IndexError:
-        sabnzbd = models.Sabnzbd.objects.create(enable=True)
+        sabnzbd = models.SABnzbd.objects.create(enable=True)
 
     try:
-        form = forms.SabnzbdForm(sabnzbd.__dict__,
+        form = forms.SABnzbdForm(sabnzbd.__dict__,
             instance=sabnzbd,
             jail_path=jail_path)
         form.is_valid()
@@ -196,7 +196,7 @@ def start(request, plugin_id):
     except ValueError:
         return HttpResponse(simplejson.dumps({
             'error': True,
-            'message': ('Sabnzbd data did not validate, configure '
+            'message': ('SABnzbd data did not validate, configure '
                 'it first.'),
             }), content_type='application/json')
 
@@ -226,14 +226,14 @@ def stop(request, plugin_id):
     assert auth
 
     try:
-        sabnzbd = models.Sabnzbd.objects.order_by('-id')[0]
+        sabnzbd = models.SABnzbd.objects.order_by('-id')[0]
         sabnzbd.enable = False
         sabnzbd.save()
     except IndexError:
-        sabnzbd = models.Sabnzbd.objects.create(enable=False)
+        sabnzbd = models.SABnzbd.objects.create(enable=False)
 
     try:
-        form = forms.SabnzbdForm(sabnzbd.__dict__,
+        form = forms.SABnzbdForm(sabnzbd.__dict__,
             instance=sabnzbd,
             jail_path=jail_path)
         form.is_valid()
@@ -264,9 +264,9 @@ def edit(request, plugin_id):
     If it does not exist create a new entry
     """
     try:
-        sabnzbd = models.Sabnzbd.objects.order_by('-id')[0]
+        sabnzbd = models.SABnzbd.objects.order_by('-id')[0]
     except IndexError:
-        sabnzbd = models.Sabnzbd.objects.create()
+        sabnzbd = models.SABnzbd.objects.create()
 
     try:
         server = jsonrpclib.Server(url, transport=trans)
@@ -281,7 +281,7 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.SabnzbdForm(instance=sabnzbd,
+        form = forms.SABnzbdForm(instance=sabnzbd,
             jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
@@ -291,7 +291,7 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.SabnzbdForm(request.POST,
+    form = forms.SABnzbdForm(request.POST,
         instance=sabnzbd,
         jail_path=jail_path)
     if form.is_valid():
@@ -302,7 +302,7 @@ def edit(request, plugin_id):
             shell=True, close_fds=True)
 
         return JsonResponse(request, error=True,
-            message="Sabnzbd settings successfully saved.")
+            message="SABnzbd settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
@@ -324,12 +324,12 @@ def treemenu(request, plugin_id):
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
     number = jail_name.rsplit('_', 1)
-    name = "Sabnzbd"
+    name = "SABnzbd"
     if len(number) == 2:
         try:
             number = int(number)
             if number > 1:
-                name = "Sabnzbd (%d)" % number
+                name = "SABnzbd (%d)" % number
         except:
             pass
 

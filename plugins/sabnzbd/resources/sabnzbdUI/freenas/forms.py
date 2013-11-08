@@ -10,20 +10,20 @@ from dojango import forms
 from sabnzbdUI.freenas import models, utils
 
 
-class SabnzbdForm(forms.ModelForm):
+class SABnzbdForm(forms.ModelForm):
 
     class Meta:
-        model = models.Sabnzbd
+        model = models.SABnzbd
         exclude = (
             'enable',
             )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
-        super(SabnzbdForm, self).__init__(*args, **kwargs)
+        super(SABnzbdForm, self).__init__(*args, **kwargs)
 
     def save(self, *args, **kwargs):
-        obj = super(SabnzbdForm, self).save(*args, **kwargs)
+        obj = super(SABnzbdForm, self).save(*args, **kwargs)
 
         rcconf = os.path.join(utils.sabnzbd_etc_path, "rc.conf")
         with open(rcconf, "w") as f:
