@@ -15,9 +15,9 @@ import oauth2 as oauth
 from crashplanUI.freenas import forms, models, utils
 
 
-def _linux_loaded(server):
+def _linux_loaded(server, pid):
     try:
-        return server.os.kldload("linux")
+        return server.os.kldload(pid, "linux")
     except:
         # FreeNAS <= 9.1.1 support
         proc = Popen(["/sbin/kldstat", "-n", "linux"], stdout=PIPE, stderr=PIPE)
@@ -189,7 +189,7 @@ def start(request, plugin_id):
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
 
-    kldload = _linux_loaded(server)
+    kldload = _linux_loaded(plugin_id, server)
 
     if kldload is False:
         return HttpResponse(simplejson.dumps({
@@ -345,7 +345,7 @@ def open_view(request, plugin_id):
 
     return render(request, "open.html", {
         'crashplan': crashplan,
-        'kldload': _linux_loaded(server),
+        'kldload': _linux_loaded(plugin_id, server),
     })
 
 
