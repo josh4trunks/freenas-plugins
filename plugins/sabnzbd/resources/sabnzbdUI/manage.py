@@ -11,8 +11,7 @@ python = "python%d.%d" % (python_major, python_minor)
 
 SABNZBD_PATH = "/usr/pbi/sabnzbd-%s" % arch
 SABNZBD_UI = os.path.join(SABNZBD_PATH, "sabnzbdUI")
-PYTHON_SITE_PACKAGES = os.path.join(SABNZBD_PATH,
-    "lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(SABNZBD_PATH,"lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(SABNZBD_PATH)
