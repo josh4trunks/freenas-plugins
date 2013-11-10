@@ -6,4 +6,4 @@
     - /usr/ports/GIDs <code>media:*:999:</code>
 
 
-* Compile with <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/ **CATEGPRY/NAME**</code>
+* Compile with <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/ **CATEGORY/NAME**</code>
