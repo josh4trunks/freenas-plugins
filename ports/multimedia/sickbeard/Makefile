@@ -33,10 +33,10 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		media
 
-OPTIONS_DEFINE=	OPENSSL PIL
+OPTIONS_DEFINE=	OPENSSL PIL LXML
 OPTIONS_DEFAULT=	OPENSSL PIL LXML
 PIL_DESC=	image resizing support
-LXML_DESC=	XML and HTML processor used in TPB branch
+LXML_DESC=	xml and html processor used in TPB branch
 
 .include <bsd.port.pre.mk>
 
@@ -49,7 +49,7 @@ RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/PIL/_imaging.so:${PORTSDIR}/graphics/py-ima
 .endif
 
 .if ${PORT_OPTIONS:MLXML}
-RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/lxml:${PORTSDIR}/devel/py-lxml
+RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/py-lxml:${PORTSDIR}/devel/py-lxml
 .endif
 
 do-install:

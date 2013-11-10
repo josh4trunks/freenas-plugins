@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sabnzbd_pbi_path=/usr/pbi/sabnzbd-$(uname -m)
+sickbeard_pbi_path=/usr/pbi/sickbeard-$(uname -m)
 
-${sabnzbd_pbi_path}/bin/python ${sabnzbd_pbi_path}/sabnzbdUI/manage.py syncdb --migrate --noinput
+${sickbeard_pbi_path}/bin/python ${sickbeard_pbi_path}/sickbeardUI/manage.py syncdb --migrate --noinput

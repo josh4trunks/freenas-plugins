@@ -7,22 +7,22 @@ from flup.server.fcgi import WSGIServer
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "lib/python2.7/site-packages"))
-sabnzbd_fcgi_pidfile = "/var/run/sabnzbd_fcgi_server.pid"
+sickbeard_fcgi_pidfile = "/var/run/sickbeard_fcgi_server.pid"
 
 
-def sabnzbd_fcgi_start(args):
+def sickbeard_fcgi_start(args):
     if len(args) < 2:
         return False
 
     ip = args[0]
     port = long(args[1])
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'sabnzbdUI.settings'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'sickbeardUI.settings'
     import django.core.handlers.wsgi
     app = django.core.handlers.wsgi.WSGIHandler()
 
     res = False
-    with open(sabnzbd_fcgi_pidfile, "wb") as fp:
+    with open(sickbeard_fcgi_pidfile, "wb") as fp:
         fp.write(str(os.getpid()))
         fp.close()
 
@@ -31,26 +31,26 @@ def sabnzbd_fcgi_start(args):
     return res
 
 
-def sabnzbd_fcgi_stop(args):
+def sickbeard_fcgi_stop(args):
     res = False
-    if os.access(sabnzbd_fcgi_pidfile, os.F_OK):
-        with open(sabnzbd_fcgi_pidfile, "r") as fp:
+    if os.access(sickbeard_fcgi_pidfile, os.F_OK):
+        with open(sickbeard_fcgi_pidfile, "r") as fp:
             pid = long(fp.read())
             fp.close()
 
             os.kill(pid, signal.SIGHUP)
             res = True
 
-    if os.access(sabnzbd_fcgi_pidfile, os.F_OK):
-        os.unlink(sabnzbd_fcgi_pidfile)
+    if os.access(sickbeard_fcgi_pidfile, os.F_OK):
+        os.unlink(sickbeard_fcgi_pidfile)
 
     return res
 
 
-def sabnzbd_fcgi_status(args):
+def sickbeard_fcgi_status(args):
     res = False
-    if os.access(sabnzbd_fcgi_pidfile, os.F_OK):
-        with open(sabnzbd_fcgi_pidfile, "r") as fp:
+    if os.access(sickbeard_fcgi_pidfile, os.F_OK):
+        with open(sickbeard_fcgi_pidfile, "r") as fp:
             pid = long(fp.read())
             fp.close()
             res = True
@@ -58,7 +58,7 @@ def sabnzbd_fcgi_status(args):
     return res
 
 
-def sabnzbd_fcgi_configure(args):
+def sickbeard_fcgi_configure(args):
     return True
 
 
@@ -67,10 +67,10 @@ def main(argc, argv):
         sys.exit(1)
 
     commands = {
-        'start': sabnzbd_fcgi_start,
-        'stop': sabnzbd_fcgi_stop,
-        'status': sabnzbd_fcgi_status,
-        'configure': sabnzbd_fcgi_configure
+        'start': sickbeard_fcgi_start,
+        'stop': sickbeard_fcgi_stop,
+        'status': sickbeard_fcgi_status,
+        'configure': sickbeard_fcgi_configure
     }
 
     with daemon.DaemonContext():
