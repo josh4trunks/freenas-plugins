@@ -36,7 +36,7 @@ GROUPS=		media
 OPTIONS_DEFINE=	OPENSSL PIL
 OPTIONS_DEFAULT=	OPENSSL PIL LXML
 PIL_DESC=	image resizing support
-LXML_DESC=	xml and html processor used in TPB branch
+LXML_DESC=	XML and HTML processor used in TPB branch
 
 .include <bsd.port.pre.mk>
 
