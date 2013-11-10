@@ -1,4 +1,3 @@
-%%ETCDIR%%
 %%DATADIR%%/SABnzbd/ABOUT.txt
 %%DATADIR%%/SABnzbd/CHANGELOG.txt
 %%DATADIR%%/SABnzbd/COPYRIGHT.txt
@@ -567,4 +566,5 @@
 @dirrmtry %%DATADIR%%/SABnzbd
 @dirrmtry %%DATADIR%%
 @dirrmtry %%PORTDOCS%%%%DOCSDIR%%
-@exec chown media:media %D/etc/sabnzbd
+@exec mkdir -p %D/etc/sabnzbd
+@exec chown -R media:media %D/etc/sabnzbd
