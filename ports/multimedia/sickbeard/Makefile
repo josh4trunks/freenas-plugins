@@ -49,7 +49,7 @@ RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/PIL/_imaging.so:${PORTSDIR}/graphics/py-ima
 .endif
 
 .if ${PORT_OPTIONS:MLXML}
-RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/py-lxml:${PORTSDIR}/devel/py-lxml
+RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/lxml:${PORTSDIR}/devel/py-lxml
 .endif
 
 do-install:
