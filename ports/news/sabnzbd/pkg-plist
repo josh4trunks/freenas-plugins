@@ -567,3 +567,4 @@
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/sabnzbd
 @exec chown -R media:media %D/etc/sabnzbd
+@unexec %D/etc/rc.d/sabnzbd forcestop 2>/dev/null || true
