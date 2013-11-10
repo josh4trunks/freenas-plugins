@@ -111,8 +111,6 @@ RUN_DEPENDS+=	unrar:${PORTSDIR}/archivers/unrar
 RUN_DEPENDS+=   unzip:${PORTSDIR}/archivers/unzip
 .endif
 
-# the NO_BUILD option stops execution after configure. This should really be
-# post-build
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}
 	${MKDIR} ${STAGEDIR}${DATADIR}/SABnzbd
