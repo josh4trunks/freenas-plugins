@@ -115,5 +115,6 @@ do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}
 	${MKDIR} ${STAGEDIR}${DATADIR}/SABnzbd
 	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/SABnzbd
+	${MKDIR} ${STAGEDIR}${ETCDIR}
 
 .include <bsd.port.post.mk>
