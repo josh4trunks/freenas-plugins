@@ -20,7 +20,7 @@ USE_PYTHON=	2.5+
 USE_GITHUB=     yes
 GH_ACCOUNT=     midgetspy  
 GH_PROJECT=     Sick-Beard
-GH_COMMIT=      07e35f7
+GH_COMMIT=      f6d5fa0
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
