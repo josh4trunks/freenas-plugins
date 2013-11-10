@@ -9,4 +9,4 @@
 * Compile with <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/ **CATEGORY/NAME**</code>
 
 ##NOTE
-We need to choose a permanent name and number (<1000 and not already taken) and submit a patch to FreeBSD in the future.
+We need to choose a permanent UID/GID name and number (<1000 and not already taken) and submit a patch to FreeBSD in the future.
