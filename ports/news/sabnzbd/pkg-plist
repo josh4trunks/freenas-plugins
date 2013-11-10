@@ -472,7 +472,6 @@
 %%DATADIR%%/SABnzbd/util/__init__.py
 %%DATADIR%%/SABnzbd/util/apireg.py
 %%DATADIR%%/SABnzbd/util/mailslot.py
-@dirrmtry %%ETCDIR%%
 @dirrmtry %%DATADIR%%/SABnzbd/util
 @dirrmtry %%DATADIR%%/SABnzbd/tools
 @dirrmtry %%DATADIR%%/SABnzbd/sabnzbd/utils
@@ -565,6 +564,6 @@
 @dirrmtry %%DATADIR%%/SABnzbd/cherrypy
 @dirrmtry %%DATADIR%%/SABnzbd
 @dirrmtry %%DATADIR%%
-@dirrmtry %%PORTDOCS%%%%DOCSDIR%%
+@dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/sabnzbd
 @exec chown -R media:media %D/etc/sabnzbd
