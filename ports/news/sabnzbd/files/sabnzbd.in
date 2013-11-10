@@ -10,7 +10,7 @@
 #                       Set it to YES to enable it.
 # sabnzbd_data_dir:     Directory where sabnzbd configuration
 #                       data is stored.
-#                       Default: %%PREFIX%%/share/sabnzbd/data
+#                       Default: %%PREFIX%%/etc/sabnzbd
 # sabnzbd_user:         The user account sabnzbd daemon runs as what
 #                       you want it to be. It uses 'media' user by
 #                       default. Do not sets it as empty or it will run
