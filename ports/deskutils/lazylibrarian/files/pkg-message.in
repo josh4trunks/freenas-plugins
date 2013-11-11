@@ -1,6 +1,6 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-multimedia/lazylibrarian includes an RC script:
+deskutils/lazylibrarian includes an RC script:
 %%PREFIX%%/etc/rc.d/lazylibrarian
 
 TO START LAZYLIBRARIAN ON BOOT:
