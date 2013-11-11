@@ -34,4 +34,15 @@ help:
 	@printf "%-25s- build all targets\n" all
 	@echo "------------------------------------------------------------"
 
+clean:
+	rm -rf ${TOP}/build
+
+# This is a dummy target for now - might do something useful later.
+git-internal:
+	@echo "Setting up for internal git repository"
+
+# This is a dummy target for now - might do something useful later.
+git-external:
+	@echo "Setting up for external git repository"
+
 all: ${PLUGINS}
