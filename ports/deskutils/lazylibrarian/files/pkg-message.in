@@ -1,0 +1,15 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+multimedia/lazylibrarian includes an RC script:
+%%PREFIX%%/etc/rc.d/lazylibrarian
+
+TO START LAZYLIBRARIAN ON BOOT:
+echo 'lazylibrarian_enable="YES"' >> /etc/rc.conf
+
+START MANUALLY:
+%%PREFIX%%/etc/rc.d/lazylibrarian start
+
+Once started, visit the following to configure:
+http://localhost:8082/
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# PROVIDE: lazylibrarian
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# lazylibrarian_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# lazylibrarian_data_dir:	Directory where lazylibrarian configuration
+#			data is stored.
+#			Default: %%PREFIX%%/etc/lazylibrarian
+# lazylibrarian_user:	The user account lazylibrarian daemon runs as what
+#			you want it to be. It uses 'media' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# lazylibrarian_group:	The group account lazylibrarian daemon runs as what
+#			you want it to be. It uses 'media' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+
+. /etc/rc.subr
+name="lazylibrarian"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${lazylibrarian_enable:="NO"}
+: ${lazylibrarian_user:="media"}
+: ${lazylibrarian_group:="media"}
+: ${lazylibrarian_dir:="%%PREFIX%%/share/$name"}
+: ${lazylibrarian_data_dir:="%%PREFIX%%/etc/$name"}
+
+pidfile="$lazylibrarian_data_dir/$name.pid"
+command="%%PREFIX%%/bin/python"
+command_args="$lazylibrarian_dir/LazyLibrarian/LazyLibrarian.py --config=$lazylibrarian_data_dir/config.ini --datadir=$lazylibrarian_data_dir -d -p $pidfile -q --nolaunch"
+
+run_rc_command "$1"
