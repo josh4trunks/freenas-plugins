@@ -165,6 +165,7 @@
 %%DATADIR%%/Sick-Beard/data/images/notifiers/libnotify.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/nma.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/nmj.png
+%%DATADIR%%/Sick-Beard/data/images/notifiers/notifo.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/plex.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/prowl.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/pushover.png
@@ -217,7 +218,6 @@
 %%DATADIR%%/Sick-Beard/data/interfaces/default/comingEpisodes.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_general.tmpl
-%%DATADIR%%/Sick-Beard/data/interfaces/default/config_hidden.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_notifications.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_postProcessing.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_providers.tmpl
@@ -280,6 +280,7 @@
 %%DATADIR%%/Sick-Beard/data/js/qualityChooser.js
 %%DATADIR%%/Sick-Beard/data/js/restart.js
 %%DATADIR%%/Sick-Beard/data/js/rootDirs.js
+%%DATADIR%%/Sick-Beard/data/js/tableClick.js
 %%DATADIR%%/Sick-Beard/data/js/testRename.js
 %%DATADIR%%/Sick-Beard/init.fedora
 %%DATADIR%%/Sick-Beard/init.freebsd
@@ -559,6 +560,7 @@
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/nma.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/nmj.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/nmjv2.py
+%%DATADIR%%/Sick-Beard/sickbeard/notifiers/notifo.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/plex.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/prowl.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/pushover.py
@@ -577,7 +579,12 @@
 %%DATADIR%%/Sick-Beard/sickbeard/providers/ezrss.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/generic.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/hdbits.py
+%%DATADIR%%/Sick-Beard/sickbeard/providers/newzbin.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/newznab.py
+%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbmatrix.py
+%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbs_org_old.py
+%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbsrus.py
+%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbx.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/omgwtfnzbs.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/torrentleech.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/tvtorrents.py
@@ -611,66 +618,8 @@
 %%DATADIR%%/Sick-Beard/tests/snatch_tests.py
 %%DATADIR%%/Sick-Beard/tests/test_lib.py
 %%DATADIR%%/Sick-Beard/tests/tv_tests.py
-@dirrmtry %%DATADIR%%/Sick-Beard/tests
-@dirrmtry %%DATADIR%%/Sick-Beard/sickbeard/providers
-@dirrmtry %%DATADIR%%/Sick-Beard/sickbeard/notifiers
-@dirrmtry %%DATADIR%%/Sick-Beard/sickbeard/name_parser
-@dirrmtry %%DATADIR%%/Sick-Beard/sickbeard/metadata
-@dirrmtry %%DATADIR%%/Sick-Beard/sickbeard/databases
-@dirrmtry %%DATADIR%%/Sick-Beard/sickbeard
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/tvdb_api/tests
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/tvdb_api
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/socks
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/simplejson
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/pythontwitter
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/pynma
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/oauth2
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/jsonrpclib
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/httplib2
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/video
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/program
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/network
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/misc
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/image
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/game
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/file_system
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/container
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/common
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/audio
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser/archive
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_parser
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_metadata/qt
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_metadata
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_core/stream
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_core/field
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/hachoir_core
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/growl
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/dateutil/zoneinfo
-@dirrmtry %%DATADIR%%/Sick-Beard/lib/dateutil
-@dirrmtry %%DATADIR%%/Sick-Beard/lib
-@dirrmtry %%DATADIR%%/Sick-Beard/data/js/lib
-@dirrmtry %%DATADIR%%/Sick-Beard/data/js
-@dirrmtry %%DATADIR%%/Sick-Beard/data/interfaces/default
-@dirrmtry %%DATADIR%%/Sick-Beard/data/interfaces
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images/providers
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images/paypal
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images/notifiers
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images/menu
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images/ico
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images/flags
-@dirrmtry %%DATADIR%%/Sick-Beard/data/images
-@dirrmtry %%DATADIR%%/Sick-Beard/data/css/lib/images
-@dirrmtry %%DATADIR%%/Sick-Beard/data/css/lib
-@dirrmtry %%DATADIR%%/Sick-Beard/data/css
-@dirrmtry %%DATADIR%%/Sick-Beard/data
-@dirrmtry %%DATADIR%%/Sick-Beard/cherrypy/wsgiserver
-@dirrmtry %%DATADIR%%/Sick-Beard/cherrypy/process
-@dirrmtry %%DATADIR%%/Sick-Beard/cherrypy/lib
-@dirrmtry %%DATADIR%%/Sick-Beard/cherrypy
-@dirrmtry %%DATADIR%%/Sick-Beard/autoProcessTV
-@dirrmtry %%DATADIR%%/Sick-Beard
-@dirrmtry %%DATADIR%%
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/sickbeard
 @exec chown -R media:media %D/etc/sickbeard %D/share/sickbeard/*
 @unexec %D/etc/rc.d/sickbeard forcestop 2>/dev/null || true
+@unexec rm -r %D/share/sickbeard
