@@ -31,13 +31,18 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		media
 
-OPTIONS_DEFINE=	OPENSSL
-OPTIONS_DEFAULT=	OPENSSL
+OPTIONS_DEFINE=	OPENSSL PIL
+OPTIONS_DEFAULT=	OPENSSL PIL
+PIL_DESC=	convert and resize images retrieved from the XBMC API
 
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MOPENSSL}
 RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/OpenSSL/SSL.so:${PORTSDIR}/security/py-openssl
+.endif
+
+.if ${PORT_OPTIONS:MPIL}
+RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/PIL/_imaging.so:${PORTSDIR}/graphics/py-imaging
 .endif
 
 do-install:
