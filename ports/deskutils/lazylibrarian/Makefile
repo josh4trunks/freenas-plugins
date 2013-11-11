@@ -2,7 +2,7 @@
 
 PORTNAME=	lazylibrarian
 PORTVERSION=	1.0
-CATEGORIES=	multimedia
+CATEGORIES=	deskutils
 MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
