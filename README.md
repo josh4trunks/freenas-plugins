@@ -8,12 +8,8 @@
     - /usr/ports/GIDs
         - <code>media:*:999:</code>
 
-
 * Compile
-    - <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/ **CATEGORY/NAME**</code>
-
-* I found it necessary to recomplie some of the packages again when switching between plugins
-    - <code>rm ./pkg/*</code>
+    - <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/**NAME** **CATEGORY/NAME**</code>
 
 ##NOTE
 We need to choose a permanent UID/GID name and number (<1000 and not already taken) and submit a patch to FreeBSD in the future.
