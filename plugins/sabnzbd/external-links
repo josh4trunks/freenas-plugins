@@ -1,0 +1,4 @@
+bin/par2	bin/par2	keep
+bin/unrar	bin/unrar	keep
+bin/unzip	bin/unzip	keep
+lib/libtbb.so	lib/libtbb.so	keep
