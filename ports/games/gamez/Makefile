@@ -1,0 +1,47 @@
+# $FreeBSD$
+
+PORTNAME=	gamez
+PORTVERSION=	1.0
+CATEGORIES=	games
+MASTER_SITES=	GH
+
+MAINTAINER=	joshruehlig@gmail.com
+COMMENT=	Automated Video Game Download for Sabnzbd
+
+LICENSE=	PSFL
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
+
+USE_PYTHON=	2.7+
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	avjui
+GH_PROJECT=	Gamez
+GH_COMMIT=	4f3322a
+GH_TAGNAME=	${GH_COMMIT}
+
+NO_BUILD=	yes
+WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${GH_PROJECT}-${GH_COMMIT}
+PLIST_SUB=	PORTNAME=${PORTNAME}
+SUB_LIST+=	PORTNAME=${PORTNAME}
+SUB_FILES=	pkg-message
+USE_RC_SUBR=	${PORTNAME}
+
+USERS=		media
+GROUPS=		media
+
+OPTIONS_DEFINE= OPENSSL
+OPTIONS_DEFAULT= OPENSSL
+
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MOPENSSL}
+RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/OpenSSL/SSL.so:${PORTSDIR}/security/py-openssl
+.endif
+
+do-install:
+	${INSTALL} -d ${STAGEDIR}${DATADIR}
+	${MKDIR} ${STAGEDIR}${DATADIR}/Gamez
+	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/Gamez
+
+.include <bsd.port.post.mk>

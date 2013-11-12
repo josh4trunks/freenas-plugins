@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# PROVIDE: gamez
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# gamez_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# gamez_data_dir:	Directory where gamez configuration
+#			data is stored.
+#			Default: %%PREFIX%%/etc/gamez
+# gamez_user:		The user account gamez daemon runs as what
+#			you want it to be. It uses 'media' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# gamez_group:		The group account gamez daemon runs as what
+#			you want it to be. It uses 'media' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+
+. /etc/rc.subr
+name="gamez"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${gamez_enable:="NO"}
+: ${gamez_user:="media"}
+: ${gamez_group:="media"}
+: ${gamez_dir:="%%PREFIX%%/share/$name"}
+: ${gamez_data_dir:="%%PREFIX%%/etc/$name"}
+
+pidfile="$gamez_data_dir/$name.pid"
+command="%%PREFIX%%/bin/python"
+command_args="$gamez_dir/Gamez/Gamez.py -c $gamez_data_dir/config.ini -b $gamez_data_dir -d -p $pidfile -n"
+
+run_rc_command "$1"

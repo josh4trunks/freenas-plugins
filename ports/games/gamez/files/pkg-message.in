@@ -1,0 +1,15 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+games/gamez includes an RC script:
+%%PREFIX%%/etc/rc.d/gamez
+
+TO START GAMEZ ON BOOT:
+echo 'gamez_enable="YES"' >> /etc/rc.conf
+
+START MANUALLY:
+%%PREFIX%%/etc/rc.d/gamez start
+
+Once started, visit the following to configure:
+http://localhost:8085/
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
