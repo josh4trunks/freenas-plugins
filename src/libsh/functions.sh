@@ -452,7 +452,15 @@ getZFSTank() {
         return 0
      fi
 
-     if [ "$_chkDir" = "/" ] ; then return 1 ; fi
+     if [ "$_chkDir" = "/" ] ; then
+        isDirZFS "${_chkDir}"
+        if [ "$?" = "0" ] ; then
+            mount | grep -w "on $_chkDir " | grep -w "(zfs," | awk '{ print $1 }'
+            return 0
+        fi
+        return 1
+     fi
+
      _chkDir=`dirname $_chkDir`
   done
 
@@ -478,7 +486,16 @@ getZFSDataset() {
        echo "$zData"|awk '{ print $1 }'
        return 0
     fi
-    if [ "$_chkDir" = "/" ] ; then return 1 ; fi
+
+    if [ "$_chkDir" = "/" ] ; then
+       isDirZFS "${_chkDir}"
+       if [ "$?" = "0" ] ; then
+           mount | grep -w "on $_chkDir " | grep -w "(zfs," | awk '{ print $1 }'
+           return 0
+       fi
+       return 1
+    fi
+
     _chkDir=`dirname $_chkDir`
   done
   return 1

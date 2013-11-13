@@ -347,6 +347,17 @@ main()
 
 	local ds="$(getZFSDataset "${plugins_top}")"
 	local mp="$(getZFSMountpoint "${ds}")"
+	if ! echo "${mp}" | grep -q '^/'
+	then
+		mp=
+	fi
+
+	if [ -z "${mp}" ]
+	then
+		local p="$(realpath "${plugins_top}/../")"
+		plugins_top="${p}/fnp"
+		plugins_pbidir="${p}/pbi"
+	fi
 
 	if [ -z "${plugins_build}" ]
 	then
