@@ -1,5 +1,9 @@
-#PREP
-* The folders in ./ports should be moved to /usr/ports/
+#FreeNAS-Plugins
+Information for python-based plugins maintained by me can be found [here](http://forums.freenas.org/threads/freenas-9-plugins-sab-sb-cp-hp-maraschino-htpc-mylar-ll-gamez.16200/).
+
+
+#PREPARATION
+* The ports in ./ports should be installed into your ports tree
     - <code>mv ./ports/* /usr/ports</code>
 
 * A 'media' user and group need to be added to '/usr/ports/UIDs' and '/usr/ports/GIDs' before compiling Ports or PBIs.
