@@ -1,3 +1,4 @@
+@unexec %D/etc/rc.d/htpc-manager forcestop 2>/dev/null || true
 %%DATADIR%%/HTPC-Manager/HTPC-Manager.bat
 %%DATADIR%%/HTPC-Manager/Htpc.py
 %%DATADIR%%/HTPC-Manager/README.md
@@ -522,8 +523,7 @@
 %%DATADIR%%/HTPC-Manager/modules/transmission.py
 %%DATADIR%%/HTPC-Manager/modules/utorrent.py
 %%DATADIR%%/HTPC-Manager/modules/xbmc.py
+@unexec rm -r %D/share/htpc-manager
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/htpc-manager
 @exec chown -R media:media %D/etc/htpc-manager %D/share/htpc-manager/*
-@unexec %D/etc/rc.d/htpc-manager forcestop 2>/dev/null || true
-@unexec rm -r %D/share/htpc-manager

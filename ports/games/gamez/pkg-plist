@@ -1,3 +1,4 @@
+@unexec %D/etc/rc.d/gamez forcestop 2>/dev/null || true
 %%DATADIR%%/Gamez/API.md
 %%DATADIR%%/Gamez/Gamez.py
 %%DATADIR%%/Gamez/Gamez.pyproj
@@ -268,8 +269,7 @@
 %%DATADIR%%/Gamez/sample.init.ubuntu.txt
 %%DATADIR%%/Gamez/tools/SETUP.md
 %%DATADIR%%/Gamez/tools/setup.py
+@unexec rm -r %D/share/gamez
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/gamez
 @exec chown -R media:media %D/etc/gamez  %D/share/gamez/*
-@unexec %D/etc/rc.d/gamez forcestop 2>/dev/null || true
-@unexec rm -r %D/share/gamez

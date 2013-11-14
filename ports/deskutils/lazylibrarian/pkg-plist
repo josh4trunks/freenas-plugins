@@ -1,3 +1,4 @@
+@unexec %D/etc/rc.d/lazylibrarian forcestop 2>/dev/null || true
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.app/Contents/Info.plist
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.app/Contents/MacOS/applet
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.app/Contents/PkgInfo
@@ -7,6 +8,7 @@
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.app/Contents/Resources/description.rtfd/TXT.rtf
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.py
 %%DATADIR%%/LazyLibrarian/README.md
+%%DATADIR%%/LazyLibrarian/branch-summary.log
 %%DATADIR%%/LazyLibrarian/cherrypy/LICENSE.txt
 %%DATADIR%%/LazyLibrarian/cherrypy/__init__.py
 %%DATADIR%%/LazyLibrarian/cherrypy/_cpchecker.py
@@ -112,14 +114,12 @@
 %%DATADIR%%/LazyLibrarian/cherrypy/wsgiserver/__init__.py
 %%DATADIR%%/LazyLibrarian/cherrypy/wsgiserver/ssl_builtin.py
 %%DATADIR%%/LazyLibrarian/cherrypy/wsgiserver/ssl_pyopenssl.py
-%%DATADIR%%/LazyLibrarian/data/.DS_Store
 %%DATADIR%%/LazyLibrarian/data/css/data_table.css
 %%DATADIR%%/LazyLibrarian/data/css/ipad_landscape.css
 %%DATADIR%%/LazyLibrarian/data/css/ipad_portrait.css
 %%DATADIR%%/LazyLibrarian/data/css/iphone4_portrait.css
 %%DATADIR%%/LazyLibrarian/data/css/mobile.css
 %%DATADIR%%/LazyLibrarian/data/css/style.css
-%%DATADIR%%/LazyLibrarian/data/images/.DS_Store
 %%DATADIR%%/LazyLibrarian/data/images/0-stars.png
 %%DATADIR%%/LazyLibrarian/data/images/1-stars.png
 %%DATADIR%%/LazyLibrarian/data/images/2-stars.png
@@ -132,7 +132,9 @@
 %%DATADIR%%/LazyLibrarian/data/images/favicon.ico
 %%DATADIR%%/LazyLibrarian/data/images/forward_disabled.jpg
 %%DATADIR%%/LazyLibrarian/data/images/forward_enabled.jpg
+%%DATADIR%%/LazyLibrarian/data/images/headphoneslogo.png
 %%DATADIR%%/LazyLibrarian/data/images/icon_search.png
+%%DATADIR%%/LazyLibrarian/data/images/lazylibrarian.png
 %%DATADIR%%/LazyLibrarian/data/images/loader_black.gif
 %%DATADIR%%/LazyLibrarian/data/images/nav/authors.jpg
 %%DATADIR%%/LazyLibrarian/data/images/nav/authors.png
@@ -193,11 +195,11 @@
 %%DATADIR%%/LazyLibrarian/init/freebsd.initd
 %%DATADIR%%/LazyLibrarian/init/ubuntu.default
 %%DATADIR%%/LazyLibrarian/init/ubuntu.initd
-%%DATADIR%%/LazyLibrarian/lazylibrarian/.DS_Store
 %%DATADIR%%/LazyLibrarian/lazylibrarian/SimpleCache.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/__init__.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/database.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/formatter.py
+%%DATADIR%%/LazyLibrarian/lazylibrarian/gb.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/gr.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/importer.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/logger.py
@@ -275,8 +277,7 @@
 %%DATADIR%%/LazyLibrarian/mako/runtime.py
 %%DATADIR%%/LazyLibrarian/mako/template.py
 %%DATADIR%%/LazyLibrarian/mako/util.py
+@unexec rm -r %D/share/lazylibrarian
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/lazylibrarian
 @exec chown -R media:media %D/etc/lazylibrarian %D/share/lazylibrarian/*
-@unexec %D/etc/rc.d/lazylibrarian forcestop 2>/dev/null || true
-@unexec rm -r %D/share/lazylibrarian
