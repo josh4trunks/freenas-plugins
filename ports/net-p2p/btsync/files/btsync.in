@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# PROVIDE: btsync
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# btsync_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# btsync_data_dir:	Directory where btsync configuration
+#			data is stored.
+#			Default: %%PREFIX%%/etc/btsync
+# btsync_user:		The user account btsync daemon runs as what
+#			you want it to be. It uses 'btsync' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# btsync_group:		The group account btsync daemon runs as what
+#			you want it to be. It uses 'btsync' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+
+. /etc/rc.subr
+name="btsync"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${btsync_enable:="NO"}
+: ${btsync_user:="btsync"}
+: ${btsyncr_group:="btsync"}
+: ${btsync_data_dir:="%%PREFIX%%/etc/$name"}
+
+pidfile="$btsync_data_dir/sync.pid"
+command="%%PREFIX%%/bin/btsync"
+command_args="--config $btsync_data_dir/config.ini"
+
+run_rc_command "$1"
