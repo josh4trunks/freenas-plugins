@@ -18,7 +18,7 @@ USE_PYTHON=	2.7+
 USE_GITHUB=     yes
 GH_ACCOUNT=     styxit  
 GH_PROJECT=     HTPC-Manager
-GH_COMMIT=      96c645d
+GH_COMMIT=      bbd2c44
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
