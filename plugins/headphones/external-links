@@ -1,4 +1,4 @@
-bin/ffmpeg	bin/ffmpeg	keep,binary
+bin/ffmpeg	bin/ffmpeg	keep
 lib/libavdevice.so.55	lib/libavdevice.so.55	keep
 lib/libavfilter.so.3	lib/libavfilter.so.3	keep
 lib/libavformat.so.55	lib/libavformat.so.55	keep
