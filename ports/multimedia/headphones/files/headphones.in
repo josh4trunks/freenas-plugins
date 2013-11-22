@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# PROVIDE: headphones
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# headphones_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# headphones_data_dir:	Directory where headphones configuration
+#			data is stored.
+#			Default: %%PREFIX%%/etc/headphones
+# headphones_user:	The user account headphones daemon runs as what
+#			you want it to be. It uses 'media' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# headphones_group:	The group account headphones daemon runs as what
+#			you want it to be. It uses 'media' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+
+. /etc/rc.subr
+name="headphones"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${headphones_enable:="NO"}
+: ${headphones_user:="media"}
+: ${headphones_group:="media"}
+: ${headphones_dir:="%%PREFIX%%/share/$name"}
+: ${headphones_data_dir:="%%PREFIX%%/etc/$name"}
+
+pidfile="$headphones_data_dir/$name.pid"
+command="%%PREFIX%%/bin/python"
+command_args="$headphones_dir/headphones/Headphones.py --config $headphones_data_dir/config.ini --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
+
+start_precmd="${name}_prestart"
+headphones_prestart() {
+        if [ -f $pidfile ]; then
+                if [ ! `pgrep -F $pidfile` ]; then
+                        rm $pidfile
+                        echo "Removing stale pidfile."
+                fi
+        fi
+}
+
+run_rc_command "$1"

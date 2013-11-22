@@ -1,0 +1,15 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+multimedia/headphones includes an RC script:
+%%PREFIX%%/etc/rc.d/headphones
+
+TO START HEADPHONES ON BOOT:
+echo 'headphones_enable="YES"' >> /etc/rc.conf
+
+START MANUALLY:
+%%PREFIX%%/etc/rc.d/headphones start
+
+Once started, visit the following to configure:
+http://localhost:8181/
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
