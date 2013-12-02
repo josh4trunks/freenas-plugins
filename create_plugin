@@ -274,7 +274,7 @@ main()
 		echo "$(basename $0): Must be root"
 		exit 2
 	fi
-							fi
+
 	while getopts "a:b:hlno:p:P:r:" opt
 	do
 		case "${opt}" in
