@@ -6969,6 +6969,7 @@ EOF
 		mkdir -p "${PBI_CHROOTDIR}/pbimodule"
 		echo "Copying ${PBI_CONFDIR} -> ${PBI_CHROOTDIR}/pbimodule"
 	 	tar cvf - -C "${PBI_CONFDIR}" . 2>/dev/null | tar xvf - -C "${PBI_CHROOTDIR}/pbimodule" 2>/dev/null
+		chown -R root:wheel "${PBI_CHROOTDIR}/pbimodule"
 	fi
 
 	# Copy over the ssl priv key if used
