@@ -135,6 +135,9 @@ do_create_plugin()
 		mkdir -p "${plugins_pkgdir}"
 	fi
 
+	chown root:wheel "${plugins_outdir}"
+	chown root:wheel "${plugins_pkgdir}"
+
 	local realarch="$(uname -m)"
 	realarch="$(get_arch "${realarch}")"
 	if [ "${plugins_arch}" = "x32" ]
@@ -266,6 +269,12 @@ __EOF__
 
 main()
 {
+	if [ "$(id -u)" != "0" ]
+	then
+		echo "$(basename $0): Must be root"
+		exit 2
+	fi
+							fi
 	while getopts "a:b:hlno:p:P:r:" opt
 	do
 		case "${opt}" in
@@ -337,6 +346,9 @@ main()
 	then
 		mkdir -p "${plugins_builddir}/obj"
 	fi
+
+	chown root:wheel "${plugins_sbin}"
+	chown root:wheel "${plugins_builddir}/obj"
 
 	#
 	# At this point, pbi-manager and libsh are installed.
