@@ -1,7 +1,7 @@
 import platform
 
 from django.db import models
-
+from django.utils.translation import ugettext_lazy as _
 
 class PlexMediaServer(models.Model):
     """
@@ -9,4 +9,7 @@ class PlexMediaServer(models.Model):
     """
 
     enable = models.BooleanField(default=False)
-
+    disable_remote_security = models.BooleanField(
+        default=False,
+        verbose_name=_("Disable remote security")
+    )

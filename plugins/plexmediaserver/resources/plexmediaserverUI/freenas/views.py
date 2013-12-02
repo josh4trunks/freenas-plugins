@@ -1,5 +1,7 @@
-from subprocess import Popen, PIPE
+import os
 import json
+import platform
+import tempfile
 import time
 import urllib2
 
@@ -10,9 +12,25 @@ from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils import simplejson
 
+from subprocess import Popen, PIPE
+
 import jsonrpclib
 import oauth2 as oauth
+import xml.etree.ElementTree as ET
+
 from plexmediaserverUI.freenas import forms, models, utils
+
+arch = platform.machine()
+
+PLEXMEDIASERVER_PBI_PATH = "/usr/pbi/plexmediaserver-%s" % arch
+PLEXMEDIASERVER_PATH = os.path.join(
+    PLEXMEDIASERVER_PBI_PATH,
+    "plexdata/Plex Media Server"
+)
+PLEXMEDIASERVER_PREFERENCES_XML = os.path.join(
+    PLEXMEDIASERVER_PATH,
+    "Preferences.xml"
+)
 
 from syslog import *
 
@@ -300,6 +318,40 @@ def edit(request, plugin_id):
         cmd = "%s restart" % utils.plexmediaserver_control
         pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
             shell=True, close_fds=True)
+        out = pipe.communicate()[0]
+
+        plexmediaserver = models.PlexMediaServer.objects.order_by('-id')[0]
+        if plexmediaserver.disable_remote_security and \
+            os.path.exists(PLEXMEDIASERVER_PREFERENCES_XML):
+            preferences = tempfile.mktemp(dir='/tmp/')
+
+            tree = ET.parse(PLEXMEDIASERVER_PREFERENCES_XML)
+            root = tree.getroot()
+
+            if 'disableRemoteSecurity' not in root.attrib:
+                root.attrib['disableRemoteSecurity'] = "1"
+
+            tree.write(preferences)
+            if os.path.exists(preferences):  
+                cmd = "/bin/mv '%s' '%s'" % (preferences, PLEXMEDIASERVER_PREFERENCES_XML)
+                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+                    shell=True, close_fds=True)
+                out = pipe.communicate()[0]
+
+                cmd = "chmod 600 '%s'" % PLEXMEDIASERVER_PREFERENCES_XML
+                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+                    shell=True, close_fds=True)
+                out = pipe.communicate()[0]
+
+                cmd = "chown plex:plex '%s'" % PLEXMEDIASERVER_PREFERENCES_XML
+                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+                    shell=True, close_fds=True)
+                out = pipe.communicate()[0]
+
+                cmd = "%s restart" % utils.plexmediaserver_control
+                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+                    shell=True, close_fds=True)
+                out = pipe.communicate()[0]
 
         return JsonResponse(request, error=True,
             message="PlexMediaServer settings successfully saved.")
