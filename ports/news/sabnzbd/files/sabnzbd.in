@@ -32,10 +32,16 @@ load_rc_config $name
 : ${sabnzbd_data_dir:="%%PREFIX%%/etc/$name"}
 
 if [ -f $sabnzbd_data_dir/config.ini ]; then
-	port=`grep -m 1 ^"port " $sabnzbd_data_dir/config.ini | tr -dc '[0-9]'`
+	https=`grep -m 1 ^"enable_https " $sabnzbd_data_dir/config.ini | tr -dc '[0-9]'`
+	if [ $https -eq 0 ]; then
+		port=`grep -m 1 ^"port " $sabnzbd_data_dir/config.ini | tr -dc '[0-9]'`
+	else
+		port=`grep -m 1 ^"https_port " $sabnzbd_data_dir/config.ini | tr -dc '[0-9]'`
+	fi
 else
 	port=8080
 fi
+
 pidfile="$sabnzbd_data_dir/$name-$port.pid"
 command="%%PREFIX%%/bin/python"
 command_args="$sabnzbd_dir/SABnzbd/SABnzbd.py -s 0.0.0.0 -f $sabnzbd_data_dir/config.ini --pid $sabnzbd_data_dir -d -b 0"
