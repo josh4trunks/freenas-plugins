@@ -189,7 +189,7 @@ def start(request, plugin_id):
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
 
-    kldload = _linux_loaded(plugin_id, server)
+    kldload = _linux_loaded(server, plugin_id)
 
     if kldload is False:
         return HttpResponse(simplejson.dumps({
@@ -345,7 +345,7 @@ def open_view(request, plugin_id):
 
     return render(request, "open.html", {
         'crashplan': crashplan,
-        'kldload': _linux_loaded(plugin_id, server),
+        'kldload': _linux_loaded(server, plugin_id),
     })
 
 
