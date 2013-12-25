@@ -60,6 +60,7 @@ sabnzbd_update() {
 	if [ $? -eq 0 ]; then		
 		rm -r $sabnzbd_dir/download.tar.gz $sabnzbd_dir/SABnzbd
 		mv $sabnzbd_dir/SABnzbd-* $sabnzbd_dir/SABnzbd
+		chown -R $sabnzbd_user:$sabnzbd_group $sabnzbd_dir/SABnzbd
 	fi
 	if $running; then
 		run_rc_command onestart
