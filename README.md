@@ -4,7 +4,7 @@ Information for python-based plugins maintained by me can be found [here](http:/
 
 #PREPARATION
 * The ports in ./ports should be linked into your ports tree
-    - <code>find ports -type d -depth 2 -exec ln -s \`pwd\`/\{} /usr/\{} \;</code>
+    - <code>cp -R ports/* /usr/ports/</code>
 
 * A 'media' user and group need to be added to '/usr/ports/UIDs' and '/usr/ports/GIDs' before compiling Ports or PBIs.
     - /usr/ports/UIDs
