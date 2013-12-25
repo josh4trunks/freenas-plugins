@@ -43,7 +43,7 @@ else
 fi
 
 pidfile="$sabnzbd_data_dir/$name-$port.pid"
-command="%%PREFIX%%/bin/python"
+command="%%PREFIX%%/bin/python2.7"
 command_args="$sabnzbd_dir/SABnzbd/SABnzbd.py -s 0.0.0.0 -f $sabnzbd_data_dir/config.ini --pid $sabnzbd_data_dir -d -b 0"
 extra_commands="update"
 update_cmd="${name}_update"

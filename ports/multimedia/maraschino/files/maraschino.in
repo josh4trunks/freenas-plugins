@@ -32,7 +32,7 @@ load_rc_config $name
 : ${maraschino_data_dir:="%%PREFIX%%/etc/$name"}
 
 pidfile="$maraschino_data_dir/$name.pid"
-command="%%PREFIX%%/bin/python"
+command="%%PREFIX%%/bin/python2.7"
 command_args="$maraschino_dir/maraschino/Maraschino.py --datadir=$maraschino_data_dir -d --pidfile=$pidfile"
 
 run_rc_command "$1"

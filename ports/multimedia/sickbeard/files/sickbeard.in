@@ -32,7 +32,7 @@ load_rc_config $name
 : ${sickbeard_data_dir:="%%PREFIX%%/etc/$name"}
 
 pidfile="$sickbeard_data_dir/$name.pid"
-command="%%PREFIX%%/bin/python"
+command="%%PREFIX%%/bin/python2.7"
 command_args="$sickbeard_dir/Sick-Beard/SickBeard.py --config $sickbeard_data_dir/config.ini --datadir $sickbeard_data_dir -d --pidfile $pidfile -q --nolaunch"
 
 start_precmd="${name}_prestart"

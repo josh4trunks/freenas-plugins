@@ -15,7 +15,7 @@ RUN_DEPENDS=	cheetah:${PORTSDIR}/devel/py-cheetah \
 		${PYTHON_SITELIBDIR}/pythonutils/configobj.py:${PORTSDIR}/devel/py-utils \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
-USE_PYTHON=	2.5+
+USE_PYTHON=	2.7
 
 USE_GITHUB=     yes
 GH_ACCOUNT=     midgetspy  

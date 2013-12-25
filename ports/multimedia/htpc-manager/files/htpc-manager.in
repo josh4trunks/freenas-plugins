@@ -32,7 +32,7 @@ load_rc_config $name
 : ${htpc_manager_data_dir:="%%PREFIX%%/etc/htpc-manager"}
 
 pidfile="$htpc_manager_data_dir/htpc-manager.pid"
-command="%%PREFIX%%/bin/python"
+command="%%PREFIX%%/bin/python2.7"
 command_args="$htpc_manager_dir/HTPC-Manager/Htpc.py --datadir $htpc_manager_data_dir --daemon --pid $pidfile"
 
 run_rc_command "$1"

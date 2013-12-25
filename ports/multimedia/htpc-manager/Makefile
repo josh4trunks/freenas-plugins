@@ -13,7 +13,7 @@ LICENSE_COMB=	multi
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
-USE_PYTHON=	2.7+
+USE_PYTHON=	2.7
 
 USE_GITHUB=     yes
 GH_ACCOUNT=     styxit  
