@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/xdm-$(uname -m)/bin/python /usr/pbi/xdm-$(uname -m)/control.py $*
