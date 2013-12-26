@@ -1,0 +1,41 @@
+# $FreeBSD$
+
+PORTNAME=	xdm
+PORTVERSION=	2.0
+CATEGORIES=	multimedia
+MASTER_SITES=	GH
+
+MAINTAINER=	joshruehlig@gmail.com
+COMMENT=	Plugin based media collection manager
+
+LICENSE=	GPLv3 PSFL
+LICENSE_COMB=	multi
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
+
+USE_PYTHON=	2.7
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	lad1337
+GH_PROJECT=	XDM
+GH_COMMIT=	72b7f25
+GH_TAGNAME=	${GH_COMMIT}
+
+NO_BUILD=	yes
+WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${GH_PROJECT}-${GH_COMMIT}
+PLIST_SUB=	PORTNAME=${PORTNAME}
+SUB_LIST+=	PORTNAME=${PORTNAME} PYTHON_CMD=${PYTHON_CMD}
+SUB_FILES=	pkg-message
+USE_RC_SUBR=	${PORTNAME}
+
+USERS=		media
+GROUPS=		media
+
+.include <bsd.port.pre.mk>
+
+do-install:
+	${INSTALL} -d ${STAGEDIR}${DATADIR}
+	${MKDIR} ${STAGEDIR}${DATADIR}/XDM
+	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/XDM
+
+.include <bsd.port.post.mk>

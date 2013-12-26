@@ -1,0 +1,15 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+multimedia/xdm includes an RC script:
+%%PREFIX%%/etc/rc.d/xdm
+
+TO START XDM ON BOOT:
+echo 'xdm_enable="YES"' >> /etc/rc.conf
+
+START MANUALLY:
+%%PREFIX%%/etc/rc.d/xdm start
+
+Once started, visit the following to configure:
+http://localhost:8085/
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
