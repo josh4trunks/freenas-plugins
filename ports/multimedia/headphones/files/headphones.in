@@ -32,7 +32,7 @@ load_rc_config $name
 : ${headphones_data_dir:="%%PREFIX%%/etc/$name"}
 
 pidfile="$headphones_data_dir/$name.pid"
-command="%%PREFIX%%/bin/python2.7"
+command="%%PYTHON_CMD%%"
 command_args="$headphones_dir/headphones/Headphones.py --config $headphones_data_dir/config.ini --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
 
 start_precmd="${name}_prestart"

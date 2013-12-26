@@ -32,7 +32,7 @@ load_rc_config $name
 : ${gamez_data_dir:="%%PREFIX%%/etc/$name"}
 
 pidfile="$gamez_data_dir/$name.pid"
-command="%%PREFIX%%/bin/python2.7"
+command="%%PYTHON_CMD%%"
 command_args="$gamez_dir/Gamez/Gamez.py -c $gamez_data_dir/config.ini -b $gamez_data_dir -d -p $pidfile -n"
 
 run_rc_command "$1"

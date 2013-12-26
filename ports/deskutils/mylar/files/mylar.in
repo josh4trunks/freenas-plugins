@@ -32,7 +32,7 @@ load_rc_config $name
 : ${mylar_data_dir:="%%PREFIX%%/etc/$name"}
 
 pidfile="$mylar_data_dir/$name.pid"
-command="%%PREFIX%%/bin/python2.7"
+command="%%PYTHON_CMD%%"
 command_args="$mylar_dir/mylar/Mylar.py --config $mylar_data_dir/config.ini --datadir $mylar_data_dir -d --pidfile $pidfile -q --nolaunch"
 
 run_rc_command "$1"

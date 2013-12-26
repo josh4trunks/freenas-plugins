@@ -32,7 +32,7 @@ load_rc_config $name
 : ${lazylibrarian_data_dir:="%%PREFIX%%/etc/$name"}
 
 pidfile="$lazylibrarian_data_dir/$name.pid"
-command="%%PREFIX%%/bin/python2.7"
+command="%%PYTHON_CMD%%"
 command_args="$lazylibrarian_dir/LazyLibrarian/LazyLibrarian.py --config=$lazylibrarian_data_dir/config.ini --datadir=$lazylibrarian_data_dir -d -p $pidfile -q --nolaunch"
 
 run_rc_command "$1"
