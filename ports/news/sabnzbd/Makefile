@@ -64,13 +64,13 @@ LICENSE_NAME_SSMTPLIB=	ssmtplib License
 LICENSE_FILE_SSMTPLIB=	${WRKSRC}/licenses/License-ssmtplib.txt
 LICENSE_PERMS_SSMTPLIB=	auto-accept
 
-USE_PYTHON=	2.7
+USE_PYTHON=	2.5+
 USES=		gettext
 
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/SABnzbd-${PORTVERSION}
 PLIST_SUB=	PORTNAME=${PORTNAME}
-SUB_LIST+=	PORTNAME=${PORTNAME}
+SUB_LIST+=	PORTNAME=${PORTNAME} PYTHON_CMD=${PYTHON_CMD}
 SUB_FILES=	pkg-message
 USE_RC_SUBR=	${PORTNAME}
 CONFLICTS_INSTALL=	sabnzbdplus-*
@@ -115,8 +115,5 @@ do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}
 	${MKDIR} ${STAGEDIR}${DATADIR}/SABnzbd
 	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/SABnzbd
-
-post-install:
-	${MKDIR} ${STAGEDIR}${ETCDIR}
 
 .include <bsd.port.post.mk>
