@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	couchpotato
-PORTVERSION=	1.1
+PORTVERSION=	2.0
 CATEGORIES=	multimedia
 MASTER_SITES=	GH
 
@@ -18,7 +18,7 @@ USE_PYTHON=	2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     RuudBurger  
 GH_PROJECT=     CouchPotatoServer
-GH_COMMIT=      d023eb8
+GH_COMMIT=      190e1d2
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

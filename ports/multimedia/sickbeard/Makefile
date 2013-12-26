@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sickbeard
-PORTVERSION=	1.2
+PORTVERSION=	2.0
 CATEGORIES=	multimedia
 MASTER_SITES=	GH
 
@@ -20,7 +20,7 @@ USE_PYTHON=	2.5-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     midgetspy  
 GH_PROJECT=     Sick-Beard
-GH_COMMIT=      f6d5fa0
+GH_COMMIT=      a50ccde
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

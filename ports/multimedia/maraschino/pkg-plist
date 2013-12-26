@@ -701,6 +701,7 @@
 %%DATADIR%%/maraschino/templates/mobile/sabnzbd/history_item.html
 %%DATADIR%%/maraschino/templates/mobile/sabnzbd/queue_item.html
 %%DATADIR%%/maraschino/templates/mobile/sabnzbd/sabnzbd.html
+%%DATADIR%%/maraschino/templates/mobile/script_launcher/script_launcher.html
 %%DATADIR%%/maraschino/templates/mobile/search.html
 %%DATADIR%%/maraschino/templates/mobile/sickbeard/all.html
 %%DATADIR%%/maraschino/templates/mobile/sickbeard/coming_episodes.html

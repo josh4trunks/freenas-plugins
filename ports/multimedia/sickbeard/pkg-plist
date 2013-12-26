@@ -166,7 +166,6 @@
 %%DATADIR%%/Sick-Beard/data/images/notifiers/libnotify.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/nma.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/nmj.png
-%%DATADIR%%/Sick-Beard/data/images/notifiers/notifo.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/plex.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/prowl.png
 %%DATADIR%%/Sick-Beard/data/images/notifiers/pushover.png
@@ -219,6 +218,7 @@
 %%DATADIR%%/Sick-Beard/data/interfaces/default/comingEpisodes.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_general.tmpl
+%%DATADIR%%/Sick-Beard/data/interfaces/default/config_hidden.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_notifications.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_postProcessing.tmpl
 %%DATADIR%%/Sick-Beard/data/interfaces/default/config_providers.tmpl
@@ -271,8 +271,8 @@
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery.qtip-2012-04-26.min.js
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery.scrolltopcontrol-1.1.js
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery.selectboxes.min.js
-%%DATADIR%%/Sick-Beard/data/js/lib/jquery.tablesorter-2.1.19.min.js
-%%DATADIR%%/Sick-Beard/data/js/lib/jquery.tablesorter.widgets.min.js
+%%DATADIR%%/Sick-Beard/data/js/lib/jquery.tablesorter-2.14.min.js
+%%DATADIR%%/Sick-Beard/data/js/lib/jquery.tablesorter.widgets-2.14.min.js
 %%DATADIR%%/Sick-Beard/data/js/manageEpisodeStatuses.js
 %%DATADIR%%/Sick-Beard/data/js/massEdit.js
 %%DATADIR%%/Sick-Beard/data/js/massUpdate.js
@@ -281,7 +281,6 @@
 %%DATADIR%%/Sick-Beard/data/js/qualityChooser.js
 %%DATADIR%%/Sick-Beard/data/js/restart.js
 %%DATADIR%%/Sick-Beard/data/js/rootDirs.js
-%%DATADIR%%/Sick-Beard/data/js/tableClick.js
 %%DATADIR%%/Sick-Beard/data/js/testRename.js
 %%DATADIR%%/Sick-Beard/init.fedora
 %%DATADIR%%/Sick-Beard/init.freebsd
@@ -561,7 +560,6 @@
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/nma.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/nmj.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/nmjv2.py
-%%DATADIR%%/Sick-Beard/sickbeard/notifiers/notifo.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/plex.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/prowl.py
 %%DATADIR%%/Sick-Beard/sickbeard/notifiers/pushover.py
@@ -580,12 +578,7 @@
 %%DATADIR%%/Sick-Beard/sickbeard/providers/ezrss.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/generic.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/hdbits.py
-%%DATADIR%%/Sick-Beard/sickbeard/providers/newzbin.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/newznab.py
-%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbmatrix.py
-%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbs_org_old.py
-%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbsrus.py
-%%DATADIR%%/Sick-Beard/sickbeard/providers/nzbx.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/omgwtfnzbs.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/torrentleech.py
 %%DATADIR%%/Sick-Beard/sickbeard/providers/tvtorrents.py

@@ -38,6 +38,7 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/base.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/couchpotato.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/dash.html
+%%DATADIR%%/HTPC-Manager/interfaces/default/html/deluge.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/form.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/log.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/nzbget.html
@@ -70,6 +71,7 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/couchpotato.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/dash.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/default.js
+%%DATADIR%%/HTPC-Manager/interfaces/default/js/deluge.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/libs/bootstrap.min.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/libs/holder.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/libs/jquery-ui.min.js
@@ -515,6 +517,7 @@
 %%DATADIR%%/HTPC-Manager/libs/sqlobject/wsgi_middleware.py
 %%DATADIR%%/HTPC-Manager/modules/__init__.py
 %%DATADIR%%/HTPC-Manager/modules/couchpotato.py
+%%DATADIR%%/HTPC-Manager/modules/deluge.py
 %%DATADIR%%/HTPC-Manager/modules/nzbget.py
 %%DATADIR%%/HTPC-Manager/modules/sabnzbd.py
 %%DATADIR%%/HTPC-Manager/modules/search.py

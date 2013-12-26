@@ -147,11 +147,12 @@
 %%DATADIR%%/mylar/data/interfaces/default/css/jquery-ui.css
 %%DATADIR%%/mylar/data/interfaces/default/css/style.css
 %%DATADIR%%/mylar/data/interfaces/default/css/style.less
+%%DATADIR%%/mylar/data/interfaces/default/futurepull.html
 %%DATADIR%%/mylar/data/interfaces/default/history.html
-%%DATADIR%%/mylar/data/interfaces/default/idirectory.html
 %%DATADIR%%/mylar/data/interfaces/default/images/NoAlbumArt.png
 %%DATADIR%%/mylar/data/interfaces/default/images/ReadingList-icon.png
 %%DATADIR%%/mylar/data/interfaces/default/images/archive_icon.png
+%%DATADIR%%/mylar/data/interfaces/default/images/boxcar_logo.png
 %%DATADIR%%/mylar/data/interfaces/default/images/button.png
 %%DATADIR%%/mylar/data/interfaces/default/images/checkmark.png
 %%DATADIR%%/mylar/data/interfaces/default/images/copy_icon.png
@@ -189,9 +190,11 @@
 %%DATADIR%%/mylar/data/interfaces/default/images/mylar_logo.png
 %%DATADIR%%/mylar/data/interfaces/default/images/mylar_logo_128x128.png
 %%DATADIR%%/mylar/data/interfaces/default/images/next.gif
+%%DATADIR%%/mylar/data/interfaces/default/images/nma_logo.png
 %%DATADIR%%/mylar/data/interfaces/default/images/no-cover-art.png
 %%DATADIR%%/mylar/data/interfaces/default/images/no-cover-artist.png
 %%DATADIR%%/mylar/data/interfaces/default/images/prev.gif
+%%DATADIR%%/mylar/data/interfaces/default/images/prowl_logo.png
 %%DATADIR%%/mylar/data/interfaces/default/images/publisherlogos/logo-archiecomics.jpg
 %%DATADIR%%/mylar/data/interfaces/default/images/publisherlogos/logo-bluewatercomics.png
 %%DATADIR%%/mylar/data/interfaces/default/images/publisherlogos/logo-boom.jpg
@@ -214,6 +217,7 @@
 %%DATADIR%%/mylar/data/interfaces/default/images/publisherlogos/logo-vertigo.jpg
 %%DATADIR%%/mylar/data/interfaces/default/images/publisherlogos/logo-zenescope.jpg
 %%DATADIR%%/mylar/data/interfaces/default/images/publisherlogos/logos.png
+%%DATADIR%%/mylar/data/interfaces/default/images/pushover_logo.png
 %%DATADIR%%/mylar/data/interfaces/default/images/retry_icon.png
 %%DATADIR%%/mylar/data/interfaces/default/images/skipped_icon.png
 %%DATADIR%%/mylar/data/interfaces/default/images/sort_asc.png
@@ -375,6 +379,7 @@
 %%DATADIR%%/mylar/mylar/prov_nzbx.py
 %%DATADIR%%/mylar/mylar/rsscheck.py
 %%DATADIR%%/mylar/mylar/search.py
+%%DATADIR%%/mylar/mylar/solicit.py
 %%DATADIR%%/mylar/mylar/updater.py
 %%DATADIR%%/mylar/mylar/version.py
 %%DATADIR%%/mylar/mylar/versioncheck.py
@@ -390,7 +395,6 @@
 %%DATADIR%%/mylar/screens/mylar_mainscreen.jpg
 %%DATADIR%%/mylar/screens/mylar_pull.jpg
 %%DATADIR%%/mylar/screens/mylar_search.jpg
-%%DATADIR%%/mylar/test/search.py
 @unexec rm -r %D/share/mylar
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/mylar

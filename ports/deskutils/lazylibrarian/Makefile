@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	lazylibrarian
-PORTVERSION=	1.0
+PORTVERSION=	2.0
 CATEGORIES=	deskutils
 MASTER_SITES=	GH
 
@@ -16,9 +16,9 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 USE_PYTHON=	2.6-2.7
 
 USE_GITHUB=     yes
-GH_ACCOUNT=     herman-rogers
-GH_PROJECT=     LazyLibrarian-1
-GH_COMMIT=      bf5db4f
+GH_ACCOUNT=     DobyTang
+GH_PROJECT=     LazyLibrarian
+GH_COMMIT=      58a1bc0
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

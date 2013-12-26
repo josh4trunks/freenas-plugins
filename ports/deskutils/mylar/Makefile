@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mylar
-PORTVERSION=	1.0
+PORTVERSION=	2.0
 CATEGORIES=	deskutils
 MASTER_SITES=	GH
 
@@ -18,7 +18,7 @@ USE_PYTHON=	2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     evilhero
 GH_PROJECT=     mylar
-GH_COMMIT=      ebe0be5
+GH_COMMIT=      250630a
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

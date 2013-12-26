@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	headphones
-PORTVERSION=	1.0
+PORTVERSION=	2.0
 CATEGORIES=	multimedia
 MASTER_SITES=	GH
 
