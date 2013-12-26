@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('btsyncUI.freenas.views',
      url(r'^edit$', 'edit', name="btsync_edit"),

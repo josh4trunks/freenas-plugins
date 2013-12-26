@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('headphonesUI.freenas.views',
      url(r'^edit$', 'edit', name="headphones_edit"),
