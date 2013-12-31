@@ -4130,8 +4130,10 @@ clean_stage_dir() {
 copy_resource_dir() {
 	if [ -d "${PBI_CONFDIR}/${PBI_RESOURCE_DIR}" ] ; then
 		echo "Copying ${PBI_CONFDIR}/${PBI_RESOURCE_DIR} -> ${PBI_STAGEDIR}"
-		tar cvf - -C ${PBI_CONFDIR}/${PBI_RESOURCE_DIR} --exclude .svn . 2>/dev/null \
-		| tar xvpf - -C ${PBI_STAGEDIR} 2>/dev/null
+		tar cvf - -C ${PBI_CONFDIR}/${PBI_RESOURCE_DIR} \
+			--exclude .svn . 2>/dev/null \
+			--exclude .git . 2>/dev/null \
+			| tar xvpf - -C ${PBI_STAGEDIR} 2>/dev/null
 	fi
 }
 
@@ -5785,7 +5787,7 @@ ab_get_build_list()
    rm ${PBI_TMPDIR}/.ablist 2>/dev/null
 		
    cd "${PBI_AB_CONFDIR}"
-   for pbi in `find . -type f -name "${PBI_CONFFILE}" | grep -v '\.svn' | sort`
+   for pbi in `find . -type f -name "${PBI_CONFFILE}" | egrep -v '\.(svn|git)' | sort`
    do
 	# Figure out the target port for this build
 	unset PBI_MAKEPORT PBI_BUILDKEY PBI_PROGVERSION PBI_REQUIRESROOT PBI_PROGNAME PBI_PROGWEB PBI_PROGAUTHOR PBI_PROGICON PBI_MKPORTBEFORE PBI_MKPORTAFTER PBI_MAKEOPTS PBI_EXCLUDELIST PBI_AB_PRIORITY PBI_HASH_EXCLUDES PBI_AB_NOTMPFS PBI_PROGREVISION
@@ -5935,7 +5937,7 @@ do_pbi_autob_prune() {
 	echo "=> Cleaning outgoing directory..."
     	# Prune outgoing dirs which don't have matching modules anymore
 	cd "${PBI_AB_OUTDIR}"
-	for i in `find . -type d | grep -v '\.svn'`
+	for i in `find . -type d | egrep -v '\.(svn|git)'`
 	do
 		if [ "${i}" = "." -o "${i}" = ".." ] ; then continue ; fi
 		_pDir=`dirname ${i}`
@@ -7078,7 +7080,7 @@ mk_chroot_file() {
         if [ -z "${PBI_DELETE_BUILD}" ] ; then
                 PBI_DELETE_BUILD=1
         fi
- 
+
 	# Use existing sources
         if [ -e "${PBI_BUILDSRC}/COPYRIGHT" -a -z "${PBI_OSREL}" ] ; then
 		: ${PBI_BUILDLOG:="${PBI_APPDIR}/.buildWorldLog"}
@@ -7086,6 +7088,7 @@ mk_chroot_file() {
 		mkdir -p "${PBI_BUILDTARGET}"
 	
 	else
+
 		# Make sure SVN is installed
 		which svn >/dev/null 2>/dev/null
 		[ "$?" -ne 0 ] && exit_err "Subversion is required to rebuild the chroot environment!"
@@ -7215,7 +7218,9 @@ mk_chroot_file() {
 	# Copy the source since some ports need kern sources
 	echo "Copying FreeBSD sources to chroot environment"
 	mkdir -p ${PBI_BUILDTARGET}/usr/src >/dev/null 2>/dev/null
-	tar cvf - -C "${PBI_BUILDSRC}" --exclude "\.svn/" . 2>/dev/null | tar xvf - -C "${PBI_BUILDTARGET}/usr/src" 2>/dev/null
+	tar cvf - -C "${PBI_BUILDSRC}" --exclude "\.svn/" \
+		--exclude "\.git/" . 2>/dev/null | \
+		tar xvf - -C "${PBI_BUILDTARGET}/usr/src" 2>/dev/null
 	cd
 
 	# Cleanup after ourselves

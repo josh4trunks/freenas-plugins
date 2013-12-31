@@ -63,10 +63,27 @@ plugins_njobs=$(( 2 * $(sysctl -n kern.smp.cpus) + 1 ))
 
 
 #
-# What ports directory to use, defaults to /usr/ports.
+# What ports directory to use
 # This can be set with -p.
 #
-plugins_portsdir="${PLUGIN_PORTSDIR}"
+plugins_portsdir="${plugins_builddir}/ports"
+if [ -n "${PLUGINS_PORTSDIR}" ]
+then
+	plugins_portsdir="${PLUGINS_PORTSDIR}"
+fi
+
+
+#
+# Where the FreeBSD source is
+#
+# This should really be trueos source, but we don't
+# have a 9.0 branch, so use FreeBSD source for now
+#
+plugins_freebsd_src="${plugins_builddir}/FreeBSD"
+if [ -n "${PLUGINS_FREEBSD_SRC}" ]
+then
+	plugins_freebsd_src="${PLUGINS_FREEBSD_SRC}"
+fi
 
 
 #
@@ -178,13 +195,13 @@ do_create_plugin()
 	# ${archflags}: If set (will be -32), create 32-bit plugin
 	#
 	env PATH="${plugins_sbin}:${PATH}" \
-		PBI_BUILDSRC="${plugins_src}/FreeBSD" \
 		PBI_OSREL="9.0-RELEASE" \
 		PBI_APPDIR="${plugins_pbidir}" \
 		PBI_BINDIR="${plugins_sbin}" \
 		PBI_BUILDLOG="${plugins_builddir}/buildworld.log" \
 		PBI_LOCAL_DIRS="${plugins_pbi_wrapper}" \
 		PBI_DELETE_BUILD=0 \
+		PBI_BUILDSRC="${plugins_freebsd_src}" \
 		PBI_BUILDFLAGS="${buildflags}" \
 		MAKEOBJDIRPREFIX="${plugins_builddir}/obj" \
 		pbi_makeport \
@@ -226,10 +243,6 @@ set_defaults()
 	if [ -z "${plugins_outdir}" ]
 	then
 		plugins_outdir="${plugins_builddir}/${plugin}"
-	fi
-	if [ -z "${plugins_portsdir}" ]
-	then
-		plugins_portsdir="/usr/ports"
 	fi
 	if [ -z "${plugins_pkgdir}" ]
 	then
@@ -342,13 +355,30 @@ main()
 		install_pbi_manager
 	fi
 
-	if [ ! -d "${plugins_builddir}" ]
+	if [ ! -d "${plugins_builddir}/obj" ]
 	then
 		mkdir -p "${plugins_builddir}/obj"
 	fi
 
 	chown root:wheel "${plugins_sbin}"
 	chown root:wheel "${plugins_builddir}/obj"
+
+	if [ -d "${plugins_portsdir}" ]
+	then
+		echo "Updating FreeBSD ports"
+		local here="$(pwd)"
+		cd "${plugins_portsdir}"
+		git pull --rebase
+		cd "${here}"
+	else
+		echo "Checking out FreeBSD ports"
+		git clone "${GIT_PORTS_REPO}" "${plugins_portsdir}" -b "${GIT_PORTS_BRANCH}"
+		if [ "$?" != "0" ]
+		then
+			echo "Couldn't checkout ports!"
+			exit 3
+		fi
+	fi
 
 	#
 	# At this point, pbi-manager and libsh are installed.
@@ -383,5 +413,13 @@ main()
 	do_create_plugin "${plugin}"
 }
 
+if [ "${GIT_LOCATION}" = "EXTERNAL" ] ; then
+	: ${GIT_FREEBSD_REPO=https://github.com/trueos/trueos}
+	: ${GIT_PORTS_REPO=https://github.com/freenas/ports.git}
+fi
+
+: ${GIT_FREEBSD_REPO=git@gitserver:/git/repos/freenas-build/trueos.git}
+: ${GIT_PORTS_REPO=git@gitserver:/git/repos/freenas-build/ports.git}
+: ${GIT_PORTS_BRANCH=freenas/9-stable}
 
 main $*
