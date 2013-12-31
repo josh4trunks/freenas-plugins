@@ -24,7 +24,7 @@ mkdir -p "${plexmediaserver_fonts}"
 cp "${plexmediaserver_resources}/DejaVuUniversal.ttf" "${plexmediaserver_fonts}/Unicode.ttf" 
 cp "${plexmediaserver_resources}/DejaVuUniversal.ttf" "${plexmediaserver_fonts}/Arial.ttf"
 
-${plexmediaserver_pbi_path}/bin/python ${plexmediaserver_pbi_path}/plexmediaserverUI/manage.py syncdb --migrate --noinput
+${plexmediaserver_pbi_path}/bin/python2.7 ${plexmediaserver_pbi_path}/plexmediaserverUI/manage.py syncdb --migrate --noinput
 ~
 cp ${plexmediaserver_pbi_path}/etc/rc.d/plexmediaserver /usr/local/etc/rc.d/plexmediaserver
 
