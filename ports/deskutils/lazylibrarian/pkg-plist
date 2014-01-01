@@ -8,6 +8,7 @@
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.app/Contents/Resources/description.rtfd/TXT.rtf
 %%DATADIR%%/LazyLibrarian/LazyLibrarian.py
 %%DATADIR%%/LazyLibrarian/README.md
+%%DATADIR%%/LazyLibrarian/UNITTESTING.md
 %%DATADIR%%/LazyLibrarian/branch-summary.log
 %%DATADIR%%/LazyLibrarian/cherrypy/LICENSE.txt
 %%DATADIR%%/LazyLibrarian/cherrypy/__init__.py
@@ -207,6 +208,8 @@
 %%DATADIR%%/LazyLibrarian/lazylibrarian/providers.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/sabnzbd.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/searchnzb.py
+%%DATADIR%%/LazyLibrarian/lazylibrarian/unittests/test_searchnzb.py
+%%DATADIR%%/LazyLibrarian/lazylibrarian/unittests/test_versioncheck.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/version.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/versioncheck.py
 %%DATADIR%%/LazyLibrarian/lazylibrarian/webServe.py
@@ -277,6 +280,7 @@
 %%DATADIR%%/LazyLibrarian/mako/runtime.py
 %%DATADIR%%/LazyLibrarian/mako/template.py
 %%DATADIR%%/LazyLibrarian/mako/util.py
+%%DATADIR%%/LazyLibrarian/version.txt
 @unexec rm -r %D/share/lazylibrarian
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/lazylibrarian
