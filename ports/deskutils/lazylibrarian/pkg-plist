@@ -280,7 +280,6 @@
 %%DATADIR%%/LazyLibrarian/mako/runtime.py
 %%DATADIR%%/LazyLibrarian/mako/template.py
 %%DATADIR%%/LazyLibrarian/mako/util.py
-%%DATADIR%%/LazyLibrarian/version.txt
 @unexec rm -r %D/share/lazylibrarian
 @dirrmtry %%ETCDIR%%
 @exec mkdir -p %D/etc/lazylibrarian
