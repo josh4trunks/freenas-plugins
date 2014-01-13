@@ -4,16 +4,14 @@
 +{
 +  "storage_path" : "%%PREFIX%%/etc/btsync",
 +  "check_for_updates" : true,
-+//  "disk_low_priority" : true
-+//  "folder_rescan_interval" : 600
-+//  "lan_encrypt_data" : true
-+//  "lan_use_tcp" : false
-+//  "max_file_size_diff_for_patching" : 1000
-+//  "max_file_size_for_versioning" : 1000
-+//  "rate_limit_local_peers" : false
-+//  "sync_max_time_diff" : 600
-+//  "sync_trash_ttl" : 30
-+//  "send_buf_size" : 5
-+//  "recv_buf_size" : 5
++  "disk_low_priority" : true,
++  "folder_rescan_interval" : 600,
++  "lan_encrypt_data" : true,
++  "lan_use_tcp" : false,
++  "max_file_size_diff_for_patching" : 1000,
++  "max_file_size_for_versioning" : 1000,
++  "rate_limit_local_peers" : false,
++  "sync_max_time_diff" : 600,
++  "sync_trash_ttl" : 30,
 +  "webui" : { "listen" : "0.0.0.0:8888" }
 +}

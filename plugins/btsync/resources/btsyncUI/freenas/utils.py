@@ -39,3 +39,50 @@ def get_btsync_oauth_creds():
                 secret = pair[1].strip()
 
     return key, secret
+
+btsync_settings = {
+    "webui_port": {
+        "field": "webui_port",
+        "type": "textbox",
+        },
+    "check_for_updates": {
+        "field": "check_for_updates",
+        "type": "checkbox",
+        },
+    "disk_low_priority": {
+        "field": "disk_low_priority",
+        "type": "checkbox",
+        },
+    "folder_rescan_interval": {
+        "field": "folder_rescan_interval",
+        "type": "textbox",
+        },
+    "lan_encrypt_data": {
+        "field": "lan_encrypt_data",
+        "type": "checkbox",
+        },
+    "lan_use_tcp": {
+        "field": "lan_use_tcp",
+        "type": "checkbox",
+        },
+    "max_file_size_diff_for_patching": {
+        "field": "max_file_size_diff_for_patching",
+        "type": "textbox",
+        },
+    "max_file_size_for_versioning": {
+        "field": "max_file_size_for_versioning",
+        "type": "textbox",
+        },
+    "rate_limit_local_peers": {
+        "field": "rate_limit_local_peers",
+        "type": "checkbox",
+        },
+    "sync_max_time_diff": {
+        "field": "sync_max_time_diff",
+        "type": "textbox",
+        },
+    "sync_trash_ttl": {
+        "field": "sync_trash_ttl",
+        "type": "textbox",
+        },
+}
