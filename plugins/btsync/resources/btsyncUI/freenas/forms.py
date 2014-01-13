@@ -67,8 +67,6 @@ class BtSyncForm(forms.ModelForm):
             settings['webui'] = {}
             settings['webui']['listen'] = "0.0.0.0:" + str(obj.webui_port)
         settings.pop("webui_port", None)
-        settings.pop("send_buf_size", None)
-        settings.pop("recv_buf_size", None)
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, indent=4))
