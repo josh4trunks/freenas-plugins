@@ -63,9 +63,8 @@ class BtSyncForm(forms.ModelForm):
                 settings[info.get("field")] = value
 
         settings['storage_path'] = conf_dir
-        if obj.webui_port:
-            settings['webui'] = {}
-            settings['webui']['listen'] = "0.0.0.0:" + str(obj.webui_port)
+        settings['webui'] = {}
+        settings['webui']['listen'] = "0.0.0.0:" + str(obj.webui_port)
         settings.pop("webui_port", None)
 
         with open(settingsfile, 'w') as f:
