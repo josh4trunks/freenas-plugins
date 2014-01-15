@@ -7,7 +7,6 @@ plexmediaserver_plexdata="${plexmediaserver_pbi_path}/plexdata"
 plexmediaserver_pms="${plexmediaserver_plexdata}/Plex Media Server"
 plexmediaserver_media="${plexmediaserver_pms}/Media"
 plexmediaserver_databases="${plexmediaserver_pms}/Plug-in Support/Databases"
-
 plexmediaserver_library="${plexmediaserver_pms}/Library"
 plexmediaserver_fonts="${plexmediaserver_library}/Fonts"
 
@@ -31,3 +30,9 @@ cp ${plexmediaserver_pbi_path}/etc/rc.d/plexmediaserver /usr/local/etc/rc.d/plex
 echo "Changing ownership of ${plexmediaserver_plexdata} to $(id plex)"
 chown -R plex:plex "${plexmediaserver_plexdata}"
 chmod 644 "${plexmediaserver_databases}"/com*
+
+if [ -d "${plexmediaserver_plexdata}.save" ]
+then
+	rm -rf "${plexmediaserver_plexdata}"
+	mv "${plexmediaserver_plexdata}.save" "${plexmediaserver_plexdata}"
+fi
