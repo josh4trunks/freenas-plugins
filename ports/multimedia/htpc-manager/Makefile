@@ -8,7 +8,7 @@ MASTER_SITES=	GH
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Htpc Manager combines all your favorite software into one slick interface.
 
-LICENSE=	GPLv3 PSFL
+LICENSE=	MIT PSFL
 LICENSE_COMB=	multi
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
