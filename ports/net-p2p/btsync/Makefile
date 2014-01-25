@@ -39,11 +39,11 @@ post-extract:
 	${MV} ${WRKSRC}/${PORTNAME} ${WRKSRC}/temp
 
 post-patch:
-	@${REINPLACE_CMD} -e 's!%%ETCDIR%%!${ETCDIR}!' ${WRKSRC}/temp/config.ini.sample
+	@${REINPLACE_CMD} -e 's!%%ETCDIR%%!${ETCDIR}!' ${WRKSRC}/config.ini.sample
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/temp/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 	${INSTALL} -d ${STAGEDIR}/${ETCDIR}
-	${INSTALL} ${WRKSRC}/temp/config.ini.sample ${STAGEDIR}/${ETCDIR}
+	${INSTALL} ${WRKSRC}/config.ini.sample ${STAGEDIR}/${ETCDIR}
 
 .include <bsd.port.post.mk>
