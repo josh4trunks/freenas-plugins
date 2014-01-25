@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# subsonic_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# subsonic_data_dir:	Directory where %%PORTNAME%% configuration
+#			data is stored.
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# subsonic_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# subsonic_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+
+. /etc/rc.subr
+name="%%PORTNAME%%"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${subsonic_enable:="NO"}
+: ${subsonic_user:="%%USER%%"}
+: ${subsonic_group:="%%GROUP%%"}
+: ${subsonic_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${subsonic_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
+
+. %%PREFIX%%/etc/%%PORTNAME%%/config.ini
+if $SUBSONIC_HTTPS; then
+	SUBSONIC_HTTPS_PORT="$SUBSONIC_PORT"
+	SUBSONIC_PORT="0"
+else
+	SUBSONIC_HTTPS_PORT="0"
+fi
+
+subsonic_chdir="$subsonic_dir/Subsonic"
+JETTY_LOG="$subsonic_data_dir/jetty.log"
+command="%%JAVA_CMD%%"
+command_args="-Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=$subsonic_data_dir -Dsubsonic.port=$SUBSONIC_PORT -Dsubsonic.httpsPort=$SUBSONIC_HTTPS_PORT -Dsubsonic.contextPath=$SUBSONIC_CONTEXT_PATH -Djava.awt.headless=true -verbose:gc -jar $subsonic_chdir/subsonic-booter-jar-with-dependencies.jar >$JETTY_LOG 2>&1 &"
+
+run_rc_command "$1"
