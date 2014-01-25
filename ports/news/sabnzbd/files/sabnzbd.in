@@ -12,11 +12,11 @@
 #                       data is stored.
 #                       Default: %%PREFIX%%/etc/%%PORTNAME%%
 # sabnzbd_user:         The user account %%PORTNAME%% daemon runs as what
-#                       you want it to be. It uses 'media' user by
+#                       you want it to be. It uses '%%USER%%' user by
 #                       default. Do not sets it as empty or it will run
 #                       as root.
 # sabnzbd_group:        The group account %%PORTNAME%% daemon runs as what
-#                       you want it to be. It uses 'media' group by
+#                       you want it to be. It uses '%%GROUP%%' group by
 #                       default. Do not sets it as empty or it will run
 #                       as wheel.
 
