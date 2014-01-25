@@ -10,4 +10,3 @@
 %%DATADIR%%/Subsonic/subsonic.war
 @dirrmtry %%DATADIR%%/Subsonic
 @dirrmtry %%DATADIR%%
-
