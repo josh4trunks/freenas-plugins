@@ -2,7 +2,7 @@
 +++ temp/config.ini.sample	2013-11-12 05:45:38.000000000 -0800
 @@ -0,0 +1,14 @@
 +{
-+  "storage_path" : "%%PREFIX%%/etc/btsync",
++  "storage_path" : "%%ETCDIR%%",
 +  "check_for_updates" : true,
 +  "disk_low_priority" : true,
 +  "folder_rescan_interval" : 600,
