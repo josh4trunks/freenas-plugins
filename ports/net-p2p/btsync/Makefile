@@ -24,9 +24,9 @@ NO_BUILD=	yes
 ONLY_FOR_ARCHES=	amd64 i386
 ONLY_FOR_ARCHES_REASON=	It is a binary-only program. Source code not available.
 
-PLIST_SUB=	PORTNAME=${PORTNAME}
-SUB_LIST+=	PORTNAME=${PORTNAME}
-SUB_FILES=	pkg-message
+PLIST_SUB=	PORTNAME=${PORTNAME} USER=${USERS} GROUP=${GROUPS}
+SUB_LIST=	PORTNAME=${PORTNAME} USER=${USERS} GROUP=${GROUPS}
+SUB_FILES=	pkg-message patch-etc-btsync-config.ini.sample
 USE_RC_SUBR=	${PORTNAME}
 
 USERS=		${PORTNAME}
@@ -37,9 +37,6 @@ GROUPS=		${PORTNAME}
 post-extract:
 	${MKDIR} ${WRKSRC}/temp
 	${MV} ${WRKSRC}/${PORTNAME} ${WRKSRC}/temp
-
-post-patch:
-	@${REINPLACE_CMD} -e 's!%%PREFIX%%!${PREFIX}!' ${WRKSRC}/temp/config.ini.sample
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/temp/${PORTNAME} ${STAGEDIR}${PREFIX}/bin

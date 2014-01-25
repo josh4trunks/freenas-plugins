@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: xdm
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # xdm_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# xdm_data_dir:		Directory where xdm configuration
+# xdm_data_dir:		Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/xdm
-# xdm_user:		The user account xdm daemon runs as what
-#			you want it to be. It uses 'media' user by
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# xdm_user:		The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# xdm_group:		The group account xdm daemon runs as what
-#			you want it to be. It uses 'media' group by
+# xdm_group:		The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="xdm"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${xdm_enable:="NO"}
-: ${xdm_user:="media"}
-: ${xdm_group:="media"}
-: ${xdm_dir:="%%PREFIX%%/share/$name"}
-: ${xdm_data_dir:="%%PREFIX%%/etc/$name"}
+: ${xdm_user:="%%USER%%"}
+: ${xdm_group:="%%GROUP%%"}
+: ${xdm_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${xdm_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$xdm_data_dir/$name.pid"
+pidfile="$xdm_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$xdm_dir/XDM/XDM.py -b $xdm_data_dir -p $pidfile -d -n"
 

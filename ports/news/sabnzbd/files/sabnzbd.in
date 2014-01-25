@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: sabnzbd
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,28 +8,28 @@
 #
 # sabnzbd_enable (bool):        Set to NO by default.
 #                       Set it to YES to enable it.
-# sabnzbd_data_dir:     Directory where sabnzbd configuration
+# sabnzbd_data_dir:     Directory where %%PORTNAME%% configuration
 #                       data is stored.
-#                       Default: %%PREFIX%%/etc/sabnzbd
-# sabnzbd_user:         The user account sabnzbd daemon runs as what
+#                       Default: %%PREFIX%%/etc/%%PORTNAME%%
+# sabnzbd_user:         The user account %%PORTNAME%% daemon runs as what
 #                       you want it to be. It uses 'media' user by
 #                       default. Do not sets it as empty or it will run
 #                       as root.
-# sabnzbd_group:        The group account sabnzbd daemon runs as what
+# sabnzbd_group:        The group account %%PORTNAME%% daemon runs as what
 #                       you want it to be. It uses 'media' group by
 #                       default. Do not sets it as empty or it will run
 #                       as wheel.
 
 . /etc/rc.subr
-name="sabnzbd"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${sabnzbd_enable:="NO"}
-: ${sabnzbd_user:="media"}
-: ${sabnzbd_group:="media"}
-: ${sabnzbd_dir:="%%PREFIX%%/share/$name"}
-: ${sabnzbd_data_dir:="%%PREFIX%%/etc/$name"}
+: ${sabnzbd_user:="%%USER%%"}
+: ${sabnzbd_group:="%%GROUP%%"}
+: ${sabnzbd_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${sabnzbd_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
 if [ -f $sabnzbd_data_dir/config.ini ]; then
 	https=`grep -m 1 ^"enable_https " $sabnzbd_data_dir/config.ini | tr -dc '[0-9]'`
@@ -42,11 +42,11 @@ else
 	port=8080
 fi
 
-pidfile="$sabnzbd_data_dir/$name-$port.pid"
+pidfile="$sabnzbd_data_dir/%%PORTNAME%%-$port.pid"
 command="%%PYTHON_CMD%%"
 command_args="$sabnzbd_dir/SABnzbd/SABnzbd.py -s 0.0.0.0 -f $sabnzbd_data_dir/config.ini --pid $sabnzbd_data_dir -d -b 0"
 extra_commands="update"
-update_cmd="${name}_update"
+update_cmd="sabnzbd_update"
 
 sabnzbd_update() {
 	if [ -n "$rc_pid" ]; then

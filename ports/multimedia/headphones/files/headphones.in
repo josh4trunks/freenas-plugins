@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: headphones
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # headphones_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# headphones_data_dir:	Directory where headphones configuration
+# headphones_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/headphones
-# headphones_user:	The user account headphones daemon runs as what
-#			you want it to be. It uses 'media' user by
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# headphones_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# headphones_group:	The group account headphones daemon runs as what
-#			you want it to be. It uses 'media' group by
+# headphones_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="headphones"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${headphones_enable:="NO"}
-: ${headphones_user:="media"}
-: ${headphones_group:="media"}
-: ${headphones_dir:="%%PREFIX%%/share/$name"}
-: ${headphones_data_dir:="%%PREFIX%%/etc/$name"}
+: ${headphones_user:="%%USER%%"}
+: ${headphones_group:="%%GROUP%%"}
+: ${headphones_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${headphones_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$headphones_data_dir/$name.pid"
+pidfile="$headphones_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$headphones_dir/headphones/Headphones.py --config $headphones_data_dir/config.ini --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
 

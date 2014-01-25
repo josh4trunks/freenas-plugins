@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: gamez
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # gamez_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# gamez_data_dir:	Directory where gamez configuration
+# gamez_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/gamez
-# gamez_user:		The user account gamez daemon runs as what
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# gamez_user:		The user account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses 'media' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# gamez_group:		The group account gamez daemon runs as what
+# gamez_group:		The group account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses 'media' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="gamez"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${gamez_enable:="NO"}
-: ${gamez_user:="media"}
-: ${gamez_group:="media"}
-: ${gamez_dir:="%%PREFIX%%/share/$name"}
-: ${gamez_data_dir:="%%PREFIX%%/etc/$name"}
+: ${gamez_user:="%%USER%%"}
+: ${gamez_group:="%%GROUP%%"}
+: ${gamez_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${gamez_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$gamez_data_dir/$name.pid"
+pidfile="$gamez_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$gamez_dir/Gamez/Gamez.py -c $gamez_data_dir/config.ini -b $gamez_data_dir -d -p $pidfile -n"
 

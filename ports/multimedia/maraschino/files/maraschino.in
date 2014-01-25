@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: maraschino
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # maraschino_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# maraschino_data_dir:	Directory where maraschino configuration
+# maraschino_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/maraschino
-# maraschino_user:	The user account maraschino daemon runs as what
-#			you want it to be. It uses 'media' user by
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# maraschino_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# maraschino_group:	The group account maraschino daemon runs as what
-#			you want it to be. It uses 'media' group by
+# maraschino_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="maraschino"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${maraschino_enable:="NO"}
-: ${maraschino_user:="media"}
-: ${maraschino_group:="media"}
-: ${maraschino_dir:="%%PREFIX%%/share/$name"}
-: ${maraschino_data_dir:="%%PREFIX%%/etc/$name"}
+: ${maraschino_user:="%%USER%%"}
+: ${maraschino_group:="%%GROUP%%"}
+: ${maraschino_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${maraschino_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$maraschino_data_dir/$name.pid"
+pidfile="$maraschino_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$maraschino_dir/maraschino/Maraschino.py --datadir=$maraschino_data_dir -d --pidfile=$pidfile"
 

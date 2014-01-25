@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: couchpotato
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # couchpotato_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# couchpotato_data_dir:	Directory where couchpotato configuration
+# couchpotato_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/couchpotato
-# couchpotato_user:	The user account couchpotato daemon runs as what
-#			you want it to be. It uses 'media' user by
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# couchpotato_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# couchpotato_group:	The group account couchpotato daemon runs as what
-#			you want it to be. It uses 'media' group by
+# couchpotato_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="couchpotato"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${couchpotato_enable:="NO"}
-: ${couchpotato_user:="media"}
-: ${couchpotato_group:="media"}
-: ${couchpotato_dir:="%%PREFIX%%/share/$name"}
-: ${couchpotato_data_dir:="%%PREFIX%%/etc/$name"}
+: ${couchpotato_user:="%%USER%%"}
+: ${couchpotato_group:="%%GROUP%%"}
+: ${couchpotato_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${couchpotato_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$couchpotato_data_dir/$name.pid"
+pidfile="$couchpotato_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$couchpotato_dir/CouchPotatoServer/CouchPotato.py --config_file $couchpotato_data_dir/config.ini --data_dir $couchpotato_data_dir --pid_file $pidfile --daemon"
 

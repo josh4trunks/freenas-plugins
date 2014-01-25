@@ -1,4 +1,4 @@
-@unexec %D/etc/rc.d/sickbeard forcestop 2>/dev/null || true
+@unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
 %%DATADIR%%/Sick-Beard/CONTRIBUTING.md
 %%DATADIR%%/Sick-Beard/COPYING.txt
 %%DATADIR%%/Sick-Beard/SickBeard.py
@@ -612,7 +612,7 @@
 %%DATADIR%%/Sick-Beard/tests/snatch_tests.py
 %%DATADIR%%/Sick-Beard/tests/test_lib.py
 %%DATADIR%%/Sick-Beard/tests/tv_tests.py
-@unexec rm -r %D/share/sickbeard
+@unexec rm -r %D/share/%%PORTNAME%%
 @dirrmtry %%ETCDIR%%
-@exec mkdir -p %D/etc/sickbeard
-@exec chown -R media:media %D/etc/sickbeard %D/share/sickbeard/*
+@exec mkdir -p %D/etc/%%PORTNAME%% 
+@exec chown -R %%USER%%:%%GROUP%% %D/etc/%%PORTNAME%% %D/share/%%PORTNAME%%/*

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: lazylibrarian
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # lazylibrarian_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# lazylibrarian_data_dir:	Directory where lazylibrarian configuration
+# lazylibrarian_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/lazylibrarian
-# lazylibrarian_user:	The user account lazylibrarian daemon runs as what
-#			you want it to be. It uses 'media' user by
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# lazylibrarian_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# lazylibrarian_group:	The group account lazylibrarian daemon runs as what
-#			you want it to be. It uses 'media' group by
+# lazylibrarian_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="lazylibrarian"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${lazylibrarian_enable:="NO"}
-: ${lazylibrarian_user:="media"}
-: ${lazylibrarian_group:="media"}
-: ${lazylibrarian_dir:="%%PREFIX%%/share/$name"}
-: ${lazylibrarian_data_dir:="%%PREFIX%%/etc/$name"}
+: ${lazylibrarian_user:="%%USER%%"}
+: ${lazylibrarian_group:="%%GROUP%%"}
+: ${lazylibrarian_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${lazylibrarian_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$lazylibrarian_data_dir/$name.pid"
+pidfile="$lazylibrarian_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$lazylibrarian_dir/LazyLibrarian/LazyLibrarian.py --config=$lazylibrarian_data_dir/config.ini --datadir=$lazylibrarian_data_dir -d -p $pidfile -q --nolaunch"
 

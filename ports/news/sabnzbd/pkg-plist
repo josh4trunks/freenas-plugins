@@ -1,4 +1,4 @@
-@unexec %D/etc/rc.d/sabnzbd forcestop 2>/dev/null || true
+@unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
 %%DATADIR%%/SABnzbd/ABOUT.txt
 %%DATADIR%%/SABnzbd/CHANGELOG.txt
 %%DATADIR%%/SABnzbd/COPYRIGHT.txt
@@ -473,7 +473,7 @@
 %%DATADIR%%/SABnzbd/util/__init__.py
 %%DATADIR%%/SABnzbd/util/apireg.py
 %%DATADIR%%/SABnzbd/util/mailslot.py
-@unexec rm -r %D/share/sabnzbd
+@unexec rm -r %D/share/%%PORTNAME%%
 @dirrmtry %%ETCDIR%%
-@exec mkdir -p %D/etc/sabnzbd
-@exec chown -R media:media %D/etc/sabnzbd %D/share/sabnzbd/*
+@exec mkdir -p %D/etc/%%PORTNAME%% 
+@exec chown -R %%USER%%:%%GROUP%% %D/etc/%%PORTNAME%% %D/share/%%PORTNAME%%/*

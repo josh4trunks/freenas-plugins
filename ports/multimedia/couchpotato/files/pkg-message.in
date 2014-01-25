@@ -1,13 +1,13 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 multimedia/couchpotato includes an RC script:
-%%PREFIX%%/etc/rc.d/couchpotato
+%%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
 TO START COUCHPOTATO ON BOOT:
 echo 'couchpotato_enable="YES"' >> /etc/rc.conf
 
 START MANUALLY:
-%%PREFIX%%/etc/rc.d/couchpotato start
+%%PREFIX%%/etc/rc.d/%%PORTNAME%% start
 
 Once started, visit the following to configure:
 http://localhost:5050/

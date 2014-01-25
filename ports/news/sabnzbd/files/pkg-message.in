@@ -1,13 +1,13 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 news/sabnzbd includes an RC script:
-%%PREFIX%%/etc/rc.d/sabnzbd
+%%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
 TO START SABNZBD ON BOOT:
 echo 'sabnzbd_enable="YES"' >> /etc/rc.conf
 
 START MANUALLY:
-%%PREFIX%%/etc/rc.d/sabnzbd start
+%%PREFIX%%/etc/rc.d/%%PORTNAME%% start
 
 Once started, visit the following to configure:
 http://localhost:8080/sabnzbd/

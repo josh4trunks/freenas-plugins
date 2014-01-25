@@ -1,7 +1,7 @@
-@unexec %D/etc/rc.d/btsync forcestop 2>/dev/null || true
-@unexec if cmp -s %D/etc/btsync/config.ini.sample %D/etc/btsync/config.ini; then rm -f %D/etc/btsync/config.ini; fi
+@unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
+@unexec if cmp -s %D/etc/%%PORTNAME%%/config.ini.sample %D/etc/%%PORTNAME%%/config.ini; then rm -f %D/etc/%%PORTNAME%%/config.ini; fi
 %%ETCDIR%%/config.ini.sample
 @dirrmtry %%ETCDIR%%
-@exec if [ ! -f %D/etc/btsync/config.ini ] ; then cp -p %D/etc/btsync/config.ini.sample %D/etc/btsync/config.ini; fi
-@exec chown -R btsync:btsync %D/etc/btsync
+@exec if [ ! -f %D/etc/%%PORTNAME%%/config.ini ] ; then cp -p %D/etc/%%PORTNAME%%/config.ini.sample %D/etc/%%PORTNAME%%/config.ini; fi
+@exec chown -R %%USER%%:%%GROUP%% %D/etc/%%PORTNAME%%
 bin/btsync

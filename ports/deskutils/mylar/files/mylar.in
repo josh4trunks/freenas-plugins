@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# PROVIDE: mylar
+# PROVIDE: %%PORTNAME%%
 # REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
@@ -8,30 +8,30 @@
 #
 # mylar_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# mylar_data_dir:	Directory where mylar configuration
+# mylar_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
-#			Default: %%PREFIX%%/etc/mylar
-# mylar_user:		The user account mylar daemon runs as what
-#			you want it to be. It uses 'media' user by
+#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+# mylar_user:		The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# mylar_group:		The group account mylar daemon runs as what
-#			you want it to be. It uses 'media' group by
+# mylar_group:		The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 
 . /etc/rc.subr
-name="mylar"
+name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
 : ${mylar_enable:="NO"}
-: ${mylar_user:="media"}
-: ${mylar_group:="media"}
-: ${mylar_dir:="%%PREFIX%%/share/$name"}
-: ${mylar_data_dir:="%%PREFIX%%/etc/$name"}
+: ${mylar_user:="%%USER%%"}
+: ${mylar_group:="%%GROUP%%"}
+: ${mylar_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${mylar_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
-pidfile="$mylar_data_dir/$name.pid"
+pidfile="$mylar_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$mylar_dir/mylar/Mylar.py --config $mylar_data_dir/config.ini --datadir $mylar_data_dir -d --pidfile $pidfile -q --nolaunch"
 
