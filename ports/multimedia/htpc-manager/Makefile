@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	htpc-manager
-PORTVERSION=	2.0
+PORTVERSION=	2.1
 CATEGORIES=	multimedia
 MASTER_SITES=	GH
 
@@ -18,7 +18,7 @@ USE_PYTHON=	2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     styxit  
 GH_PROJECT=     HTPC-Manager
-GH_COMMIT=      4eeddad
+GH_COMMIT=      815711d
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
