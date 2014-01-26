@@ -12,7 +12,8 @@ COMMENT=	Subsonic streaming media server
 LICENSE=	GPLv3
 
 USE_JAVA=	yes
-JAVA_VERSION=	1.7
+JAVA_VERSION=	1.6+
+JAVA_RUN=	yes
 
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
