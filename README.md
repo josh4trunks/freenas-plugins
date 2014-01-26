@@ -16,3 +16,6 @@ Information for python-based plugins maintained by me can be found [here](http:/
 
 * Compile
     - <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/**NAME** **CATEGORY/NAME**</code>
+
+* You can optionally use libjpeg-turbo by setting the following line in /usr/ports/graphics/py-imaging/Makefile
+    - <code>LIB_DEPENDS=    jpeg.11:${PORTSDIR}/graphics/libjpeg-turbo \\</code>
