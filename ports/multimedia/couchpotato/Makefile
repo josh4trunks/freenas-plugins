@@ -18,7 +18,7 @@ USE_PYTHON=	2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     RuudBurger  
 GH_PROJECT=     CouchPotatoServer
-GH_COMMIT=      190e1d2
+GH_COMMIT=      2cfff73
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
