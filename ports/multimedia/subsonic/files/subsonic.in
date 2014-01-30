@@ -32,7 +32,7 @@ load_rc_config $name
 : ${subsonic_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
 . %%PREFIX%%/etc/%%PORTNAME%%/config.ini
-if $SUBSONIC_HTTPS; then
+if $SUBSONIC_SSL; then
 	SUBSONIC_HTTPS_PORT="$SUBSONIC_PORT"
 	SUBSONIC_PORT="0"
 else
