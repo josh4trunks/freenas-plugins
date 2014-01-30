@@ -826,6 +826,7 @@
 %%DATADIR%%/CouchPotatoServer/libs/requests/models.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/charade/__init__.py
+%%DATADIR%%/CouchPotatoServer/libs/requests/packages/charade/__main__.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/charade/big5freq.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/charade/big5prober.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/charade/chardistribution.py
@@ -864,16 +865,19 @@
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/charade/utf8prober.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/_collections.py
+%%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/connection.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/connectionpool.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/contrib/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/contrib/ntlmpool.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/contrib/pyopenssl.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/exceptions.py
+%%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/fields.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/filepost.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/packages/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/packages/ordered_dict.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/packages/six.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py
+%%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/poolmanager.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/request.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/packages/urllib3/response.py
