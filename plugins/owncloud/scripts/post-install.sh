@@ -5,7 +5,7 @@ owncloud_pbi_path=/usr/pbi/owncloud-$(uname -m)
 
 /bin/cp ${owncloud_pbi_path}/etc/rc.d/apache22 /usr/local/etc/rc.d/
 
-${owncloud_pbi_path}/bin/python ${owncloud_pbi_path}/owncloudUI/manage.py syncdb --migrate --noinput
+${owncloud_pbi_path}/bin/python2.7 ${owncloud_pbi_path}/owncloudUI/manage.py syncdb --migrate --noinput
 
 if [ ! -f "${owncloud_pbi_path}/www/owncloud/config/config.php" ]; then
 	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/config.php
