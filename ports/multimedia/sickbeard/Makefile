@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sickbeard
-PORTVERSION=	2.1
+PORTVERSION=	2.2
 CATEGORIES=	multimedia
 MASTER_SITES=	GH
 
