@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	btsync
-PORTVERSION=	1.2.82
+PORTVERSION=	1.2.91
 CATEGORIES=	net-p2p
 MASTER_SITES=   http://syncapp.bittorrent.com/${PORTVERSION}/
 DISTNAME=       ${PORTNAME}_freebsd_${CONFIG_ARCH}-${PORTVERSION}
@@ -12,6 +12,8 @@ COMMENT=        Distributed peer-to-peer file syncing application.
 .include <bsd.port.options.mk>
 .if ${ARCH} == "amd64"
 CONFIG_ARCH=	x64
+.else
+CONFIG_ARCH=	${ARCH}
 .endif
 
 LICENSE=	EULA

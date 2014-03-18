@@ -1,2 +1,4 @@
-SHA256 (btsync_freebsd_x64-1.2.82.tar.gz) = 6983e118d0bec3bd25a0983a9c368353e36e923ba7b3c0b94995a05050023a76
-SIZE (btsync_freebsd_x64-1.2.82.tar.gz) = 1985458
+SHA256 (btsync_freebsd_x64-1.2.91.tar.gz) = 03146aa9804343d0d97b3cfb5fe758b3cfd52a03101a42668aff0afcfb629202
+SIZE (btsync_freebsd_x64-1.2.91.tar.gz) = 1988531
+SHA256 (btsync_freebsd_i386-1.2.91.tar.gz) = 0e0fa948261b729b0479687ee861da4a4ecb602b14458acb9bd252cd914d4dfa
+SIZE (btsync_freebsd_i386-1.2.91.tar.gz) = 1893625
