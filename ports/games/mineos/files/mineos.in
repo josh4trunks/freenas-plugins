@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# mineos_enable (bool):		Set to NO by default.
+# 				Set it to YES to enable it.
+
+. /etc/rc.subr
+export PATH=$PATH:/usr/local/bin
+name="%%PORTNAME%%"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${mineos_enable:="NO"}
+: ${mineos_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${mineos_conf:="%%PREFIX%%/etc/%%PORTNAME%%.conf"}
+
+mineos_base_dir=$(grep -e "^misc.base_directory = " $mineos_conf | cut -d ' ' -f3)
+pidfile="/var/run/%%PORTNAME%%.pid"
+command="%%PYTHON_CMD%%"
+command_args="$mineos_dir/mineos/server.py -c $mineos_conf"
+
+start_postcmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir restore && %%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir start"
+stop_precmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir stop"
+
+run_rc_command "$1"
