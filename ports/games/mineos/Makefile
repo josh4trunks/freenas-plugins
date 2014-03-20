@@ -40,6 +40,6 @@ do-install:
 	${MKDIR} -p ${STAGEDIR}${DATADIR}/mineos
 	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/mineos
 	${CP} ${STAGEDIR}${DATADIR}/mineos/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
-	${REINPLACE_CMD} -e 's:\(^misc.require_https = \)True$:\1 False:' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+	${REINPLACE_CMD} -e 's:\(^misc.require_https = \)True:\1 False:' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
 .include <bsd.port.post.mk>
