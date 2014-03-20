@@ -6,16 +6,16 @@
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# btsync_enable (bool):	Set to NO by default.
+# %%PORTNAME%%_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# btsync_data_dir:	Directory where %%PORTNAME%% configuration
+# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
 #			Default: %%PREFIX%%/etc/%%PORTNAME%%
-# btsync_user:		The user account %%PORTNAME%% daemon runs as what
+# %%PORTNAME%%_user:		The user account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# btsync_group:		The group account %%PORTNAME%% daemon runs as what
+# %%PORTNAME%%_group:		The group account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
@@ -25,10 +25,10 @@ name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
-: ${btsync_enable:="NO"}
-: ${btsync_user:="%%USER%%"}
-: ${btsyncr_group:="%%GROUP%%"}
-: ${btsync_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
+: ${%%PORTNAME%%_enable:="NO"}
+: ${%%PORTNAME%%_user:="%%USER%%"}
+: ${%%PORTNAME%%_group:="%%GROUP%%"}
+: ${%%PORTNAME%%_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
 pidfile="$btsync_data_dir/sync.pid"
 command="%%PREFIX%%/bin/btsync"

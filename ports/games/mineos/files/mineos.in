@@ -6,18 +6,18 @@
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# mineos_enable (bool):		Set to NO by default.
+# %%PORTNAME%%_enable (bool):		Set to NO by default.
 # 				Set it to YES to enable it.
 
 . /etc/rc.subr
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:%%PREFIX%%/bin
 name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
-: ${mineos_enable:="NO"}
-: ${mineos_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
-: ${mineos_conf:="%%PREFIX%%/etc/%%PORTNAME%%.conf"}
+: ${%%PORTNAME%%_enable:="NO"}
+: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${%%PORTNAME%%_conf:="%%PREFIX%%/etc/%%PORTNAME%%.conf"}
 
 mineos_base_dir=$(grep -e "^misc.base_directory = " $mineos_conf | cut -d ' ' -f3)
 pidfile="/var/run/%%PORTNAME%%.pid"

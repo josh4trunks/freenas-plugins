@@ -6,16 +6,16 @@
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# sickbeard_enable (bool):	Set to NO by default.
+# %%PORTNAME%%_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# sickbeard_data_dir:	Directory where %%PORTNAME%% configuration
+# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
 #			data is stored.
 #			Default: %%PREFIX%%/etc/%%PORTNAME%%
-# sickbeard_user:	The user account %%PORTNAME%% daemon runs as what
+# %%PORTNAME%%_user:	The user account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# sickbeard_group:	The group account %%PORTNAME%% daemon runs as what
+# %%PORTNAME%%_group:	The group account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
@@ -25,18 +25,18 @@ name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
-: ${sickbeard_enable:="NO"}
-: ${sickbeard_user:="%%USER%%"}
-: ${sickbeard_group:="%%GROUP%%"}
-: ${sickbeard_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
-: ${sickbeard_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
+: ${%%PORTNAME%%_enable:="NO"}
+: ${%%PORTNAME%%_user:="%%USER%%"}
+: ${%%PORTNAME%%_group:="%%GROUP%%"}
+: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${%%PORTNAME%%_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
 
 pidfile="$sickbeard_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$sickbeard_dir/Sick-Beard/SickBeard.py --config $sickbeard_data_dir/config.ini --datadir $sickbeard_data_dir -d --pidfile $pidfile -q --nolaunch"
 
-start_precmd="${name}_prestart"
-sickbeard_prestart() {
+start_precmd="$%%PORTNAME%%_prestart"
+%%PORTNAME%%_prestart() {
 	if [ -f $pidfile ]; then
 		if [ ! `pgrep -F $pidfile` ]; then
 			rm $pidfile
