@@ -38,11 +38,11 @@ PIL_DESC=	convert and resize images retrieved from the XBMC API
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MOPENSSL}
-RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/OpenSSL/SSL.so:${PORTSDIR}/security/py-openssl
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 .endif
 
 .if ${PORT_OPTIONS:MPIL}
-RUN_DEPENDS+=   ${PYTHON_SITELIBDIR}/PIL/_imaging.so:${PORTSDIR}/graphics/py-imaging
+RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
 .endif
 
 do-install:

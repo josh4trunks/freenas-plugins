@@ -12,8 +12,8 @@ COMMENT=	A web-interface based binary newsgrabber in python, with nzb support
 LICENSE=	GPLv2 GPLv3 PSFL CHERRYPY CONFIGOBJ FEEDPARSER GNTP JSON KRONOS LISTQUOTE MSGFMT PYNEWSLEECHER RARFILE RSSLIB SSMTPLIB
 LICENSE_COMB=	multi
 
-RUN_DEPENDS=	cheetah:${PORTSDIR}/devel/py-cheetah \
-		${PYTHON_SITELIBDIR}/pythonutils/configobj.py:${PORTSDIR}/devel/py-utils \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cheetah>0:${PORTSDIR}/devel/py-cheetah \
+		${PYTHON_PKGNAMEPREFIX}py-utils>0:${PORTSDIR}/devel/py-utils \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
 LICENSE_NAME_CHERRYPY=	CherryPy License
@@ -92,15 +92,15 @@ RUN_DEPENDS+=	par2repair:${PORTSDIR}/archivers/par2cmdline-tbb
 .endif
 
 .if ${PORT_OPTIONS:MFEEDPARSER}
-RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/feedparser.py:${PORTSDIR}/textproc/py-feedparser
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}feedparser>0:${PORTSDIR}/textproc/py-feedparser
 .endif
 
 .if ${PORT_OPTIONS:MYENC}
-RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/_yenc.so:${PORTSDIR}/news/py-yenc
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}yenc>0:${PORTSDIR}/news/py-yenc
 .endif
 
 .if ${PORT_OPTIONS:MOPENSSL}
-RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/OpenSSL/SSL.so:${PORTSDIR}/security/py-openssl
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 .endif
 
 .if ${PORT_OPTIONS:MUNRAR}
