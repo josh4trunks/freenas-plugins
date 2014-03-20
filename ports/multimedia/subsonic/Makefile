@@ -39,15 +39,13 @@ PLIST_SUB+=	TRANSCODING="@comment "
 .endif
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}
-	${MKDIR} ${STAGEDIR}${DATADIR}/Subsonic
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/Subsonic ${STAGEDIR}/${ETCDIR}
 	${INSTALL_DATA} ${WRKSRC}/subsonic.war ${STAGEDIR}${DATADIR}/Subsonic
 	${INSTALL_DATA} ${WRKSRC}/subsonic-booter-jar-with-dependencies.jar ${STAGEDIR}${DATADIR}/Subsonic
-	${INSTALL} -d ${STAGEDIR}/${ETCDIR}
 	${INSTALL} ${WRKSRC}/config.ini.sample ${STAGEDIR}/${ETCDIR}
 .if ${PORT_OPTIONS:MTRANSCODING}
-	@${MKDIR} ${STAGEDIR}/${ETCDIR}/transcode
-	@${LN} -sf ${PREFIX}/bin/ffmpeg ${STAGEDIR}/${ETCDIR}/transcode/ffmpeg
+	${INSTALL} -d ${STAGEDIR}/${ETCDIR}/transcode
+	${LN} -sf ${PREFIX}/bin/ffmpeg ${STAGEDIR}/${ETCDIR}/transcode/ffmpeg
 .endif
 
 .include <bsd.port.post.mk>
