@@ -19,7 +19,7 @@ load_rc_config $name
 : ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 : ${%%PORTNAME%%_conf:="%%PREFIX%%/etc/%%PORTNAME%%.conf"}
 
-mineos_base_dir=$(grep -e "^misc.base_directory = " $mineos_conf | cut -d ' ' -f3)
+mineos_base_dir=$(grep -e "^misc.base_directory = " $mineos_conf | cut -d '=' -f2)
 pidfile="/var/run/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$mineos_dir/mineos/server.py -c $mineos_conf"
