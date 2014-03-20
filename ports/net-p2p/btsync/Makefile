@@ -17,9 +17,10 @@ CONFIG_ARCH=	${ARCH}
 .endif
 
 LICENSE=	EULA
-LICENSE_NAME=  BitTorrent Sync
-LICENSE_FILE=  ${WRKSRC}/LICENSE.TXT
-LICENSE_PERMS= auto-accept
+LICENSE_NAME=	BitTorrent Sync
+LICENSE_FILE=	${WRKSRC}/LICENSE.TXT
+LICENSE_PERMS=	# Any copying or redistribution of the Software is prohibited.
+
 
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
@@ -40,12 +41,10 @@ post-extract:
 	${MKDIR} ${WRKSRC}/temp
 	${MV} ${WRKSRC}/${PORTNAME} ${WRKSRC}/temp
 
-post-patch:
-	@${REINPLACE_CMD} -e 's!%%ETCDIR%%!${ETCDIR}!' ${WRKSRC}/config.ini.sample
-
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/temp/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/temp/btsync ${STAGEDIR}${PREFIX}/bin
 	${INSTALL} -d ${STAGEDIR}/${ETCDIR}
-	${INSTALL} ${WRKSRC}/config.ini.sample ${STAGEDIR}/${ETCDIR}
+	${WRKSRC}/temp/btsync --dump-sample-config > ${STAGEDIR}/${ETCDIR}/config.ini.sample
+	${REINPLACE_CMD} -e 's:/home/user/.sync:${ETCDIR}:' ${STAGEDIR}/${ETCDIR}/config.ini.sample
 
 .include <bsd.port.post.mk>
