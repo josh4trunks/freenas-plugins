@@ -41,8 +41,7 @@ RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 .endif
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}
-	${MKDIR} ${STAGEDIR}${DATADIR}/CouchPotatoServer
-	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/CouchPotatoServer
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/${GH_PROJECT}
 
 .include <bsd.port.post.mk>

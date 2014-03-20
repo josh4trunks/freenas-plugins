@@ -53,8 +53,7 @@ RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
 .endif
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}
-	${MKDIR} ${STAGEDIR}${DATADIR}/Sick-Beard
-	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/Sick-Beard
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/${GH_PROJECT}
 
 .include <bsd.port.post.mk>

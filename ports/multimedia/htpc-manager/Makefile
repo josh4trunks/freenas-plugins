@@ -46,8 +46,7 @@ RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
 .endif
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}
-	${MKDIR} ${STAGEDIR}${DATADIR}/HTPC-Manager
-	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/HTPC-Manager
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/${GH_PROJECT}
 
 .include <bsd.port.post.mk>

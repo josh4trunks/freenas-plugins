@@ -112,8 +112,7 @@ RUN_DEPENDS+=   unzip:${PORTSDIR}/archivers/unzip
 .endif
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}
-	${MKDIR} ${STAGEDIR}${DATADIR}/SABnzbd
-	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/SABnzbd
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/SABnzbd
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/SABnzbd
 
 .include <bsd.port.post.mk>
