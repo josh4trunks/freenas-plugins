@@ -29,7 +29,7 @@ SUB_FILES=	pkg-message
 USE_RC_SUBR=	${PORTNAME}
 
 USERS=		media
-GROUPS=		media
+GROUPS=		${USERS}
 
 .include <bsd.port.pre.mk>
 
