@@ -45,6 +45,6 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/temp/btsync ${STAGEDIR}${PREFIX}/bin
 	${INSTALL} -d ${STAGEDIR}/${ETCDIR}
 	${WRKSRC}/temp/btsync --dump-sample-config > ${STAGEDIR}/${ETCDIR}/config.ini.sample
-	${REINPLACE_CMD} -e 's:/home/user/.sync:${ETCDIR}:' ${STAGEDIR}/${ETCDIR}/config.ini.sample
+	${REINPLACE_CMD} -e 's;\(^ *"storage_path" \)/.*",$;\1${ETCDIR}",;' ${STAGEDIR}/${ETCDIR}/config.ini.sample
 
 .include <bsd.port.post.mk>
