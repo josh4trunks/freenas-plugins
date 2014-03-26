@@ -28,10 +28,10 @@ load_rc_config $name
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
-: ${%%PORTNAME%%_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
+: ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$btsync_data_dir/sync.pid"
 command="%%PREFIX%%/bin/btsync"
-command_args="--config $btsync_data_dir/config.ini"
+command_args="--config %%PREFIX%%/etc/%%PORTNAME%%.conf"
 
 run_rc_command "$1"
