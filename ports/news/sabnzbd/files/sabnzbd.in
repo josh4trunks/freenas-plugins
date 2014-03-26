@@ -6,19 +6,19 @@
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# %%PORTNAME%%_enable (bool):        Set to NO by default.
-#                       Set it to YES to enable it.
-# %%PORTNAME%%_data_dir:     Directory where %%PORTNAME%% configuration
-#                       data is stored.
-#                       Default: %%PREFIX%%/etc/%%PORTNAME%%
-# %%PORTNAME%%_user:         The user account %%PORTNAME%% daemon runs as what
-#                       you want it to be. It uses '%%USER%%' user by
-#                       default. Do not sets it as empty or it will run
-#                       as root.
-# %%PORTNAME%%_group:        The group account %%PORTNAME%% daemon runs as what
-#                       you want it to be. It uses '%%GROUP%%' group by
-#                       default. Do not sets it as empty or it will run
-#                       as wheel.
+# %%PORTNAME%%_enable (bool):	Set to NO by default.
+# 				Set it to YES to enable it.
+# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
+# 				data is stored.
+# 				Default: %%PREFIX%%/etc/%%PORTNAME%%
+# %%PORTNAME%%_user:		The user account %%PORTNAME%% daemon runs as what
+# 				you want it to be. It uses '%%USER%%' user by
+# 				default. Do not sets it as empty or it will run
+# 				as root.
+# %%PORTNAME%%_group:		The group account %%PORTNAME%% daemon runs as what
+# 				you want it to be. It uses '%%GROUP%%' group by
+# 				default. Do not sets it as empty or it will run
+# 				as wheel.
 
 . /etc/rc.subr
 name="%%PORTNAME%%"
@@ -33,7 +33,7 @@ load_rc_config $name
 
 pidfile="$sabnzbd_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$sabnzbd_dir/SABnzbd/SABnzbd.py -s 0.0.0.0 -f $sabnzbd_data_dir/config.ini --pidfile $pidfile -d -b 0"
+command_args="$sabnzbd_dir/SABnzbd/SABnzbd.py -s 0.0.0.0 -f $sabnzbd_data_dir/${name}.ini --pidfile $pidfile -d -b 0"
 extra_commands="update"
 update_cmd="%%PORTNAME%%_update"
 
