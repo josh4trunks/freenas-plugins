@@ -1,6 +1,6 @@
 @unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
 bin/btsync
-@dirrmtry /var/db/%%PORTNAME%%
+@unexec rmdir /var/db/%%PORTNAME%%
 @exec mkdir -p /var/db/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
 @unexec if cmp -s %D/etc/%%PORTNAME%%.conf.sample %D/etc/%%PORTNAME%%.conf; then rm -f %D/etc/%%PORTNAME%%.conf; fi

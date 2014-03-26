@@ -1,6 +1,6 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-net-p2p/btsync includes an RC script:
+net-p2p/%%PORTNAME%% includes an RC script:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
 TO START BTSYNC ON BOOT:

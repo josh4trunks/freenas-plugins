@@ -3,24 +3,16 @@
 PORTNAME=	btsync
 PORTVERSION=	1.3.67
 CATEGORIES=	net-p2p
-MASTER_SITES=   http://syncapp.bittorrent.com/${PORTVERSION}/
-DISTNAME=       ${PORTNAME}_freebsd_${CONFIG_ARCH}-${PORTVERSION}
+MASTER_SITES=	http://syncapp.bittorrent.com/${PORTVERSION}/
+DISTNAME=	${PORTNAME}_freebsd_${CONFIG_ARCH}-${PORTVERSION}
 
-MAINTAINER=     joshruehlig@gmail.com
-COMMENT=        Distributed peer-to-peer file syncing application.
-
-.include <bsd.port.options.mk>
-.if ${ARCH} == "amd64"
-CONFIG_ARCH=	x64
-.else
-CONFIG_ARCH=	${ARCH}
-.endif
+MAINTAINER=	joshruehlig@gmail.com
+COMMENT=	Distributed peer-to-peer file syncing application
 
 LICENSE=	EULA
 LICENSE_NAME=	BitTorrent Sync
 LICENSE_FILE=	${WRKSRC}/LICENSE.TXT
-LICENSE_PERMS=	# Any copying or redistribution of the Software is prohibited.
-
+LICENSE_PERMS=	#Any copying or redistribution of the Software is prohibited.
 
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
@@ -36,6 +28,12 @@ USERS=		${PORTNAME}
 GROUPS=		${USERS}
 
 .include <bsd.port.pre.mk>
+
+.if ${ARCH} == "amd64"
+CONFIG_ARCH=	x64
+.else
+CONFIG_ARCH=	${ARCH}
+.endif
 
 post-extract:
 	${MKDIR} ${WRKSRC}/temp

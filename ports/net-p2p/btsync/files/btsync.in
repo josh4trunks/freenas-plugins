@@ -7,18 +7,18 @@
 # to enable this service:
 #
 # %%PORTNAME%%_enable (bool):	Set to NO by default.
-#			Set it to YES to enable it.
-# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
-#			data is stored.
-#			Default: %%PREFIX%%/etc/%%PORTNAME%%
+#				Set it to YES to enable it.
 # %%PORTNAME%%_user:		The user account %%PORTNAME%% daemon runs as what
-#			you want it to be. It uses '%%USER%%' user by
-#			default. Do not sets it as empty or it will run
-#			as root.
+#				you want it to be. It uses '%%USER%%' user by
+#				default. Do not sets it as empty or it will run
+#				as root.
 # %%PORTNAME%%_group:		The group account %%PORTNAME%% daemon runs as what
-#			you want it to be. It uses '%%GROUP%%' group by
-#			default. Do not sets it as empty or it will run
-#			as wheel.
+#				you want it to be. It uses '%%GROUP%%' group by
+#				default. Do not sets it as empty or it will run
+#				as wheel.
+# %%PORTNAME%%_data_dir:        Directory where %%PORTNAME%% configuration
+#                               data is stored.
+#                               Default: /var/db/%%PORTNAME%%
 
 . /etc/rc.subr
 name="%%PORTNAME%%"
