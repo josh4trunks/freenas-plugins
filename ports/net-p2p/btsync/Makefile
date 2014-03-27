@@ -41,7 +41,6 @@ post-extract:
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/temp/btsync ${STAGEDIR}${PREFIX}/bin
-	${INSTALL} -d ${STAGEDIR}/var/db/$PORTNAME
 	${WRKSRC}/temp/btsync --dump-sample-config > ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 	${REINPLACE_CMD} -e 's;\(^ *"storage_path" *: *\)"/.*",;\1"/var/db/${PORTNAME}",;' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
