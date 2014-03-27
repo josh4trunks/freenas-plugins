@@ -2,4 +2,4 @@
 
 maraschino_pbi_path=/usr/pbi/maraschino-$(uname -m)
 
-${maraschino_pbi_path}/bin/python ${maraschino_pbi_path}/maraschinoUI/manage.py syncdb --migrate --noinput
+${maraschino_pbi_path}/bin/python2.7 ${maraschino_pbi_path}/maraschinoUI/manage.py syncdb --migrate --noinput
