@@ -485,6 +485,6 @@
 %%DATADIR%%/SABnzbd/util/apireg.py
 %%DATADIR%%/SABnzbd/util/mailslot.py
 @unexec rm -r %D/share/%%PORTNAME%%
-@dirrmtry %%ETCDIR%%
-@exec mkdir -p %D/etc/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% %D/etc/%%PORTNAME%% %D/share/%%PORTNAME%%/*
+@unexec rmdir /var/db/%%PORTNAME%%
+@exec mkdir -p /var/db/%%PORTNAME%%
+@exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%% %D/share/%%PORTNAME%%/*
