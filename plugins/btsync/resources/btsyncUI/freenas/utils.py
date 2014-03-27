@@ -5,6 +5,7 @@ import platform
 
 btsync_pbi_path = "/usr/pbi/btsync-" + platform.machine()
 btsync_etc_path = os.path.join(btsync_pbi_path, "etc")
+btsync_datadirectory = "/var/db/btsync"
 btsync_fcgi_pidfile = "/var/run/btsync_fcgi_server.pid"
 btsync_control = "/usr/local/etc/rc.d/btsync"
 btsync_icon = os.path.join(btsync_pbi_path, "default.png")
@@ -61,9 +62,9 @@ btsync_settings = {
         "field": "lan_encrypt_data",
         "type": "checkbox",
         },
-    "lan_use_tcp": {
-        "field": "lan_use_tcp",
-        "type": "checkbox",
+    "log_size": {
+        "field": "log_size",
+        "type": "textbox",
         },
     "max_file_size_diff_for_patching": {
         "field": "max_file_size_diff_for_patching",

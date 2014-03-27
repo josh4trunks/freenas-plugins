@@ -31,9 +31,10 @@ class BtSync(models.Model):
         verbose_name="Lan Encrypt Data",
         default=True,
         )
-    lan_use_tcp = models.BooleanField(
-        verbose_name="Lan Use TCP",
-        default=False,
+    log_size = models.IntegerField(
+        verbose_name="Max. Log File Size (MB)",
+        default=10,
+        blank=True,
         )
     max_file_size_diff_for_patching = models.IntegerField(
         verbose_name="Max. File Size Difference for Patching (MB)",

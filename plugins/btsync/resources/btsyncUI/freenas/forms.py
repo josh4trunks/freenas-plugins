@@ -16,6 +16,7 @@ class BtSyncForm(forms.ModelForm):
         widgets = {
             'webui_port': forms.widgets.TextInput(),
             'folder_rescan_interval': forms.widgets.TextInput(),
+            'log_size': forms.widgets.TextInput(),
             'max_file_size_diff_for_patching': forms.widgets.TextInput(),
             'max_file_size_for_versioning': forms.widgets.TextInput(),
             'sync_max_time_diff': forms.widgets.TextInput(),
@@ -35,8 +36,7 @@ class BtSyncForm(forms.ModelForm):
             if obj.enable:
                 f.write('btsync_enable="YES"\n')
 
-        conf_dir = os.path.join(utils.btsync_etc_path, "btsync")
-        settingsfile = os.path.join(conf_dir, "config.ini")
+        settingsfile = os.path.join(utils.btsync_etc_path, "btsync.conf")
         if os.path.exists(settingsfile):
             with open(settingsfile, 'r') as f:
                 try:
@@ -62,7 +62,7 @@ class BtSyncForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
-        settings['storage_path'] = conf_dir
+        settings['storage_path'] = utils.btsync_datadirectory
         settings['webui'] = {}
         settings['webui']['listen'] = "0.0.0.0:" + str(obj.webui_port)
         settings.pop("webui_port", None)
