@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/mineos-$(uname -m)/bin/python2.7 /usr/pbi/mineos-$(uname -m)/control.py $*
