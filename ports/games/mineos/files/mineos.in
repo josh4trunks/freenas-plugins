@@ -17,12 +17,11 @@ load_rc_config $name
 
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
-: ${%%PORTNAME%%_conf:="%%PREFIX%%/etc/%%PORTNAME%%.conf"}
 
-mineos_base_dir=$(grep -e "^misc.base_directory = " $mineos_conf | cut -d '=' -f2)
+mineos_base_dir=$(grep -e "^misc.base_directory *= *" %%PREFIX%%/etc/%%PORTNAME%%.conf | cut -d '=' -f2)
 pidfile="/var/run/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$mineos_dir/mineos/server.py -c $mineos_conf"
+command_args="$mineos_dir/mineos/server.py -c %%PREFIX%%/etc/%%PORTNAME%%.conf"
 
 start_postcmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir restore && %%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir start"
 stop_precmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir stop"
