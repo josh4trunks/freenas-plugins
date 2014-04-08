@@ -1,4 +1,27 @@
 @unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
+%%DATADIR%%/%%PORTNAME%%/.git/HEAD
+%%DATADIR%%/%%PORTNAME%%/.git/ORIG_HEAD
+%%DATADIR%%/%%PORTNAME%%/.git/config
+%%DATADIR%%/%%PORTNAME%%/.git/description
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/applypatch-msg.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/commit-msg.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/post-update.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/pre-applypatch.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/pre-commit.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/pre-push.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/pre-rebase.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/prepare-commit-msg.sample
+%%DATADIR%%/%%PORTNAME%%/.git/hooks/update.sample
+%%DATADIR%%/%%PORTNAME%%/.git/index
+%%DATADIR%%/%%PORTNAME%%/.git/info/exclude
+%%DATADIR%%/%%PORTNAME%%/.git/logs/HEAD
+%%DATADIR%%/%%PORTNAME%%/.git/logs/refs/heads/master
+%%DATADIR%%/%%PORTNAME%%/.git/logs/refs/remotes/origin/HEAD
+%%DATADIR%%/%%PORTNAME%%/.git/objects/pack/pack-cac44b4b6e2ffc091b979be3b872d0d1d2b77213.idx
+%%DATADIR%%/%%PORTNAME%%/.git/objects/pack/pack-cac44b4b6e2ffc091b979be3b872d0d1d2b77213.pack
+%%DATADIR%%/%%PORTNAME%%/.git/packed-refs
+%%DATADIR%%/%%PORTNAME%%/.git/refs/heads/master
+%%DATADIR%%/%%PORTNAME%%/.git/refs/remotes/origin/HEAD
 %%DATADIR%%/%%PORTNAME%%/LICENSE.md
 %%DATADIR%%/%%PORTNAME%%/README.md
 %%DATADIR%%/%%PORTNAME%%/README_ru.md
@@ -164,4 +187,4 @@
 @unexec if cmp -s %D/etc/%%PORTNAME%%.conf.sample %D/etc/%%PORTNAME%%.conf; then rm -f %D/etc/%%PORTNAME%%.conf; fi
 etc/%%PORTNAME%%.conf.sample
 @exec if [ ! -f %D/etc/%%PORTNAME%%.conf ] ; then cp -p %D/etc/%%PORTNAME%%.conf.sample %D/etc/%%PORTNAME%%.conf; fi
-@unexec rm -r %D/share/%%PORTNAME%%
+@unexec rm -rf %D/share/%%PORTNAME%%

@@ -3,12 +3,11 @@
 PORTNAME=	mineos
 PORTVERSION=	2.0
 CATEGORIES=	games
-MASTER_SITES=	GH
-USE_GITHUB=	yes
+MASTER_SITES=	#none
+DISTFILES=	#none
 GH_ACCOUNT=	hexparrot
 GH_PROJECT=	mineos
 GH_COMMIT=	75f2d6d
-GH_TAGNAME=	${GH_COMMIT}
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	easy minecraft hosting solution
@@ -28,7 +27,7 @@ JAVA_VERSION=	1.7
 JAVA_RUN=	yes
 
 NO_BUILD=	yes
-WRKSRC=		${WRKDIR}/${GH_ACCOUNT}-${GH_PROJECT}-${GH_COMMIT}
+NO_WRKSUBDIR=	yes
 PLIST_SUB=	PORTNAME=${PORTNAME}
 SUB_LIST=	PORTNAME=${PORTNAME} PYTHON_CMD=${PYTHON_CMD}
 SUB_FILES=	pkg-message
@@ -37,8 +36,8 @@ USE_RC_SUBR=	${PORTNAME}
 .include <bsd.port.pre.mk>
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}/mineos
-	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/mineos
+	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${STAGEDIR}${DATADIR}/mineos
+	${PREFIX}/bin/git --git-dir=${STAGEDIR}${DATADIR}/mineos/.git --work-tree=${STAGEDIR}${DATADIR}/mineos reset --hard ${GH_COMMIT}
 	${CP} ${STAGEDIR}${DATADIR}/mineos/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 	${REINPLACE_CMD} -e 's:\(^misc.require_https *= *\)True:\1False:' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
