@@ -7,7 +7,6 @@ MASTER_SITES=	#none
 DISTFILES=	#none
 GH_ACCOUNT=	hexparrot
 GH_PROJECT=	mineos
-GH_COMMIT=	75f2d6d
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	easy minecraft hosting solution
@@ -36,9 +35,11 @@ USE_RC_SUBR=	${PORTNAME}
 .include <bsd.port.pre.mk>
 
 do-install:
-	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${STAGEDIR}${DATADIR}/mineos
-	${PREFIX}/bin/git --git-dir=${STAGEDIR}${DATADIR}/mineos/.git --work-tree=${STAGEDIR}${DATADIR}/mineos reset --hard ${GH_COMMIT}
-	${CP} ${STAGEDIR}${DATADIR}/mineos/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
-	${REINPLACE_CMD} -e 's:\(^misc.require_https *= *\)True:\1False:' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+
+post-install:
+	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/mineos
+	${CP} ${DATADIR}/mineos/${PORTNAME}.conf ${PREFIX}/etc/${PORTNAME}.conf.sample
+	${REINPLACE_CMD} -e 's:\(^misc.require_https *= *\)True:\1False:' ${PREFIX}/etc/${PORTNAME}.conf.sample
+	${RM} ${PREFIX}/etc/${PORTNAME}.conf.sample.bak
 
 .include <bsd.port.post.mk>
