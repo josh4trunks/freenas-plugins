@@ -2,6 +2,7 @@ from subprocess import Popen, PIPE
 import json
 import time
 import urllib2
+import os
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
@@ -15,6 +16,13 @@ import oauth2 as oauth
 from mineosUI.freenas import forms, models, utils
 
 from syslog import *
+
+def _linprocfs_mounted(linprocfs_path):
+    try:
+        open(os.path.join(linprocfs_path, 'uptime'), 'rb')
+        return True
+    except IOError:
+        return False
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -174,6 +182,17 @@ def start(request, plugin_id):
         )
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
+
+    linprocfs_path = '/usr/compat/linux/proc'
+    linprocfs = _linprocfs_mounted(linprocfs_path)
+    linprocfs_path = linprocfs_path.lstrip('/')
+    linprocfs_path = os.path.join(jail_path, linprocfs_path)
+
+    if linprocfs is False:
+        return HttpResponse(simplejson.dumps({
+            'error': True,
+            'message': 'Please run "mount -t linprocfs linprocfs ' + linprocfs_path + '" first.',
+        }), content_type='application/json')
 
     try:
         mineos = models.MineOS.objects.order_by('-id')[0]
