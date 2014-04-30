@@ -533,5 +533,5 @@
 %%DATADIR%%/HTPC-Manager/modules/xbmc.py
 @unexec rm -r %D/share/%%PORTNAME%%
 @dirrmtry %%ETCDIR%%
-@exec mkdir -p %D/etc/%%PORTNAME%% 
+@exec mkdir -p %D/etc/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% %D/etc/%%PORTNAME%% %D/share/%%PORTNAME%%/*
