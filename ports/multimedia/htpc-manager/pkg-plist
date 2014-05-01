@@ -1,4 +1,5 @@
 @unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
+%%DATADIR%%/HTPC-Manager/.gitignore
 %%DATADIR%%/HTPC-Manager/HTPC-Manager.bat
 %%DATADIR%%/HTPC-Manager/Htpc.py
 %%DATADIR%%/HTPC-Manager/LICENSE
@@ -11,6 +12,7 @@
 %%DATADIR%%/HTPC-Manager/htpc/settings.py
 %%DATADIR%%/HTPC-Manager/htpc/updater.py
 %%DATADIR%%/HTPC-Manager/initd
+%%DATADIR%%/HTPC-Manager/initd.fedora
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/base.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/bootstrap-responsive.min.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/couchpotato.css
@@ -30,12 +32,16 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/sickbeard.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/sickbeard_view.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/squeezebox.css
+%%DATADIR%%/HTPC-Manager/interfaces/default/css/stats.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/cerulean/bootstrap.min.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/cerulean/style.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/default/bootstrap.min.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/default/style.css
+%%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/slate/bootstrap.min.css
+%%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/slate/style.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/united/bootstrap.min.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/themes/united/style.css
+%%DATADIR%%/HTPC-Manager/interfaces/default/css/tvheadend.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/xbmc.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/base.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/couchpotato.html
@@ -51,7 +57,9 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/sickbeard.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/sickbeard_view.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/squeezebox.html
+%%DATADIR%%/HTPC-Manager/interfaces/default/html/stats.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/transmission.html
+%%DATADIR%%/HTPC-Manager/interfaces/default/html/tvheadend.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/utorrent.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/xbmc.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/img/000_80.png
@@ -95,7 +103,9 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/sickbeard.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/sickbeard_view.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/squeezebox.js
+%%DATADIR%%/HTPC-Manager/interfaces/default/js/stats.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/transmission.js
+%%DATADIR%%/HTPC-Manager/interfaces/default/js/tvheadend.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/utorrent.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/xbmc.js
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/LICENSE.txt
@@ -528,7 +538,9 @@
 %%DATADIR%%/HTPC-Manager/modules/search.py
 %%DATADIR%%/HTPC-Manager/modules/sickbeard.py
 %%DATADIR%%/HTPC-Manager/modules/squeezebox.py
+%%DATADIR%%/HTPC-Manager/modules/stats.py
 %%DATADIR%%/HTPC-Manager/modules/transmission.py
+%%DATADIR%%/HTPC-Manager/modules/tvheadend.py
 %%DATADIR%%/HTPC-Manager/modules/utorrent.py
 %%DATADIR%%/HTPC-Manager/modules/xbmc.py
 @unexec rm -r %D/share/%%PORTNAME%%
