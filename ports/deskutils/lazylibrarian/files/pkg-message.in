@@ -10,6 +10,6 @@ START MANUALLY:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%% start
 
 Once started, visit the following to configure:
-http://localhost:8082/
+http://localhost:5299/
 
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

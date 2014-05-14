@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	lazylibrarian
-PORTVERSION=	3.0
+PORTVERSION=	2.1
 CATEGORIES=	deskutils
 MASTER_SITES=	GH
 
@@ -18,7 +18,7 @@ USE_PYTHON=	2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     DobyTang
 GH_PROJECT=     LazyLibrarian
-GH_COMMIT=      e6899bc
+GH_COMMIT=      de8479f
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
