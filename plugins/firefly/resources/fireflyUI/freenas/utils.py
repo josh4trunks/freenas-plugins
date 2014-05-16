@@ -14,11 +14,15 @@ firefly_oauth_file = os.path.join(firefly_pbi_path, ".oauth")
 
 
 def get_rpc_url(request):
+    addr = request.META.get("SERVER_ADDR")
+    # IPv6
+    if ':' in addr:
+        addr = '[%s]' % addr
     return 'http%s://%s:%s/plugins/json-rpc/v1/' % (
         's' if request.is_secure() else '',
-        request.META.get("SERVER_ADDR"),
+        addr,
         request.META.get("SERVER_PORT"),
-        )
+    )
 
 
 def get_firefly_oauth_creds():
