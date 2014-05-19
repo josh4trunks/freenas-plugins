@@ -1,8 +1,0 @@
-#!/bin/sh
-
-gamez_path=/usr/pbi/gamez-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'gamez_' /etc/rc.conf > ${tmpfile}
-cat ${gamez_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

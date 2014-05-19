@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec /usr/pbi/gamez-$(uname -m)/bin/python /usr/pbi/gamez-$(uname -m)/control.py $*
