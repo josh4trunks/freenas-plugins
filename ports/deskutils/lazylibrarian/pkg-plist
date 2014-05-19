@@ -153,6 +153,7 @@
 %%DATADIR%%/LazyLibrarian/data/images/nav/hist.png
 %%DATADIR%%/LazyLibrarian/data/images/nav/logs.png
 %%DATADIR%%/LazyLibrarian/data/images/nav/mags.png
+%%DATADIR%%/LazyLibrarian/data/images/nav/manage.png
 %%DATADIR%%/LazyLibrarian/data/images/nocover.png
 %%DATADIR%%/LazyLibrarian/data/images/nostar.png
 %%DATADIR%%/LazyLibrarian/data/images/restart.png
@@ -171,6 +172,7 @@
 %%DATADIR%%/LazyLibrarian/data/interfaces/default/logs.html
 %%DATADIR%%/LazyLibrarian/data/interfaces/default/magazines.html
 %%DATADIR%%/LazyLibrarian/data/interfaces/default/manageartists.html
+%%DATADIR%%/LazyLibrarian/data/interfaces/default/managebooks.html
 %%DATADIR%%/LazyLibrarian/data/interfaces/default/managenew.html
 %%DATADIR%%/LazyLibrarian/data/interfaces/default/searchresults.html
 %%DATADIR%%/LazyLibrarian/data/interfaces/default/shutdown.html
@@ -208,6 +210,7 @@
 %%DATADIR%%/LazyLibrarian/%%PORTNAME%%/logger.py
 %%DATADIR%%/LazyLibrarian/%%PORTNAME%%/notifiers/__init__.py
 %%DATADIR%%/LazyLibrarian/%%PORTNAME%%/notifiers/boxcar.py
+%%DATADIR%%/LazyLibrarian/%%PORTNAME%%/notifiers/nma.py
 %%DATADIR%%/LazyLibrarian/%%PORTNAME%%/notifiers/pushbullet.py
 %%DATADIR%%/LazyLibrarian/%%PORTNAME%%/notifiers/tweet.py
 %%DATADIR%%/LazyLibrarian/%%PORTNAME%%/postprocess.py
@@ -268,6 +271,8 @@
 %%DATADIR%%/LazyLibrarian/lib/httplib2/__init__.py
 %%DATADIR%%/LazyLibrarian/lib/httplib2/iri2uri.py
 %%DATADIR%%/LazyLibrarian/lib/oauth2/__init__.py
+%%DATADIR%%/LazyLibrarian/lib/pynma/__init__.py
+%%DATADIR%%/LazyLibrarian/lib/pynma/pynma.py
 %%DATADIR%%/LazyLibrarian/lib/pythontwitter/__init__.py
 %%DATADIR%%/LazyLibrarian/lib/simplejson/__init__.py
 %%DATADIR%%/LazyLibrarian/lib/simplejson/_speedups.c

@@ -18,7 +18,7 @@ USE_PYTHON=	2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     DobyTang
 GH_PROJECT=     LazyLibrarian
-GH_COMMIT=      de8479f
+GH_COMMIT=      aff78ec
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
