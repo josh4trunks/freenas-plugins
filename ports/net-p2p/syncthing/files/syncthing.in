@@ -1,0 +1,51 @@
+#!/bin/sh
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# %%PORTNAME%%_enable (bool):	Set to NO by default.
+#				Set it to YES to enable it.
+# %%PORTNAME%%_user:		The user account %%PORTNAME%% daemon runs as what
+#				you want it to be. It uses '%%USER%%' user by
+#				default. Do not sets it as empty or it will run
+#				as root.
+# %%PORTNAME%%_group:		The group account %%PORTNAME%% daemon runs as what
+#				you want it to be. It uses '%%GROUP%%' group by
+#				default. Do not sets it as empty or it will run
+#				as wheel.
+# %%PORTNAME%%_data_dir:        Directory where %%PORTNAME%% configuration
+#                               data is stored.
+#                               Default: /var/db/%%PORTNAME%%
+
+. /etc/rc.subr
+name="%%PORTNAME%%"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${%%PORTNAME%%_enable:="NO"}
+: ${%%PORTNAME%%_user:="%%USER%%"}
+: ${%%PORTNAME%%_group:="%%GROUP%%"}
+: ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
+
+command="%%PREFIX%%/bin/syncthing"
+command_args="-home /var/db/%%PORTNAME%% &"
+extra_commands="update"
+update_cmd="%%PORTNAME%%_update"
+
+%%PORTNAME%%_update() {
+	if [ -n "$rc_pid" ]; then
+		run_rc_command onestop
+		running=true
+	else
+		running=false
+	fi
+	$command -upgrade
+	if $running; then
+		run_rc_command onestart
+	fi
+}
+
+run_rc_command "$1"

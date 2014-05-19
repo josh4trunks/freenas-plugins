@@ -1,0 +1,9 @@
+@unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
+bin/syncthing
+@unexec rm -f %D/bin/syncthing.v*
+@unexec if cmp -s %D/etc/%%PORTNAME%%.xml.sample /var/db/%%PORTNAME%%/config.xml; then rm -f /var/db/%%PORTNAME%%/config.xml; fi
+@unexec rmdir /var/db/%%PORTNAME%%
+etc/%%PORTNAME%%.xml.sample
+@exec mkdir -p /var/db/%%PORTNAME%%
+@exec if [ ! -f /var/db/%%PORTNAME%%/config.xml ] ; then cp -p %D/etc/%%PORTNAME%%.xml.sample /var/db/%%PORTNAME%%/config.xml; fi
+@exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
