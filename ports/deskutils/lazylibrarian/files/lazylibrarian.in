@@ -8,9 +8,6 @@
 #
 # lazylibrarian_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# lazylibrarian_data_dir:	Directory where %%PORTNAME%% configuration
-#			data is stored.
-#			Default: %%PREFIX%%/etc/%%PORTNAME%%
 # lazylibrarian_user:	The user account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
@@ -19,6 +16,9 @@
 #			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
+# lazylibrarian_data_dir:	Directory where %%PORTNAME%% configuration
+#				data is stored.
+#				Default: /var/db/%%PORTNAME%%
 
 . /etc/rc.subr
 name="%%PORTNAME%%"
@@ -29,7 +29,7 @@ load_rc_config $name
 : ${lazylibrarian_user:="%%USER%%"}
 : ${lazylibrarian_group:="%%GROUP%%"}
 : ${lazylibrarian_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
-: ${lazylibrarian_data_dir:="%%PREFIX%%/etc/%%PORTNAME%%"}
+: ${lazylibrarian_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$lazylibrarian_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
