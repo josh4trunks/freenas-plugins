@@ -1,0 +1,8 @@
+#!/bin/sh
+
+syncthing_path=/usr/pbi/syncthing-$(uname -m)
+tmpfile=$(mktemp /tmp/.XXXXXX)
+
+grep -v 'syncthing_' /etc/rc.conf > ${tmpfile}
+cat ${syncthing_path}/etc/rc.conf >> ${tmpfile}
+mv ${tmpfile} /etc/rc.conf
