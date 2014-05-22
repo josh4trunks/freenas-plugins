@@ -16,4 +16,4 @@ chown -R transmission:transmission ${transmission_pbi_path}/etc/transmission
 chmod 775 ${transmission_pbi_path}/etc/transmission/home
 chmod 775 ${transmission_pbi_path}/etc/transmission/home/Downloads
 
-${transmission_pbi_path}/bin/python ${transmission_pbi_path}/transmissionUI/manage.py syncdb --migrate --noinput
+${transmission_pbi_path}/bin/python2.7 ${transmission_pbi_path}/transmissionUI/manage.py syncdb --migrate --noinput
