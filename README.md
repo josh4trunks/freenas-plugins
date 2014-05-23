@@ -1,8 +1,3 @@
-#FreeNAS-Plugins
-* Information for python-based plugins maintained by me can be found [here](http://forums.freenas.org/threads/freenas-9-plugins-sab-sb-cp-hp-maraschino-htpc-mylar-ll-gamez.16200/).
-* Information for the BitTorrent Sync plugin can be found [here](http://forums.freenas.org/threads/freenas-9-plugin-bittorrent-sync.16246/).
-* Information for the Subsonic plugin can be found [here](http://forums.freenas.org/threads/freenas-9-plugin-subsonic.18069/).
-
 #PREPARATION
 * The ports in ./ports should be copied into your ports tree
     - <code>cp -R ports/* /usr/ports/</code>
