@@ -9,4 +9,4 @@ mkdir -p ${firefly_pbi_path}/var/db/firefly
 
 pw user add daapd -d ${firefly_pbi_path}
 
-${firefly_pbi_path}/bin/python ${firefly_pbi_path}/fireflyUI/manage.py syncdb --migrate --noinput
+${firefly_pbi_path}/bin/python2.7 ${firefly_pbi_path}/fireflyUI/manage.py syncdb --migrate --noinput
