@@ -6,5 +6,5 @@ ${btsync_pbi_path}/bin/python2.7 ${btsync_pbi_path}/btsyncUI/manage.py syncdb --
 
 ####
 mkdir -p /var/db/btsync
-chown -R sync:sync /var/db/btsync
+chown -R syncer:syncer /var/db/btsync
 ####
