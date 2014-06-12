@@ -34,26 +34,5 @@ load_rc_config $name
 pidfile="$sabnzbd_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$sabnzbd_dir/SABnzbd/SABnzbd.py -s 0.0.0.0 -f $sabnzbd_data_dir/${name}.ini --pidfile $pidfile -d -b 0"
-extra_commands="update"
-update_cmd="%%PORTNAME%%_update"
-
-%%PORTNAME%%_update() {
-	if [ -n "$rc_pid" ]; then
-		run_rc_command onestop
-		running=true
-	else
-		running=false
-	fi
-	fetch -o $sabnzbd_dir/download.tar.gz http://sourceforge.net/projects/sabnzbdplus/files/latest/download
-	tar -xvf $sabnzbd_dir/download.tar.gz -C $sabnzbd_dir
-	if [ $? -eq 0 ]; then		
-		rm -r $sabnzbd_dir/download.tar.gz $sabnzbd_dir/SABnzbd
-		mv $sabnzbd_dir/SABnzbd-* $sabnzbd_dir/SABnzbd
-		chown -R $sabnzbd_user:$sabnzbd_group $sabnzbd_dir/SABnzbd
-	fi
-	if $running; then
-		run_rc_command onestart
-	fi
-}
 
 run_rc_command "$1"
