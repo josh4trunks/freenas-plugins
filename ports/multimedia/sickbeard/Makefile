@@ -12,7 +12,7 @@ LICENSE=	GPLv3 PSFL
 LICENSE_COMB=	multi
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cheetah>0:${PORTSDIR}/devel/py-cheetah \
-		${PYTHON_PKGNAMEPREFIX}py-utils>0:${PORTSDIR}/devel/py-utils \
+		${PYTHON_PKGNAMEPREFIX}utils>0:${PORTSDIR}/devel/py-utils \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
 
@@ -46,7 +46,7 @@ RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 
 .if ${PORT_OPTIONS:MSICKRAGE}
 RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml \
-		${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-setproctitle
+		${PYTHON_PKGNAMEPREFIX}setproctitle>0:${PORTSDIR}/devel/py-setproctitle
 .endif
 
 do-install:
