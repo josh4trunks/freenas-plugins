@@ -6,30 +6,30 @@
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
 #
-# lazylibrarian_enable (bool):	Set to NO by default.
+# %%PORTNAME%%_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
-# lazylibrarian_user:	The user account %%PORTNAME%% daemon runs as what
+# %%PORTNAME%%_user:	The user account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%USER%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
-# lazylibrarian_group:	The group account %%PORTNAME%% daemon runs as what
+# %%PORTNAME%%_group:	The group account %%PORTNAME%% daemon runs as what
 #			you want it to be. It uses '%%GROUP%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
-# lazylibrarian_data_dir:	Directory where %%PORTNAME%% configuration
-#				data is stored.
-#				Default: /var/db/%%PORTNAME%%
+# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
+#			data is stored.
+#			Default: /var/db/%%PORTNAME%%
 
 . /etc/rc.subr
 name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
 
-: ${lazylibrarian_enable:="NO"}
-: ${lazylibrarian_user:="%%USER%%"}
-: ${lazylibrarian_group:="%%GROUP%%"}
-: ${lazylibrarian_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
-: ${lazylibrarian_data_dir:="/var/db/%%PORTNAME%%"}
+: ${%%PORTNAME%%_enable:="NO"}
+: ${%%PORTNAME%%_user:="%%USER%%"}
+: ${%%PORTNAME%%_group:="%%GROUP%%"}
+: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
+: ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$lazylibrarian_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
