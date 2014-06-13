@@ -3,6 +3,4 @@ bin/btsync
 @unexec rmdir /var/db/%%PORTNAME%%
 @exec mkdir -p /var/db/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
-@unexec if cmp -s %D/etc/%%PORTNAME%%.conf.sample %D/etc/%%PORTNAME%%.conf; then rm -f %D/etc/%%PORTNAME%%.conf; fi
-etc/%%PORTNAME%%.conf.sample
-@exec if [ ! -f %D/etc/%%PORTNAME%%.conf ] ; then cp -p %D/etc/%%PORTNAME%%.conf.sample %D/etc/%%PORTNAME%%.conf; fi
+@sample etc/%%PORTNAME%%.conf.sample
