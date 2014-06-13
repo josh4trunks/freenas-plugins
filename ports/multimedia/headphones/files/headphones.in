@@ -35,7 +35,7 @@ pidfile="$headphones_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$headphones_dir/headphones/Headphones.py --config $headphones_data_dir/config.ini --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
 
-start_precmd="$%%PORTNAME%%_prestart"
+start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
         if [ -f $pidfile ]; then
                 if [ ! `pgrep -F $pidfile` ]; then
