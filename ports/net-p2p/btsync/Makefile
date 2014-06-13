@@ -12,7 +12,7 @@ COMMENT=	Distributed peer-to-peer file syncing application
 LICENSE=	EULA
 LICENSE_NAME=	BitTorrent Sync
 LICENSE_FILE=	${WRKSRC}/LICENSE.TXT
-LICENSE_PERMS=	#Any copying or redistribution of the Software is prohibited.
+LICENSE_PERMS=	auto-accept
 
 NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
