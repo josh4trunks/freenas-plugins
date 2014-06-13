@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sickbeard
-PORTVERSION=	2.2
+PORTVERSION=	2.3
 CATEGORIES=	multimedia
 MASTER_SITES=	GH
 
@@ -13,7 +13,8 @@ LICENSE_COMB=	multi
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cheetah>0:${PORTSDIR}/devel/py-cheetah \
 		${PYTHON_PKGNAMEPREFIX}py-utils>0:${PORTSDIR}/devel/py-utils \
-		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
+		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
+		${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
 
 USE_PYTHON=	2.5-2.7
 
@@ -33,10 +34,9 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		${USERS}
 
-OPTIONS_DEFINE=	OPENSSL PIL LXML
-OPTIONS_DEFAULT=	OPENSSL PIL LXML
-PIL_DESC=	image resizing support
-LXML_DESC=	xml and html processor used in TPB branch
+OPTIONS_DEFINE=	OPENSSL SICKRAGE
+OPTIONS_DEFAULT=	OPENSSL
+SICKRAGE_DESC=	optional dependencies for SickRage branch
 
 .include <bsd.port.pre.mk>
 
@@ -44,12 +44,9 @@ LXML_DESC=	xml and html processor used in TPB branch
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 .endif
 
-.if ${PORT_OPTIONS:MPIL}
-RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
-.endif
-
-.if ${PORT_OPTIONS:MLXML}
-RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
+.if ${PORT_OPTIONS:MSICKRAGE}
+RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml \
+		${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-setproctitle
 .endif
 
 do-install:
