@@ -43,9 +43,5 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/subsonic.war ${STAGEDIR}${DATADIR}/Subsonic
 	${INSTALL_DATA} ${WRKSRC}/subsonic-booter-jar-with-dependencies.jar ${STAGEDIR}${DATADIR}/Subsonic
 	${INSTALL} ${WRKSRC}/config.ini.sample ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
-.if ${PORT_OPTIONS:MTRANSCODING}
-	${INSTALL} -d ${STAGEDIR}/${ETCDIR}/transcode
-	${LN} -sf ${PREFIX}/bin/ffmpeg ${STAGEDIR}/${ETCDIR}/transcode/ffmpeg
-.endif
 
 .include <bsd.port.post.mk>

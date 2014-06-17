@@ -1,11 +1,13 @@
 @unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
-%%TRANSCODING%%%%ETCDIR%%/transcode/ffmpeg
-%%TRANSCODING%%@dirrmtry %%ETCDIR%%/transcode
 %%DATADIR%%/Subsonic/subsonic-booter-jar-with-dependencies.jar
 %%DATADIR%%/Subsonic/subsonic.war
 @dirrmtry %%DATADIR%%/Subsonic
 @dirrmtry %%DATADIR%%
+%%TRANSCODING%%@unexec unlink /var/db/%%PORTNAME%%/transcode/ffmpeg
+%%TRANSCODING%%@unexec rmdir /var/db/%%PORTNAME%%/transcode
 @unexec rmdir /var/db/%%PORTNAME%%
 @exec mkdir -p /var/db/%%PORTNAME%%
+%%TRANSCODING%%@exec mkdir /var/db/%%PORTNAME%%/transcode
+%%TRANSCODING%%@exec ln -s %D/bin/ffmpeg /var/db/%%PORTNAME%%/transcode/ffmpeg
 @exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
 @sample etc/%%PORTNAME%%.conf.sample
