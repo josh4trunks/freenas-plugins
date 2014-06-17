@@ -41,8 +41,7 @@ else
 fi
 
 subsonic_chdir="$subsonic_dir/Subsonic"
-JETTY_LOG="$subsonic_data_dir/jetty.log"
 command="%%JAVA_CMD%%"
-command_args="-Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=$subsonic_data_dir -Dsubsonic.port=$SUBSONIC_PORT -Dsubsonic.httpsPort=$SUBSONIC_HTTPS_PORT -Dsubsonic.contextPath=$SUBSONIC_CONTEXT_PATH -Djava.awt.headless=true -verbose:gc -jar $subsonic_chdir/subsonic-booter-jar-with-dependencies.jar >$JETTY_LOG 2>&1 &"
+command_args="-Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=$subsonic_data_dir -Dsubsonic.port=$SUBSONIC_PORT -Dsubsonic.httpsPort=$SUBSONIC_HTTPS_PORT -Dsubsonic.contextPath=$SUBSONIC_CONTEXT_PATH -Djava.awt.headless=true -verbose:gc -jar $subsonic_chdir/subsonic-booter-jar-with-dependencies.jar >/dev/null 2>&1 &"
 
 run_rc_command "$1"
