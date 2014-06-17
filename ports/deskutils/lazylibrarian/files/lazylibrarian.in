@@ -33,6 +33,6 @@ load_rc_config $name
 
 pidfile="$lazylibrarian_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$lazylibrarian_dir/LazyLibrarian/LazyLibrarian.py --config=$lazylibrarian_data_dir/config.ini --datadir=$lazylibrarian_data_dir -d -p $pidfile -q --nolaunch >/dev/null 2>&1"
+command_args="$lazylibrarian_dir/LazyLibrarian/LazyLibrarian.py --datadir=$lazylibrarian_data_dir -d -p $pidfile -q --nolaunch >/dev/null 2>&1"
 
 run_rc_command "$1"

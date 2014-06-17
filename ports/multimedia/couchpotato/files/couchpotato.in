@@ -33,6 +33,6 @@ load_rc_config $name
 
 pidfile="$couchpotato_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$couchpotato_dir/CouchPotatoServer/CouchPotato.py --config_file $couchpotato_data_dir/config.ini --data_dir $couchpotato_data_dir --pid_file $pidfile --daemon"
+command_args="$couchpotato_dir/CouchPotatoServer/CouchPotato.py --data_dir $couchpotato_data_dir --pid_file $pidfile --daemon"
 
 run_rc_command "$1"

@@ -33,6 +33,6 @@ load_rc_config $name
 
 pidfile="$mylar_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$mylar_dir/mylar/Mylar.py --config $mylar_data_dir/config.ini --datadir $mylar_data_dir -d --pidfile $pidfile -q --nolaunch"
+command_args="$mylar_dir/mylar/Mylar.py --datadir $mylar_data_dir -d --pidfile $pidfile -q --nolaunch"
 
 run_rc_command "$1"
