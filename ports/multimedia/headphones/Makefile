@@ -42,7 +42,7 @@ RUN_DEPENDS+=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
 .endif
 
 do-install:
-    ${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
 	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/${GH_PROJECT}
 
 .include <bsd.port.post.mk>
