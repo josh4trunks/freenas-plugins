@@ -31,8 +31,7 @@ class SubsonicForm(forms.ModelForm):
             if obj.enable:
                 f.write('subsonic_enable="YES"\n')
 
-        conf_dir = os.path.join(utils.subsonic_etc_path, "subsonic")
-        settingsfile = os.path.join(conf_dir, "config.ini")
+        settingsfile = os.path.join(utils.subsonic_etc_path, "subsonic.conf")
         settings = {}
 
         for field in obj._meta.local_fields:
