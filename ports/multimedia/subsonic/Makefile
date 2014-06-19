@@ -32,7 +32,7 @@ OPTIONS_DEFAULT=	TRANSCODING
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MTRANSCODING}
-RUN_DEPENDS=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
+RUN_DEPENDS+=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
 PLIST_SUB+=	TRANSCODING=""
 .else
 PLIST_SUB+=	TRANSCODING="@comment "
