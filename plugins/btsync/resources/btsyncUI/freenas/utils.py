@@ -54,6 +54,10 @@ btsync_settings = {
         "field": "disk_low_priority",
         "type": "checkbox",
         },
+    "external_port": {
+        "field": "external_port",
+        "type": "textbox",
+        },
     "folder_rescan_interval": {
         "field": "folder_rescan_interval",
         "type": "textbox",

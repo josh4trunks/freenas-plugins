@@ -22,6 +22,11 @@ class BtSync(models.Model):
         verbose_name="Disk Low Priority",
         default=True,
         )
+    external_port = models.IntegerField(
+        verbose_name="External Port",
+        default=0,
+        blank=True,
+        )
     folder_rescan_interval = models.IntegerField(
         verbose_name="Folder Rescan Interval (seconds)",
         default=600,
