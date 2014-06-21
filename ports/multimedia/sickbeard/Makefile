@@ -45,8 +45,7 @@ RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 .endif
 
 .if ${PORT_OPTIONS:MSICKRAGE}
-RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml \
-		${PYTHON_PKGNAMEPREFIX}setproctitle>0:${PORTSDIR}/devel/py-setproctitle
+RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
 .endif
 
 do-install:
