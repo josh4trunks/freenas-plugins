@@ -614,5 +614,5 @@
 %%DATADIR%%/Sick-Beard/tests/tv_tests.py
 @unexec rm -r %D/share/%%PORTNAME%%
 @unexec rmdir /var/db/%%PORTNAME%%
-@exec mkdir -p /var/db/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%% %D/share/%%PORTNAME%%/*
+@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
+@exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*

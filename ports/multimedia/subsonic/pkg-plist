@@ -6,8 +6,7 @@
 %%TRANSCODING%%@unexec unlink /var/db/%%PORTNAME%%/transcode/ffmpeg
 %%TRANSCODING%%@unexec rmdir /var/db/%%PORTNAME%%/transcode
 @unexec rmdir /var/db/%%PORTNAME%%
-@exec mkdir -p /var/db/%%PORTNAME%%
-%%TRANSCODING%%@exec mkdir /var/db/%%PORTNAME%%/transcode
+@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
+%%TRANSCODING%%@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%/transcode
 %%TRANSCODING%%@exec ln -s %D/bin/ffmpeg /var/db/%%PORTNAME%%/transcode/ffmpeg
-@exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
 @sample etc/%%PORTNAME%%.conf.sample

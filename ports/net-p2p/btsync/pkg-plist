@@ -1,6 +1,5 @@
 @unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
 bin/btsync
 @unexec rmdir /var/db/%%PORTNAME%%
-@exec mkdir -p /var/db/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
+@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
 @sample etc/%%PORTNAME%%.conf.sample

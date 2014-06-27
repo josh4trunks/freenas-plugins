@@ -4,6 +4,5 @@ bin/syncthing
 @unexec if cmp -s %D/etc/%%PORTNAME%%.xml.sample /var/db/%%PORTNAME%%/config.xml; then rm -f /var/db/%%PORTNAME%%/config.xml; fi
 @unexec rmdir /var/db/%%PORTNAME%%
 etc/%%PORTNAME%%.xml.sample
-@exec mkdir -p /var/db/%%PORTNAME%%
-@exec if [ ! -f /var/db/%%PORTNAME%%/config.xml ] ; then cp -p %D/etc/%%PORTNAME%%.xml.sample /var/db/%%PORTNAME%%/config.xml; fi
-@exec chown -R %%USER%%:%%GROUP%% /var/db/%%PORTNAME%%
+@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
+@exec if [ ! -f /var/db/%%PORTNAME%%/config.xml ] ; then install -o %%USER%% -g %%GROUP%% %D/etc/%%PORTNAME%%.xml.sample /var/db/%%PORTNAME%%/config.xml; fi
