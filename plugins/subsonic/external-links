@@ -1,7 +1,7 @@
 lib/libaacplus.so.2	lib/libaacplus.so.2	keep
 lib/libavcodec.so.55	lib/libavcodec.so.55	keep
 lib/libavdevice.so.55	lib/libavdevice.so.55	keep
-lib/libavfilter.so.3	lib/libavfilter.so.3	keep
+lib/libavfilter.so.4	lib/libavfilter.so.4	keep
 lib/libavformat.so.55	lib/libavformat.so.55	keep
 lib/libavresample.so.1	lib/libavresample.so.1	keep
 lib/libavutil.so.52	lib/libavutil.so.52	keep

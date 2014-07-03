@@ -16,6 +16,7 @@ class SubsonicForm(forms.ModelForm):
         widgets = {
             'subsonic_max_memory': forms.widgets.TextInput(),
             'subsonic_port': forms.widgets.TextInput(),
+            'subsonic_locale': forms.widgets.TextInput(),
         }
         exclude = ('enable',)
 
@@ -50,6 +51,7 @@ class SubsonicForm(forms.ModelForm):
             f.write('SUBSONIC_MAX_MEMORY="%d"\n' % (obj.subsonic_max_memory, ))
             f.write('SUBSONIC_SSL="%s"\n' % (subsonic_ssl, ))
             f.write('SUBSONIC_PORT="%d"\n' % (obj.subsonic_port, ))
-            f.write('SUBSONIC_CONTEXT_PATH="%s"' % (obj.subsonic_context_path, ))
+            f.write('SUBSONIC_CONTEXT_PATH="%s"\n' % (obj.subsonic_context_path, ))
+            f.write('SUBSONIC_LOCALE="%s"' % (obj.subsonic_locale, ))
 
         os.system(os.path.join(utils.subsonic_pbi_path, "tweak-rcconf"))

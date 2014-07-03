@@ -1,7 +1,8 @@
 --- config.ini.sample.orig        1969-12-31 16:00:00.000000000 -0800
 +++ config.ini.sample        2013-11-12 05:45:38.000000000 -0800
-@@ -0,0 +1,4 @@
+@@ -0,0 +1,5 @@
 +SUBSONIC_MAX_MEMORY="150"
 +SUBSONIC_SSL="false"
 +SUBSONIC_PORT="4040"
 +SUBSONIC_CONTEXT_PATH="/"
++SUBSONIC_LOCALE="en_US.UTF-8"

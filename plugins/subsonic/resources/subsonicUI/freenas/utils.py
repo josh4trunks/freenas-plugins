@@ -57,4 +57,8 @@ subsonic_settings = {
         "field": "subsonic_context_path",
         "type": "textbox",
         },
+    "subsonic_locale": {
+        "field": "subsonic_locale",
+        "type": "textbox",
+        },
 }
