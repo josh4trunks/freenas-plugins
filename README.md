@@ -8,10 +8,8 @@
 * A 'media' user and group need to be added to '/usr/ports/UIDs' and '/usr/ports/GIDs' before compiling Ports or PBIs.
     - /usr/ports/UIDs
         - <code>media:*:816:816::0:0:media Daemon:/nonexistent:/usr/sbin/nologin</code>
-        - <code>syncer:*:817:817::0:0:syncer Daemon:/nonexistent:/usr/sbin/nologin</code>
     - /usr/ports/GIDs
         - <code>media:*:816:</code>
-        - <code>syncer:*:817:</code>
 
 * Compile
     - <code>pbi_makeport -c ./plugins/**NAME** -o ./pbi --pkgdir ./pkg/**NAME** **CATEGORY/NAME**</code>
