@@ -20,7 +20,7 @@ SUB_LIST=	PORTNAME=${PORTNAME} USER=${USERS} GROUP=${GROUPS}
 SUB_FILES=	pkg-message
 USE_RC_SUBR=	${PORTNAME}
 
-USERS=		syncer
+USERS=		${PORTNAME}
 GROUPS=		${USERS}
 
 .include <bsd.port.pre.mk>
