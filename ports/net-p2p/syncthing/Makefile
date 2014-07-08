@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	syncthing
-PORTVERSION=	0.8.17
+PORTVERSION=	0.8.18
 CATEGORIES=	net-p2p
 MASTER_SITES=	https://github.com/calmh/${PORTNAME}/releases/download/v${PORTVERSION}/
 DISTNAME=	${PORTNAME}-freebsd-${ARCH}-v${PORTVERSION}
