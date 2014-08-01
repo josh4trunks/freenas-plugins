@@ -35,4 +35,14 @@ pidfile="$mylar_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
 command_args="$mylar_dir/mylar/Mylar.py --datadir $mylar_data_dir -d --pidfile $pidfile -q --nolaunch"
 
+start_precmd="%%PORTNAME%%_prestart"
+%%PORTNAME%%_prestart() {
+	if [ -f $pidfile ]; then
+		if [ ! `pgrep -F $pidfile` ]; then
+			rm $pidfile
+			echo "Removing stale pidfile."
+		fi
+	fi
+}
+
 run_rc_command "$1"
