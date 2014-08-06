@@ -10,7 +10,6 @@
 # 				Set it to YES to enable it.
 
 . /etc/rc.subr
-export PATH=$PATH:%%PREFIX%%/bin
 name="%%PORTNAME%%"
 rcvar="${name}_enable"
 load_rc_config $name
@@ -25,6 +24,7 @@ command_args="$mineos_dir/mineos/server.py -c %%PREFIX%%/etc/%%PORTNAME%%.conf"
 extra_commands="update"
 update_cmd="%%PORTNAME%%_update"
 
+start_precmd="export PATH=$PATH:%%PREFIX%%/bin"
 start_postcmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir restore && %%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir start"
 stop_precmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir stop"
 

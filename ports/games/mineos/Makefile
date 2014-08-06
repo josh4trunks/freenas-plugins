@@ -22,7 +22,6 @@ RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget \
 
 USE_PYTHON=	2.7
 USE_JAVA=	yes
-JAVA_VERSION=	1.7
 JAVA_RUN=	yes
 
 NO_BUILD=	yes
@@ -32,14 +31,14 @@ SUB_LIST=	PORTNAME=${PORTNAME} PYTHON_CMD=${PYTHON_CMD}
 SUB_FILES=	pkg-message
 USE_RC_SUBR=	${PORTNAME}
 
+USERS=		mcserver
+GROUPS=		${USERS}
+
 .include <bsd.port.pre.mk>
 
 do-install:
-
-post-install:
-	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/mineos
-	${CP} ${DATADIR}/mineos/${PORTNAME}.conf ${PREFIX}/etc/${PORTNAME}.conf.sample
-	${REINPLACE_CMD} -e 's:\(^misc.require_https *= *\)True:\1False:' ${PREFIX}/etc/${PORTNAME}.conf.sample
-	${RM} ${PREFIX}/etc/${PORTNAME}.conf.sample.bak
+	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/${GH_PROJECT}
+	${CP} ${DATADIR}/${GH_PROJECT}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+	${REINPLACE_CMD} -e 's:\(^misc.require_https *= *\)True:\1False:' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
 .include <bsd.port.post.mk>
