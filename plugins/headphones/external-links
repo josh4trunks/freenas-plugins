@@ -1,3 +1,4 @@
+lib/libffi.so.6 lib/libffi.so.6 keep
 bin/ffmpeg	bin/ffmpeg	keep
 lib/libaacplus.so.2	lib/libaacplus.so.2	keep
 lib/libavcodec.so.55	lib/libavcodec.so.55	keep
