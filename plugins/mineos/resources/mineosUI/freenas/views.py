@@ -17,10 +17,9 @@ from mineosUI.freenas import forms, models, utils
 
 from syslog import *
 
-def _linprocfs_mounted(linprocfs_path):
+def _linprocfs_mounted(server, pid, linprocfs_path):
     try:
-        open(os.path.join(linprocfs_path, 'uptime'), 'rb')
-        return True
+        return server.fs.linprocfs(pid, linprocfs_path)
     except IOError:
         return False
 
@@ -184,7 +183,7 @@ def start(request, plugin_id):
     assert auth
 
     linprocfs_path = '/usr/compat/linux/proc'
-    linprocfs = _linprocfs_mounted(linprocfs_path)
+    linprocfs = _linprocfs_mounted(server, plugin_id, linprocfs_path)
     linprocfs_path = linprocfs_path.lstrip('/')
     linprocfs_path = os.path.join(jail_path, linprocfs_path)
 
@@ -233,6 +232,9 @@ def stop(request, plugin_id):
         )
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
+
+    linprocfs_path = '/usr/compat/linux/proc'
+    server.fs.umount(plugin_id, linprocfs_path)
 
     try:
         mineos = models.MineOS.objects.order_by('-id')[0]
