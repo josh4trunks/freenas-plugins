@@ -17,11 +17,27 @@ from mineosUI.freenas import forms, models, utils
 
 from syslog import *
 
-def _linprocfs_mounted(server, pid, linprocfs_path):
+def _linprocfs_check(linprocfs_path):
     try:
-        return server.fs.linprocfs(pid, linprocfs_path)
+        open(os.path.join(linprocfs_path, 'uptime'), 'rb')
+        return True
     except IOError:
         return False
+
+def _linprocfs_mount(server, plugin_id):
+    try:
+        linprocfs_path = '/usr/compat/linux/proc'
+        linprocfs = _linprocfs_check(linprocfs_path)
+        if linprocfs is False:
+            server.fs.linprocfs(plugin_id, linprocfs_path)
+    except:
+        jail_path = server.plugins.jail.path(plugin_id)
+        linprocfs_path = linprocfs_path.lstrip('/')
+        linprocfs_path = os.path.join(jail_path, linprocfs_path)
+        return HttpResponse(simplejson.dumps({
+            'error': True,
+            'message': 'Please run "mount -t linprocfs linprocfs ' + linprocfs_path + '" first.',
+        }), content_type='application/json')
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -182,16 +198,7 @@ def start(request, plugin_id):
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
 
-    linprocfs_path = '/usr/compat/linux/proc'
-    linprocfs = _linprocfs_mounted(server, plugin_id, linprocfs_path)
-    linprocfs_path = linprocfs_path.lstrip('/')
-    linprocfs_path = os.path.join(jail_path, linprocfs_path)
-
-    if linprocfs is False:
-        return HttpResponse(simplejson.dumps({
-            'error': True,
-            'message': 'Please run "mount -t linprocfs linprocfs ' + linprocfs_path + '" first.',
-        }), content_type='application/json')
+    _linprocfs_mount(server, plugin_id)
 
     try:
         mineos = models.MineOS.objects.order_by('-id')[0]
@@ -233,8 +240,7 @@ def stop(request, plugin_id):
     jail_path = server.plugins.jail.path(plugin_id)
     assert auth
 
-    linprocfs_path = '/usr/compat/linux/proc'
-    server.fs.umount(plugin_id, linprocfs_path)
+    _linprocfs_mount(server, plugin_id)
 
     try:
         mineos = models.MineOS.objects.order_by('-id')[0]
@@ -257,6 +263,11 @@ def stop(request, plugin_id):
         shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
+    linprocfs_path = '/usr/compat/linux/proc'
+    linprocfs = _linprocfs_check(linprocfs_path)
+    while linprocfs is True:
+        server.fs.umount(plugin_id, linprocfs_path)
+        linprocfs = _linprocfs_check(linprocfs_path)
     return HttpResponse(simplejson.dumps({
         'error': False,
         'message': out,
