@@ -50,9 +50,9 @@ class MineOSForm(forms.ModelForm):
         settings = {}
 
         for field in obj._meta.local_fields:
-            if field.attname not in utils.subsonic_settings:
+            if field.attname not in utils.mineos_settings:
                 continue
-            info = utils.subsonic_settings.get(field.attname)
+            info = utils.mineos_settings.get(field.attname)
             value = getattr(obj, field.attname)
             _filter = info.get("filter")
             if _filter:

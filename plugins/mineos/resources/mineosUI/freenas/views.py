@@ -310,8 +310,8 @@ def edit(request, plugin_id):
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4,
-            'scheme': subsonic_scheme,
-            'port': subsonic_port
+            'scheme': mineos_scheme,
+            'port': mineos_port
         })
 
     if not request.POST:
