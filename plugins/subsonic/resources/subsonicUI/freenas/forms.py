@@ -16,7 +16,6 @@ class SubsonicForm(forms.ModelForm):
         widgets = {
             'subsonic_max_memory': forms.widgets.TextInput(),
             'subsonic_port': forms.widgets.TextInput(),
-            'subsonic_locale': forms.widgets.TextInput(),
         }
         exclude = ('enable',)
 
