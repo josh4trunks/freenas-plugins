@@ -37,14 +37,14 @@ class Migration(SchemaMigration):
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'mineos_ssl': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'mineos_cert': ('django.db.models.fields.CharField', [], {'default': '/etc/ssl/certs/mineos.crt', 'max_length': '500'}),
-            'mineos_key': ('django.db.models.fields.CharField', [], {'default': '/etc/ssl/certs/mineos.key', 'max_length': '500'}),
+            'mineos_cert': ('django.db.models.fields.CharField', [], {'default': "'/etc/ssl/certs/mineos.crt'", 'max_length': '500'}),
+            'mineos_key': ('django.db.models.fields.CharField', [], {'default': "'/etc/ssl/certs/mineos.key'", 'max_length': '500'}),
             'mineos_port': ('django.db.models.fields.IntegerField', [], {'default': '8080'}),
             'mineos_mask': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'mineos_locale': ('django.db.models.fields.CharField', [], {'default': "'en'", 'max_length': '120'}),
             'mineos_delay': ('django.db.models.fields.IntegerField', [], {'default': '10'}),
-            'mineos_basedir': ('django.db.models.fields.CharField', [], {'default': '/var/games/minecraft', 'max_length': '500'}),
-            'mineos_log': ('django.db.models.fields.CharField', [], {'default': '/var/log/mineos.log', 'max_length': '500'}),
+            'mineos_basedir': ('django.db.models.fields.CharField', [], {'default': "'/var/games/minecraft'", 'max_length': '500'}),
+            'mineos_log': ('django.db.models.fields.CharField', [], {'default': "'/var/log/mineos.log'", 'max_length': '500'})
         }
     }
 

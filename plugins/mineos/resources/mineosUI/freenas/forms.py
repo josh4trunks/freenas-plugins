@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 from dojango import forms
 from mineosUI.freenas import models, utils
 
-
 class MineOSForm(forms.ModelForm):
 
     class Meta:
@@ -18,25 +17,27 @@ class MineOSForm(forms.ModelForm):
             'mineos_port': forms.widgets.TextInput(),
             'mineos_delay': forms.widgets.TextInput(),
         }
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
         super(MineOSForm, self).__init__(*args, **kwargs)
 
-       self.fields['mineos_cert'].widget = \
-       self.fields['mineos_key'].widget = \
-       self.fields['mineos_log'].widget = forms.widgets.TextInput(attrs={
-       'data-dojo-type': 'freeadmin.form.PathSelector',
-       'root': self.jail_path,
-       'dirsonly': 'false',
-       })
+        self.fields['mineos_cert'].widget = \
+        self.fields['mineos_key'].widget = \
+        self.fields['mineos_log'].widget = forms.widgets.TextInput(attrs={
+            'data-dojo-type': 'freeadmin.form.PathSelector',
+            'root': self.jail_path,
+            'dirsonly': 'false',
+            })
 
-       self.fields['mineos_basedir'].widget = forms.widgets.TextInput(attrs={
-           'data-dojo-type': 'freeadmin.form.PathSelector',
-           'root': self.jail_path,
-           'dirsonly': 'true',
-       })
+        self.fields['mineos_basedir'].widget = forms.widgets.TextInput(attrs={
+            'data-dojo-type': 'freeadmin.form.PathSelector',
+            'root': self.jail_path,
+            'dirsonly': 'true',
+            })
 
     def save(self, *args, **kwargs):
         obj = super(MineOSForm, self).save(*args, **kwargs)
