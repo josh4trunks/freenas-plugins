@@ -16,9 +16,12 @@
 #				you want it to be. It uses '%%GROUP%%' group by
 #				default. Do not sets it as empty or it will run
 #				as wheel.
-# %%PORTNAME%%_data_dir:        Directory where %%PORTNAME%% configuration
-#                               data is stored.
-#                               Default: /var/db/%%PORTNAME%%
+# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
+#				data is stored.
+#				Default: /var/db/%%PORTNAME%%
+# %%PORTNAME%%_flags:		Flags passed to %%PORTNAME%%.
+#				Default: '-no-browser'
+
 
 . /etc/rc.subr
 name="%%PORTNAME%%"
@@ -29,23 +32,9 @@ load_rc_config $name
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
+: ${%%PORTNAME%%_flags:="-no-browser"}
 
 command="%%PREFIX%%/bin/syncthing"
-command_args="-home /var/db/%%PORTNAME%% >/dev/null 2>&1 &"
-extra_commands="update"
-update_cmd="%%PORTNAME%%_update"
-
-%%PORTNAME%%_update() {
-	if [ -n "$rc_pid" ]; then
-		run_rc_command onestop
-		running=true
-	else
-		running=false
-	fi
-	$command -upgrade
-	if $running; then
-		run_rc_command onestart
-	fi
-}
+command_args="-home $syncthing_data_dir >/dev/null 2>&1 &"
 
 run_rc_command "$1"
