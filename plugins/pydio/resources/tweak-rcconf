@@ -1,0 +1,8 @@
+#!/bin/sh
+
+pydio_path=/usr/pbi/pydio-$(uname -m)
+tmpfile=$(mktemp /tmp/.XXXXXX)
+
+grep -v 'apache24_' /etc/rc.conf > ${tmpfile}
+cat ${pydio_path}/etc/rc.conf >> ${tmpfile}
+mv ${tmpfile} /etc/rc.conf
