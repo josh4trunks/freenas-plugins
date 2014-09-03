@@ -420,6 +420,6 @@ fi
 
 : ${GIT_FREEBSD_REPO=git@gitserver:/git/repos/freenas-build/trueos.git}
 : ${GIT_PORTS_REPO=git@gitserver:/git/repos/freenas-build/ports.git}
-: ${GIT_PORTS_BRANCH=freenas/9-stable}
+: ${GIT_PORTS_BRANCH=masters/2014q2}
 
 main $*
