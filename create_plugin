@@ -195,7 +195,7 @@ do_create_plugin()
 	# ${archflags}: If set (will be -32), create 32-bit plugin
 	#
 	env PATH="${plugins_sbin}:${PATH}" \
-		PBI_OSREL="9.0-RELEASE" \
+		PBI_OSREL="9.3-RELEASE" \
 		PBI_APPDIR="${plugins_pbidir}" \
 		PBI_BINDIR="${plugins_sbin}" \
 		PBI_BUILDLOG="${plugins_builddir}/buildworld.log" \
@@ -420,6 +420,6 @@ fi
 
 : ${GIT_FREEBSD_REPO=git@gitserver:/git/repos/freenas-build/trueos.git}
 : ${GIT_PORTS_REPO=git@gitserver:/git/repos/freenas-build/ports.git}
-: ${GIT_PORTS_BRANCH=freenas/9-stable}
+: ${GIT_PORTS_BRANCH=9.2.1-BRANCH}
 
 main $*
