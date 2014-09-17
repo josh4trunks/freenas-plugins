@@ -14,9 +14,10 @@ class BtSync(models.Model):
         default=8888,
         blank=True,
         )
-    check_for_updates = models.BooleanField(
-        verbose_name="Check for Updates",
-        default=True,
+    config_refresh_interval = models.IntegerField(
+        verbose_name="Config Refresh Interval (seconds)",
+        default=3600,
+        blank=True,
         )
     disk_low_priority = models.BooleanField(
         verbose_name="Disk Low Priority",
@@ -49,6 +50,11 @@ class BtSync(models.Model):
     max_file_size_for_versioning = models.IntegerField(
         verbose_name="Max. File Size for Versioning (MB)",
         default=1000,
+        blank=True,
+        )
+    peer_expiration_days = models.IntegerField(
+        verbose_name="Peer Expiration (days)",
+        default=7,
         blank=True,
         )
     rate_limit_local_peers = models.BooleanField(

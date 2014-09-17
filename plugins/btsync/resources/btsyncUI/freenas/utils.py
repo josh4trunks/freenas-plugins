@@ -6,6 +6,7 @@ import platform
 btsync_pbi_path = "/usr/pbi/btsync-" + platform.machine()
 btsync_etc_path = os.path.join(btsync_pbi_path, "etc")
 btsync_datadirectory = "/var/db/btsync"
+btsync_pidfile = "/var/run/btsync/btsync.pid"
 btsync_fcgi_pidfile = "/var/run/btsync_fcgi_server.pid"
 btsync_control = "/usr/local/etc/rc.d/btsync"
 btsync_icon = os.path.join(btsync_pbi_path, "default.png")
@@ -46,9 +47,9 @@ btsync_settings = {
         "field": "webui_port",
         "type": "textbox",
         },
-    "check_for_updates": {
-        "field": "check_for_updates",
-        "type": "checkbox",
+    "config_refresh_interval": {
+        "field": "config_refresh_interval",
+        "type": "textbox",
         },
     "disk_low_priority": {
         "field": "disk_low_priority",
@@ -76,6 +77,10 @@ btsync_settings = {
         },
     "max_file_size_for_versioning": {
         "field": "max_file_size_for_versioning",
+        "type": "textbox",
+        },
+    "peer_expiration_days": {
+        "field": "peer_expiration_days",
         "type": "textbox",
         },
     "rate_limit_local_peers": {

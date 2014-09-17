@@ -15,11 +15,13 @@ class BtSyncForm(forms.ModelForm):
         model = models.BtSync
         widgets = {
             'webui_port': forms.widgets.TextInput(),
+            'config_refresh_interval': forms.widgets.TextInput(),
             'external_port': forms.widgets.TextInput(),
             'folder_rescan_interval': forms.widgets.TextInput(),
             'log_size': forms.widgets.TextInput(),
             'max_file_size_diff_for_patching': forms.widgets.TextInput(),
             'max_file_size_for_versioning': forms.widgets.TextInput(),
+            'peer_expiration_days': forms.widgets.TextInput(),
             'sync_max_time_diff': forms.widgets.TextInput(),
             'sync_trash_ttl': forms.widgets.TextInput(),
         }
@@ -64,6 +66,7 @@ class BtSyncForm(forms.ModelForm):
                 settings[info.get("field")] = value
 
         settings['storage_path'] = utils.btsync_datadirectory
+	settings['pid_file'] = utils.btsync_pidfile
         settings['webui'] = {}
         settings['webui']['listen'] = "0.0.0.0:" + str(obj.webui_port)
         settings.pop("webui_port", None)
