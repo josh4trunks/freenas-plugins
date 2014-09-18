@@ -20,7 +20,7 @@ RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget \
 		${PYTHON_PKGNAMEPREFIX}cherrypy>0:${PORTSDIR}/www/py-cherrypy \
 		git:${PORTSDIR}/devel/git
 
-USE_PYTHON=	2.7
+USES=	python:2.7
 USE_JAVA=	yes
 JAVA_RUN=	yes
 
