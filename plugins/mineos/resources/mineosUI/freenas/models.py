@@ -38,6 +38,7 @@ class MineOS(models.Model):
             ("en", 'English'),
             ("nl", 'Dutch'),
             ("ru", 'Russian'),
+            ("fr", 'French'),
         ),
         max_length=120,
         )
