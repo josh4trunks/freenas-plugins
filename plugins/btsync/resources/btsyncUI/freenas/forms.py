@@ -68,8 +68,7 @@ class BtSyncForm(forms.ModelForm):
         settings['storage_path'] = utils.btsync_datadirectory
 	settings['pid_file'] = utils.btsync_pidfile
         settings['webui'] = {}
-        settings['webui']['listen'] = "0.0.0.0:" + str(obj.webui_port)
-        settings.pop("webui_port", None)
+        settings['webui']['listen'] = "0.0.0.0:" + str(settings.pop("webui_port"))
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, indent=4))
