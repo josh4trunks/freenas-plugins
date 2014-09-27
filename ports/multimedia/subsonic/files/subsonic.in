@@ -34,16 +34,16 @@ load_rc_config $name
 
 . %%PREFIX%%/etc/%%PORTNAME%%.conf
 if $SUBSONIC_SSL; then
-	SUBSONIC_HTTPS_PORT="$SUBSONIC_PORT"
-	SUBSONIC_PORT="0"
-else
-	SUBSONIC_HTTPS_PORT="0"
+	subsonic_ssl_flags="-Dsubsonic.httpsPort=${SUBSONIC_PORT}" && SUBSONIC_PORT="0"
+	if [ ! -z ${SUBSONIC_SSL_KEYSTORE} ]; then
+		subsonic_ssl_flags+=" -Dsubsonic.ssl.keystore=${SUBSONIC_SSL_KEYSTORE} -Dsubsonic.ssl.password=${SUBSONIC_SSL_PASSWORD}"
+	fi
 fi
 
-subsonic_chdir="$subsonic_dir/Subsonic"
+subsonic_chdir="${subsonic_dir}/Subsonic"
 command="/usr/sbin/daemon"
 procname="%%JAVA_CMD%%"
-command_args="${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=$subsonic_data_dir -Dsubsonic.port=$SUBSONIC_PORT -Dsubsonic.httpsPort=$SUBSONIC_HTTPS_PORT -Dsubsonic.ssl.keystore=$SUBSONIC_SSL_KEYSTORE -Dsubsonic.ssl.password=$SUBSONIC_SSL_PASSWORD -Dsubsonic.contextPath=$SUBSONIC_CONTEXT_PATH -Djava.awt.headless=true -verbose:gc -jar $subsonic_chdir/subsonic-booter-jar-with-dependencies.jar"
+command_args="${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subsonic_data_dir} -Dsubsonic.port=${SUBSONIC_PORT} ${subsonic_ssl_flags} -Dsubsonic.contextPath=${SUBSONIC_CONTEXT_PATH} -Djava.awt.headless=true -jar ${subsonic_chdir}/subsonic-booter-jar-with-dependencies.jar"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
