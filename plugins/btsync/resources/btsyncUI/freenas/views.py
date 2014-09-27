@@ -261,7 +261,10 @@ def edit(request, plugin_id):
         jail_path = server.plugins.jail.path(plugin_id)
         jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
         jail_ipv4 = jail['jail_ipv4'].split('/')[0]
-        webui_port = btsync.webui_port
+	if btsync.force_https:
+            scheme = "https"
+        else:
+            scheme = "http"
         auth = server.plugins.is_authenticated(
             request.COOKIES.get("sessionid", "")
             )
@@ -274,7 +277,8 @@ def edit(request, plugin_id):
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4,
-            'port': webui_port
+            'scheme' : scheme,
+            'port': btsync.webui_port
         })
 
     if not request.POST:

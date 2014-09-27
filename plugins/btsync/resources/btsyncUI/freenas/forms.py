@@ -31,6 +31,13 @@ class BtSyncForm(forms.ModelForm):
         self.jail_path = kwargs.pop('jail_path')
         super(BtSyncForm, self).__init__(*args, **kwargs)
 
+        self.fields['ssl_certificate'].widget = \
+        self.fields['ssl_private_key'].widget = forms.widgets.TextInput(attrs={
+            'data-dojo-type': 'freeadmin.form.PathSelector',
+            'root': self.jail_path,
+            'dirsonly': 'false',
+            })
+
     def save(self, *args, **kwargs):
         obj = super(BtSyncForm, self).save(*args, **kwargs)
 
@@ -69,6 +76,9 @@ class BtSyncForm(forms.ModelForm):
 	settings['pid_file'] = utils.btsync_pidfile
         settings['webui'] = {}
         settings['webui']['listen'] = "0.0.0.0:" + str(settings.pop("webui_port"))
+        settings['webui']['force_https'] = settings.pop("force_https")
+        settings['webui']['ssl_certificate'] = settings.pop("ssl_certificate")
+        settings['webui']['ssl_private_key'] = settings.pop("ssl_private_key")
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, indent=4))

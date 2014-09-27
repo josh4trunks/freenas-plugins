@@ -43,6 +43,18 @@ def get_btsync_oauth_creds():
     return key, secret
 
 btsync_settings = {
+    "force_https": {
+        "field": "force_https",
+        "type": "checkbox",
+        },
+    "ssl_certificate": {
+        "field": "ssl_certificate",
+        "type": "textbox",
+        },
+    "ssl_private_key": {
+        "field": "ssl_private_key",
+        "type": "textbox",
+         },
     "webui_port": {
         "field": "webui_port",
         "type": "textbox",
