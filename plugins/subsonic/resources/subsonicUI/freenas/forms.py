@@ -16,12 +16,25 @@ class SubsonicForm(forms.ModelForm):
         widgets = {
             'subsonic_max_memory': forms.widgets.TextInput(),
             'subsonic_port': forms.widgets.TextInput(),
+            'subsonic_ssl_password': forms.widgets.PasswordInput(),
         }
         exclude = ('enable',)
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
         super(SubsonicForm, self).__init__(*args, **kwargs)
+
+        self.fields['subsonic_ssl_keystore'].widget = forms.widgets.TextInput(attrs={
+            'data-dojo-type': 'freeadmin.form.PathSelector',
+            'root': self.jail_path,
+            'dirsonly': 'false',
+            })
+
+    def clean_subsonic_ssl_password(self):
+        subsonic_ssl_password = self.cleaned_data.get("subsonic_ssl_password")
+        if not subsonic_ssl_password:
+            return self.instance.subsonic_ssl_password
+        return subsonic_ssl_password
 
     def save(self, *args, **kwargs):
         obj = super(SubsonicForm, self).save(*args, **kwargs)
@@ -49,6 +62,8 @@ class SubsonicForm(forms.ModelForm):
         with open(settingsfile, 'w') as f:
             f.write('SUBSONIC_MAX_MEMORY="%d"\n' % (obj.subsonic_max_memory, ))
             f.write('SUBSONIC_SSL="%s"\n' % (subsonic_ssl, ))
+            f.write('SUBSONIC_SSL_KEYSTORE="%s"\n' % (obj.subsonic_ssl_keystore, ))
+            f.write('SUBSONIC_SSL_PASSWORD="%s"\n' % (obj.subsonic_ssl_password, ))
             f.write('SUBSONIC_PORT="%d"\n' % (obj.subsonic_port, ))
             f.write('SUBSONIC_CONTEXT_PATH="%s"\n' % (obj.subsonic_context_path, ))
             f.write('SUBSONIC_LOCALE="%s"' % (obj.subsonic_locale, ))

@@ -49,6 +49,14 @@ subsonic_settings = {
         "field": "subsonic_ssl",
         "type": "checkbox",
         },
+    "subsonic_ssl_keystore": {
+        "field": "subsonic_ssl_keystore",
+        "type": "textbox",
+        },
+    "subsonic_ssl_password": {
+        "field": "subsonic_ssl_password",
+        "type": "textbox",
+        },
     "subsonic_port": {
         "field": "subsonic_port",
         "type": "textbox",

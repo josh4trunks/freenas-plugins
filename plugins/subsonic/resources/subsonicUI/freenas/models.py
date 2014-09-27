@@ -17,6 +17,16 @@ class Subsonic(models.Model):
         verbose_name="Enable SSL",
         default=False,
         )
+    subsonic_ssl_keystore = models.CharField(
+         verbose_name="SSL Keystore",
+         max_length=500,
+         blank=True
+         )
+    subsonic_ssl_password = models.CharField(
+         verbose_name="SSL Keystore Password",
+         max_length=120,
+         blank=True,
+         )
     subsonic_port = models.IntegerField(
         verbose_name="WebUI Port",
         default=4040,
