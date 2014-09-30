@@ -43,7 +43,7 @@ fi
 subsonic_chdir="${subsonic_dir}/Subsonic"
 command="/usr/sbin/daemon"
 procname="%%JAVA_CMD%%"
-command_args="$-f {procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subsonic_data_dir} -Dsubsonic.port=${SUBSONIC_PORT} ${subsonic_ssl_flags} -Dsubsonic.contextPath=${SUBSONIC_CONTEXT_PATH} -Djava.awt.headless=true -jar ${subsonic_chdir}/subsonic-booter-jar-with-dependencies.jar"
+command_args="-f ${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subsonic_data_dir} -Dsubsonic.port=${SUBSONIC_PORT} ${subsonic_ssl_flags} -Dsubsonic.contextPath=${SUBSONIC_CONTEXT_PATH} -Djava.awt.headless=true -jar ${subsonic_chdir}/subsonic-booter-jar-with-dependencies.jar"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
