@@ -3,10 +3,11 @@ bin/ffmpeg	bin/ffmpeg	keep
 lib/libaacplus.so.2	lib/libaacplus.so.2	keep
 lib/libavcodec.so.55	lib/libavcodec.so.55	keep
 lib/libavdevice.so.55	lib/libavdevice.so.55	keep
-lib/libavfilter.so.3	lib/libavfilter.so.3	keep
+lib/libavfilter.so.4	lib/libavfilter.so.4	keep
 lib/libavformat.so.55	lib/libavformat.so.55	keep
 lib/libavresample.so.1	lib/libavresample.so.1	keep
 lib/libavutil.so.52	lib/libavutil.so.52	keep
+lib/libfftw3f.so.3	lib/libfftw3f.so.3	keep
 lib/libmp3lame.so.0	lib/libmp3lame.so.0	keep
 lib/libpostproc.so.52	lib/libpostproc.so.52	keep
 lib/libswresample.so.0	lib/libswresample.so.0	keep

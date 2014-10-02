@@ -5,6 +5,7 @@ lib/libavfilter.so.4	lib/libavfilter.so.4	keep
 lib/libavformat.so.55	lib/libavformat.so.55	keep
 lib/libavresample.so.1	lib/libavresample.so.1	keep
 lib/libavutil.so.52	lib/libavutil.so.52	keep
+lib/libfftw3f.so.3	lib/libfftw3f.so.3	keep
 lib/libmp3lame.so.0	lib/libmp3lame.so.0	keep
 lib/libpostproc.so.52	lib/libpostproc.so.52	keep
 lib/libschroedinger-1.0.so.11	lib/libschroedinger-1.0.so.11	keep
