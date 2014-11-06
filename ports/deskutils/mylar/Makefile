@@ -3,7 +3,6 @@
 PORTNAME=	mylar
 PORTVERSION=	2.0
 CATEGORIES=	deskutils
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	An automated Comic Book downloader (cbr/cbz) trying to follow in the lines of sickbeard and headphones.

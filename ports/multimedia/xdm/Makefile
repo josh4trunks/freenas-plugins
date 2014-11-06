@@ -3,7 +3,6 @@
 PORTNAME=	xdm
 PORTVERSION=	2.0
 CATEGORIES=	multimedia
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Plugin based media collection manager

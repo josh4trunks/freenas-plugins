@@ -3,7 +3,6 @@
 PORTNAME=	sickbeard
 PORTVERSION=	2.3
 CATEGORIES=	multimedia
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	PVR & episode guide that downloads and manages all your TV shows

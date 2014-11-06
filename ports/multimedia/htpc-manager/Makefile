@@ -3,7 +3,6 @@
 PORTNAME=	htpc-manager
 PORTVERSION=	2.2
 CATEGORIES=	multimedia
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Htpc Manager combines all your favorite software into one slick interface.

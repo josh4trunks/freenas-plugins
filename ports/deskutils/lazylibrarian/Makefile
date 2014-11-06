@@ -3,7 +3,6 @@
 PORTNAME=	lazylibrarian
 PORTVERSION=	2.1
 CATEGORIES=	deskutils
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	An automated book downloader for SABnzbd.

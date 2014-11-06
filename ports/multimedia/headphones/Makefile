@@ -3,7 +3,6 @@
 PORTNAME=	headphones
 PORTVERSION=	2.1
 CATEGORIES=	multimedia
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Automatic music downloader for SABnzbd

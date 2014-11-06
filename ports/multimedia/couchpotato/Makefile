@@ -3,7 +3,6 @@
 PORTNAME=	couchpotato
 PORTVERSION=	9.2.0
 CATEGORIES=	multimedia
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Automatic Movie Downloading via NZBs & Torrents

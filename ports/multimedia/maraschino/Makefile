@@ -3,7 +3,6 @@
 PORTNAME=	maraschino
 PORTVERSION=	2.0
 CATEGORIES=	multimedia
-MASTER_SITES=	GH
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	A simple web interface to act as a nice overview/front page for an XBMC HTPC.
