@@ -56,6 +56,7 @@
 %%DATADIR%%/SABnzbd/email/badfetch-de.tmpl
 %%DATADIR%%/SABnzbd/email/badfetch-en.tmpl
 %%DATADIR%%/SABnzbd/email/badfetch-es.tmpl
+%%DATADIR%%/SABnzbd/email/badfetch-fi.tmpl
 %%DATADIR%%/SABnzbd/email/badfetch-fr.tmpl
 %%DATADIR%%/SABnzbd/email/badfetch-nb.tmpl
 %%DATADIR%%/SABnzbd/email/badfetch-nl.tmpl
@@ -67,6 +68,7 @@
 %%DATADIR%%/SABnzbd/email/email-de.tmpl
 %%DATADIR%%/SABnzbd/email/email-en.tmpl
 %%DATADIR%%/SABnzbd/email/email-es.tmpl
+%%DATADIR%%/SABnzbd/email/email-fi.tmpl
 %%DATADIR%%/SABnzbd/email/email-fr.tmpl
 %%DATADIR%%/SABnzbd/email/email-nb.tmpl
 %%DATADIR%%/SABnzbd/email/email-nl.tmpl
@@ -78,6 +80,7 @@
 %%DATADIR%%/SABnzbd/email/rss-de.tmpl
 %%DATADIR%%/SABnzbd/email/rss-en.tmpl
 %%DATADIR%%/SABnzbd/email/rss-es.tmpl
+%%DATADIR%%/SABnzbd/email/rss-fi.tmpl
 %%DATADIR%%/SABnzbd/email/rss-fr.tmpl
 %%DATADIR%%/SABnzbd/email/rss-nb.tmpl
 %%DATADIR%%/SABnzbd/email/rss-nl.tmpl
@@ -379,6 +382,7 @@
 %%DATADIR%%/SABnzbd/locale/da/LC_MESSAGES/SABnzbd.mo
 %%DATADIR%%/SABnzbd/locale/de/LC_MESSAGES/SABnzbd.mo
 %%DATADIR%%/SABnzbd/locale/es/LC_MESSAGES/SABnzbd.mo
+%%DATADIR%%/SABnzbd/locale/fi/LC_MESSAGES/SABnzbd.mo
 %%DATADIR%%/SABnzbd/locale/fr/LC_MESSAGES/SABnzbd.mo
 %%DATADIR%%/SABnzbd/locale/nb/LC_MESSAGES/SABnzbd.mo
 %%DATADIR%%/SABnzbd/locale/nl/LC_MESSAGES/SABnzbd.mo
@@ -391,6 +395,7 @@
 %%DATADIR%%/SABnzbd/po/email/de.po
 %%DATADIR%%/SABnzbd/po/email/en.po
 %%DATADIR%%/SABnzbd/po/email/es.po
+%%DATADIR%%/SABnzbd/po/email/fi.po
 %%DATADIR%%/SABnzbd/po/email/fr.po
 %%DATADIR%%/SABnzbd/po/email/nb.po
 %%DATADIR%%/SABnzbd/po/email/nl.po
@@ -404,6 +409,7 @@
 %%DATADIR%%/SABnzbd/po/main/da.po
 %%DATADIR%%/SABnzbd/po/main/de.po
 %%DATADIR%%/SABnzbd/po/main/es.po
+%%DATADIR%%/SABnzbd/po/main/fi.po
 %%DATADIR%%/SABnzbd/po/main/fr.po
 %%DATADIR%%/SABnzbd/po/main/nb.po
 %%DATADIR%%/SABnzbd/po/main/nl.po
@@ -417,6 +423,7 @@
 %%DATADIR%%/SABnzbd/po/nsis/da.po
 %%DATADIR%%/SABnzbd/po/nsis/de.po
 %%DATADIR%%/SABnzbd/po/nsis/es.po
+%%DATADIR%%/SABnzbd/po/nsis/fi.po
 %%DATADIR%%/SABnzbd/po/nsis/fr.po
 %%DATADIR%%/SABnzbd/po/nsis/nb.po
 %%DATADIR%%/SABnzbd/po/nsis/nl.po
