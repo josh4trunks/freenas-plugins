@@ -1,10 +1,10 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-multimedia/couchpotato includes an RC script:
+multimedia/%%PORTNAME%% includes an RC script:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
-TO START COUCHPOTATO ON BOOT:
-echo 'couchpotato_enable="YES"' >> /etc/rc.conf
+TO START ON BOOT:
+sysrc %%PORTNAME%%_enable="YES"
 
 START MANUALLY:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%% start

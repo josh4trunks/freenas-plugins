@@ -1,10 +1,10 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-deskutils/mylar includes an RC script:
+deskutils/%%PORTNAME%% includes an RC script:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
-TO START MYLAR ON BOOT:
-echo 'mylar_enable="YES"' >> /etc/rc.conf
+TO START ON BOOT:
+sysrc %%PORTNAME%%_enable="YES"
 
 START MANUALLY:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%% start

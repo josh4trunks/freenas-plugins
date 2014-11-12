@@ -1,10 +1,10 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-games/mineos includes an RC script:
+games/%%PORTNAME%% includes an RC script:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
-TO START MINEOS ON BOOT:
-echo 'mineos_enable="YES"' >> /etc/rc.conf
+TO START ON BOOT:
+sysrc %%PORTNAME%%_enable="YES"
 
 START MANUALLY:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%% start

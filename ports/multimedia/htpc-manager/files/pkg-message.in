@@ -1,10 +1,10 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-multimedia/htpc-manager includes an RC script:
+multimedia/%%PORTNAME%% includes an RC script:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
-TO START HTPC-MANAGER ON BOOT:
-echo 'htpc_manager_enable="YES"' >> /etc/rc.conf
+TO START ON BOOT:
+sysrc htpc_manager_enable="YES"
 
 START MANUALLY:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%% start

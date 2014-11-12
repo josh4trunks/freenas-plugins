@@ -1,10 +1,10 @@
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-news/sabnzbd includes an RC script:
+news/%%PORTNAME%% includes an RC script:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%%
 
-TO START SABNZBD ON BOOT:
-echo 'sabnzbd_enable="YES"' >> /etc/rc.conf
+TO START ON BOOT:
+sysrc %%PORTNAME%%_enable="YES"
 
 START MANUALLY:
 %%PREFIX%%/etc/rc.d/%%PORTNAME%% start
