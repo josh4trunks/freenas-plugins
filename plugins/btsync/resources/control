@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec /usr/pbi/btsync-$(uname -m)/bin/python2.7 /usr/pbi/btsync-$(uname -m)/control.py $*

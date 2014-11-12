@@ -1,8 +1,0 @@
-#!/bin/sh
-
-btsync_path=/usr/pbi/btsync-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'btsync_' /etc/rc.conf > ${tmpfile}
-cat ${btsync_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf
