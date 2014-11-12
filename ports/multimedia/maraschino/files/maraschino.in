@@ -28,11 +28,10 @@ load_rc_config $name
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
-: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$maraschino_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$maraschino_dir/maraschino/Maraschino.py --datadir=$maraschino_data_dir -d --pidfile=$pidfile"
+command_args="%%DATADIR%%/maraschino/Maraschino.py --datadir=$maraschino_data_dir -d --pidfile=$pidfile"
 
 run_rc_command "$1"

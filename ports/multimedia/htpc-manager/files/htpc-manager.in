@@ -28,11 +28,10 @@ load_rc_config $name
 : ${htpc_manager_enable:="NO"}
 : ${htpc_manager_user:="%%USER%%"}
 : ${htpc_manager_group:="%%GROUP%%"}
-: ${htpc_manager_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 : ${htpc_manager_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$htpc_manager_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$htpc_manager_dir/HTPC-Manager/Htpc.py --datadir $htpc_manager_data_dir --daemon --pid $pidfile"
+command_args="%%DATADIR%%/HTPC-Manager/Htpc.py --datadir $htpc_manager_data_dir --daemon --pid $pidfile"
 
 run_rc_command "$1"

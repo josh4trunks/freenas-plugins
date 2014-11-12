@@ -28,11 +28,10 @@ load_rc_config $name
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
-: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$xdm_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$xdm_dir/XDM/XDM.py -b $xdm_data_dir -p $pidfile -d -n"
+command_args="%%DATADIR%%/XDM/XDM.py -b $xdm_data_dir -p $pidfile -d -n"
 
 run_rc_command "$1"

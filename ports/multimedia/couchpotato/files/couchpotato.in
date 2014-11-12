@@ -28,11 +28,10 @@ load_rc_config $name
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
-: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$couchpotato_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$couchpotato_dir/CouchPotatoServer/CouchPotato.py --data_dir $couchpotato_data_dir --pid_file $pidfile --daemon"
+command_args="%%DATADIR%%/CouchPotatoServer/CouchPotato.py --data_dir $couchpotato_data_dir --pid_file $pidfile --daemon"
 
 run_rc_command "$1"

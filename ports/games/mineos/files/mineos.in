@@ -15,7 +15,6 @@ rcvar="${name}_enable"
 load_rc_config $name
 
 : ${%%PORTNAME%%_enable:="NO"}
-: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 
 mineos_base_dir=$(grep -e "^misc.base_directory *= *" %%PREFIX%%/etc/%%PORTNAME%%.conf | cut -d '=' -f2)
 pidfile="/var/run/%%PORTNAME%%.pid"
@@ -25,8 +24,8 @@ extra_commands="update"
 update_cmd="%%PORTNAME%%_update"
 
 start_precmd="export PATH=$PATH:%%PREFIX%%/bin"
-start_postcmd="%%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir restore && %%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir start"
-stop_precmd="export PATH=$PATH:%%PREFIX%%/bin && %%PYTHON_CMD%% $mineos_dir/mineos/mineos_console.py -d $mineos_base_dir stop"
+start_postcmd="%%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d $mineos_base_dir restore && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d $mineos_base_dir start"
+stop_precmd="export PATH=$PATH:%%PREFIX%%/bin && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d $mineos_base_dir stop"
 
 %%PORTNAME%%_update() {
 	%%PREFIX%%/bin/git --git-dir=$mineos_dir/mineos/.git --work-tree=$mineos_dir/mineos pull

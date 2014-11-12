@@ -28,18 +28,17 @@ load_rc_config $name
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
-: ${%%PORTNAME%%_dir:="%%PREFIX%%/share/%%PORTNAME%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="$headphones_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="$headphones_dir/headphones/Headphones.py --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
+command_args="%%DATADIR%%/headphones/Headphones.py --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
         if [ -f $pidfile ]; then
                 if [ ! `pgrep -F $pidfile` ]; then
-                        rm $pidfile
+                        rm -f $pidfile
                         echo "Removing stale pidfile."
                 fi
         fi
