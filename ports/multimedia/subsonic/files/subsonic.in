@@ -49,6 +49,10 @@ start_precmd="%%PORTNAME%%_prestart"
 
 	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
 		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
+		if [ -f %%PREFIX%%/bin/ffmpeg ]; then
+			install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}/transcode
+			ln -s %%PREFIX%%/bin/ffmpeg ${%%PORTNAME%%_data_dir}/transcode
+		fi
 	fi
 }
 

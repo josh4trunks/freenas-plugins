@@ -33,9 +33,6 @@ OPTIONS_DEFAULT=	TRANSCODING
 
 .if ${PORT_OPTIONS:MTRANSCODING}
 RUN_DEPENDS+=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
-PLIST_SUB+=	TRANSCODING=""
-.else
-PLIST_SUB+=	TRANSCODING="@comment "
 .endif
 
 do-install:
