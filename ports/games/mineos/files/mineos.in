@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# %%PORTNAME%%_enable (bool):		Set to NO by default.
+# 				Set it to YES to enable it.
+
+. /etc/rc.subr
+name="%%PORTNAME%%"
+rcvar="${name}_enable"
+load_rc_config $name
+
+: ${%%PORTNAME%%_enable:="NO"}
+
+mineos_base_dir=$(grep -e "^misc.base_directory *= *" %%PREFIX%%/etc/%%PORTNAME%%.conf | cut -d '=' -f2)
+pidfile="/var/run/%%PORTNAME%%.pid"
+command="%%PYTHON_CMD%%"
+command_args="$mineos_dir/mineos/server.py -c %%PREFIX%%/etc/%%PORTNAME%%.conf"
+extra_commands="update"
+update_cmd="%%PORTNAME%%_update"
+
+start_precmd="export PATH=$PATH:%%PREFIX%%/bin"
+start_postcmd="%%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d $mineos_base_dir restore && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d $mineos_base_dir start"
+stop_precmd="export PATH=$PATH:%%PREFIX%%/bin && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d $mineos_base_dir stop"
+
+%%PORTNAME%%_update() {
+	%%PREFIX%%/bin/git --git-dir=$mineos_dir/mineos/.git --work-tree=$mineos_dir/mineos pull
+}
+
+run_rc_command "$1"

@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# %%PORTNAME%%_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# %%PORTNAME%%_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# %%PORTNAME%%_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+# %%PORTNAME%%_data_dir:	Directory where %%PORTNAME%% configuration
+#			data is stored.
+#			Default: /var/db/%%PORTNAME%%
+
+. /etc/rc.subr
+name="%%PORTNAME%%"
+rcvar="${name}_enable"
+load_rc_config ${name}
+
+: ${%%PORTNAME%%_enable:="NO"}
+: ${%%PORTNAME%%_user:="%%USER%%"}
+: ${%%PORTNAME%%_group:="%%GROUP%%"}
+: ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
+
+. %%PREFIX%%/etc/%%PORTNAME%%.conf
+if $SUBSONIC_SSL; then
+	subsonic_ssl_flags="-Dsubsonic.httpsPort=${SUBSONIC_PORT}" && SUBSONIC_PORT="0"
+	if [ ! -z ${SUBSONIC_SSL_KEYSTORE} ]; then
+		subsonic_ssl_flags=${subsonic_ssl_flags}" -Dsubsonic.ssl.keystore=${SUBSONIC_SSL_KEYSTORE} -Dsubsonic.ssl.password=${SUBSONIC_SSL_PASSWORD}"
+	fi
+fi
+
+subsonic_chdir="%%DATADIR%%/Subsonic"
+command="/usr/sbin/daemon"
+procname="%%JAVA_CMD%%"
+command_args="-f ${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subsonic_data_dir} -Dsubsonic.port=${SUBSONIC_PORT} ${subsonic_ssl_flags} -Dsubsonic.contextPath=${SUBSONIC_CONTEXT_PATH} -Djava.awt.headless=true -jar %%DATADIR%%/subsonic-booter-jar-with-dependencies.jar"
+
+start_precmd="%%PORTNAME%%_prestart"
+%%PORTNAME%%_prestart() {
+	export LC_CTYPE="$SUBSONIC_LOCALE"
+
+	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
+		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
+		if [ -f %%PREFIX%%/bin/ffmpeg ]; then
+			install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}/transcode
+			ln -s %%PREFIX%%/bin/ffmpeg ${%%PORTNAME%%_data_dir}/transcode
+		fi
+	fi
+}
+
+run_rc_command "$1"

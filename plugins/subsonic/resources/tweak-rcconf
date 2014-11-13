@@ -1,0 +1,8 @@
+#!/bin/sh
+
+subsonic_path=/usr/pbi/subsonic-$(uname -m)
+tmpfile=$(mktemp /tmp/.XXXXXX)
+
+grep -v 'subsonic_' /etc/rc.conf > ${tmpfile}
+cat ${subsonic_path}/etc/rc.conf >> ${tmpfile}
+mv ${tmpfile} /etc/rc.conf

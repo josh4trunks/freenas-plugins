@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# PROVIDE: %%PORTNAME%%
+# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# htpc_manager_enable (bool):	Set to NO by default.
+#			Set it to YES to enable it.
+# htpc_manager_user:	The user account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%USER%%' user by
+#			default. Do not sets it as empty or it will run
+#			as root.
+# htpc_manager_group:	The group account %%PORTNAME%% daemon runs as what
+#			you want it to be. It uses '%%GROUP%%' group by
+#			default. Do not sets it as empty or it will run
+#			as wheel.
+# htpc_manager_data_dir:	Directory where %%PORTNAME%% configuration
+#				data is stored.
+#				Default: /var/db/%%PORTNAME%%
+
+. /etc/rc.subr
+name="htpc_manager"
+rcvar="${name}_enable"
+load_rc_config ${name}
+
+: ${htpc_manager_enable:="NO"}
+: ${htpc_manager_user:="%%USER%%"}
+: ${htpc_manager_group:="%%GROUP%%"}
+: ${htpc_manager_data_dir:="/var/db/%%PORTNAME%%"}
+
+pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
+command="%%PYTHON_CMD%%"
+command_args="%%DATADIR%%/HTPC-Manager/Htpc.py --datadir ${htpc_manager_data_dir} --daemon --pid ${pidfile}"
+
+start_precmd="%%PORTNAME%%_prestart"
+%%PORTNAME%%_prestart() {
+	if [ ! -d ${pidfile%/*} ]; then
+		install -d -o ${htpc_manager_user} -g ${htpc_manager_group} ${pidfile%/*}
+	fi
+
+	if [ ! -d ${htpc_manager_data_dir} ]; then
+		install -d -o ${htpc_manager_user} -g ${htpc_manager_group} ${htpc_manager_data_dir}
+	fi
+}
+
+run_rc_command "$1"

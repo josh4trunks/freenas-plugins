@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/sabnzbd-$(uname -m)/bin/python2.7 /usr/pbi/sabnzbd-$(uname -m)/control.py $*

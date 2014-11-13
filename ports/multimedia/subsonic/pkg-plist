@@ -1,0 +1,6 @@
+@unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
+%%DATADIR%%/Subsonic/subsonic-booter-jar-with-dependencies.jar
+%%DATADIR%%/Subsonic/subsonic.war
+@dirrmtry %%DATADIR%%/Subsonic
+@dirrmtry %%DATADIR%%
+@sample etc/%%PORTNAME%%.conf.sample

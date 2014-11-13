@@ -1,0 +1,15 @@
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+multimedia/%%PORTNAME%% includes an RC script:
+%%PREFIX%%/etc/rc.d/%%PORTNAME%%
+
+TO START ON BOOT:
+sysrc %%PORTNAME%%_enable="YES"
+
+START MANUALLY:
+%%PREFIX%%/etc/rc.d/%%PORTNAME%% start
+
+Once started, visit the following to configure:
+http://localhost:5050/
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *

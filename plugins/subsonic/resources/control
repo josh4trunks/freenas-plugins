@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/subsonic-$(uname -m)/bin/python2.7 /usr/pbi/subsonic-$(uname -m)/control.py $*
