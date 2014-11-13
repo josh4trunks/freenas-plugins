@@ -2013,6 +2013,4 @@
 %%DATADIR%%/XDM/xdm/web/fileBrowser.py
 %%DATADIR%%/XDM/xdm/web/wizard.py
 @unexec rm -r %D/share/%%PORTNAME%%
-@unexec rmdir /var/db/%%PORTNAME%%
-@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*

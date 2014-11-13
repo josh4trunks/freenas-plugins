@@ -5,8 +5,6 @@
 @dirrmtry %%DATADIR%%
 %%TRANSCODING%%@unexec unlink /var/db/%%PORTNAME%%/transcode/ffmpeg
 %%TRANSCODING%%@unexec rmdir /var/db/%%PORTNAME%%/transcode
-@unexec rmdir /var/db/%%PORTNAME%%
-@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
 %%TRANSCODING%%@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%/transcode
 %%TRANSCODING%%@exec ln -s %D/bin/ffmpeg /var/db/%%PORTNAME%%/transcode/ffmpeg
 @sample etc/%%PORTNAME%%.conf.sample

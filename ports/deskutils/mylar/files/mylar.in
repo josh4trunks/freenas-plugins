@@ -23,7 +23,7 @@
 . /etc/rc.subr
 name="%%PORTNAME%%"
 rcvar="${name}_enable"
-load_rc_config $name
+load_rc_config ${name}
 
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
@@ -32,15 +32,19 @@ load_rc_config $name
 
 pidfile="$mylar_data_dir/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/mylar/Mylar.py --datadir $mylar_data_dir -d --pidfile $pidfile -q --nolaunch"
+command_args="%%DATADIR%%/mylar/Mylar.py --datadir ${mylar_data_dir} -d --pidfile ${pidfile} -q --nolaunch"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
-	if [ -f $pidfile ]; then
-		if [ ! `pgrep -F $pidfile` ]; then
-			rm -f $pidfile
-			echo "Removing stale pidfile."
-		fi
+	if [ -f ${pidfile} ]; then
+		rm -f ${pidfile}
+		echo "Removing stale pidfile."
+	elif [ ! -d ${pidfile%/*} ]; then
+		install -d -o $%%PORTNAME%%_user -g $%%PORTNAME%%_group ${pidfile%/*}
+	fi
+
+	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
+		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
 	fi
 }
 

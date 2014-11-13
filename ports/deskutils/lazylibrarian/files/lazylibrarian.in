@@ -23,15 +23,26 @@
 . /etc/rc.subr
 name="%%PORTNAME%%"
 rcvar="${name}_enable"
-load_rc_config $name
+load_rc_config ${name}
 
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
-pidfile="$lazylibrarian_data_dir/%%PORTNAME%%.pid"
+pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/LazyLibrarian/LazyLibrarian.py --datadir=$lazylibrarian_data_dir -d -p $pidfile -q --nolaunch >/dev/null 2>&1"
+command_args="%%DATADIR%%/LazyLibrarian/LazyLibrarian.py --datadir=${lazylibrarian_data_dir} -d -p ${pidfile} -q --nolaunch >/dev/null 2>&1"
+
+start_precmd="%%PORTNAME%%_prestart"
+%%PORTNAME%%_prestart() {
+	if [ ! -d ${pidfile%/*} ]; then
+		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${pidfile%/*}
+	fi
+
+	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
+		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
+	fi
+}
 
 run_rc_command "$1"

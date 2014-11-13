@@ -23,25 +23,29 @@
 . /etc/rc.subr
 name="%%PORTNAME%%"
 rcvar="${name}_enable"
-load_rc_config $name
+load_rc_config ${name}
 
 : ${%%PORTNAME%%_enable:="NO"}
 : ${%%PORTNAME%%_user:="%%USER%%"}
 : ${%%PORTNAME%%_group:="%%GROUP%%"}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
-pidfile="$headphones_data_dir/%%PORTNAME%%.pid"
+pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/headphones/Headphones.py --datadir $headphones_data_dir --pidfile $pidfile -d --nolaunch"
+command_args="%%DATADIR%%/headphones/Headphones.py --datadir ${headphones_data_dir} --pidfile ${pidfile} -d --nolaunch"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
-        if [ -f $pidfile ]; then
-                if [ ! `pgrep -F $pidfile` ]; then
-                        rm -f $pidfile
-                        echo "Removing stale pidfile."
-                fi
-        fi
+	if [ -f $pidfile ]; then
+		rm -f $pidfile
+		echo "Removing stale pidfile."
+	elif [ ! -d ${pidfile%/*} ]; then
+		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${pidfile%/*}
+	fi
+
+	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
+		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
+	fi
 }
 
 run_rc_command "$1"

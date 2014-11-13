@@ -23,15 +23,26 @@
 . /etc/rc.subr
 name="htpc_manager"
 rcvar="${name}_enable"
-load_rc_config $name
+load_rc_config ${name}
 
 : ${htpc_manager_enable:="NO"}
 : ${htpc_manager_user:="%%USER%%"}
 : ${htpc_manager_group:="%%GROUP%%"}
 : ${htpc_manager_data_dir:="/var/db/%%PORTNAME%%"}
 
-pidfile="$htpc_manager_data_dir/%%PORTNAME%%.pid"
+pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/HTPC-Manager/Htpc.py --datadir $htpc_manager_data_dir --daemon --pid $pidfile"
+command_args="%%DATADIR%%/HTPC-Manager/Htpc.py --datadir ${htpc_manager_data_dir} --daemon --pid ${pidfile}"
+
+start_precmd="%%PORTNAME%%_prestart"
+%%PORTNAME%%_prestart() {
+	if [ ! -d ${pidfile%/*} ]; then
+		install -d -o ${htpc_manager_user} -g ${htpc_manager_group} ${pidfile%/*}
+	fi
+
+	if [ ! -d ${htpc_manager_data_dir} ]; then
+		install -d -o ${htpc_manager_user} -g ${htpc_manager_group} ${htpc_manager_data_dir}
+	fi
+}
 
 run_rc_command "$1"

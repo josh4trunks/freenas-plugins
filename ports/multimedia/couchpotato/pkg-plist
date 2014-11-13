@@ -1016,6 +1016,4 @@
 %%DATADIR%%/CouchPotatoServer/license.txt
 %%DATADIR%%/CouchPotatoServer/version.py
 @unexec rm -r %D/share/%%PORTNAME%%
-@unexec rmdir /var/db/%%PORTNAME%%
-@exec install -o %%USER%% -g %%GROUP%% -d /var/db/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
