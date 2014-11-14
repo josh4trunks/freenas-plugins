@@ -1,6 +1,5 @@
-import os
+from subprocess import Popen, PIPE
 import json
-import tempfile
 import time
 import urllib2
 
@@ -11,19 +10,9 @@ from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils import simplejson
 
-from subprocess import Popen, PIPE
-
 import jsonrpclib
 import oauth2 as oauth
-import xml.etree.ElementTree as ET
-
-from plexmediaserverUI.freenas import forms, models, utils
-
-PLEXMEDIASERVER_PATH = "/var/db/plexdata/Plex Media Server"
-PLEXMEDIASERVER_PREFERENCES_XML = os.path.join(
-    PLEXMEDIASERVER_PATH,
-    "Preferences.xml"
-)
+from btsyncUI.freenas import forms, models, utils
 
 from syslog import *
 
@@ -47,10 +36,7 @@ class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
         params['oauth_consumer_key'] = consumer.key
         params.update(moreparams)
 
-        req = oauth.Request(method='POST',
-            url=url,
-            parameters=params,
-            body=body)
+        req = oauth.Request(method='POST', url=url, parameters=params, body=body)
         signature_method = oauth.SignatureMethod_HMAC_SHA1()
         req.sign_request(signature_method, consumer, None)
         return req
@@ -177,12 +163,10 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (plexmediaserver_key,
-    plexmediaserver_secret) = utils.get_plexmediaserver_oauth_creds()
+    (btsync_key, btsync_secret) = utils.get_btsync_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=plexmediaserver_key,
-        secret=plexmediaserver_secret)
+    trans = OAuthTransport(url, key=btsync_key, secret=btsync_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -192,28 +176,25 @@ def start(request, plugin_id):
     assert auth
 
     try:
-        plexmediaserver = models.PlexMediaServer.objects.order_by('-id')[0]
-        plexmediaserver.enable = True
-        plexmediaserver.save()
+        btsync = models.BtSync.objects.order_by('-id')[0]
+        btsync.enable = True
+        btsync.save()
     except IndexError:
-        plexmediaserver = models.PlexMediaServer.objects.create(enable=True)
+        btsync = models.BtSync.objects.create(enable=True)
 
     try:
-        form = forms.PlexMediaServerForm(plexmediaserver.__dict__,
-            instance=plexmediaserver,
-            jail_path=jail_path)
+        form = forms.BtSyncForm(btsync.__dict__, instance=btsync, jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
         return HttpResponse(simplejson.dumps({
             'error': True,
-            'message': ('PlexMediaServer data did not validate, configure '
+            'message': ('BtSync data did not validate, configure '
                 'it first.'),
             }), content_type='application/json')
 
-    cmd = "%s onestart" % utils.plexmediaserver_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-        shell=True, close_fds=True)
+    cmd = "%s onestart" % utils.btsync_control
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -223,11 +204,9 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (plexmediaserver_key,
-    plexmediaserver_secret) = utils.get_plexmediaserver_oauth_creds()
+    (btsync_key, btsync_secret) = utils.get_btsync_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=plexmediaserver_key,
-        secret=plexmediaserver_secret)
+    trans = OAuthTransport(url, key=btsync_key, secret=btsync_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -237,22 +216,22 @@ def stop(request, plugin_id):
     assert auth
 
     try:
-        plexmediaserver = models.PlexMediaServer.objects.order_by('-id')[0]
-        plexmediaserver.enable = False
-        plexmediaserver.save()
+        btsync = models.BtSync.objects.order_by('-id')[0]
+        btsync.enable = False
+        btsync.save()
     except IndexError:
-        plexmediaserver = models.PlexMediaServer.objects.create(enable=False)
+        btsync = models.BtSync.objects.create(enable=False)
 
     try:
-        form = forms.PlexMediaServerForm(plexmediaserver.__dict__,
-            instance=plexmediaserver,
+        form = forms.BtSyncForm(btsync.__dict__,
+            instance=btsync,
             jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
         pass
 
-    cmd = "%s onestop" % utils.plexmediaserver_control
+    cmd = "%s onestop" % utils.btsync_control
     pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
         shell=True, close_fds=True)
 
@@ -264,26 +243,28 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (plexmediaserver_key,
-    plexmediaserver_secret) = utils.get_plexmediaserver_oauth_creds()
+    (btsync_key, btsync_secret) = utils.get_btsync_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=plexmediaserver_key,
-        secret=plexmediaserver_secret)
+    trans = OAuthTransport(url, key=btsync_key, secret=btsync_secret)
 
     """
-    Get the PlexMediaServer object
+    Get the BtSync object
     If it does not exist create a new entry
     """
     try:
-        plexmediaserver = models.PlexMediaServer.objects.order_by('-id')[0]
+        btsync = models.BtSync.objects.order_by('-id')[0]
     except IndexError:
-        plexmediaserver = models.PlexMediaServer.objects.create()
+        btsync = models.BtSync.objects.create()
 
     try:
         server = jsonrpclib.Server(url, transport=trans)
         jail_path = server.plugins.jail.path(plugin_id)
         jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
         jail_ipv4 = jail['jail_ipv4'].split('/')[0]
+	if btsync.force_https:
+            scheme = "https"
+        else:
+            scheme = "http"
         auth = server.plugins.is_authenticated(
             request.COOKIES.get("sessionid", "")
             )
@@ -292,62 +273,25 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.PlexMediaServerForm(instance=plexmediaserver,
-            jail_path=jail_path)
+        form = forms.BtSyncForm(instance=btsync, jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
-            'ipv4': jail_ipv4
+            'ipv4': jail_ipv4,
+            'scheme' : scheme,
+            'port': btsync.webui_port
         })
 
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.PlexMediaServerForm(request.POST,
-        instance=plexmediaserver,
-        jail_path=jail_path)
+    form = forms.BtSyncForm(request.POST, instance=btsync, jail_path=jail_path)
     if form.is_valid():
         form.save()
 
-        cmd = "%s restart" % utils.plexmediaserver_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-            shell=True, close_fds=True)
-        out = pipe.communicate()[0]
+        cmd = "%s restart" % utils.btsync_control
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
 
-        plexmediaserver = models.PlexMediaServer.objects.order_by('-id')[0]
-        if plexmediaserver.disable_remote_security and \
-            os.path.exists(PLEXMEDIASERVER_PREFERENCES_XML):
-            preferences = tempfile.mktemp(dir='/tmp/')
-
-            tree = ET.parse(PLEXMEDIASERVER_PREFERENCES_XML)
-            root = tree.getroot()
-
-            if 'disableRemoteSecurity' not in root.attrib:
-                root.attrib['disableRemoteSecurity'] = "1"
-
-            tree.write(preferences)
-            if os.path.exists(preferences):  
-                cmd = "/bin/mv '%s' '%s'" % (preferences, PLEXMEDIASERVER_PREFERENCES_XML)
-                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-                    shell=True, close_fds=True)
-                out = pipe.communicate()[0]
-
-                cmd = "chmod 600 '%s'" % PLEXMEDIASERVER_PREFERENCES_XML
-                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-                    shell=True, close_fds=True)
-                out = pipe.communicate()[0]
-
-                cmd = "chown plex:plex '%s'" % PLEXMEDIASERVER_PREFERENCES_XML
-                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-                    shell=True, close_fds=True)
-                out = pipe.communicate()[0]
-
-                cmd = "%s restart" % utils.plexmediaserver_control
-                pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-                    shell=True, close_fds=True)
-                out = pipe.communicate()[0]
-
-        return JsonResponse(request, error=True,
-            message="PlexMediaServer settings successfully saved.")
+        return JsonResponse(request, error=True, message="BtSync settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
@@ -360,21 +304,19 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (plexmediaserver_key,
-    plexmediaserver_secret) = utils.get_plexmediaserver_oauth_creds()
+    (btsync_key, btsync_secret) = utils.get_btsync_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=plexmediaserver_key,
-        secret=plexmediaserver_secret)
+    trans = OAuthTransport(url, key=btsync_key, secret=btsync_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
     number = jail_name.rsplit('_', 1)
-    name = "PlexMediaServer"
+    name = "BtSync"
     if len(number) == 2:
         try:
             number = int(number)
             if number > 1:
-                name = "PlexMediaServer (%d)" % number
+                name = "BtSync (%d)" % number
         except:
             pass
 
@@ -383,8 +325,8 @@ def treemenu(request, plugin_id):
         'append_to': 'plugins',
         'icon': reverse('treemenu_icon', kwargs={'plugin_id': plugin_id}),
         'type': 'pluginsfcgi',
-        'url': reverse('plexmediaserver_edit', kwargs={'plugin_id': plugin_id}),
-        'kwargs': {'plugin_name': 'plexmediaserver', 'plugin_id': plugin_id },
+        'url': reverse('btsync_edit', kwargs={'plugin_id': plugin_id}),
+        'kwargs': {'plugin_name': 'btsync', 'plugin_id': plugin_id },
     }
 
     return HttpResponse(json.dumps([plugin]), content_type='application/json')
@@ -402,7 +344,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/plexmediaserver", "onestatus"],
+    proc = Popen(["/usr/local/etc/rc.d/btsync", "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 
@@ -423,7 +365,7 @@ def status(request, plugin_id):
 
 def treemenu_icon(request, plugin_id):
 
-    with open(utils.plexmediaserver_icon, 'rb') as f:
+    with open(utils.btsync_icon, 'rb') as f:
         icon = f.read()
 
     return HttpResponse(icon, content_type='image/png')

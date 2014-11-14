@@ -29,5 +29,6 @@ class PlexMediaServerForm(forms.ModelForm):
         with open(rcconf, "w") as f:
             if obj.enable:
                 f.write('plexmediaserver_enable="YES"\n')
+                f.write('plexmediaserver_support_path="/var/db/plexdata"')
 
         os.system(os.path.join(utils.plexmediaserver_pbi_path, "tweak-rcconf"))
