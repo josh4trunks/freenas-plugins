@@ -1,8 +1,0 @@
-#!/bin/sh
-
-couchpotato_path=/usr/pbi/couchpotato-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'couchpotato_' /etc/rc.conf > ${tmpfile}
-cat ${couchpotato_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

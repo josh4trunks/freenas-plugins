@@ -1,10 +1,6 @@
-from subprocess import Popen, PIPE
-import hashlib
-import os
 import platform
 
 couchpotato_pbi_path = "/usr/pbi/couchpotato-" + platform.machine()
-couchpotato_etc_path = os.path.join(couchpotato_pbi_path, "etc")
 couchpotato_fcgi_pidfile = "/var/run/couchpotato_fcgi_server.pid"
 couchpotato_control = "/usr/local/etc/rc.d/couchpotato"
 couchpotato_icon = os.path.join(couchpotato_pbi_path, "default.png")

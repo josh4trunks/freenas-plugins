@@ -338,9 +338,8 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/couchpotato", "onestatus"],
-        stdout=PIPE,
-        stderr=PIPE)
+    cmd = "%s onestatus" % utils.couchpotato_control
+    proc = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE)
 
     stdout = proc.communicate()[0]
 

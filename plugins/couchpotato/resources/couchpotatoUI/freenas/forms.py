@@ -1,3 +1,4 @@
+from subprocess import Popen
 import hashlib
 import json
 import os
@@ -23,9 +24,7 @@ class CouchPotatoForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(CouchPotatoForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.couchpotato_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('couchpotato_enable="YES"\n')
-
-        os.system(os.path.join(utils.couchpotato_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc","couchpotato_enable=\"YES\""])
+        else:
+            Popen(["/usr/sbin/sysrc","couchpotato_enable=\"NO\""])
