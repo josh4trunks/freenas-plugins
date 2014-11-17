@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 syncthing_pbi_path = "/usr/pbi/syncthing-" + platform.machine()
-syncthing_etc_path = os.path.join(syncthing_pbi_path, "etc")
 syncthing_fcgi_pidfile = "/var/run/syncthing_fcgi_server.pid"
 syncthing_control = "/usr/local/etc/rc.d/syncthing"
 syncthing_icon = os.path.join(syncthing_pbi_path, "default.png")

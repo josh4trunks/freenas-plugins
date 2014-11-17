@@ -338,9 +338,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/syncthing", "onestatus"],
-        stdout=PIPE,
-        stderr=PIPE)
+    proc = Popen([utils.syncthing_control, "onestatus"], stdout=PIPE, stderr=PIPE)
 
     stdout = proc.communicate()[0]
 
