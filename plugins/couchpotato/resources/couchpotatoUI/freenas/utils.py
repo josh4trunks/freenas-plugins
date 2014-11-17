@@ -1,3 +1,5 @@
+import hashlib
+import os
 import platform
 
 couchpotato_pbi_path = "/usr/pbi/couchpotato-" + platform.machine()

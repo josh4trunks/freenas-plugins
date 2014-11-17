@@ -43,9 +43,9 @@ class BtSyncForm(forms.ModelForm):
         obj = super(BtSyncForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc","btsync_enable=YES"]).wait()
+            Popen(["/usr/sbin/sysrc", "btsync_enable=YES"]).wait()
         else:
-            Popen(["/usr/sbin/sysrc","btsync_enable=NO"]).wait()
+            Popen(["/usr/sbin/sysrc", "btsync_enable=NO"]).wait()
 
         settingsfile = os.path.join(utils.btsync_etc_path, "btsync.conf")
         if os.path.exists(settingsfile):

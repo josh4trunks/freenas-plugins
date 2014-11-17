@@ -1,7 +1,6 @@
-from subprocess import Popen
+from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -25,6 +24,6 @@ class CouchPotatoForm(forms.ModelForm):
         obj = super(CouchPotatoForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc","couchpotato_enable=\"YES\""])
+            Popen(["/usr/sbin/sysrc", "couchpotato_enable=YES"], stdout=PIPE, stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc","couchpotato_enable=\"NO\""])
+            Popen(["/usr/sbin/sysrc", "couchpotato_enable=NO"], stdout=PIPE, stderr=PIPE)

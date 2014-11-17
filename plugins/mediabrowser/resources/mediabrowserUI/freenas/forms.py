@@ -24,6 +24,6 @@ class MediaBrowserForm(forms.ModelForm):
         obj = super(MediaBrowserForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc","mediabrowser_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mediabrowser_enable=YES"], stdout=PIPE, stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc","mediabrowser_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mediabrowser_enable=NO"], stdout=PIPE, stderr=PIPE)
