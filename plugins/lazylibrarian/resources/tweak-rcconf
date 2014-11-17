@@ -1,8 +1,0 @@
-#!/bin/sh
-
-lazylibrarian_path=/usr/pbi/lazylibrarian-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'lazylibrarian_' /etc/rc.conf > ${tmpfile}
-cat ${lazylibrarian_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mylar_path=/usr/pbi/mylar-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'mylar_' /etc/rc.conf > ${tmpfile}
-cat ${mylar_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

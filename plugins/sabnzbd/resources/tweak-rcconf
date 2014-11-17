@@ -1,8 +1,0 @@
-#!/bin/sh
-
-sabnzbd_path=/usr/pbi/sabnzbd-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'sabnzbd_' /etc/rc.conf > ${tmpfile}
-cat ${sabnzbd_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf
