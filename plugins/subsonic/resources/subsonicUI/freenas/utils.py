@@ -1,4 +1,3 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
