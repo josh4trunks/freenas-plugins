@@ -1,6 +1,6 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -23,9 +23,7 @@ class HTPCManagerForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(HTPCManagerForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.htpcmanager_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('htpc_manager_enable="YES"\n')
-
-        os.system(os.path.join(utils.htpcmanager_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "htpc_manager_enable=YES"], stdout=PIPE, stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "htpc_manager_enable=NO"], stdout=PIPE, stderr=PIPE)

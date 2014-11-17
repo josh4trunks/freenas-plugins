@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 htpcmanager_pbi_path = "/usr/pbi/htpc-manager-" + platform.machine()
-htpcmanager_etc_path = os.path.join(htpcmanager_pbi_path, "etc")
 htpcmanager_fcgi_pidfile = "/var/run/htpc-manager_fcgi_server.pid"
 htpcmanager_control = "/usr/local/etc/rc.d/htpc-manager"
 htpcmanager_icon = os.path.join(htpcmanager_pbi_path, "default.png")

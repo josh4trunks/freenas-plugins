@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
 import os
@@ -23,9 +24,7 @@ class MylarForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(MylarForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.mylar_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('mylar_enable="YES"\n')
-
-        os.system(os.path.join(utils.mylar_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "mylar_enable=YES"], stdout=PIPE, stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "mylar_enable=NO"], stdout=PIPE, stderr=PIPE)

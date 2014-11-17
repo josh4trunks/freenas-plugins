@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 xdm_pbi_path = "/usr/pbi/xdm-" + platform.machine()
-xdm_etc_path = os.path.join(xdm_pbi_path, "etc")
 xdm_fcgi_pidfile = "/var/run/xdm_fcgi_server.pid"
 xdm_control = "/usr/local/etc/rc.d/xdm"
 xdm_icon = os.path.join(xdm_pbi_path, "default.png")

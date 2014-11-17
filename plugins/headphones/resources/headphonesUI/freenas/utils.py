@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 headphones_pbi_path = "/usr/pbi/headphones-" + platform.machine()
-headphones_etc_path = os.path.join(headphones_pbi_path, "etc")
 headphones_fcgi_pidfile = "/var/run/headphones_fcgi_server.pid"
 headphones_control = "/usr/local/etc/rc.d/headphones"
 headphones_icon = os.path.join(headphones_pbi_path, "default.png")

@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 sabnzbd_pbi_path = "/usr/pbi/sabnzbd-" + platform.machine()
-sabnzbd_etc_path = os.path.join(sabnzbd_pbi_path, "etc")
 sabnzbd_fcgi_pidfile = "/var/run/sabnzbd_fcgi_server.pid"
 sabnzbd_control = "/usr/local/etc/rc.d/sabnzbd"
 sabnzbd_icon = os.path.join(sabnzbd_pbi_path, "default.png")

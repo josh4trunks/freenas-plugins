@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 mylar_pbi_path = "/usr/pbi/mylar-" + platform.machine()
-mylar_etc_path = os.path.join(mylar_pbi_path, "etc")
 mylar_fcgi_pidfile = "/var/run/mylar_fcgi_server.pid"
 mylar_control = "/usr/local/etc/rc.d/mylar"
 mylar_icon = os.path.join(mylar_pbi_path, "default.png")

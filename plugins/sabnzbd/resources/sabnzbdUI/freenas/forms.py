@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
 import os
@@ -25,9 +26,7 @@ class SABnzbdForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(SABnzbdForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.sabnzbd_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('sabnzbd_enable="YES"\n')
-
-        os.system(os.path.join(utils.sabnzbd_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "sabnzbd_enable=YES"], stdout=PIPE, stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "sabnzbd_enable=NO"], stdout=PIPE, stderr=PIPE)

@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 lazylibrarian_pbi_path = "/usr/pbi/lazylibrarian-" + platform.machine()
-lazylibrarian_etc_path = os.path.join(lazylibrarian_pbi_path, "etc")
 lazylibrarian_fcgi_pidfile = "/var/run/lazylibrarian_fcgi_server.pid"
 lazylibrarian_control = "/usr/local/etc/rc.d/lazylibrarian"
 lazylibrarian_icon = os.path.join(lazylibrarian_pbi_path, "default.png")
