@@ -1,6 +1,6 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -25,10 +25,7 @@ class PlexMediaServerForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(PlexMediaServerForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.plexmediaserver_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('plexmediaserver_enable="YES"\n')
-                f.write('plexmediaserver_support_path="/var/db/plexdata"')
-
-        os.system(os.path.join(utils.plexmediaserver_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "plexmediaserver_enable=YES"], stdout=PIPE, stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "plexmediaserver_enable=NO"], stdout=PIPE, stderr=PIPE)
