@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 mediabrowser_pbi_path = "/usr/pbi/mediabrowser-" + platform.machine()
-mediabrowser_etc_path = os.path.join(mediabrowser_pbi_path, "etc")
 mediabrowser_fcgi_pidfile = "/var/run/mediabrowser_fcgi_server.pid"
 mediabrowser_control = "/usr/local/etc/rc.d/mediabrowser"
 mediabrowser_icon = os.path.join(mediabrowser_pbi_path, "default.png")

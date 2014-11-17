@@ -338,9 +338,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/mediabrowser", "onestatus"],
-        stdout=PIPE,
-        stderr=PIPE)
+    proc = Popen([utils.mediabrowser_control, "onestatus"], stdout=PIPE, stderr=PIPE)
 
     stdout = proc.communicate()[0]
 
