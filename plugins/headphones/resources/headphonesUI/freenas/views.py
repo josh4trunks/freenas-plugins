@@ -14,7 +14,6 @@ import jsonrpclib
 import oauth2 as oauth
 from headphonesUI.freenas import forms, models, utils
 
-from syslog import *
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -36,7 +35,10 @@ class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
         params['oauth_consumer_key'] = consumer.key
         params.update(moreparams)
 
-        req = oauth.Request(method='POST', url=url, parameters=params, body=body)
+        req = oauth.Request(method='POST',
+            url=url,
+            parameters=params,
+            body=body)
         signature_method = oauth.SignatureMethod_HMAC_SHA1()
         req.sign_request(signature_method, consumer, None)
         return req
@@ -163,10 +165,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (headphones_key, headphones_secret) = utils.get_headphones_oauth_creds()
+    (headphones_key,
+    headphones_secret) = utils.get_headphones_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=headphones_key, secret=headphones_secret)
+    trans = OAuthTransport(url, key=headphones_key,
+        secret=headphones_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -204,9 +208,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (headphones_key, headphones_secret) = utils.get_headphones_oauth_creds()
+    (headphones_key,
+    headphones_secret) = utils.get_headphones_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=headphones_key, secret=headphones_secret)
+    trans = OAuthTransport(url, key=headphones_key,
+        secret=headphones_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -243,9 +249,11 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (headphones_key, headphones_secret) = utils.get_headphones_oauth_creds()
+    (headphones_key,
+    headphones_secret) = utils.get_headphones_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=headphones_key, secret=headphones_secret)
+    trans = OAuthTransport(url, key=headphones_key,
+        secret=headphones_secret)
 
     """
     Get the Headphones object
@@ -298,9 +306,11 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (headphones_key, headphones_secret) = utils.get_headphones_oauth_creds()
+    (headphones_key,
+    headphones_secret) = utils.get_headphones_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=headphones_key, secret=headphones_secret)
+    trans = OAuthTransport(url, key=headphones_key,
+        secret=headphones_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
@@ -338,7 +348,9 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen([utils.headphones_control, "onestatus"], stdout=PIPE, stderr=PIPE)
+    proc = Popen([utils.headphones_control, "onestatus"],
+        stdout=PIPE,
+        stderr=PIPE)
 
     stdout = proc.communicate()[0]
 

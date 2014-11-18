@@ -15,7 +15,6 @@ import jsonrpclib
 import oauth2 as oauth
 from mineosUI.freenas import forms, models, utils
 
-from syslog import *
 
 def _linprocfs_check(linprocfs_path):
     try:
@@ -59,7 +58,10 @@ class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
         params['oauth_consumer_key'] = consumer.key
         params.update(moreparams)
 
-        req = oauth.Request(method='POST', url=url, parameters=params, body=body)
+        req = oauth.Request(method='POST',
+            url=url,
+            parameters=params,
+            body=body)
         signature_method = oauth.SignatureMethod_HMAC_SHA1()
         req.sign_request(signature_method, consumer, None)
         return req
@@ -186,10 +188,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -229,9 +233,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -275,9 +281,11 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
 
     """
     Get the MineOS object
@@ -337,9 +345,11 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
@@ -377,7 +387,9 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen([utils.mineos_control, "onestatus"], stdout=PIPE, stderr=PIPE)
+    proc = Popen([utils.mineos_control, "onestatus"],
+        stdout=PIPE,
+        stderr=PIPE)
 
     stdout = proc.communicate()[0]
 

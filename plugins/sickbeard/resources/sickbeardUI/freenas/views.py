@@ -14,7 +14,6 @@ import jsonrpclib
 import oauth2 as oauth
 from sickbeardUI.freenas import forms, models, utils
 
-from syslog import *
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -166,10 +165,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=sickbeard_key, secret=sickbeard_secret)
+    trans = OAuthTransport(url, key=sickbeard_key,
+        secret=sickbeard_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -207,9 +208,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=sickbeard_key, secret=sickbeard_secret)
+    trans = OAuthTransport(url, key=sickbeard_key,
+        secret=sickbeard_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -246,9 +249,11 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=sickbeard_key, secret=sickbeard_secret)
+    trans = OAuthTransport(url, key=sickbeard_key,
+        secret=sickbeard_secret)
 
     """
     Get the SickBeard object
@@ -301,7 +306,8 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
     url = utils.get_rpc_url(request)
     trans = OAuthTransport(url, key=sickbeard_key,
         secret=sickbeard_secret)

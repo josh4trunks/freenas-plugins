@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import os
 import json
 import tempfile
@@ -11,8 +12,6 @@ from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils import simplejson
 
-from subprocess import Popen, PIPE
-
 import jsonrpclib
 import oauth2 as oauth
 import xml.etree.ElementTree as ET
@@ -25,7 +24,6 @@ PLEXMEDIASERVER_PREFERENCES_XML = os.path.join(
     "Preferences.xml"
 )
 
-from syslog import *
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -402,7 +400,9 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen([utils.plexmediaserver_control, "onestatus"], stdout=PIPE, stderr=PIPE)
+    proc = Popen([utils.plexmediaserver_control, "onestatus"],
+        stdout=PIPE,
+        stderr=PIPE)
 
     stdout = proc.communicate()[0]
 
