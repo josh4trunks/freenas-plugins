@@ -187,7 +187,9 @@ def start(request, plugin_id):
         lazylibrarian = models.LazyLibrarian.objects.create(enable=True)
 
     try:
-        form = forms.LazyLibrarianForm(lazylibrarian.__dict__, instance=lazylibrarian, jail_path=jail_path)
+        form = forms.LazyLibrarianForm(lazylibrarian.__dict__,
+            instance=lazylibrarian,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
@@ -198,7 +200,8 @@ def start(request, plugin_id):
             }), content_type='application/json')
 
     cmd = "%s onestart" % utils.lazylibrarian_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+        shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -277,7 +280,8 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.LazyLibrarianForm(instance=lazylibrarian, jail_path=jail_path)
+        form = forms.LazyLibrarianForm(instance=lazylibrarian,
+        jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4
@@ -286,14 +290,18 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.LazyLibrarianForm(request.POST, instance=lazylibrarian, jail_path=jail_path)
+    form = forms.LazyLibrarianForm(request.POST,
+        instance=lazylibrarian,
+        jail_path=jail_path)
     if form.is_valid():
         form.save()
 
         cmd = "%s restart" % utils.lazylibrarian_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+            shell=True, close_fds=True)
 
-        return JsonResponse(request, error=True, message="LazyLibrarian settings successfully saved.")
+        return JsonResponse(request, error=True,
+            message="LazyLibrarian settings successfully saved.")
 
     return JsonResponse(request, form=form)
 

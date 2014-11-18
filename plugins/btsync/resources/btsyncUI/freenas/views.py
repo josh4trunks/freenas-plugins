@@ -187,7 +187,9 @@ def start(request, plugin_id):
         btsync = models.BtSync.objects.create(enable=True)
 
     try:
-        form = forms.BtSyncForm(btsync.__dict__, instance=btsync, jail_path=jail_path)
+        form = forms.BtSyncForm(btsync.__dict__,
+            instance=btsync,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
@@ -198,7 +200,8 @@ def start(request, plugin_id):
             }), content_type='application/json')
 
     cmd = "%s onestart" % utils.btsync_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+        shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -269,7 +272,7 @@ def edit(request, plugin_id):
         jail_path = server.plugins.jail.path(plugin_id)
         jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
         jail_ipv4 = jail['jail_ipv4'].split('/')[0]
-	if btsync.force_https:
+	    if btsync.force_https:
             scheme = "https"
         else:
             scheme = "http"
@@ -281,7 +284,8 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.BtSyncForm(instance=btsync, jail_path=jail_path)
+        form = forms.BtSyncForm(instance=btsync,
+            jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4,
@@ -292,14 +296,18 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.BtSyncForm(request.POST, instance=btsync, jail_path=jail_path)
+    form = forms.BtSyncForm(request.POST,
+        instance=btsync,
+        jail_path=jail_path)
     if form.is_valid():
         form.save()
 
         cmd = "%s restart" % utils.btsync_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+            shell=True, close_fds=True)
 
-        return JsonResponse(request, error=True, message="BtSync settings successfully saved.")
+        return JsonResponse(request, error=True,
+            message="BtSync settings successfully saved.")
 
     return JsonResponse(request, form=form)
 

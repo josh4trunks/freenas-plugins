@@ -212,7 +212,9 @@ def start(request, plugin_id):
         mineos = models.MineOS.objects.create(enable=True)
 
     try:
-        form = forms.MineOSForm(mineos.__dict__, instance=mineos, jail_path=jail_path)
+        form = forms.MineOSForm(mineos.__dict__,
+            instance=mineos,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
@@ -223,7 +225,8 @@ def start(request, plugin_id):
             }), content_type='application/json')
 
     cmd = "%s onestart" % utils.mineos_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+        shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -314,7 +317,8 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.MineOSForm(instance=mineos, jail_path=jail_path)
+        form = forms.MineOSForm(instance=mineos,
+            jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4,
@@ -325,14 +329,18 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.MineOSForm(request.POST, instance=mineos, jail_path=jail_path)
+    form = forms.MineOSForm(request.POST,
+        instance=mineos,
+        jail_path=jail_path)
     if form.is_valid():
         form.save()
 
         cmd = "%s restart" % utils.mineos_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+            shell=True, close_fds=True)
 
-        return JsonResponse(request, error=True, message="MineOS settings successfully saved.")
+        return JsonResponse(request, error=True,
+            message="MineOS settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
