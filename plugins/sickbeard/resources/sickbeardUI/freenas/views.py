@@ -356,7 +356,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen([utils.headphones_control, "onestatus"],
+    proc = Popen([utils.sickbeard_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

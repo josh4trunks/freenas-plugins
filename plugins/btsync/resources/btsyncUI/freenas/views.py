@@ -272,7 +272,7 @@ def edit(request, plugin_id):
         jail_path = server.plugins.jail.path(plugin_id)
         jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
         jail_ipv4 = jail['jail_ipv4'].split('/')[0]
-	    if btsync.force_https:
+        if btsync.force_https:
             scheme = "https"
         else:
             scheme = "http"
