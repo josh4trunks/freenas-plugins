@@ -14,7 +14,9 @@ class MediaBrowserForm(forms.ModelForm):
 
     class Meta:
         model = models.MediaBrowser
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -24,6 +26,10 @@ class MediaBrowserForm(forms.ModelForm):
         obj = super(MediaBrowserForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "mediabrowser_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mediabrowser_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "mediabrowser_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mediabrowser_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

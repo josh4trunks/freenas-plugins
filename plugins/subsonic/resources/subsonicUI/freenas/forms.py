@@ -19,7 +19,9 @@ class SubsonicForm(forms.ModelForm):
             'subsonic_port': forms.widgets.TextInput(),
             'subsonic_ssl_password': forms.widgets.PasswordInput(),
         }
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -41,9 +43,13 @@ class SubsonicForm(forms.ModelForm):
         obj = super(SubsonicForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "subsonic_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "subsonic_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "subsonic_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "subsonic_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
         settingsfile = os.path.join(utils.subsonic_etc_path, "subsonic.conf")
         settings = {}

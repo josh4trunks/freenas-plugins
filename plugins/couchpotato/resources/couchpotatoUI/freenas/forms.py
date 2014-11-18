@@ -14,7 +14,9 @@ class CouchPotatoForm(forms.ModelForm):
 
     class Meta:
         model = models.CouchPotato
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -24,6 +26,10 @@ class CouchPotatoForm(forms.ModelForm):
         obj = super(CouchPotatoForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "couchpotato_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "couchpotato_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "couchpotato_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "couchpotato_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

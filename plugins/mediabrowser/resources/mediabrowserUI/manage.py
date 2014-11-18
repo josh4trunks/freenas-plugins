@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 MEDIABROWSER_PATH = "/usr/pbi/mediabrowser-%s" % arch
 MEDIABROWSER_UI = os.path.join(MEDIABROWSER_PATH, "mediabrowserUI")
-PYTHON_SITE_PACKAGES = os.path.join(MEDIABROWSER_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(MEDIABROWSER_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(MEDIABROWSER_PATH)

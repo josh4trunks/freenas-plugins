@@ -14,7 +14,9 @@ class SyncthingForm(forms.ModelForm):
 
     class Meta:
         model = models.Syncthing
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -24,6 +26,10 @@ class SyncthingForm(forms.ModelForm):
         obj = super(SyncthingForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "syncthing_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "syncthing_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "syncthing_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "syncthing_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

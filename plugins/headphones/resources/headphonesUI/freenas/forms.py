@@ -14,7 +14,9 @@ class HeadphonesForm(forms.ModelForm):
 
     class Meta:
         model = models.Headphones
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -24,6 +26,10 @@ class HeadphonesForm(forms.ModelForm):
         obj = super(HeadphonesForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "headphones_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "headphones_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "headphones_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "headphones_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

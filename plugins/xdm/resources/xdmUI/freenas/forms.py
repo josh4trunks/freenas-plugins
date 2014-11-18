@@ -15,7 +15,9 @@ class XDMForm(forms.ModelForm):
 
     class Meta:
         model = models.XDM
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -25,6 +27,10 @@ class XDMForm(forms.ModelForm):
         obj = super(XDMForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "xdm_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "xdm_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "xdm_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "xdm_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

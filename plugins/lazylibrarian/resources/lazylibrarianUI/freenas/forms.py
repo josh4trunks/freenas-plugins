@@ -15,7 +15,9 @@ class LazyLibrarianForm(forms.ModelForm):
 
     class Meta:
         model = models.LazyLibrarian
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -25,6 +27,10 @@ class LazyLibrarianForm(forms.ModelForm):
         obj = super(LazyLibrarianForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "lazylibrarian_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "lazylibrarian_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "lazylibrarian_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "lazylibrarian_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

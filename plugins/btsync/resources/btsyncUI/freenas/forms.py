@@ -26,7 +26,9 @@ class BtSyncForm(forms.ModelForm):
             'sync_max_time_diff': forms.widgets.TextInput(),
             'sync_trash_ttl': forms.widgets.TextInput(),
         }
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -43,9 +45,13 @@ class BtSyncForm(forms.ModelForm):
         obj = super(BtSyncForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "btsync_enable=YES"]).wait()
+            Popen(["/usr/sbin/sysrc", "btsync_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "btsync_enable=NO"]).wait()
+            Popen(["/usr/sbin/sysrc", "btsync_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
         settingsfile = os.path.join(utils.btsync_etc_path, "btsync.conf")
         if os.path.exists(settingsfile):

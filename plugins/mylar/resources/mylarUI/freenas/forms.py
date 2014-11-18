@@ -15,7 +15,9 @@ class MylarForm(forms.ModelForm):
 
     class Meta:
         model = models.Mylar
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -25,6 +27,10 @@ class MylarForm(forms.ModelForm):
         obj = super(MylarForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "mylar_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mylar_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "mylar_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mylar_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

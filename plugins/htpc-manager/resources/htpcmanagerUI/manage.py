@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 HTPCMANAGER_PATH = "/usr/pbi/htpc-manager-%s" % arch
 HTPCMANAGER_UI = os.path.join(HTPCMANAGER_PATH, "htpcmanagerUI")
-PYTHON_SITE_PACKAGES = os.path.join(HTPCMANAGER_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(HTPCMANAGER_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(HTPCMANAGER_PATH)

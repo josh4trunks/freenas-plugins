@@ -44,9 +44,13 @@ class MineOSForm(forms.ModelForm):
         obj = super(MineOSForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "mineos_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mineos_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "mineos_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "mineos_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
         settingsfile = os.path.join(utils.mineos_etc_path, "mineos.conf")
         settings = {}

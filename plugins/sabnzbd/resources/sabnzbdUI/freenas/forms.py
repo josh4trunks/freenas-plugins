@@ -27,6 +27,10 @@ class SABnzbdForm(forms.ModelForm):
         obj = super(SABnzbdForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "sabnzbd_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "sabnzbd_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "sabnzbd_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "sabnzbd_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

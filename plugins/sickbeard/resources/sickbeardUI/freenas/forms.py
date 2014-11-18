@@ -1,6 +1,6 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -25,9 +25,12 @@ class SickBeardForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(SickBeardForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.sickbeard_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('sickbeard_enable="YES"\n')
 
-        os.system(os.path.join(utils.sickbeard_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "sickbeard_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "sickbeard_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

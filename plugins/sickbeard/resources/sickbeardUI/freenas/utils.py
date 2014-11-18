@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 sickbeard_pbi_path = "/usr/pbi/sickbeard-" + platform.machine()
-sickbeard_etc_path = os.path.join(sickbeard_pbi_path, "etc")
 sickbeard_fcgi_pidfile = "/var/run/sickbeard_fcgi_server.pid"
 sickbeard_control = "/usr/local/etc/rc.d/sickbeard"
 sickbeard_icon = os.path.join(sickbeard_pbi_path, "default.png")

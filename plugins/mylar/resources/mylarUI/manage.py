@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 MYLAR_PATH = "/usr/pbi/mylar-%s" % arch
 MYLAR_UI = os.path.join(MYLAR_PATH, "mylarUI")
-PYTHON_SITE_PACKAGES = os.path.join(MYLAR_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(MYLAR_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(MYLAR_PATH)

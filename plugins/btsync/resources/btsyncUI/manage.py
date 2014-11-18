@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 BTSYNC_PATH = "/usr/pbi/btsync-%s" % arch
 BTSYNC_UI = os.path.join(BTSYNC_PATH, "btsyncUI")
-PYTHON_SITE_PACKAGES = os.path.join(BTSYNC_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(BTSYNC_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(BTSYNC_PATH)
