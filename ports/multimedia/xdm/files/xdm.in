@@ -1,7 +1,8 @@
 #!/bin/sh
 #
 # PROVIDE: %%PORTNAME%%
-# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
