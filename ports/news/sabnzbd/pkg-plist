@@ -367,6 +367,7 @@
 %%DATADIR%%/SABnzbd/licenses/License-CherryPy.txt
 %%DATADIR%%/SABnzbd/licenses/License-OrderedDict.txt
 %%DATADIR%%/SABnzbd/licenses/License-Python.txt
+%%DATADIR%%/SABnzbd/licenses/License-PythonParts.txt
 %%DATADIR%%/SABnzbd/licenses/License-configobj.txt
 %%DATADIR%%/SABnzbd/licenses/License-feedparser.txt
 %%DATADIR%%/SABnzbd/licenses/License-gntp.txt
@@ -491,5 +492,6 @@
 %%DATADIR%%/SABnzbd/util/__init__.py
 %%DATADIR%%/SABnzbd/util/apireg.py
 %%DATADIR%%/SABnzbd/util/mailslot.py
+%%DATADIR%%/SABnzbd/util/pystone.py
 @unexec rm -r %D/share/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
