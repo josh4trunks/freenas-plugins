@@ -56,7 +56,7 @@ class Migration(SchemaMigration):
             'rpc_username': ('django.db.models.fields.CharField', [], {'max_length': '120', 'blank': 'True'}),
             'rpc_whitelist': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'utp': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'watch_dir': ('django.db.models.fields.CharField', [], {'default': "'/usr/pbi/transmission-amd64/etc/transmission/home/Downloads'", 'max_length': '500'})
+            'watch_dir': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'})
         }
     }
 

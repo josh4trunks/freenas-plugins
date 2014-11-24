@@ -354,7 +354,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/bin/pgrep", "transmission-daemon"],
+    proc = Popen([utils.transmission_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

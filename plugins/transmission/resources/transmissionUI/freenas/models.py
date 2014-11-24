@@ -24,7 +24,7 @@ class Transmission(models.Model):
     watch_dir = models.CharField(
         verbose_name="Watch Directory",
         max_length=500,
-        default=download_dir,
+        blank=True,
         )
     conf_dir = models.CharField(
         verbose_name="Configuration Directory",
