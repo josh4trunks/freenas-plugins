@@ -60,10 +60,6 @@ class Transmission(models.Model):
         max_length=120,
         blank=True,
         )
-    rpc_whitelist_enabled = models.BooleanField(
-        verbose_name="RPC Whitelist Enabled",
-        default=False,
-        )
     rpc_whitelist = models.TextField(
         verbose_name="RPC Whitelist",
         blank=True,

@@ -109,6 +109,13 @@ class TransmissionForm(forms.ModelForm):
 
         if obj.watch_dir:
             settings['watch-dir-enabled'] = True
+        else:
+            settings['watch-dir-enabled'] = False
+
+        if obj.rpc_whitelist:
+            settings['rpc-whitelist-enabled'] = True
+        else:
+            settings['rpc-whitelist-enabled'] = False
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, sort_keys=True, indent=4))

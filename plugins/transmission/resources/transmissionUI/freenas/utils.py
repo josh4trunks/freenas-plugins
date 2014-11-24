@@ -87,10 +87,6 @@ transmission_settings = {
         "type": "textbox",
         "filter": lambda x: '{' + hashlib.sha1(x).hexdigest()
         },
-    "rpc_whitelist_enabled": {
-        "field": "rpc-whitelist-enabled",
-        "type": "textbox",
-        },
     "rpc_whitelist": {
         "field": "rpc-whitelist",
         "type": "textbox",
