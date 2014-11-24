@@ -1,4 +1,5 @@
 #!/bin/sh
+#########################################
 
 mineos_pbi_path=/usr/pbi/mineos-$(uname -m)
 

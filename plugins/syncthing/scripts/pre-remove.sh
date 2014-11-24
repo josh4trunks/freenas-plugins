@@ -1,4 +1,5 @@
 #!/bin/sh
+#########################################
 
 syncthing_pbi_path=/usr/pbi/syncthing-$(uname -m)
 

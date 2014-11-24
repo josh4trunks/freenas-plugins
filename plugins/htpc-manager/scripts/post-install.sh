@@ -1,4 +1,5 @@
 #!/bin/sh
+#########################################
 
 htpc_manager_pbi_path=/usr/pbi/htpc-manager-$(uname -m)
 
