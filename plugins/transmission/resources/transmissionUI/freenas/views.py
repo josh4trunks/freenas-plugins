@@ -294,7 +294,7 @@ def edit(request, plugin_id):
     if form.is_valid():
         form.save()
 
-        cmd = "%s restart" % utils.transmission_control
+        cmd = "%s onereload" % utils.transmission_control
         pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
             shell=True, close_fds=True)
 
