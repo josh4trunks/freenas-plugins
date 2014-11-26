@@ -3,12 +3,6 @@ import platform
 from django.db import models
 
 
-def conf_dir():
-    return '/usr/pbi/transmission-%s/etc/transmission/home' % (
-        platform.machine(),
-        )
-
-
 def download_dir():
     return '/usr/pbi/transmission-%s/etc/transmission/home/Downloads' % (
         platform.machine(),
@@ -26,17 +20,11 @@ class Transmission(models.Model):
         max_length=500,
         blank=True,
         )
-    conf_dir = models.CharField(
-        verbose_name="Configuration Directory",
-        max_length=500,
-        default=conf_dir,
-        )
     download_dir = models.CharField(
         verbose_name="Download Directory",
         max_length=500,
         default=download_dir,
         )
-    logfile = models.CharField(max_length=500, blank=True)
     rpc_auth = models.BooleanField(
         verbose_name="RPC/WebUI Enabled",
         default=True,

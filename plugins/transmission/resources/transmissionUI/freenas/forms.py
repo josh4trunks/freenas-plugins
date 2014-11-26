@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
 import os
@@ -28,13 +29,6 @@ class TransmissionForm(forms.ModelForm):
         self.jail_path = kwargs.pop('jail_path')
         super(TransmissionForm, self).__init__(*args, **kwargs)
 
-        self.fields['logfile'].widget = forms.widgets.TextInput(attrs={
-            'data-dojo-type': 'freeadmin.form.PathSelector',
-            'root': self.jail_path,
-            'dirsonly': 'false',
-            })
-
-        self.fields['conf_dir'].widget = \
         self.fields['download_dir'].widget = \
         self.fields['watch_dir'].widget = forms.widgets.TextInput(attrs={
             'data-dojo-type': 'freeadmin.form.PathSelector',
@@ -51,37 +45,16 @@ class TransmissionForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(TransmissionForm, self).save(*args, **kwargs)
 
-        advanced_settings = {}
-        for field in obj._meta.local_fields:
-            if field.attname not in utils.transmission_advanced_vars:
-                continue
-            info = utils.transmission_advanced_vars.get(field.attname)
-            value = getattr(obj, field.attname)
-            if info["type"] == "checkbox":
-                if value:
-                    if info.get("on"):
-                        advanced_settings[field.attname] = info["on"]
-                else:
-                    if info.get("off"):
-                        advanced_settings[field.attname] = info["off"]
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "transmission_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "transmission_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
-            elif info["type"] == "textbox" and value:
-                advanced_settings[field.attname] = "%s %s" % (info["opt"], value)
-
-        rcconf = os.path.join(utils.transmission_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('transmission_enable="YES"\n')
-
-            if obj.conf_dir:
-                f.write('transmission_conf_dir="%s"\n' % (obj.conf_dir, ))
-
-            transmission_flags = ""
-            for value in advanced_settings.values():
-                transmission_flags += value + " "
-            f.write('transmission_flags="%s"\n' % (transmission_flags, ))
-
-        settingsfile = os.path.join(obj.conf_dir, "settings.json")
+        settingsfile = os.path.join(utils.transmission_home_dir, "settings.json")
         if os.path.exists(settingsfile):
             with open(settingsfile, 'r') as f:
                 try:
@@ -107,17 +80,8 @@ class TransmissionForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
-        if obj.watch_dir:
-            settings['watch-dir-enabled'] = True
-        else:
-            settings['watch-dir-enabled'] = False
-
-        if obj.rpc_whitelist:
-            settings['rpc-whitelist-enabled'] = True
-        else:
-            settings['rpc-whitelist-enabled'] = False
+        settings['watch-dir-enabled'] = bool(obj.watch_dir)
+        settings['rpc-whitelist-enabled'] = bool(obj.rpc_whitelist)
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, sort_keys=True, indent=4))
-
-        os.system(os.path.join(utils.transmission_pbi_path, "tweak-rcconf"))

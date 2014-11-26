@@ -36,14 +36,12 @@ class Migration(SchemaMigration):
     models = {
         'freenas.transmission': {
             'Meta': {'object_name': 'Transmission'},
-            'conf_dir': ('django.db.models.fields.CharField', [], {'default': "'/usr/pbi/transmission-amd64/etc/transmission/home'", 'max_length': '500'}),
             'dht': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'download_dir': ('django.db.models.fields.CharField', [], {'default': "'/usr/pbi/transmission-amd64/etc/transmission/home/Downloads'", 'max_length': '500'}),
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'encryption': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'global_seedratio': ('django.db.models.fields.DecimalField', [], {'default': '2', 'max_digits': '6', 'decimal_places': '2'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'logfile': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'lpd': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'peer_port': ('django.db.models.fields.IntegerField', [], {'default': '51413', 'blank': 'True'}),
             'peerlimit_global': ('django.db.models.fields.IntegerField', [], {'default': '240'}),
