@@ -32,6 +32,7 @@ class TransmissionForm(forms.ModelForm):
         super(TransmissionForm, self).__init__(*args, **kwargs)
 
         self.fields['download_dir'].widget = \
+        self.fields['incomplete_dir'].widget = \
         self.fields['watch_dir'].widget = forms.widgets.TextInput(attrs={
             'data-dojo-type': 'freeadmin.form.PathSelector',
             'root': self.jail_path,
@@ -84,6 +85,8 @@ class TransmissionForm(forms.ModelForm):
 
         settings['watch-dir-enabled'] = bool(obj.watch_dir)
         settings['rpc-whitelist-enabled'] = bool(obj.rpc_whitelist)
+        settings['incomplete-dir-enabled'] = bool(obj.incomplete_dir)
+        settings['blocklist-enabled'] = bool(obj.blocklist)
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, sort_keys=True, indent=4))

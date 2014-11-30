@@ -14,6 +14,7 @@ class Migration(SchemaMigration):
             ('enable', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('watch_dir', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
             ('download_dir', self.gf('django.db.models.fields.CharField')(default='/usr/pbi/transmission-amd64/etc/transmission/home/Downloads', max_length=500)),
+            ('incomplete_dir', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
             ('rpc_port', self.gf('django.db.models.fields.IntegerField')(default=9091, blank=True)),
             ('rpc_auth', self.gf('django.db.models.fields.BooleanField')(default=True)),
             ('rpc_auth_required', self.gf('django.db.models.fields.BooleanField')(default=False)),
@@ -28,6 +29,7 @@ class Migration(SchemaMigration):
             ('peerlimit_global', self.gf('django.db.models.fields.IntegerField')(default=240)),
             ('peerlimit_torrent', self.gf('django.db.models.fields.IntegerField')(default=60)),
             ('encryption', self.gf('django.db.models.fields.IntegerField')(default=1)),
+            ('blocklist', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
             ('global_seedratio', self.gf('django.db.models.fields.IntegerField')(default=2)),
         ))
         db.send_create_signal('freenas', ['Transmission'])
@@ -44,7 +46,9 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Transmission'},
             'dht': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'download_dir': ('django.db.models.fields.CharField', [], {'default': "'/usr/pbi/transmission-amd64/etc/transmission/home/Downloads'", 'max_length': '500'}),
+            'incomplete_dir': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'blocklist': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'encryption': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'global_seedratio': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),

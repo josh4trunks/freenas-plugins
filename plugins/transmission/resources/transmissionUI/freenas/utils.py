@@ -50,6 +50,10 @@ transmission_settings = {
         "field": "download-dir",
         "type": "textbox",
         },
+    "incomplete_dir": {
+        "field": "incomplet-dir",
+        "type": "textbox",
+        },
     "watch_dir": {
         "field": "watch-dir",
         "type": "textbox",
@@ -108,6 +112,10 @@ transmission_settings = {
         },
     "peerlimit_torrent": {
         "field": "peer-limit-per-torrent",
+        "type": "textbox",
+        },
+    "blocklist": {
+        "field": "blocklist-url",
         "type": "textbox",
         },
     "global_seedratio": {

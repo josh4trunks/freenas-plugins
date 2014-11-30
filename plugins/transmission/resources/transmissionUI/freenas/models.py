@@ -25,6 +25,11 @@ class Transmission(models.Model):
         max_length=500,
         default=download_dir,
         )
+    incomplete_dir = models.CharField(
+        verbose_name="Incomplete Download Directory",
+        max_length=500,
+        blank=True,
+        )
     rpc_auth = models.BooleanField(
         verbose_name="RPC/WebUI Enabled",
         default=True,
@@ -82,6 +87,11 @@ class Transmission(models.Model):
             (1, 'Prefer encrypted'),
             (2, 'Require encrypted'),
         ),
+        )
+    blocklist = models.CharField(
+        verbose_name="Blocklist URL",
+        max_length=500,
+        blank=True,
         )
     global_seedratio = models.DecimalField(
         verbose_name="Global Seed Ratio",
