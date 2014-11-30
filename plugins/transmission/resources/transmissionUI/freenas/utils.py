@@ -122,5 +122,9 @@ transmission_settings = {
         "field": "ratio-limit",
         "type": "textbox",
         "filter": lambda x: str(x)
+        },
+    "permissions": {
+        "field": "umask",
+        "type": "textbox",
         }
 }

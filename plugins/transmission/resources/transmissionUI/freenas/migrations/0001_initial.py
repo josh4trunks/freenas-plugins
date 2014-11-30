@@ -31,6 +31,7 @@ class Migration(SchemaMigration):
             ('encryption', self.gf('django.db.models.fields.IntegerField')(default=1)),
             ('blocklist', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
             ('global_seedratio', self.gf('django.db.models.fields.IntegerField')(default=2)),
+            ('permissions', self.gf('django.db.models.fields.IntegerField')(default=18)),
         ))
         db.send_create_signal('freenas', ['Transmission'])
 
@@ -50,6 +51,7 @@ class Migration(SchemaMigration):
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'blocklist': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'encryption': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
+            'permissions': ('django.db.models.fields.IntegerField', [], {'default': '18'}),
             'global_seedratio': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lpd': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),

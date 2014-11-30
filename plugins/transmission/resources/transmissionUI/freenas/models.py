@@ -99,3 +99,19 @@ class Transmission(models.Model):
         max_digits=6,
         default=2,
         )
+    permissions = models.IntegerField(
+        verbose_name="Downloaded Permissions",
+        default=18,
+        choices=(
+            (63, '700'),
+            (55, '710'),
+            (54, '711'),
+            (23, '750'),
+            (22, '751'),
+            (18, '755'),
+            (7, '770'),
+            (6, '771'),
+            (2, '775'),
+            (0, '777'),
+        ),
+        )
