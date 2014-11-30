@@ -252,7 +252,6 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    from syslog import *
     (transmission_key,
     transmission_secret) = utils.get_transmission_oauth_creds()
     url = utils.get_rpc_url(request)
