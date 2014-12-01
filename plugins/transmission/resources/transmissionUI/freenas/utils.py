@@ -1,13 +1,12 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 transmission_pbi_path = "/usr/pbi/transmission-" + platform.machine()
 transmission_etc_path = os.path.join(transmission_pbi_path, "etc")
-transmission_mnt_path = os.path.join(transmission_pbi_path, "mnt")
+transmission_conf_dir = os.path.join(transmission_etc_path, "transmission")
+transmission_home_dir = os.path.join(transmission_conf_dir, "home")
 transmission_fcgi_pidfile = "/var/run/transmission_fcgi_server.pid"
-transmission_fcgi_wwwdir = os.path.join(transmission_pbi_path, "www")
 transmission_control = "/usr/local/etc/rc.d/transmission"
 transmission_icon = os.path.join(transmission_pbi_path, "default.png")
 transmission_oauth_file = os.path.join(transmission_pbi_path, ".oauth")
@@ -46,16 +45,13 @@ def get_transmission_oauth_creds():
 
     return key, secret
 
-transmission_advanced_vars = {
-    "logfile": {
-        "type": "textbox",
-        "opt": "-e",
-        },
-}
-
 transmission_settings = {
     "download_dir": {
         "field": "download-dir",
+        "type": "textbox",
+        },
+    "incomplete_dir": {
+        "field": "incomplet-dir",
         "type": "textbox",
         },
     "watch_dir": {
@@ -86,10 +82,6 @@ transmission_settings = {
         "field": "rpc-password",
         "type": "textbox",
         "filter": lambda x: '{' + hashlib.sha1(x).hexdigest()
-        },
-    "rpc_whitelist_enabled": {
-        "field": "rpc-whitelist-enabled",
-        "type": "textbox",
         },
     "rpc_whitelist": {
         "field": "rpc-whitelist",
@@ -122,9 +114,17 @@ transmission_settings = {
         "field": "peer-limit-per-torrent",
         "type": "textbox",
         },
+    "blocklist": {
+        "field": "blocklist-url",
+        "type": "textbox",
+        },
     "global_seedratio": {
         "field": "ratio-limit",
         "type": "textbox",
         "filter": lambda x: str(x)
+        },
+    "permissions": {
+        "field": "umask",
+        "type": "textbox",
         }
 }

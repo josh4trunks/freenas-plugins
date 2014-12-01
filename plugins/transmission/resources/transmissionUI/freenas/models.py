@@ -3,12 +3,6 @@ import platform
 from django.db import models
 
 
-def conf_dir():
-    return '/usr/pbi/transmission-%s/etc/transmission/home' % (
-        platform.machine(),
-        )
-
-
 def download_dir():
     return '/usr/pbi/transmission-%s/etc/transmission/home/Downloads' % (
         platform.machine(),
@@ -24,19 +18,18 @@ class Transmission(models.Model):
     watch_dir = models.CharField(
         verbose_name="Watch Directory",
         max_length=500,
-        default=download_dir,
-        )
-    conf_dir = models.CharField(
-        verbose_name="Configuration Directory",
-        max_length=500,
-        default=conf_dir,
+        blank=True,
         )
     download_dir = models.CharField(
         verbose_name="Download Directory",
         max_length=500,
         default=download_dir,
         )
-    logfile = models.CharField(max_length=500, blank=True)
+    incomplete_dir = models.CharField(
+        verbose_name="Incomplete Download Directory",
+        max_length=500,
+        blank=True,
+        )
     rpc_auth = models.BooleanField(
         verbose_name="RPC/WebUI Enabled",
         default=True,
@@ -60,12 +53,9 @@ class Transmission(models.Model):
         max_length=120,
         blank=True,
         )
-    rpc_whitelist_enabled = models.BooleanField(
-        verbose_name="RPC Whitelist Enabled",
-        default=False,
-        )
-    rpc_whitelist = models.TextField(
+    rpc_whitelist = models.CharField(
         verbose_name="RPC Whitelist",
+        max_length=500,
         blank=True,
         )
     dht = models.BooleanField(
@@ -98,9 +88,30 @@ class Transmission(models.Model):
             (2, 'Require encrypted'),
         ),
         )
+    blocklist = models.CharField(
+        verbose_name="Blocklist URL",
+        max_length=500,
+        blank=True,
+        )
     global_seedratio = models.DecimalField(
         verbose_name="Global Seed Ratio",
         decimal_places=2,
         max_digits=6,
         default=2,
+        )
+    permissions = models.IntegerField(
+        verbose_name="Downloaded Permissions",
+        default=18,
+        choices=(
+            (63, '700'),
+            (55, '710'),
+            (54, '711'),
+            (23, '750'),
+            (22, '751'),
+            (18, '755'),
+            (7, '770'),
+            (6, '771'),
+            (2, '775'),
+            (0, '777'),
+        ),
         )
