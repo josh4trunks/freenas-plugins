@@ -51,7 +51,7 @@ transmission_settings = {
         "type": "textbox",
         },
     "incomplete_dir": {
-        "field": "incomplet-dir",
+        "field": "incomplete-dir",
         "type": "textbox",
         },
     "watch_dir": {
