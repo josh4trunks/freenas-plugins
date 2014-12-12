@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mylar
-PORTVERSION=	9.2.0
+PORTVERSION=	9.3.0
 CATEGORIES=	deskutils
 
 MAINTAINER=	joshruehlig@gmail.com
