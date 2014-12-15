@@ -34,7 +34,6 @@ GROUPS=		${USERS}
 
 OPTIONS_DEFINE=	OPENSSL
 OPTIONS_DEFAULT=	OPENSSL
-SICKRAGE_DESC=	optional dependencies for SickRage branch
 
 .include <bsd.port.pre.mk>
 
