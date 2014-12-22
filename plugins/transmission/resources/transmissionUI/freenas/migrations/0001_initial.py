@@ -30,7 +30,7 @@ class Migration(SchemaMigration):
             ('peerlimit_torrent', self.gf('django.db.models.fields.IntegerField')(default=60)),
             ('encryption', self.gf('django.db.models.fields.IntegerField')(default=1)),
             ('blocklist', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
-            ('global_seedratio', self.gf('django.db.models.fields.DecimalField')(max_digits=6, decimal_places=2)),
+            ('global_seedratio', self.gf('django.db.models.fields.IntegerField')(default=2)),
             ('permissions', self.gf('django.db.models.fields.IntegerField')(default=18)),
         ))
         db.send_create_signal('freenas', ['Transmission'])
@@ -45,15 +45,15 @@ class Migration(SchemaMigration):
     models = {
         'freenas.transmission': {
             'Meta': {'object_name': 'Transmission'},
-            'blocklist': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'dht': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'download_dir': ('django.db.models.fields.CharField', [], {'default': "'/usr/pbi/transmission-amd64/etc/transmission/home/Downloads'", 'max_length': '500'}),
+            'incomplete_dir': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'blocklist': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'encryption': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'permissions': ('django.db.models.fields.IntegerField', [], {'default': '18'}),
-            'global_seedratio': ('django.db.models.fields.DecimalField', [], {'default': '2', 'max_digits': '6', 'decimal_places': '2'}),
+            'global_seedratio': ('django.db.models.fields.IntegerField', [], {'default': '2'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'incomplete_dir': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'lpd': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'peer_port': ('django.db.models.fields.IntegerField', [], {'default': '51413', 'blank': 'True'}),
             'peerlimit_global': ('django.db.models.fields.IntegerField', [], {'default': '240'}),
