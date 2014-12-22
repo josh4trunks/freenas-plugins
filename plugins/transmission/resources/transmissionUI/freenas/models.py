@@ -53,9 +53,8 @@ class Transmission(models.Model):
         max_length=120,
         blank=True,
         )
-    rpc_whitelist = models.CharField(
+    rpc_whitelist = models.TextField(
         verbose_name="RPC Whitelist",
-        max_length=500,
         blank=True,
         )
     dht = models.BooleanField(

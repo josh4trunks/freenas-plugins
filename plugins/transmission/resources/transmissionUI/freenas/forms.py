@@ -20,8 +20,6 @@ class TransmissionForm(forms.ModelForm):
             'rpc_password': forms.widgets.PasswordInput(),
             'peer_port': forms.widgets.TextInput(),
             'global_seedratio': forms.widgets.TextInput(),
-            'peerlimit_global': forms.widgets.TextInput(),
-            'peerlimit_torrent': forms.widgets.TextInput(),
         }
         exclude = (
             'enable',
