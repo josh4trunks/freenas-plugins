@@ -14,7 +14,6 @@ import jsonrpclib
 import oauth2 as oauth
 from sickbeardUI.freenas import forms, models, utils
 
-from syslog import *
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -166,10 +165,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=sickbeard_key, secret=sickbeard_secret)
+    trans = OAuthTransport(url, key=sickbeard_key,
+        secret=sickbeard_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -186,7 +187,9 @@ def start(request, plugin_id):
         sickbeard = models.SickBeard.objects.create(enable=True)
 
     try:
-        form = forms.SickBeardForm(sickbeard.__dict__, instance=sickbeard, jail_path=jail_path)
+        form = forms.SickBeardForm(sickbeard.__dict__,
+            instance=sickbeard,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
@@ -197,7 +200,8 @@ def start(request, plugin_id):
             }), content_type='application/json')
 
     cmd = "%s onestart" % utils.sickbeard_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+        shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -207,9 +211,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=sickbeard_key, secret=sickbeard_secret)
+    trans = OAuthTransport(url, key=sickbeard_key,
+        secret=sickbeard_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -246,9 +252,11 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=sickbeard_key, secret=sickbeard_secret)
+    trans = OAuthTransport(url, key=sickbeard_key,
+        secret=sickbeard_secret)
 
     """
     Get the SickBeard object
@@ -272,7 +280,8 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.SickBeardForm(instance=sickbeard, jail_path=jail_path)
+        form = forms.SickBeardForm(instance=sickbeard,
+            jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4
@@ -281,14 +290,18 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.SickBeardForm(request.POST, instance=sickbeard, jail_path=jail_path)
+    form = forms.SickBeardForm(request.POST,
+        instance=sickbeard,
+        jail_path=jail_path)
     if form.is_valid():
         form.save()
 
         cmd = "%s restart" % utils.sickbeard_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+            shell=True, close_fds=True)
 
-        return JsonResponse(request, error=True, message="SickBeard settings successfully saved.")
+        return JsonResponse(request, error=True,
+            message="SickBeard settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
@@ -301,7 +314,8 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (sickbeard_key, sickbeard_secret) = utils.get_sickbeard_oauth_creds()
+    (sickbeard_key,
+    sickbeard_secret) = utils.get_sickbeard_oauth_creds()
     url = utils.get_rpc_url(request)
     trans = OAuthTransport(url, key=sickbeard_key,
         secret=sickbeard_secret)
@@ -342,7 +356,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/sickbeard", "onestatus"],
+    proc = Popen([utils.sickbeard_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

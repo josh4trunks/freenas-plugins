@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
 import os
@@ -42,10 +43,14 @@ class MineOSForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(MineOSForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.mineos_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('mineos_enable="YES"\n')
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "mineos_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "mineos_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
         settingsfile = os.path.join(utils.mineos_etc_path, "mineos.conf")
         settings = {}
@@ -78,5 +83,3 @@ class MineOSForm(forms.ModelForm):
             f.write('misc.base_directory = "%s"\n' % (obj.mineos_basedir, ))
             f.write('misc.localization = "%s"\n' % (obj.mineos_locale, ))
             f.write('webui.mask_password = %r' % (obj.mineos_mask, ))
-
-        os.system(os.path.join(utils.mineos_pbi_path, "tweak-rcconf"))

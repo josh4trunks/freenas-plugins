@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
 import os
@@ -25,7 +26,9 @@ class BtSyncForm(forms.ModelForm):
             'sync_max_time_diff': forms.widgets.TextInput(),
             'sync_trash_ttl': forms.widgets.TextInput(),
         }
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -41,10 +44,14 @@ class BtSyncForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(BtSyncForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.btsync_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('btsync_enable="YES"\n')
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "btsync_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "btsync_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
         settingsfile = os.path.join(utils.btsync_etc_path, "btsync.conf")
         if os.path.exists(settingsfile):
@@ -82,5 +89,3 @@ class BtSyncForm(forms.ModelForm):
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, indent=4))
-
-        os.system(os.path.join(utils.btsync_pbi_path, "tweak-rcconf"))

@@ -1,7 +1,8 @@
 #!/bin/sh
 #
 # PROVIDE: %%PORTNAME%%
-# REQUIRE: NETWORKING SERVERS DAEMON ldconfig resolv
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
 #
 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
 # to enable this service:
@@ -31,7 +32,7 @@ load_rc_config ${name}
 : ${%%PORTNAME%%_data_dir:="/var/db/%%PORTNAME%%"}
 
 . %%PREFIX%%/etc/%%PORTNAME%%.conf
-if $SUBSONIC_SSL; then
+if ${SUBSONIC_SSL}; then
 	subsonic_ssl_flags="-Dsubsonic.httpsPort=${SUBSONIC_PORT}" && SUBSONIC_PORT="0"
 	if [ ! -z ${SUBSONIC_SSL_KEYSTORE} ]; then
 		subsonic_ssl_flags=${subsonic_ssl_flags}" -Dsubsonic.ssl.keystore=${SUBSONIC_SSL_KEYSTORE} -Dsubsonic.ssl.password=${SUBSONIC_SSL_PASSWORD}"
@@ -41,11 +42,11 @@ fi
 subsonic_chdir="%%DATADIR%%/Subsonic"
 command="/usr/sbin/daemon"
 procname="%%JAVA_CMD%%"
-command_args="-f ${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subsonic_data_dir} -Dsubsonic.port=${SUBSONIC_PORT} ${subsonic_ssl_flags} -Dsubsonic.contextPath=${SUBSONIC_CONTEXT_PATH} -Djava.awt.headless=true -jar %%DATADIR%%/subsonic-booter-jar-with-dependencies.jar"
+command_args="-f ${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subsonic_data_dir} -Dsubsonic.port=${SUBSONIC_PORT} ${subsonic_ssl_flags} -Dsubsonic.contextPath=${SUBSONIC_CONTEXT_PATH} -Djava.awt.headless=true -jar ${subsonic_chdir}/subsonic-booter-jar-with-dependencies.jar"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
-	export LC_CTYPE="$SUBSONIC_LOCALE"
+	export LC_CTYPE="${SUBSONIC_LOCALE}"
 
 	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
 		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}

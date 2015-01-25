@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 mediabrowser_pbi_path = "/usr/pbi/mediabrowser-" + platform.machine()
-mediabrowser_etc_path = os.path.join(mediabrowser_pbi_path, "etc")
 mediabrowser_fcgi_pidfile = "/var/run/mediabrowser_fcgi_server.pid"
 mediabrowser_control = "/usr/local/etc/rc.d/mediabrowser"
 mediabrowser_icon = os.path.join(mediabrowser_pbi_path, "default.png")
@@ -12,11 +10,15 @@ mediabrowser_oauth_file = os.path.join(mediabrowser_pbi_path, ".oauth")
 
 
 def get_rpc_url(request):
+    addr = request.META.get("SERVER_ADDR")
+    # IPv6
+    if ':' in addr:
+        addr = '[%s]' % addr
     return 'http%s://%s:%s/plugins/json-rpc/v1/' % (
         's' if request.is_secure() else '',
-        request.META.get("SERVER_ADDR"),
+        addr,
         request.META.get("SERVER_PORT"),
-        )
+    )
 
 
 def get_mediabrowser_oauth_creds():

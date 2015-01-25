@@ -252,7 +252,6 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    from syslog import *
     (transmission_key,
     transmission_secret) = utils.get_transmission_oauth_creds()
     url = utils.get_rpc_url(request)
@@ -271,6 +270,8 @@ def edit(request, plugin_id):
     try:
         server = jsonrpclib.Server(url, transport=trans)
         jail_path = server.plugins.jail.path(plugin_id)
+        jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
+        jail_ipv4 = jail['jail_ipv4'].split('/')[0]
         auth = server.plugins.is_authenticated(
             request.COOKIES.get("sessionid", "")
             )
@@ -283,6 +284,8 @@ def edit(request, plugin_id):
             jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
+            'ipv4': jail_ipv4,
+            'port': transmission.rpc_port
         })
 
     if not request.POST:
@@ -294,7 +297,7 @@ def edit(request, plugin_id):
     if form.is_valid():
         form.save()
 
-        cmd = "%s restart" % utils.transmission_control
+        cmd = "%s onereload" % utils.transmission_control
         pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
             shell=True, close_fds=True)
 
@@ -354,7 +357,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/bin/pgrep", "transmission-daemon"],
+    proc = Popen([utils.transmission_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

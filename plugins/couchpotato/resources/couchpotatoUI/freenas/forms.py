@@ -1,6 +1,6 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -14,7 +14,9 @@ class CouchPotatoForm(forms.ModelForm):
 
     class Meta:
         model = models.CouchPotato
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -23,9 +25,11 @@ class CouchPotatoForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(CouchPotatoForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.couchpotato_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('couchpotato_enable="YES"\n')
-
-        os.system(os.path.join(utils.couchpotato_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "couchpotato_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "couchpotato_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

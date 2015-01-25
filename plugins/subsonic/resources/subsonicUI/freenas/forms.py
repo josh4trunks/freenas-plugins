@@ -1,3 +1,4 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
 import os
@@ -18,7 +19,9 @@ class SubsonicForm(forms.ModelForm):
             'subsonic_port': forms.widgets.TextInput(),
             'subsonic_ssl_password': forms.widgets.PasswordInput(),
         }
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -39,10 +42,14 @@ class SubsonicForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(SubsonicForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.subsonic_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('subsonic_enable="YES"\n')
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "subsonic_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "subsonic_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
 
         settingsfile = os.path.join(utils.subsonic_etc_path, "subsonic.conf")
         settings = {}
@@ -67,5 +74,3 @@ class SubsonicForm(forms.ModelForm):
             f.write('SUBSONIC_PORT="%d"\n' % (obj.subsonic_port, ))
             f.write('SUBSONIC_CONTEXT_PATH="%s"\n' % (obj.subsonic_context_path, ))
             f.write('SUBSONIC_LOCALE="%s"' % (obj.subsonic_locale, ))
-
-        os.system(os.path.join(utils.subsonic_pbi_path, "tweak-rcconf"))

@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 SYNCTHING_PATH = "/usr/pbi/syncthing-%s" % arch
 SYNCTHING_UI = os.path.join(SYNCTHING_PATH, "syncthingUI")
-PYTHON_SITE_PACKAGES = os.path.join(SYNCTHING_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(SYNCTHING_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(SYNCTHING_PATH)

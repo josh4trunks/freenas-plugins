@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sickbeard
-PORTVERSION=	9.2.0
+PORTVERSION=	9.3.0
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -20,7 +20,7 @@ USES=	python:2.5-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     midgetspy  
 GH_PROJECT=     Sick-Beard
-GH_COMMIT=      4899745
+GH_COMMIT=      31ceaf1
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
@@ -32,18 +32,13 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		${USERS}
 
-OPTIONS_DEFINE=	OPENSSL SICKRAGE
+OPTIONS_DEFINE=	OPENSSL
 OPTIONS_DEFAULT=	OPENSSL
-SICKRAGE_DESC=	optional dependencies for SickRage branch
 
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MOPENSSL}
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
-.endif
-
-.if ${PORT_OPTIONS:MSICKRAGE}
-RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
 .endif
 
 do-install:

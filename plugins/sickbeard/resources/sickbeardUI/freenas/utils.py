@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 sickbeard_pbi_path = "/usr/pbi/sickbeard-" + platform.machine()
-sickbeard_etc_path = os.path.join(sickbeard_pbi_path, "etc")
 sickbeard_fcgi_pidfile = "/var/run/sickbeard_fcgi_server.pid"
 sickbeard_control = "/usr/local/etc/rc.d/sickbeard"
 sickbeard_icon = os.path.join(sickbeard_pbi_path, "default.png")
@@ -12,11 +10,15 @@ sickbeard_oauth_file = os.path.join(sickbeard_pbi_path, ".oauth")
 
 
 def get_rpc_url(request):
+    addr = request.META.get("SERVER_ADDR")
+    # IPv6
+    if ':' in addr:
+        addr = '[%s]' % addr
     return 'http%s://%s:%s/plugins/json-rpc/v1/' % (
         's' if request.is_secure() else '',
-        request.META.get("SERVER_ADDR"),
+        addr,
         request.META.get("SERVER_PORT"),
-        )
+    )
 
 
 def get_sickbeard_oauth_creds():

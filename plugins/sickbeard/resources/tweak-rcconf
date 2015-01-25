@@ -1,8 +1,0 @@
-#!/bin/sh
-
-sickbeard_path=/usr/pbi/sickbeard-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'sickbeard_' /etc/rc.conf > ${tmpfile}
-cat ${sickbeard_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

@@ -15,7 +15,6 @@ import jsonrpclib
 import oauth2 as oauth
 from mineosUI.freenas import forms, models, utils
 
-from syslog import *
 
 def _linprocfs_check(linprocfs_path):
     try:
@@ -59,7 +58,10 @@ class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
         params['oauth_consumer_key'] = consumer.key
         params.update(moreparams)
 
-        req = oauth.Request(method='POST', url=url, parameters=params, body=body)
+        req = oauth.Request(method='POST',
+            url=url,
+            parameters=params,
+            body=body)
         signature_method = oauth.SignatureMethod_HMAC_SHA1()
         req.sign_request(signature_method, consumer, None)
         return req
@@ -186,10 +188,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -208,7 +212,9 @@ def start(request, plugin_id):
         mineos = models.MineOS.objects.create(enable=True)
 
     try:
-        form = forms.MineOSForm(mineos.__dict__, instance=mineos, jail_path=jail_path)
+        form = forms.MineOSForm(mineos.__dict__,
+            instance=mineos,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
@@ -219,7 +225,8 @@ def start(request, plugin_id):
             }), content_type='application/json')
 
     cmd = "%s onestart" % utils.mineos_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+        shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -229,9 +236,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -275,9 +284,11 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
 
     """
     Get the MineOS object
@@ -306,7 +317,8 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.MineOSForm(instance=mineos, jail_path=jail_path)
+        form = forms.MineOSForm(instance=mineos,
+            jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4,
@@ -317,14 +329,18 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.MineOSForm(request.POST, instance=mineos, jail_path=jail_path)
+    form = forms.MineOSForm(request.POST,
+        instance=mineos,
+        jail_path=jail_path)
     if form.is_valid():
         form.save()
 
         cmd = "%s restart" % utils.mineos_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+            shell=True, close_fds=True)
 
-        return JsonResponse(request, error=True, message="MineOS settings successfully saved.")
+        return JsonResponse(request, error=True,
+            message="MineOS settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
@@ -337,9 +353,11 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (mineos_key, mineos_secret) = utils.get_mineos_oauth_creds()
+    (mineos_key,
+    mineos_secret) = utils.get_mineos_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mineos_key, secret=mineos_secret)
+    trans = OAuthTransport(url, key=mineos_key,
+        secret=mineos_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
@@ -377,7 +395,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/mineos", "onestatus"],
+    proc = Popen([utils.mineos_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

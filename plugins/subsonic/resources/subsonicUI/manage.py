@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 SUBSONIC_PATH = "/usr/pbi/subsonic-%s" % arch
 SUBSONIC_UI = os.path.join(SUBSONIC_PATH, "subsonicUI")
-PYTHON_SITE_PACKAGES = os.path.join(SUBSONIC_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(SUBSONIC_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(SUBSONIC_PATH)

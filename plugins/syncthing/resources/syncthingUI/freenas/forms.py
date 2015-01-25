@@ -1,6 +1,6 @@
+from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -14,7 +14,9 @@ class SyncthingForm(forms.ModelForm):
 
     class Meta:
         model = models.Syncthing
-        exclude = ('enable',)
+        exclude = (
+            'enable',
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
@@ -23,9 +25,11 @@ class SyncthingForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(SyncthingForm, self).save(*args, **kwargs)
 
-        rcconf = os.path.join(utils.syncthing_etc_path, "rc.conf")
-        with open(rcconf, "w") as f:
-            if obj.enable:
-                f.write('syncthing_enable="YES"\n')
-
-        os.system(os.path.join(utils.syncthing_pbi_path, "tweak-rcconf"))
+        if obj.enable:
+            Popen(["/usr/sbin/sysrc", "syncthing_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "syncthing_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

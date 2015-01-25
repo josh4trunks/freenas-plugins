@@ -1,8 +1,0 @@
-#!/bin/sh
-
-xdm_path=/usr/pbi/xdm-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'xdm_' /etc/rc.conf > ${tmpfile}
-cat ${xdm_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

@@ -11,7 +11,8 @@ python = "python%d.%d" % (python_major, python_minor)
 
 HEADPHONES_PATH = "/usr/pbi/headphones-%s" % arch
 HEADPHONES_UI = os.path.join(HEADPHONES_PATH, "headphonesUI")
-PYTHON_SITE_PACKAGES = os.path.join(HEADPHONES_PATH,"lib/%s/site-packages" % python)
+PYTHON_SITE_PACKAGES = os.path.join(HEADPHONES_PATH,
+    "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
 sys.path.append(HEADPHONES_PATH)

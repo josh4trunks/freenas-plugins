@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mediabrowser_path=/usr/pbi/mediabrowser-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'mediabrowser_' /etc/rc.conf > ${tmpfile}
-cat ${mediabrowser_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

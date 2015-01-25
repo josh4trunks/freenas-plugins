@@ -9,6 +9,8 @@
 %%DATADIR%%/%%PORTNAME%%/Headphones.py
 %%DATADIR%%/%%PORTNAME%%/LICENSE
 %%DATADIR%%/%%PORTNAME%%/README.md
+%%DATADIR%%/%%PORTNAME%%/contrib/clean_pyc.sh
+%%DATADIR%%/%%PORTNAME%%/contrib/downgrade.sh
 %%DATADIR%%/%%PORTNAME%%/data/css/jquery-ui.min.css
 %%DATADIR%%/%%PORTNAME%%/data/images/back_disabled.jpg
 %%DATADIR%%/%%PORTNAME%%/data/images/back_enabled.jpg

@@ -6,6 +6,7 @@
 %%DATADIR%%/HTPC-Manager/README.md
 %%DATADIR%%/HTPC-Manager/htpc/__init__.py
 %%DATADIR%%/HTPC-Manager/htpc/log.py
+%%DATADIR%%/HTPC-Manager/htpc/manageusers.py
 %%DATADIR%%/HTPC-Manager/htpc/proxy.py
 %%DATADIR%%/HTPC-Manager/htpc/root.py
 %%DATADIR%%/HTPC-Manager/htpc/server.py
@@ -26,6 +27,7 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/jquery-ui.min.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/jquery.pnotify.default.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/log.css
+%%DATADIR%%/HTPC-Manager/interfaces/default/css/plex.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/qbittorrent.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/sabnzbd.css
 %%DATADIR%%/HTPC-Manager/interfaces/default/css/settings.css
@@ -49,7 +51,9 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/deluge.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/form.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/log.html
+%%DATADIR%%/HTPC-Manager/interfaces/default/html/loginform.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/nzbget.html
+%%DATADIR%%/HTPC-Manager/interfaces/default/html/plex.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/qbittorrent.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/sabnzbd.html
 %%DATADIR%%/HTPC-Manager/interfaces/default/html/search.html
@@ -96,6 +100,7 @@
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/libs/jquery.tablesorter.min.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/log.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/nzbget.js
+%%DATADIR%%/HTPC-Manager/interfaces/default/js/plex.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/qbittorrent.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/sabnzbd.js
 %%DATADIR%%/HTPC-Manager/interfaces/default/js/search.js
@@ -130,6 +135,7 @@
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/favicon.ico
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/lib/__init__.py
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/lib/auth.py
+%%DATADIR%%/HTPC-Manager/libs/cherrypy/lib/auth2.py
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/lib/auth_basic.py
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/lib/auth_digest.py
 %%DATADIR%%/HTPC-Manager/libs/cherrypy/lib/caching.py
@@ -533,6 +539,7 @@
 %%DATADIR%%/HTPC-Manager/modules/couchpotato.py
 %%DATADIR%%/HTPC-Manager/modules/deluge.py
 %%DATADIR%%/HTPC-Manager/modules/nzbget.py
+%%DATADIR%%/HTPC-Manager/modules/plex.py
 %%DATADIR%%/HTPC-Manager/modules/qbittorrent.py
 %%DATADIR%%/HTPC-Manager/modules/sabnzbd.py
 %%DATADIR%%/HTPC-Manager/modules/search.py
@@ -541,6 +548,7 @@
 %%DATADIR%%/HTPC-Manager/modules/stats.py
 %%DATADIR%%/HTPC-Manager/modules/transmission.py
 %%DATADIR%%/HTPC-Manager/modules/tvheadend.py
+%%DATADIR%%/HTPC-Manager/modules/users.py
 %%DATADIR%%/HTPC-Manager/modules/utorrent.py
 %%DATADIR%%/HTPC-Manager/modules/xbmc.py
 @unexec rm -r %D/share/%%PORTNAME%%

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	headphones
-PORTVERSION=	9.2.0
+PORTVERSION=	9.3.0
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -17,7 +17,7 @@ USES=	python:2.5-2.7
 USE_GITHUB=	yes
 GH_ACCOUNT=	rembo10
 GH_PROJECT=	headphones
-GH_COMMIT=	13f34a1
+GH_COMMIT=	5c31f51
 GH_TAGNAME=	${GH_COMMIT}
 
 NO_BUILD=	yes

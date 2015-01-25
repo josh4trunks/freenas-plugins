@@ -1,8 +1,0 @@
-#!/bin/sh
-
-htpc_manager_path=/usr/pbi/htpc-manager-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'htpc_manager_' /etc/rc.conf > ${tmpfile}
-cat ${htpc_manager_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

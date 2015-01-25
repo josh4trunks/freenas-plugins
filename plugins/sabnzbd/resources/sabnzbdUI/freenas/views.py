@@ -14,7 +14,6 @@ import jsonrpclib
 import oauth2 as oauth
 from sabnzbdUI.freenas import forms, models, utils
 
-from syslog import *
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -357,7 +356,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/sabnzbd", "onestatus"],
+    proc = Popen([utils.sabnzbd_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

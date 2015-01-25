@@ -1,8 +1,0 @@
-#!/bin/sh
-
-headphones_path=/usr/pbi/headphones-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'headphones_' /etc/rc.conf > ${tmpfile}
-cat ${headphones_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

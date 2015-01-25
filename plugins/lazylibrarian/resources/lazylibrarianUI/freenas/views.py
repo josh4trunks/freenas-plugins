@@ -14,7 +14,6 @@ import jsonrpclib
 import oauth2 as oauth
 from lazylibrarianUI.freenas import forms, models, utils
 
-from syslog import *
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
     def __init__(self, host, verbose=None, use_datetime=0, key=None,
@@ -36,7 +35,10 @@ class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
         params['oauth_consumer_key'] = consumer.key
         params.update(moreparams)
 
-        req = oauth.Request(method='POST', url=url, parameters=params, body=body)
+        req = oauth.Request(method='POST',
+            url=url,
+            parameters=params,
+            body=body)
         signature_method = oauth.SignatureMethod_HMAC_SHA1()
         req.sign_request(signature_method, consumer, None)
         return req
@@ -163,10 +165,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (lazylibrarian_key, lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
+    (lazylibrarian_key,
+    lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=lazylibrarian_key, secret=lazylibrarian_secret)
+    trans = OAuthTransport(url, key=lazylibrarian_key,
+        secret=lazylibrarian_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -183,7 +187,9 @@ def start(request, plugin_id):
         lazylibrarian = models.LazyLibrarian.objects.create(enable=True)
 
     try:
-        form = forms.LazyLibrarianForm(lazylibrarian.__dict__, instance=lazylibrarian, jail_path=jail_path)
+        form = forms.LazyLibrarianForm(lazylibrarian.__dict__,
+            instance=lazylibrarian,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
@@ -194,7 +200,8 @@ def start(request, plugin_id):
             }), content_type='application/json')
 
     cmd = "%s onestart" % utils.lazylibrarian_control
-    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+    pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+        shell=True, close_fds=True)
 
     out = pipe.communicate()[0]
     return HttpResponse(simplejson.dumps({
@@ -204,9 +211,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (lazylibrarian_key, lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
+    (lazylibrarian_key,
+    lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=lazylibrarian_key, secret=lazylibrarian_secret)
+    trans = OAuthTransport(url, key=lazylibrarian_key,
+        secret=lazylibrarian_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -243,9 +252,11 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (lazylibrarian_key, lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
+    (lazylibrarian_key,
+    lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=lazylibrarian_key, secret=lazylibrarian_secret)
+    trans = OAuthTransport(url, key=lazylibrarian_key,
+        secret=lazylibrarian_secret)
 
     """
     Get the LazyLibrarian object
@@ -269,7 +280,8 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.LazyLibrarianForm(instance=lazylibrarian, jail_path=jail_path)
+        form = forms.LazyLibrarianForm(instance=lazylibrarian,
+        jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4
@@ -278,14 +290,18 @@ def edit(request, plugin_id):
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.LazyLibrarianForm(request.POST, instance=lazylibrarian, jail_path=jail_path)
+    form = forms.LazyLibrarianForm(request.POST,
+        instance=lazylibrarian,
+        jail_path=jail_path)
     if form.is_valid():
         form.save()
 
         cmd = "%s restart" % utils.lazylibrarian_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, shell=True, close_fds=True)
+        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
+            shell=True, close_fds=True)
 
-        return JsonResponse(request, error=True, message="LazyLibrarian settings successfully saved.")
+        return JsonResponse(request, error=True,
+            message="LazyLibrarian settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
@@ -298,9 +314,11 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (lazylibrarian_key, lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
+    (lazylibrarian_key,
+    lazylibrarian_secret) = utils.get_lazylibrarian_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=lazylibrarian_key, secret=lazylibrarian_secret)
+    trans = OAuthTransport(url, key=lazylibrarian_key,
+        secret=lazylibrarian_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
@@ -338,7 +356,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/local/etc/rc.d/lazylibrarian", "onestatus"],
+    proc = Popen([utils.lazylibrarian_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 

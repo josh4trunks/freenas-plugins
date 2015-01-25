@@ -1,8 +1,0 @@
-#!/bin/sh
-
-maraschino_path=/usr/pbi/maraschino-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'maraschino_' /etc/rc.conf > ${tmpfile}
-cat ${maraschino_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf

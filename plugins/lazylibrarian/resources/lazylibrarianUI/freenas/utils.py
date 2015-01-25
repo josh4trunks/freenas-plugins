@@ -1,10 +1,8 @@
-from subprocess import Popen, PIPE
 import hashlib
 import os
 import platform
 
 lazylibrarian_pbi_path = "/usr/pbi/lazylibrarian-" + platform.machine()
-lazylibrarian_etc_path = os.path.join(lazylibrarian_pbi_path, "etc")
 lazylibrarian_fcgi_pidfile = "/var/run/lazylibrarian_fcgi_server.pid"
 lazylibrarian_control = "/usr/local/etc/rc.d/lazylibrarian"
 lazylibrarian_icon = os.path.join(lazylibrarian_pbi_path, "default.png")
@@ -12,11 +10,15 @@ lazylibrarian_oauth_file = os.path.join(lazylibrarian_pbi_path, ".oauth")
 
 
 def get_rpc_url(request):
+    addr = request.META.get("SERVER_ADDR")
+    # IPv6
+    if ':' in addr:
+        addr = '[%s]' % addr
     return 'http%s://%s:%s/plugins/json-rpc/v1/' % (
         's' if request.is_secure() else '',
-        request.META.get("SERVER_ADDR"),
+        addr,
         request.META.get("SERVER_PORT"),
-        )
+    )
 
 
 def get_lazylibrarian_oauth_creds():

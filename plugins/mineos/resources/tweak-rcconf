@@ -1,8 +1,0 @@
-#!/bin/sh
-
-mineos_path=/usr/pbi/mineos-$(uname -m)
-tmpfile=$(mktemp /tmp/.XXXXXX)
-
-grep -v 'mineos_' /etc/rc.conf > ${tmpfile}
-cat ${mineos_path}/etc/rc.conf >> ${tmpfile}
-mv ${tmpfile} /etc/rc.conf
