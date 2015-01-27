@@ -122,7 +122,7 @@
 %%DATADIR%%/NzbDrone/UI/app.js
 %%DATADIR%%/NzbDrone/UI/index.html
 %%DATADIR%%/NzbDrone/UI/main.js
-%%DATADIR%%/NzbDrone/UI/piwik.js
+%%DATADIR%%/NzbDrone/UI/piwikCheck.js
 %%DATADIR%%/NzbDrone/UI/polyfills.js
 %%DATADIR%%/NzbDrone/UI/templates.js
 %%DATADIR%%/NzbDrone/libsqlite3.0.dylib

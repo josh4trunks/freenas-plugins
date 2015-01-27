@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sonarr
-PORTVERSION=	2.0.0.2663
+PORTVERSION=	2.0.0.2722
 CATEGORIES=	multimedia
 MASTER_SITES=	http://download.sonarr.tv/v2/master/mono/
 DISTNAME=	NzbDrone.master.${PORTVERSION}.mono
