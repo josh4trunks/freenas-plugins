@@ -18,3 +18,5 @@ lib/libvorbisenc.so.2	lib/libvorbisenc.so.2	keep
 lib/libx264.so.142	lib/libx264.so.142	keep
 lib/libx265.so.35	lib/libx265.so.35	keep
 lib/libxvidcore.so.4	lib/libxvidcore.so.4	keep
+lib/libfreetype.so.6	lib/libfreetype.so.6	keep
+lib/libfontconfig.so	lib/libfontconfig.so	keep
