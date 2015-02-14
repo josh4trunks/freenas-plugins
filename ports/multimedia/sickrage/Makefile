@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sickrage
-PORTVERSION=	9.3.0
+PORTVERSION=	9.3.1
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -21,7 +21,7 @@ USES=	python:2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     SiCKRAGETV
 GH_PROJECT=     SickRage
-GH_COMMIT=      1b850b3
+GH_COMMIT=      401cb66
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
@@ -33,13 +33,17 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		${USERS}
 
-OPTIONS_DEFINE=	OPENSSL
-OPTIONS_DEFAULT=	OPENSSL
+OPTIONS_DEFINE=	OPENSSL UNRAR
+OPTIONS_DEFAULT=	OPENSSL UNRAR
 
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MOPENSSL}
 RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+.endif
+
+.if ${PORT_OPTIONS:MUNRAR}
+RUN_DEPENDS+=	unrar:${PORTSDIR}/archivers/unrar
 .endif
 
 do-install:

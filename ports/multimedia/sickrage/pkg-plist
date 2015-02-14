@@ -8,6 +8,80 @@
 %%DATADIR%%/SickRage/autoProcessTV/autoProcessTV.cfg.sample
 %%DATADIR%%/SickRage/autoProcessTV/autoProcessTV.py
 %%DATADIR%%/SickRage/autoProcessTV/hellaToSickBeard.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/adapters.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/api.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/auth.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/cacert.pem
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/certs.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/compat.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/cookies.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/exceptions.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/hooks.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/models.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/README.rst
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/big5freq.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/big5prober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/chardetect.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/chardistribution.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/charsetgroupprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/charsetprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/codingstatemachine.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/compat.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/constants.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/cp949prober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/escprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/escsm.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/eucjpprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/euckrfreq.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/euckrprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/euctwfreq.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/euctwprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/gb2312freq.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/gb2312prober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/hebrewprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/jisfreq.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/jpcntx.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/langbulgarianmodel.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/langcyrillicmodel.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/langgreekmodel.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/langhebrewmodel.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/langhungarianmodel.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/langthaimodel.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/latin1prober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/mbcharsetprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/mbcsgroupprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/mbcssm.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/sbcharsetprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/sbcsgroupprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/sjisprober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/universaldetector.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/chardet/utf8prober.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/_collections.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/connection.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/connectionpool.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/contrib/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/contrib/ntlmpool.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/contrib/pyopenssl.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/exceptions.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/fields.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/filepost.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/packages/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/packages/ordered_dict.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/packages/six.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/poolmanager.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/request.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/response.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/packages/urllib3/util.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/sessions.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/status_codes.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/structures.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/requests/utils.py
 %%DATADIR%%/SickRage/autoProcessTV/%%USER%%ToSickbeard.py
 %%DATADIR%%/SickRage/autoProcessTV/sabToSickBeard.py
 %%DATADIR%%/SickRage/autoProcessTV/setup.py
@@ -126,6 +200,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/au.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/aw.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ax.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/ay.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/az.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ba.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/bb.png
@@ -178,9 +253,11 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/eh.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/el.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/en.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/eo.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/er.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/es.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/et.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/fa.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/fam.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/fi.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/fj.png
@@ -207,12 +284,14 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/gw.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/gy.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/he.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/hi.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/hk.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/hm.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/hn.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/hr.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ht.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/hu.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/hy.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/id.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ie.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/il.png
@@ -226,10 +305,12 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/jm.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/jo.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/jp.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/ka.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ke.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/kg.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/kh.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ki.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/kk.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/km.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/kn.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ko.png
@@ -283,6 +364,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/nr.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/nu.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/nz.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/oc.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/om.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/pa.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/pb.png
@@ -319,6 +401,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/sm.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/sn.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/so.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/sq.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/sr.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/st.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/sv.png
@@ -342,7 +425,9 @@
 %%DATADIR%%/SickRage/gui/slick/images/flags/tz.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ua.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ug.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/uk.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/um.png
+%%DATADIR%%/SickRage/gui/slick/images/flags/un.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/unknown.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/us.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/uy.png
@@ -464,6 +549,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/comedy central.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedy entral old.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedycentral.png
+%%DATADIR%%/SickRage/gui/slick/images/network/crackle.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ctc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ctv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cuatro.png
@@ -484,6 +570,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/e4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/een.png
 %%DATADIR%%/SickRage/gui/slick/images/network/einslive.png
+%%DATADIR%%/SickRage/gui/slick/images/network/el rey network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/endemol.png
 %%DATADIR%%/SickRage/gui/slick/images/network/entertainment.png
 %%DATADIR%%/SickRage/gui/slick/images/network/eredivisie live 1.png
@@ -569,6 +656,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/private spice.png
 %%DATADIR%%/SickRage/gui/slick/images/network/pro7.png
 %%DATADIR%%/SickRage/gui/slick/images/network/production i.g.png
+%%DATADIR%%/SickRage/gui/slick/images/network/radio canada.png
 %%DATADIR%%/SickRage/gui/slick/images/network/radio west.png
 %%DATADIR%%/SickRage/gui/slick/images/network/revision3.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rte one.png
@@ -612,6 +700,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/telecinco.png
 %%DATADIR%%/SickRage/gui/slick/images/network/teletoon.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the cw.png
+%%DATADIR%%/SickRage/gui/slick/images/network/the hub.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the movie network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the wb.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the-cw.png
@@ -664,6 +753,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/boxcar2.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/email.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/growl.png
+%%DATADIR%%/SickRage/gui/slick/images/notifiers/kodi.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/libnotify.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/nma.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/nmj.png
@@ -678,7 +768,6 @@
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/synologynotifier.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/trakt.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/twitter.png
-%%DATADIR%%/SickRage/gui/slick/images/notifiers/xbmc.png
 %%DATADIR%%/SickRage/gui/slick/images/plus.png
 %%DATADIR%%/SickRage/gui/slick/images/poster-dark.jpg
 %%DATADIR%%/SickRage/gui/slick/images/poster.png
@@ -795,6 +884,7 @@
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/inc_qualityChooser.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/inc_rootDirs.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/inc_top.tmpl
+%%DATADIR%%/SickRage/gui/slick/interfaces/default/login.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/manage.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/manage_backlogOverview.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/manage_episodeStatuses.tmpl
@@ -806,9 +896,11 @@
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/restart.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/restart_bare.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/testRename.tmpl
+%%DATADIR%%/SickRage/gui/slick/interfaces/default/trendingShows.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/viewlogs.tmpl
 %%DATADIR%%/SickRage/gui/slick/js/addExistingShow.js
 %%DATADIR%%/SickRage/gui/slick/js/addShowOptions.js
+%%DATADIR%%/SickRage/gui/slick/js/addTrendingShow.js
 %%DATADIR%%/SickRage/gui/slick/js/ajaxEpSearch.js
 %%DATADIR%%/SickRage/gui/slick/js/ajaxEpSubtitles.js
 %%DATADIR%%/SickRage/gui/slick/js/ajaxNotifications.js
@@ -971,6 +1063,12 @@
 %%DATADIR%%/SickRage/lib/chardet/sjisprober.py
 %%DATADIR%%/SickRage/lib/chardet/universaldetector.py
 %%DATADIR%%/SickRage/lib/chardet/utf8prober.py
+%%DATADIR%%/SickRage/lib/concurrent/__init__.py
+%%DATADIR%%/SickRage/lib/concurrent/futures/__init__.py
+%%DATADIR%%/SickRage/lib/concurrent/futures/_base.py
+%%DATADIR%%/SickRage/lib/concurrent/futures/_compat.py
+%%DATADIR%%/SickRage/lib/concurrent/futures/process.py
+%%DATADIR%%/SickRage/lib/concurrent/futures/thread.py
 %%DATADIR%%/SickRage/lib/configobj.py
 %%DATADIR%%/SickRage/lib/dateutil/__init__.py
 %%DATADIR%%/SickRage/lib/dateutil/easter.py
@@ -996,6 +1094,27 @@
 %%DATADIR%%/SickRage/lib/enzyme/real.py
 %%DATADIR%%/SickRage/lib/enzyme/riff.py
 %%DATADIR%%/SickRage/lib/enzyme/strutils.py
+%%DATADIR%%/SickRage/lib/fanart/__init__.py
+%%DATADIR%%/SickRage/lib/fanart/core.py
+%%DATADIR%%/SickRage/lib/fanart/errors.py
+%%DATADIR%%/SickRage/lib/fanart/immutable.py
+%%DATADIR%%/SickRage/lib/fanart/items.py
+%%DATADIR%%/SickRage/lib/fanart/movie.py
+%%DATADIR%%/SickRage/lib/fanart/music.py
+%%DATADIR%%/SickRage/lib/fanart/tests/__init__.py
+%%DATADIR%%/SickRage/lib/fanart/tests/json/wilfred.json
+%%DATADIR%%/SickRage/lib/fanart/tests/response/50x50.png
+%%DATADIR%%/SickRage/lib/fanart/tests/response/movie_thg.json
+%%DATADIR%%/SickRage/lib/fanart/tests/response/music_a7f.json
+%%DATADIR%%/SickRage/lib/fanart/tests/response/tv_239761.json
+%%DATADIR%%/SickRage/lib/fanart/tests/response/tv_79349.json
+%%DATADIR%%/SickRage/lib/fanart/tests/test_core.py
+%%DATADIR%%/SickRage/lib/fanart/tests/test_immutable.py
+%%DATADIR%%/SickRage/lib/fanart/tests/test_items.py
+%%DATADIR%%/SickRage/lib/fanart/tests/test_movie.py
+%%DATADIR%%/SickRage/lib/fanart/tests/test_music.py
+%%DATADIR%%/SickRage/lib/fanart/tests/test_tv.py
+%%DATADIR%%/SickRage/lib/fanart/tv.py
 %%DATADIR%%/SickRage/lib/feedcache/__init__.py
 %%DATADIR%%/SickRage/lib/feedcache/cache.py
 %%DATADIR%%/SickRage/lib/feedcache/cachestoragelock.py
@@ -3358,6 +3477,9 @@
 %%DATADIR%%/SickRage/lib/feedparser/tests/wellformed/xml/empty_xmlns_uri.xml
 %%DATADIR%%/SickRage/lib/feedparser/tests/wellformed/xml/escaped_apos.xml
 %%DATADIR%%/SickRage/lib/feedparser/tests/wellformed/xml/xlink_ns_no_prefix.xml
+%%DATADIR%%/SickRage/lib/futures/__init__.py
+%%DATADIR%%/SickRage/lib/futures/process.py
+%%DATADIR%%/SickRage/lib/futures/thread.py
 %%DATADIR%%/SickRage/lib/fuzzywuzzy/StringMatcher.py
 %%DATADIR%%/SickRage/lib/fuzzywuzzy/__init__.py
 %%DATADIR%%/SickRage/lib/fuzzywuzzy/fuzz.py
@@ -4179,7 +4301,6 @@
 %%DATADIR%%/SickRage/lib/imdb/_exceptions.py
 %%DATADIR%%/SickRage/lib/imdb/_logging.py
 %%DATADIR%%/SickRage/lib/imdb/helpers.py
-%%DATADIR%%/SickRage/lib/imdb/imdbpy.cfg
 %%DATADIR%%/SickRage/lib/imdb/linguistics.py
 %%DATADIR%%/SickRage/lib/imdb/locale/__init__.py
 %%DATADIR%%/SickRage/lib/imdb/locale/generatepot.py
@@ -4232,6 +4353,7 @@
 %%DATADIR%%/SickRage/lib/lockfile/sqlitelockfile.py
 %%DATADIR%%/SickRage/lib/lockfile/symlinklockfile.py
 %%DATADIR%%/SickRage/lib/oauth2/__init__.py
+%%DATADIR%%/SickRage/lib/pastebin.py
 %%DATADIR%%/SickRage/lib/pkg_resources.py
 %%DATADIR%%/SickRage/lib/profilehooks.py
 %%DATADIR%%/SickRage/lib/pynma/__init__.py
@@ -4343,55 +4465,6 @@
 %%DATADIR%%/SickRage/lib/send2trash/plat_osx.py
 %%DATADIR%%/SickRage/lib/send2trash/plat_other.py
 %%DATADIR%%/SickRage/lib/send2trash/plat_win.py
-%%DATADIR%%/SickRage/lib/shove/__init__.py
-%%DATADIR%%/SickRage/lib/shove/cache/__init__.py
-%%DATADIR%%/SickRage/lib/shove/cache/db.py
-%%DATADIR%%/SickRage/lib/shove/cache/file.py
-%%DATADIR%%/SickRage/lib/shove/cache/filelru.py
-%%DATADIR%%/SickRage/lib/shove/cache/memcached.py
-%%DATADIR%%/SickRage/lib/shove/cache/memlru.py
-%%DATADIR%%/SickRage/lib/shove/cache/memory.py
-%%DATADIR%%/SickRage/lib/shove/cache/redisdb.py
-%%DATADIR%%/SickRage/lib/shove/cache/simple.py
-%%DATADIR%%/SickRage/lib/shove/cache/simplelru.py
-%%DATADIR%%/SickRage/lib/shove/store/__init__.py
-%%DATADIR%%/SickRage/lib/shove/store/bsdb.py
-%%DATADIR%%/SickRage/lib/shove/store/cassandra.py
-%%DATADIR%%/SickRage/lib/shove/store/db.py
-%%DATADIR%%/SickRage/lib/shove/store/dbm.py
-%%DATADIR%%/SickRage/lib/shove/store/durusdb.py
-%%DATADIR%%/SickRage/lib/shove/store/file.py
-%%DATADIR%%/SickRage/lib/shove/store/ftp.py
-%%DATADIR%%/SickRage/lib/shove/store/hdf5.py
-%%DATADIR%%/SickRage/lib/shove/store/leveldbstore.py
-%%DATADIR%%/SickRage/lib/shove/store/memory.py
-%%DATADIR%%/SickRage/lib/shove/store/redisdb.py
-%%DATADIR%%/SickRage/lib/shove/store/s3.py
-%%DATADIR%%/SickRage/lib/shove/store/simple.py
-%%DATADIR%%/SickRage/lib/shove/store/svn.py
-%%DATADIR%%/SickRage/lib/shove/store/zodb.py
-%%DATADIR%%/SickRage/lib/shove/tests/__init__.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_bsddb_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_cassandra_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_db_cache.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_db_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_dbm_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_durus_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_file_cache.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_file_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_ftp_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_hdf5_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_leveldb_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_memcached_cache.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_memory_cache.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_memory_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_redis_cache.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_redis_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_s3_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_simple_cache.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_simple_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_svn_store.py
-%%DATADIR%%/SickRage/lib/shove/tests/test_zodb_store.py
 %%DATADIR%%/SickRage/lib/simplejson/__init__.py
 %%DATADIR%%/SickRage/lib/simplejson/_speedups.c
 %%DATADIR%%/SickRage/lib/simplejson/decoder.py
@@ -4581,6 +4654,7 @@
 %%DATADIR%%/SickRage/lib/sqlalchemy/util/langhelpers.py
 %%DATADIR%%/SickRage/lib/sqlalchemy/util/queue.py
 %%DATADIR%%/SickRage/lib/sqlalchemy/util/topological.py
+%%DATADIR%%/SickRage/lib/sqliteshelf.py
 %%DATADIR%%/SickRage/lib/subliminal/__init__.py
 %%DATADIR%%/SickRage/lib/subliminal/api.py
 %%DATADIR%%/SickRage/lib/subliminal/async.py
@@ -4610,23 +4684,14 @@
 %%DATADIR%%/SickRage/lib/tmdb_api/test_tmdb_api.py
 %%DATADIR%%/SickRage/lib/tmdb_api/tmdb_api.py
 %%DATADIR%%/SickRage/lib/trakt/__init__.py
-%%DATADIR%%/SickRage/lib/tvdb_api/MANIFEST.in
-%%DATADIR%%/SickRage/lib/tvdb_api/Rakefile
-%%DATADIR%%/SickRage/lib/tvdb_api/UNLICENSE
+%%DATADIR%%/SickRage/lib/trakt/exceptions.py
+%%DATADIR%%/SickRage/lib/trakt/trakt.py
 %%DATADIR%%/SickRage/lib/tvdb_api/__init__.py
-%%DATADIR%%/SickRage/lib/tvdb_api/readme.md
-%%DATADIR%%/SickRage/lib/tvdb_api/setup.py
-%%DATADIR%%/SickRage/lib/tvdb_api/tests/gprof2dot.py
-%%DATADIR%%/SickRage/lib/tvdb_api/tests/runtests.py
-%%DATADIR%%/SickRage/lib/tvdb_api/tests/test_tvdb_api.py
 %%DATADIR%%/SickRage/lib/tvdb_api/tvdb_api.py
 %%DATADIR%%/SickRage/lib/tvdb_api/tvdb_cache.py
 %%DATADIR%%/SickRage/lib/tvdb_api/tvdb_exceptions.py
 %%DATADIR%%/SickRage/lib/tvdb_api/tvdb_ui.py
-%%DATADIR%%/SickRage/lib/tvrage_api/AUTHORS
-%%DATADIR%%/SickRage/lib/tvrage_api/LICENSE
 %%DATADIR%%/SickRage/lib/tvrage_api/__init__.py
-%%DATADIR%%/SickRage/lib/tvrage_api/setup.py
 %%DATADIR%%/SickRage/lib/tvrage_api/tvrage_api.py
 %%DATADIR%%/SickRage/lib/tvrage_api/tvrage_cache.py
 %%DATADIR%%/SickRage/lib/tvrage_api/tvrage_exceptions.py
@@ -4851,7 +4916,6 @@
 %%DATADIR%%/SickRage/sickbeard/blackandwhitelist.py
 %%DATADIR%%/SickRage/sickbeard/browser.py
 %%DATADIR%%/SickRage/sickbeard/bs4_parser.py
-%%DATADIR%%/SickRage/sickbeard/bug_tracker.py
 %%DATADIR%%/SickRage/sickbeard/classes.py
 %%DATADIR%%/SickRage/sickbeard/clients/__init__.py
 %%DATADIR%%/SickRage/sickbeard/clients/deluge.py
@@ -4886,13 +4950,13 @@
 %%DATADIR%%/SickRage/sickbeard/metadata/__init__.py
 %%DATADIR%%/SickRage/sickbeard/metadata/generic.py
 %%DATADIR%%/SickRage/sickbeard/metadata/helpers.py
+%%DATADIR%%/SickRage/sickbeard/metadata/kodi.py
+%%DATADIR%%/SickRage/sickbeard/metadata/kodi_12plus.py
 %%DATADIR%%/SickRage/sickbeard/metadata/mede8er.py
 %%DATADIR%%/SickRage/sickbeard/metadata/%%USER%%browser.py
 %%DATADIR%%/SickRage/sickbeard/metadata/ps3.py
 %%DATADIR%%/SickRage/sickbeard/metadata/tivo.py
 %%DATADIR%%/SickRage/sickbeard/metadata/wdtv.py
-%%DATADIR%%/SickRage/sickbeard/metadata/xbmc.py
-%%DATADIR%%/SickRage/sickbeard/metadata/xbmc_12plus.py
 %%DATADIR%%/SickRage/sickbeard/name_cache.py
 %%DATADIR%%/SickRage/sickbeard/name_parser/__init__.py
 %%DATADIR%%/SickRage/sickbeard/name_parser/parser.py
@@ -4904,6 +4968,7 @@
 %%DATADIR%%/SickRage/sickbeard/notifiers/boxcar2.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/emailnotify.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/growl.py
+%%DATADIR%%/SickRage/sickbeard/notifiers/kodi.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/libnotify.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/nma.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/nmj.py
@@ -4918,7 +4983,6 @@
 %%DATADIR%%/SickRage/sickbeard/notifiers/synologynotifier.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/trakt.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/tweet.py
-%%DATADIR%%/SickRage/sickbeard/notifiers/xbmc.py
 %%DATADIR%%/SickRage/sickbeard/nzbSplitter.py
 %%DATADIR%%/SickRage/sickbeard/nzbget.py
 %%DATADIR%%/SickRage/sickbeard/postProcessor.py
@@ -4976,6 +5040,8 @@
 %%DATADIR%%/SickRage/tests/all_tests.py
 %%DATADIR%%/SickRage/tests/common_tests.py
 %%DATADIR%%/SickRage/tests/db_tests.py
+%%DATADIR%%/SickRage/tests/encoding_tests.py
+%%DATADIR%%/SickRage/tests/issue_submitter_tests.py
 %%DATADIR%%/SickRage/tests/name_parser_tests.py
 %%DATADIR%%/SickRage/tests/pp_tests.py
 %%DATADIR%%/SickRage/tests/scene_helpers_tests.py
@@ -5014,6 +5080,7 @@
 %%DATADIR%%/SickRage/tornado/platform/twisted.py
 %%DATADIR%%/SickRage/tornado/platform/windows.py
 %%DATADIR%%/SickRage/tornado/process.py
+%%DATADIR%%/SickRage/tornado/routes.py
 %%DATADIR%%/SickRage/tornado/simple_httpclient.py
 %%DATADIR%%/SickRage/tornado/speedups.c
 %%DATADIR%%/SickRage/tornado/stack_context.py
