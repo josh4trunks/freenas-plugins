@@ -33,6 +33,11 @@ class BtSync(models.Model):
         default=3600,
         blank=True,
         )
+    config_save_interval = models.IntegerField(
+        verbose_name="Config Save Interval (seconds)",
+        default=600,
+        blank=True,
+        )
     disk_low_priority = models.BooleanField(
         verbose_name="Disk Low Priority",
         default=True,

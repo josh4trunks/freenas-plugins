@@ -17,6 +17,7 @@ class BtSyncForm(forms.ModelForm):
         widgets = {
             'webui_port': forms.widgets.TextInput(),
             'config_refresh_interval': forms.widgets.TextInput(),
+            'config_save_interval': forms.widgets.TextInput(),
             'external_port': forms.widgets.TextInput(),
             'folder_rescan_interval': forms.widgets.TextInput(),
             'log_size': forms.widgets.TextInput(),

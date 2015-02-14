@@ -66,6 +66,10 @@ btsync_settings = {
         "field": "config_refresh_interval",
         "type": "textbox",
         },
+    "config_save_interval": {
+        "field": "config_save_interval",
+        "type": "textbox",
+        },
     "disk_low_priority": {
         "field": "disk_low_priority",
         "type": "checkbox",
