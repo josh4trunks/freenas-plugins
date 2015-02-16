@@ -28,6 +28,6 @@ class OwncloudForm(forms.ModelForm):
         rcconf = os.path.join(utils.owncloud_etc_path, "rc.conf")
         with open(rcconf, "w") as f:
             if obj.enable:
-                f.write('apache22_enable="YES"\n')
+                f.write('apache24_enable="YES"\n')
 
         os.system(os.path.join(utils.owncloud_pbi_path, "tweak-rcconf"))
