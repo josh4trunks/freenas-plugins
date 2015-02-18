@@ -368,7 +368,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen(["/usr/bin/pgrep", "httpd"],
+    proc = Popen([utils.owncloud_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 
