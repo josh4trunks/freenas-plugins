@@ -49,7 +49,7 @@ commonName_default = ownCloud/' /etc/ssl/openssl.cnf
 fi
 
 #Enable SSL
-/usr/bin/sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
+/usr/bin/sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1/' ${owncloud_pbi_path}/etc/apache22/httpd.conf
 
 #Optimize Apache on ZFS
 /usr/bin/sed -i '' -e 's/^#\(EnableMMAP[[:space:]].*$\)/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
