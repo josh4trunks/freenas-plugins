@@ -52,7 +52,7 @@ fi
 /usr/bin/sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1/' ${owncloud_pbi_path}/etc/apache22/httpd.conf
 
 #Optimize Apache on ZFS
-/usr/bin/sed -i '' -e 's/^#\(EnableMMAP[[:space:]].*$\)/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
+/usr/bin/sed -i '' -e 's/^#\(EnableMMAP[[:space:]]\).*$/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
 #Enable X-Sendfile
 /usr/bin/sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
