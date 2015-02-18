@@ -56,3 +56,11 @@ fi
 
 #Enable X-Sendfile
 /usr/bin/sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
+
+if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
+	echo 'default_charset = "UTF-8"' > ${owncloud_pbi_path}/etc/php.ini
+fi
+
+if [ ! -f "${owncloud_pbi_path}/etc/apache24/envvars.d/path.env" ]; then
+	echo 'export PATH=$PATH:'"${owncloud_pbi_path}/bin" > ${owncloud_pbi_path}/etc/apache24/envvars.d/path.env
+fi
