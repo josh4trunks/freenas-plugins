@@ -62,5 +62,5 @@ if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
 fi
 
 if [ ! -f "${owncloud_pbi_path}/etc/apache24/envvars.d/path.env" ]; then
-	echo 'export PATH=$PATH:'"${owncloud_pbi_path}/bin" > ${owncloud_pbi_path}/etc/apache24/envvars.d/path.env
+	echo 'export PATH=$PATH' > ${owncloud_pbi_path}/etc/apache24/envvars.d/path.env
 fi
