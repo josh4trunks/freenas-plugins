@@ -49,4 +49,4 @@ commonName_default = ownCloud/' /etc/ssl/openssl.cnf
 fi
 
 #Enable SSL
-/usr/bin/sed -i '' -E -e 's/^#(.*httpd-ssl.conf)/\1/' ${owncloud_pbi_path}/etc/apache22/httpd.conf
+/usr/bin/sed -i '' -e 's|^#\(Include etc/apache24/extra/httpd-ssl.conf\)|\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
