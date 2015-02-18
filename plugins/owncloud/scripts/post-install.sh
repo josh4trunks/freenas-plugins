@@ -24,6 +24,9 @@ AcceptPathInfo On
     Options Indexes FollowSymLinks
     AllowOverride All
     Require all granted
+    SetEnv MOD_X_SENDFILE_ENABLED 1
+    XSendFile On
+    XSendFilePath /media
 </Directory>
 __EOF__
 
