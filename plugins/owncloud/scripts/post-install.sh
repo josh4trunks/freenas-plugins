@@ -5,7 +5,7 @@ owncloud_pbi_path=/usr/pbi/owncloud-$(uname -m)
 
 ${owncloud_pbi_path}/bin/python2.7 ${owncloud_pbi_path}/owncloudUI/manage.py syncdb --migrate --noinput
 
-#Optionaly set /media as the ownCloud data-directory
+# Set /media as the ownCloud data-directory
 if [ ! -f "${owncloud_pbi_path}/www/owncloud/config/config.php" ]; then
 	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/config.php
 	<?php
@@ -16,17 +16,16 @@ if [ ! -f "${owncloud_pbi_path}/www/owncloud/config/config.php" ]; then
 __EOF__
 fi
 
-#Create cronjob for ownCloud
+# Create cronjob for ownCloud
 tmp=$(mktemp /tmp/tmp.XXXXXX)
 echo "*/15 * * * * ${owncloud_pbi_path}/bin/php -f ${owncloud_pbi_path}/www/owncloud/cron.php" > ${tmp}
 crontab -u www ${tmp}
 
-#Create Apache alias for owncloud
+# Create Apache alias for ownCloud
 cat << __EOF__ > ${owncloud_pbi_path}/etc/apache24/Includes/owncloud.conf
 AddType application/x-httpd-php .php
 
 Alias / ${owncloud_pbi_path}/www/owncloud/
-AcceptPathInfo On
 <Directory ${owncloud_pbi_path}/www/owncloud>
     Options Indexes FollowSymLinks
     AllowOverride All
@@ -37,7 +36,8 @@ AcceptPathInfo On
 </Directory>
 __EOF__
 
-chown -R www:www ${owncloud_pbi_path}/www/owncloud media
+# Allow ownCloud updater to work
+chown -R www:www ${owncloud_pbi_path}/www/owncloud /media
 
 
 # Generate SSL certificate
@@ -54,18 +54,18 @@ commonName_default = ownCloud\
 
 fi
 
-#Enable SSL
+# Enable SSL
 sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1|' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*ssl_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*socache_shmcb_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
-#Optimize Apache on ZFS
+# Optimize Apache on ZFS
 sed -i '' -e 's/^#\(EnableMMAP[[:space:]]\).*$/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
-#Enable X-Sendfile
+# Enable X-Sendfile
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
-#Set charset for PHP
+# Set charset for PHP
 if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
 	echo 'default_charset = "UTF-8"' > ${owncloud_pbi_path}/etc/php.ini
 fi
