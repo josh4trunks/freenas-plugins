@@ -5,12 +5,14 @@ owncloud_pbi_path=/usr/pbi/owncloud-$(uname -m)
 
 ${owncloud_pbi_path}/bin/python2.7 ${owncloud_pbi_path}/owncloudUI/manage.py syncdb --migrate --noinput
 
-# Set /media as the ownCloud data-directory
-if [ ! -f "${owncloud_pbi_path}/www/owncloud/config/config.php" ]; then
-	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/config.php
+# Restore ownCloud config otherwise set /media as the ownCloud data-directory
+if [ -f /media/config.php ]; then
+	mv /media/config.php ${owncloud_pbi_path}/www/owncloud/config
+else
+	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/autoconfig.php
 	<?php
-	\$CONFIG = array (
-	  'datadirectory' => '/media',
+	\$AUTOCONFIG = array (
+	  'directory' => '/media',
 	);
 	?>
 __EOF__
