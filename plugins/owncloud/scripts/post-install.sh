@@ -12,7 +12,8 @@ else
 	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/autoconfig.php
 	<?php
 	\$AUTOCONFIG = array (
-	  'directory' => '/media',
+	  "dbtype" => "sqlite",
+	  "directory" => "/media",
 	);
 	?>
 __EOF__
