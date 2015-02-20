@@ -69,11 +69,3 @@ sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' 
 if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
 	echo 'default_charset = "UTF-8"' > ${owncloud_pbi_path}/etc/php.ini
 fi
-
-#Set path and additional library path for PHP
-if [ ! -f "${owncloud_pbi_path}/etc/apache24/envvars.d/path.env" ]; then
-	cat << __EOF__ > ${owncloud_pbi_path}/etc/apache24/envvars.d/path.env
-	export PATH=\$PATH:${owncloud_pbi_path}/bin
-	export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:${owncloud_pbi_path}/lib/nss
-__EOF__
-fi
