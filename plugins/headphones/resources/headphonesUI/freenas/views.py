@@ -188,7 +188,8 @@ def start(request, plugin_id):
 
     try:
         form = forms.HeadphonesForm(headphones.__dict__,
-            instance=headphones, jail_path=jail_path)
+            instance=headphones,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:

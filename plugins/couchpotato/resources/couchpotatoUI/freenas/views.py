@@ -188,7 +188,8 @@ def start(request, plugin_id):
 
     try:
         form = forms.CouchPotatoForm(couchpotato.__dict__,
-            instance=couchpotato, jail_path=jail_path)
+            instance=couchpotato,
+            jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
