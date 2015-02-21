@@ -25,7 +25,6 @@ class SickRageForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(SickRageForm, self).save(*args, **kwargs)
 
-
         if obj.enable:
             Popen(["/usr/sbin/sysrc", "sickrage_enable=YES"],
                 stdout=PIPE,

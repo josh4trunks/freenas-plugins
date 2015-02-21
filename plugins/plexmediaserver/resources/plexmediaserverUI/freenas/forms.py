@@ -26,6 +26,10 @@ class PlexMediaServerForm(forms.ModelForm):
         obj = super(PlexMediaServerForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "plexmediaserver_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "plexmediaserver_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "plexmediaserver_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "plexmediaserver_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

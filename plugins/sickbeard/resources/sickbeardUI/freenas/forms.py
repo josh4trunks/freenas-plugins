@@ -25,7 +25,6 @@ class SickBeardForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         obj = super(SickBeardForm, self).save(*args, **kwargs)
 
-
         if obj.enable:
             Popen(["/usr/sbin/sysrc", "sickbeard_enable=YES"],
                 stdout=PIPE,

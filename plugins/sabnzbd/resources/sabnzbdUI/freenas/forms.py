@@ -1,7 +1,6 @@
 from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 

@@ -26,6 +26,10 @@ class OwncloudForm(forms.ModelForm):
         obj = super(OwncloudForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "apache24_enable=YES"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "apache24_enable=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "apache24_enable=NO"], stdout=PIPE, stderr=PIPE)
+            Popen(["/usr/sbin/sysrc", "apache24_enable=NO"],
+                stdout=PIPE,
+                stderr=PIPE)
