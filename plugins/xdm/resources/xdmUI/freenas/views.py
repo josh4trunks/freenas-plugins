@@ -251,59 +251,19 @@ def stop(request, plugin_id):
         }), content_type='application/json')
 
 
-def edit(request, plugin_id):
+def open_view(request, plugin_id):
     (xdm_key,
     xdm_secret) = utils.get_xdm_oauth_creds()
     url = utils.get_rpc_url(request)
     trans = OAuthTransport(url, key=xdm_key,
         secret=xdm_secret)
+    server = jsonrpclib.Server(url, transport=trans)
+    jail = json.loads(server.plugins.jail.info(plugin_id))[0]
+    jail_ipv4 = jail['fields']['jail_ipv4'].split('/', 1)[0]
 
-    """
-    Get the XDM object
-    If it does not exist create a new entry
-    """
-    try:
-        xdm = models.XDM.objects.order_by('-id')[0]
-    except IndexError:
-        xdm = models.XDM.objects.create()
-
-    try:
-        server = jsonrpclib.Server(url, transport=trans)
-        jail_path = server.plugins.jail.path(plugin_id)
-        jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
-        jail_ipv4 = jail['jail_ipv4'].split('/')[0]
-        auth = server.plugins.is_authenticated(
-            request.COOKIES.get("sessionid", "")
-            )
-        assert auth
-    except Exception as e:
-        raise
-
-    if request.method == "GET":
-        form = forms.XDMForm(instance=xdm,
-            jail_path=jail_path)
-        return render(request, "edit.html", {
-            'form': form,
-            'ipv4': jail_ipv4
-        })
-
-    if not request.POST:
-        return JsonResponse(request, error=True, message="A problem occurred.")
-
-    form = forms.XDMForm(request.POST,
-        instance=xdm,
-        jail_path=jail_path)
-    if form.is_valid():
-        form.save()
-
-        cmd = "%s restart" % utils.xdm_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-            shell=True, close_fds=True)
-
-        return JsonResponse(request, error=True,
-            message="XDM settings successfully saved.")
-
-    return JsonResponse(request, form=form)
+    return render(request, "open.html", {
+        'ipv4': jail_ipv4,
+    })
 
 
 def treemenu(request, plugin_id):
@@ -337,7 +297,7 @@ def treemenu(request, plugin_id):
         'append_to': 'plugins',
         'icon': reverse('treemenu_icon', kwargs={'plugin_id': plugin_id}),
         'type': 'pluginsfcgi',
-        'url': reverse('xdm_edit', kwargs={'plugin_id': plugin_id}),
+        'url': reverse('xdm_open', kwargs={'plugin_id': plugin_id}),
         'kwargs': {'plugin_name': 'xdm', 'plugin_id': plugin_id },
     }
 
