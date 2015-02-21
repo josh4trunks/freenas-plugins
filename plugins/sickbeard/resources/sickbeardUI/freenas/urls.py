@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('sickbeardUI.freenas.views',
-     url(r'^edit$', 'edit', name="sickbeard_edit"),
+     url(r'^open/$', 'open_view', name="sickbeard_open"),
      url(r'^treemenu-icon$', 'treemenu_icon', name="treemenu_icon"),
      url(r'^_s/treemenu$', 'treemenu', name="treemenu"),
      url(r'^_s/start$', 'start', name="start"),
