@@ -263,7 +263,7 @@ def open_view(request, plugin_id):
 
     return render(request, "open.html", {
         'ipv4': jail_ipv4,
-        })
+    })
 
 
 def treemenu(request, plugin_id):
