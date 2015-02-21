@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('maraschinoUI.freenas.views',
-     url(r'^edit$', 'edit', name="maraschino_edit"),
+     url(r'^open/$', 'open_view', name="maraschino_open"),
      url(r'^treemenu-icon$', 'treemenu_icon', name="treemenu_icon"),
      url(r'^_s/treemenu$', 'treemenu', name="treemenu"),
      url(r'^_s/start$', 'start', name="start"),
