@@ -251,59 +251,19 @@ def stop(request, plugin_id):
         }), content_type='application/json')
 
 
-def edit(request, plugin_id):
+def open_view(request, plugin_id):
     (headphones_key,
     headphones_secret) = utils.get_headphones_oauth_creds()
     url = utils.get_rpc_url(request)
     trans = OAuthTransport(url, key=headphones_key,
         secret=headphones_secret)
+    server = jsonrpclib.Server(url, transport=trans)
+    jail = json.loads(server.plugins.jail.info(plugin_id))[0]
+    jail_ipv4 = jail['fields']['jail_ipv4'].split('/', 1)[0]
 
-    """
-    Get the Headphones object
-    If it does not exist create a new entry
-    """
-    try:
-        headphones = models.Headphones.objects.order_by('-id')[0]
-    except IndexError:
-        headphones = models.Headphones.objects.create()
-
-    try:
-        server = jsonrpclib.Server(url, transport=trans)
-        jail_path = server.plugins.jail.path(plugin_id)
-        jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
-        jail_ipv4 = jail['jail_ipv4'].split('/')[0]
-        auth = server.plugins.is_authenticated(
-            request.COOKIES.get("sessionid", "")
-            )
-        assert auth
-    except Exception as e:
-        raise
-
-    if request.method == "GET":
-        form = forms.HeadphonesForm(instance=headphones,
-            jail_path=jail_path)
-        return render(request, "edit.html", {
-            'form': form,
-            'ipv4': jail_ipv4
+    return render(request, "open.html", {
+        'ipv4': jail_ipv4,
         })
-
-    if not request.POST:
-        return JsonResponse(request, error=True, message="A problem occurred.")
-
-    form = forms.HeadphonesForm(request.POST,
-        instance=headphones,
-        jail_path=jail_path)
-    if form.is_valid():
-        form.save()
-
-        cmd = "%s restart" % utils.headphones_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-            shell=True, close_fds=True)
-
-        return JsonResponse(request, error=True,
-            message="Headphones settings successfully saved.")
-
-    return JsonResponse(request, form=form)
 
 
 def treemenu(request, plugin_id):
@@ -337,7 +297,7 @@ def treemenu(request, plugin_id):
         'append_to': 'plugins',
         'icon': reverse('treemenu_icon', kwargs={'plugin_id': plugin_id}),
         'type': 'pluginsfcgi',
-        'url': reverse('headphones_edit', kwargs={'plugin_id': plugin_id}),
+        'url': reverse('headphones_open', kwargs={'plugin_id': plugin_id}),
         'kwargs': {'plugin_name': 'headphones', 'plugin_id': plugin_id },
     }
 
