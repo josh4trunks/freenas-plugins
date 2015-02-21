@@ -251,58 +251,6 @@ def stop(request, plugin_id):
         }), content_type='application/json')
 
 
-def edit(request, plugin_id):
-    (owncloud_key,
-    owncloud_secret) = utils.get_owncloud_oauth_creds()
-    url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=owncloud_key,
-        secret=owncloud_secret)
-
-    """
-    Get the Owncloud object
-    If it does not exist create a new entry
-    """
-    try:
-        owncloud = models.Owncloud.objects.order_by('-id')[0]
-    except IndexError:
-        owncloud = models.Owncloud.objects.create()
-
-    try:
-        server = jsonrpclib.Server(url, transport=trans)
-        jail_path = server.plugins.jail.path(plugin_id)
-        auth = server.plugins.is_authenticated(
-            request.COOKIES.get("sessionid", "")
-            )
-        assert auth
-    except Exception:
-        raise
-
-    if request.method == "GET":
-        form = forms.OwncloudForm(instance=owncloud,
-            jail_path=jail_path)
-        return render(request, "edit.html", {
-            'form': form,
-        })
-
-    if not request.POST:
-        return JsonResponse(request, error=True, message="A problem occurred.")
-
-    form = forms.OwncloudForm(request.POST,
-        instance=owncloud,
-        jail_path=jail_path)
-    if form.is_valid():
-        form.save()
-
-        cmd = "%s restart" % utils.owncloud_control
-        pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
-            shell=True, close_fds=True)
-
-        return JsonResponse(request, error=True,
-            message="Owncloud settings successfully saved.")
-
-    return JsonResponse(request, form=form)
-
-
 def open_view(request, plugin_id):
     (owncloud_key,
     owncloud_secret) = utils.get_owncloud_oauth_creds()
@@ -311,10 +259,10 @@ def open_view(request, plugin_id):
         secret=owncloud_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
-    jail_ip = jail['fields']['jail_ipv4'].split('/', 1)[0]
+    jail_ipv4 = jail['fields']['jail_ipv4'].split('/', 1)[0]
 
     return render(request, "open.html", {
-        'jail_ip': jail_ip,
+        'ipv4': jail_ipv4,
     })
 
 
