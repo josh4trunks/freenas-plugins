@@ -10,12 +10,12 @@ if [ -f "/media/config.php" ]; then
 	mv /media/config.php ${owncloud_pbi_path}/www/owncloud/config
 else
 	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/autoconfig.php
-	<?php
-	\$AUTOCONFIG = array (
-	  "dbtype" => "sqlite",
-	  "directory" => "/media",
-	);
-	?>
+<?php
+\$AUTOCONFIG = array (
+  "dbtype" => "sqlite",
+  "directory" => "/media",
+);
+?>
 __EOF__
 fi
 
