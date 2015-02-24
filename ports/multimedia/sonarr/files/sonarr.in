@@ -43,6 +43,8 @@ start_precmd=%%PORTNAME%%_precmd
 	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
 		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
 	fi
+
+	export XDG_CONFIG_HOME=${%%PORTNAME%%_data_dir}
 }
 
 run_rc_command "$1"
