@@ -15,7 +15,10 @@ fi
 # Install fonts config if it doesn't exist
 if [ ! -f /usr/local/etc/fonts/fonts.conf ]; then
 	mkdir -p /usr/local/etc/fonts
-	mv ${subsonic_pbi_path}/fonts.conf /usr/local/etc/fonts
-else
-	rm ${subsonic_pbi_path}/fonts.conf
+	cat << __EOF__ > /usr/local/etc/fonts/fonts.conf
+<?xml version="1.0"?>
+<fontconfig>
+	<dir>/usr/local/lib/X11/fonts</dir>
+</fontconfig>
+__EOF__
 fi
