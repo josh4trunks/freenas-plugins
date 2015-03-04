@@ -1,4 +1,5 @@
 lib/libaacplus.so.2	lib/libaacplus.so.2	keep
+lib/libass.so.5		lib/libass.so.5		keep
 lib/libavcodec.so.55	lib/libavcodec.so.55	keep
 lib/libavdevice.so.55	lib/libavdevice.so.55	keep
 lib/libavfilter.so.4	lib/libavfilter.so.4	keep
