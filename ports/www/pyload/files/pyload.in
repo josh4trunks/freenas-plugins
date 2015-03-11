@@ -33,9 +33,9 @@ load_rc_config ${name}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/pyload/pyLoadCore.py --configdir=${pyload_data_dir} -p ${pidfile} --daemon"
-extra_commands="useredit"
-useredit_cmd="%%PORTNAME%%_useredit"
+%%PORTNAME%%_flags="%%DATADIR%%/pyload/pyLoadCore.py --configdir=${pyload_data_dir} -p ${pidfile}"
+command_args="--daemon"
+extra_commands="setup useredit"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
@@ -48,8 +48,16 @@ start_precmd="%%PORTNAME%%_prestart"
 	fi
 }
 
+setup_cmd="%%PORTNAME%%_setup"
+%%PORTNAME%%_setup() {
+	export PATH=${PATH}:%%PREFIX%%/bin
+	${command} ${%%PORTNAME%%_flags} -s
+	chown -R ${%%PORTNAME%%_user}:${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
+}
+
+useredit_cmd="%%PORTNAME%%_useredit"
 %%PORTNAME%%_useredit() {
-	${command} %%DATADIR%%/pyload/pyLoadCore.py --configdir=${pyload_data_dir} -p ${pidfile} -u
+	${command} ${%%PORTNAME%%_flags} -u
 }
 
 run_rc_command "$1"
