@@ -65,6 +65,14 @@ sed -i '' -e 's/^#\(LoadModule[[:space:]]*socache_shmcb_module[[:space:]].*$\)/\
 # Optimize Apache on ZFS
 sed -i '' -e 's/^#\(EnableMMAP[[:space:]]\).*$/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
+# Add paths to Apache
+if [ ! -f "${owncloud_pbi_path}/etc/apache24/envvars.d/path.env" ]; then
+cat << __EOF__ > ${owncloud_pbi_path}/etc/apache24/envvars.d/path.env
+export PATH=${owncloud_pbi_path}/bin:/usr/local/bin:\$PATH
+export LD_LIBRARY_PATH=/usr/local/lib:\$LD_LIBRARY_PATH
+__EOF__
+fi
+
 # Enable X-Sendfile
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
