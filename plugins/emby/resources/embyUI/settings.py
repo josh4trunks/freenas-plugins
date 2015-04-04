@@ -1,4 +1,4 @@
-# Django settings for mediabrowserUI project.
+# Django settings for embyUI project.
 
 import os
 import sys
@@ -18,7 +18,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(HERE, "mediabrowser.db"),                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(HERE, "emby.db"),                      # Or path to database file if using sqlite3.
     }
 }
 
@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
 
 FORCE_SCRIPT_NAME = ''
 
-ROOT_URLCONF = 'mediabrowserUI.urls'
+ROOT_URLCONF = 'embyUI.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     #'django.contrib.sites',
     #'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mediabrowserUI.freenas',
+    'embyUI.freenas',
     'south',
 )
 

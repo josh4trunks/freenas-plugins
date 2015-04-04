@@ -7,22 +7,22 @@ from flup.server.fcgi import WSGIServer
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "lib/python2.7/site-packages"))
-mediabrowser_fcgi_pidfile = "/var/run/mediabrowser_fcgi_server.pid"
+emby_fcgi_pidfile = "/var/run/emby_fcgi_server.pid"
 
 
-def mediabrowser_fcgi_start(args):
+def emby_fcgi_start(args):
     if len(args) < 2:
         return False
 
     ip = args[0]
     port = long(args[1])
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'mediabrowserUI.settings'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'embyUI.settings'
     import django.core.handlers.wsgi
     app = django.core.handlers.wsgi.WSGIHandler()
 
     res = False
-    with open(mediabrowser_fcgi_pidfile, "wb") as fp:
+    with open(emby_fcgi_pidfile, "wb") as fp:
         fp.write(str(os.getpid()))
         fp.close()
 
@@ -31,26 +31,26 @@ def mediabrowser_fcgi_start(args):
     return res
 
 
-def mediabrowser_fcgi_stop(args):
+def emby_fcgi_stop(args):
     res = False
-    if os.access(mediabrowser_fcgi_pidfile, os.F_OK):
-        with open(mediabrowser_fcgi_pidfile, "r") as fp:
+    if os.access(emby_fcgi_pidfile, os.F_OK):
+        with open(emby_fcgi_pidfile, "r") as fp:
             pid = long(fp.read())
             fp.close()
 
             os.kill(pid, signal.SIGHUP)
             res = True
 
-    if os.access(mediabrowser_fcgi_pidfile, os.F_OK):
-        os.unlink(mediabrowser_fcgi_pidfile)
+    if os.access(emby_fcgi_pidfile, os.F_OK):
+        os.unlink(emby_fcgi_pidfile)
 
     return res
 
 
-def mediabrowser_fcgi_status(args):
+def emby_fcgi_status(args):
     res = False
-    if os.access(mediabrowser_fcgi_pidfile, os.F_OK):
-        with open(mediabrowser_fcgi_pidfile, "r") as fp:
+    if os.access(emby_fcgi_pidfile, os.F_OK):
+        with open(emby_fcgi_pidfile, "r") as fp:
             pid = long(fp.read())
             fp.close()
             res = True
@@ -58,7 +58,7 @@ def mediabrowser_fcgi_status(args):
     return res
 
 
-def mediabrowser_fcgi_configure(args):
+def emby_fcgi_configure(args):
     return True
 
 
@@ -67,10 +67,10 @@ def main(argc, argv):
         sys.exit(1)
 
     commands = {
-        'start': mediabrowser_fcgi_start,
-        'stop': mediabrowser_fcgi_stop,
-        'status': mediabrowser_fcgi_status,
-        'configure': mediabrowser_fcgi_configure
+        'start': emby_fcgi_start,
+        'stop': emby_fcgi_stop,
+        'status': emby_fcgi_status,
+        'configure': emby_fcgi_configure
     }
 
     with daemon.DaemonContext():

@@ -12,7 +12,7 @@ from django.utils import simplejson
 
 import jsonrpclib
 import oauth2 as oauth
-from mediabrowserUI.freenas import forms, models, utils
+from embyUI.freenas import forms, models, utils
 
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
@@ -165,12 +165,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (mediabrowser_key,
-    mediabrowser_secret) = utils.get_mediabrowser_oauth_creds()
+    (emby_key,
+    emby_secret) = utils.get_emby_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mediabrowser_key,
-        secret=mediabrowser_secret)
+    trans = OAuthTransport(url, key=emby_key,
+        secret=emby_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -180,26 +180,26 @@ def start(request, plugin_id):
     assert auth
 
     try:
-        mediabrowser = models.MediaBrowser.objects.order_by('-id')[0]
-        mediabrowser.enable = True
-        mediabrowser.save()
+        emby = models.Emby.objects.order_by('-id')[0]
+        emby.enable = True
+        emby.save()
     except IndexError:
-        mediabrowser = models.MediaBrowser.objects.create(enable=True)
+        emby = models.Emby.objects.create(enable=True)
 
     try:
-        form = forms.MediaBrowserForm(mediabrowser.__dict__,
-            instance=mediabrowser,
+        form = forms.EmbyForm(emby.__dict__,
+            instance=emby,
             jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
         return HttpResponse(simplejson.dumps({
             'error': True,
-            'message': ('MediaBrowser data did not validate, configure '
+            'message': ('Emby data did not validate, configure '
                 'it first.'),
             }), content_type='application/json')
 
-    cmd = "%s onestart" % utils.mediabrowser_control
+    cmd = "%s onestart" % utils.emby_control
     pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
         shell=True, close_fds=True)
 
@@ -211,11 +211,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (mediabrowser_key,
-    mediabrowser_secret) = utils.get_mediabrowser_oauth_creds()
+    (emby_key,
+    emby_secret) = utils.get_emby_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mediabrowser_key,
-        secret=mediabrowser_secret)
+    trans = OAuthTransport(url, key=emby_key,
+        secret=emby_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -225,22 +225,22 @@ def stop(request, plugin_id):
     assert auth
 
     try:
-        mediabrowser = models.MediaBrowser.objects.order_by('-id')[0]
-        mediabrowser.enable = False
-        mediabrowser.save()
+        emby = models.Emby.objects.order_by('-id')[0]
+        emby.enable = False
+        emby.save()
     except IndexError:
-        mediabrowser = models.MediaBrowser.objects.create(enable=False)
+        emby = models.Emby.objects.create(enable=False)
 
     try:
-        form = forms.MediaBrowserForm(mediabrowser.__dict__,
-            instance=mediabrowser,
+        form = forms.EmbyForm(emby.__dict__,
+            instance=emby,
             jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
         pass
 
-    cmd = "%s onestop" % utils.mediabrowser_control
+    cmd = "%s onestop" % utils.emby_control
     pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
         shell=True, close_fds=True)
 
@@ -252,11 +252,11 @@ def stop(request, plugin_id):
 
 
 def open_view(request, plugin_id):
-    (mediabrowser_key,
-    mediabrowser_secret) = utils.get_mediabrowser_oauth_creds()
+    (emby_key,
+    emby_secret) = utils.get_emby_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mediabrowser_key,
-        secret=mediabrowser_secret)
+    trans = OAuthTransport(url, key=emby_key,
+        secret=emby_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_ipv4 = jail['fields']['jail_ipv4'].split('/', 1)[0]
@@ -274,21 +274,21 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (mediabrowser_key,
-    mediabrowser_secret) = utils.get_mediabrowser_oauth_creds()
+    (emby_key,
+    emby_secret) = utils.get_emby_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=mediabrowser_key,
-        secret=mediabrowser_secret)
+    trans = OAuthTransport(url, key=emby_key,
+        secret=emby_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
     number = jail_name.rsplit('_', 1)
-    name = "MediaBrowser"
+    name = "Emby"
     if len(number) == 2:
         try:
             number = int(number)
             if number > 1:
-                name = "MediaBrowser (%d)" % number
+                name = "Emby (%d)" % number
         except:
             pass
 
@@ -297,8 +297,8 @@ def treemenu(request, plugin_id):
         'append_to': 'plugins',
         'icon': reverse('treemenu_icon', kwargs={'plugin_id': plugin_id}),
         'type': 'pluginsfcgi',
-        'url': reverse('mediabrowser_open', kwargs={'plugin_id': plugin_id}),
-        'kwargs': {'plugin_name': 'mediabrowser', 'plugin_id': plugin_id },
+        'url': reverse('emby_open', kwargs={'plugin_id': plugin_id}),
+        'kwargs': {'plugin_name': 'emby', 'plugin_id': plugin_id },
     }
 
     return HttpResponse(json.dumps([plugin]), content_type='application/json')
@@ -316,7 +316,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen([utils.mediabrowser_control, "onestatus"],
+    proc = Popen([utils.emby_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 
@@ -337,7 +337,7 @@ def status(request, plugin_id):
 
 def treemenu_icon(request, plugin_id):
 
-    with open(utils.mediabrowser_icon, 'rb') as f:
+    with open(utils.emby_icon, 'rb') as f:
         icon = f.read()
 
     return HttpResponse(icon, content_type='image/png')

@@ -2,11 +2,11 @@ import hashlib
 import os
 import platform
 
-mediabrowser_pbi_path = "/usr/pbi/mediabrowser-" + platform.machine()
-mediabrowser_fcgi_pidfile = "/var/run/mediabrowser_fcgi_server.pid"
-mediabrowser_control = "/usr/local/etc/rc.d/mediabrowser"
-mediabrowser_icon = os.path.join(mediabrowser_pbi_path, "default.png")
-mediabrowser_oauth_file = os.path.join(mediabrowser_pbi_path, ".oauth")
+emby_pbi_path = "/usr/pbi/emby-" + platform.machine()
+emby_fcgi_pidfile = "/var/run/emby_fcgi_server.pid"
+emby_control = "/usr/local/etc/rc.d/emby-server"
+emby_icon = os.path.join(emby_pbi_path, "default.png")
+emby_oauth_file = os.path.join(emby_pbi_path, ".oauth")
 
 
 def get_rpc_url(request):
@@ -21,8 +21,8 @@ def get_rpc_url(request):
     )
 
 
-def get_mediabrowser_oauth_creds():
-    f = open(mediabrowser_oauth_file)
+def get_emby_oauth_creds():
+    f = open(emby_oauth_file)
     lines = f.readlines()
     f.close()
 

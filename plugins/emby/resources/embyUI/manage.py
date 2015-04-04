@@ -9,16 +9,16 @@ python_major = sys.version_info.major
 python_minor = sys.version_info.minor
 python = "python%d.%d" % (python_major, python_minor)
 
-MEDIABROWSER_PATH = "/usr/pbi/mediabrowser-%s" % arch
-MEDIABROWSER_UI = os.path.join(MEDIABROWSER_PATH, "mediabrowserUI")
-PYTHON_SITE_PACKAGES = os.path.join(MEDIABROWSER_PATH,
+EMBY_PATH = "/usr/pbi/emby-%s" % arch
+EMBY_UI = os.path.join(EMBY_PATH, "embyUI")
+PYTHON_SITE_PACKAGES = os.path.join(EMBY_PATH,
     "lib/%s/site-packages" % python)
 
 sys.path.append(PYTHON_SITE_PACKAGES)
-sys.path.append(MEDIABROWSER_PATH)
-sys.path.append(MEDIABROWSER_UI)
+sys.path.append(EMBY_PATH)
+sys.path.append(EMBY_UI)
 
-os.environ["DJANGO_SETTINGS_MODULE"] = "mediabrowserUI.settings"
+os.environ["DJANGO_SETTINGS_MODULE"] = "embyUI.settings"
 
 from django.core.management import execute_from_command_line
 
