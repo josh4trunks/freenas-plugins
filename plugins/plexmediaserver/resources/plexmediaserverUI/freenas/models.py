@@ -11,5 +11,5 @@ class PlexMediaServer(models.Model):
     enable = models.BooleanField(default=False)
     disable_remote_security = models.BooleanField(
         default=False,
-        verbose_name=_("Disable remote security")
+        verbose_name=_("Disables security. May be needed for initial access.")
     )
