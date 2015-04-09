@@ -58,7 +58,7 @@ class BtSync(models.Model):
         )
     log_size = models.IntegerField(
         verbose_name="Max. Log File Size (MB)",
-        default=10,
+        default=100,
         blank=True,
         )
     max_file_size_diff_for_patching = models.IntegerField(

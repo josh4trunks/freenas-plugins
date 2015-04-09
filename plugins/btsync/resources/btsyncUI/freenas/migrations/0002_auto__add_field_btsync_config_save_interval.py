@@ -31,7 +31,7 @@ class Migration(SchemaMigration):
             'force_https': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lan_encrypt_data': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
-            'log_size': ('django.db.models.fields.IntegerField', [], {'default': '10', 'blank': 'True'}),
+            'log_size': ('django.db.models.fields.IntegerField', [], {'default': '100', 'blank': 'True'}),
             'max_file_size_diff_for_patching': ('django.db.models.fields.IntegerField', [], {'default': '1000', 'blank': 'True'}),
             'max_file_size_for_versioning': ('django.db.models.fields.IntegerField', [], {'default': '1000', 'blank': 'True'}),
             'peer_expiration_days': ('django.db.models.fields.IntegerField', [], {'default': '7', 'blank': 'True'}),
