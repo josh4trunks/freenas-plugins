@@ -1,4 +1,5 @@
 @unexec %D/etc/rc.d/%%PORTNAME%% forcestop 2>/dev/null || true
+%%DATADIR%%/SickRage/.gitattributes
 %%DATADIR%%/SickRage/.gitignore
 %%DATADIR%%/SickRage/.travis.yml
 %%DATADIR%%/SickRage/CHANGES.md
@@ -89,6 +90,7 @@
 %%DATADIR%%/SickRage/googlecode_upload.py
 %%DATADIR%%/SickRage/gui/slick/css/browser.css
 %%DATADIR%%/SickRage/gui/slick/css/browserconfig.xml
+%%DATADIR%%/SickRage/gui/slick/css/country-flags.css
 %%DATADIR%%/SickRage/gui/slick/css/dark.css
 %%DATADIR%%/SickRage/gui/slick/css/fonts/OpenSans-Bold-webfont.eot
 %%DATADIR%%/SickRage/gui/slick/css/fonts/OpenSans-Bold-webfont.svg
@@ -134,8 +136,16 @@
 %%DATADIR%%/SickRage/gui/slick/css/fonts/droidsansmono-webfont.svg
 %%DATADIR%%/SickRage/gui/slick/css/fonts/droidsansmono-webfont.ttf
 %%DATADIR%%/SickRage/gui/slick/css/fonts/droidsansmono-webfont.woff
+%%DATADIR%%/SickRage/gui/slick/css/fonts/glyphicons-halflings-regular.eot
+%%DATADIR%%/SickRage/gui/slick/css/fonts/glyphicons-halflings-regular.svg
+%%DATADIR%%/SickRage/gui/slick/css/fonts/glyphicons-halflings-regular.ttf
+%%DATADIR%%/SickRage/gui/slick/css/fonts/glyphicons-halflings-regular.woff
 %%DATADIR%%/SickRage/gui/slick/css/imports/config.less
+%%DATADIR%%/SickRage/gui/slick/css/lib/bootstrap-formhelpers-2.3.0.css
+%%DATADIR%%/SickRage/gui/slick/css/lib/bootstrap-formhelpers.min-2.3.0.css
 %%DATADIR%%/SickRage/gui/slick/css/lib/bootstrap.css
+%%DATADIR%%/SickRage/gui/slick/css/lib/bootstrap.css.map
+%%DATADIR%%/SickRage/gui/slick/css/lib/bootstrap.min.css
 %%DATADIR%%/SickRage/gui/slick/css/lib/images/animated-overlay.gif
 %%DATADIR%%/SickRage/gui/slick/css/lib/images/tablesorter/asc.gif
 %%DATADIR%%/SickRage/gui/slick/css/lib/images/tablesorter/bg.gif
@@ -166,7 +176,7 @@
 %%DATADIR%%/SickRage/gui/slick/css/lib/images/ui-icons_cd0a0a_256x240.png
 %%DATADIR%%/SickRage/gui/slick/css/lib/images/ui-icons_ffffff_256x240.png
 %%DATADIR%%/SickRage/gui/slick/css/lib/jquery-ui-1.10.4.custom.css
-%%DATADIR%%/SickRage/gui/slick/css/lib/jquery.qtip-2.0.1.min.css
+%%DATADIR%%/SickRage/gui/slick/css/lib/jquery.qtip-2.2.1.min.css
 %%DATADIR%%/SickRage/gui/slick/css/lib/pnotify.custom.min.css
 %%DATADIR%%/SickRage/gui/slick/css/light.css
 %%DATADIR%%/SickRage/gui/slick/css/style.css
@@ -178,12 +188,19 @@
 %%DATADIR%%/SickRage/gui/slick/images/addshows/add-trakt32-white.png
 %%DATADIR%%/SickRage/gui/slick/images/addshows/add-trending32-black.png
 %%DATADIR%%/SickRage/gui/slick/images/addshows/add-trending32-white.png
+%%DATADIR%%/SickRage/gui/slick/images/anidb24.png
 %%DATADIR%%/SickRage/gui/slick/images/arrows.png
 %%DATADIR%%/SickRage/gui/slick/images/banner.png
 %%DATADIR%%/SickRage/gui/slick/images/bg.gif
+%%DATADIR%%/SickRage/gui/slick/images/blank.png
+%%DATADIR%%/SickRage/gui/slick/images/bootstrap-formhelpers/bootstrap-formhelpers-countries.flags-LICENSE.txt
+%%DATADIR%%/SickRage/gui/slick/images/bootstrap-formhelpers/bootstrap-formhelpers-countries.flags.png
+%%DATADIR%%/SickRage/gui/slick/images/bootstrap-formhelpers/bootstrap-formhelpers-currencies.flags.png
+%%DATADIR%%/SickRage/gui/slick/images/bootstrap-formhelpers/bootstrap-formhelpers-googlefonts.png
 %%DATADIR%%/SickRage/gui/slick/images/cancel32.png
 %%DATADIR%%/SickRage/gui/slick/images/changelog16.png
 %%DATADIR%%/SickRage/gui/slick/images/closed_captioning.png
+%%DATADIR%%/SickRage/gui/slick/images/country-flags.png
 %%DATADIR%%/SickRage/gui/slick/images/donate.jpg
 %%DATADIR%%/SickRage/gui/slick/images/flags/ad.png
 %%DATADIR%%/SickRage/gui/slick/images/flags/ae.png
@@ -484,40 +501,68 @@
 %%DATADIR%%/SickRage/gui/slick/images/menu/system18-2.png
 %%DATADIR%%/SickRage/gui/slick/images/menu/system18.png
 %%DATADIR%%/SickRage/gui/slick/images/minus.png
+%%DATADIR%%/SickRage/gui/slick/images/network/13th street.png
 %%DATADIR%%/SickRage/gui/slick/images/network/1live.png
 %%DATADIR%%/SickRage/gui/slick/images/network/2be.png
 %%DATADIR%%/SickRage/gui/slick/images/network/33.png
 %%DATADIR%%/SickRage/gui/slick/images/network/3fm.png
+%%DATADIR%%/SickRage/gui/slick/images/network/3sat hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/3sat.png
+%%DATADIR%%/SickRage/gui/slick/images/network/4kidstv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/4sd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/7mate.png
 %%DATADIR%%/SickRage/gui/slick/images/network/a&e.png
+%%DATADIR%%/SickRage/gui/slick/images/network/aag tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/aaj tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/aande.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc (australia).png
+%%DATADIR%%/SickRage/gui/slick/images/network/abc (us).png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc australia.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc family.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc news.png
+%%DATADIR%%/SickRage/gui/slick/images/network/abc tv australia.png
+%%DATADIR%%/SickRage/gui/slick/images/network/abc tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/abc3.png
+%%DATADIR%%/SickRage/gui/slick/images/network/abu dhabi tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/addiktv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/adult swim.png
 %%DATADIR%%/SickRage/gui/slick/images/network/adult-swim.png
 %%DATADIR%%/SickRage/gui/slick/images/network/adultswim.png
+%%DATADIR%%/SickRage/gui/slick/images/network/ahc.png
+%%DATADIR%%/SickRage/gui/slick/images/network/al jazeera america.png
+%%DATADIR%%/SickRage/gui/slick/images/network/al jazeera.png
+%%DATADIR%%/SickRage/gui/slick/images/network/allocine.png
+%%DATADIR%%/SickRage/gui/slick/images/network/alpha tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/amazon.png
 %%DATADIR%%/SickRage/gui/slick/images/network/amc.png
+%%DATADIR%%/SickRage/gui/slick/images/network/america one television network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/america one.png
 %%DATADIR%%/SickRage/gui/slick/images/network/animal planet.png
 %%DATADIR%%/SickRage/gui/slick/images/network/animalplanet.png
 %%DATADIR%%/SickRage/gui/slick/images/network/animax.png
 %%DATADIR%%/SickRage/gui/slick/images/network/anime network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/anixe hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/anixe sd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/antena 3.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ard.png
+%%DATADIR%%/SickRage/gui/slick/images/network/arte hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/arte.png
 %%DATADIR%%/SickRage/gui/slick/images/network/at-x.png
 %%DATADIR%%/SickRage/gui/slick/images/network/at5.png
+%%DATADIR%%/SickRage/gui/slick/images/network/atv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/audience network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/avro.png
+%%DATADIR%%/SickRage/gui/slick/images/network/axn.png
+%%DATADIR%%/SickRage/gui/slick/images/network/axs tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/azteca.png
+%%DATADIR%%/SickRage/gui/slick/images/network/babyfirsttv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bandai visual.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bandai.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc america.png
+%%DATADIR%%/SickRage/gui/slick/images/network/bbc canada.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc entertainment.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc four.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc one.png
@@ -525,113 +570,199 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc three.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc two.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bbc.png
+%%DATADIR%%/SickRage/gui/slick/images/network/bet.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bio..png
+%%DATADIR%%/SickRage/gui/slick/images/network/bio.png
 %%DATADIR%%/SickRage/gui/slick/images/network/biography channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bloomberg.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bnn.png
+%%DATADIR%%/SickRage/gui/slick/images/network/bounce tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/br alpha.png
+%%DATADIR%%/SickRage/gui/slick/images/network/br-alpha.png
+%%DATADIR%%/SickRage/gui/slick/images/network/br.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bravo.png
 %%DATADIR%%/SickRage/gui/slick/images/network/bs11.png
+%%DATADIR%%/SickRage/gui/slick/images/network/btv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/byu television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/canal+.png
+%%DATADIR%%/SickRage/gui/slick/images/network/canale 5.png
 %%DATADIR%%/SickRage/gui/slick/images/network/canvas.png
+%%DATADIR%%/SickRage/gui/slick/images/network/caracol tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/carlton television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cartoon network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cartoonnetwork.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbbc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbeebies.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbs.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cctv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/challenge.png
 %%DATADIR%%/SickRage/gui/slick/images/network/channel 4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/channel ten.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cinemax.png
 %%DATADIR%%/SickRage/gui/slick/images/network/city.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cmt.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cnbc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cnn.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedy central family.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedy central hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedy central.png
-%%DATADIR%%/SickRage/gui/slick/images/network/comedy entral old.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedycentral.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cooking channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/court tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/crackle.png
+%%DATADIR%%/SickRage/gui/slick/images/network/crime & investigation network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/crime and investigation network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cstv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ctc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ctv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cuatro.png
+%%DATADIR%%/SickRage/gui/slick/images/network/current tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cw.png
+%%DATADIR%%/SickRage/gui/slick/images/network/das erste hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/das erste.png
+%%DATADIR%%/SickRage/gui/slick/images/network/das vierte.png
 %%DATADIR%%/SickRage/gui/slick/images/network/dave.png
+%%DATADIR%%/SickRage/gui/slick/images/network/deluxe music.png
+%%DATADIR%%/SickRage/gui/slick/images/network/destination america.png
 %%DATADIR%%/SickRage/gui/slick/images/network/discovery channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/discovery family.png
+%%DATADIR%%/SickRage/gui/slick/images/network/discovery kids.png
+%%DATADIR%%/SickRage/gui/slick/images/network/discovery real time.png
+%%DATADIR%%/SickRage/gui/slick/images/network/discovery science.png
 %%DATADIR%%/SickRage/gui/slick/images/network/discovery.png
 %%DATADIR%%/SickRage/gui/slick/images/network/discoverychannel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/dish tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/disney channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/disney cinemagic.png
+%%DATADIR%%/SickRage/gui/slick/images/network/disney junior.png
 %%DATADIR%%/SickRage/gui/slick/images/network/disney xd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/disney.png
 %%DATADIR%%/SickRage/gui/slick/images/network/disneychannel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/diy network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/dmax hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/dmax.png
 %%DATADIR%%/SickRage/gui/slick/images/network/dr1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/dr2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/dumont television network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/e!.png
 %%DATADIR%%/SickRage/gui/slick/images/network/e4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/een.png
+%%DATADIR%%/SickRage/gui/slick/images/network/einsfestival hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/einsfestival.png
 %%DATADIR%%/SickRage/gui/slick/images/network/einslive.png
+%%DATADIR%%/SickRage/gui/slick/images/network/einsplus.png
 %%DATADIR%%/SickRage/gui/slick/images/network/el rey network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/endemol.png
 %%DATADIR%%/SickRage/gui/slick/images/network/entertainment.png
-%%DATADIR%%/SickRage/gui/slick/images/network/eredivisie live 1.png
-%%DATADIR%%/SickRage/gui/slick/images/network/eredivisie live 2.png
-%%DATADIR%%/SickRage/gui/slick/images/network/eredivisie live.png
+%%DATADIR%%/SickRage/gui/slick/images/network/eo.png
+%%DATADIR%%/SickRage/gui/slick/images/network/espn classic.png
 %%DATADIR%%/SickRage/gui/slick/images/network/espn.png
 %%DATADIR%%/SickRage/gui/slick/images/network/esquire network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/euronews.png
 %%DATADIR%%/SickRage/gui/slick/images/network/eurosport 1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/eurosport 2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/eurosport hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/eurosport.png
 %%DATADIR%%/SickRage/gui/slick/images/network/five.png
+%%DATADIR%%/SickRage/gui/slick/images/network/food network canada.png
 %%DATADIR%%/SickRage/gui/slick/images/network/food network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/fox (us).png
+%%DATADIR%%/SickRage/gui/slick/images/network/fox business.png
+%%DATADIR%%/SickRage/gui/slick/images/network/fox channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/fox sports 1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/fox sports.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fox television classics.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fox.png
 %%DATADIR%%/SickRage/gui/slick/images/network/france 2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/france 3.png
+%%DATADIR%%/SickRage/gui/slick/images/network/france 4.png
+%%DATADIR%%/SickRage/gui/slick/images/network/fuji television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fuji tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/funimation.png
+%%DATADIR%%/SickRage/gui/slick/images/network/fuse.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fx.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fxnetworks.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fxx.png
 %%DATADIR%%/SickRage/gui/slick/images/network/g4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/g4_2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/g4techtv canada.png
 %%DATADIR%%/SickRage/gui/slick/images/network/game show network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/glitz.png
 %%DATADIR%%/SickRage/gui/slick/images/network/global tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/great american country.png
+%%DATADIR%%/SickRage/gui/slick/images/network/h2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/hallmark channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/hbo.png
 %%DATADIR%%/SickRage/gui/slick/images/network/hdnet.png
+%%DATADIR%%/SickRage/gui/slick/images/network/heimatkanal.png
+%%DATADIR%%/SickRage/gui/slick/images/network/hgtv canada.png
+%%DATADIR%%/SickRage/gui/slick/images/network/hgtv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/history television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/history.png
 %%DATADIR%%/SickRage/gui/slick/images/network/historychannel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/hr.png
 %%DATADIR%%/SickRage/gui/slick/images/network/hulu presents.png
 %%DATADIR%%/SickRage/gui/slick/images/network/hulu.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ifc.png
+%%DATADIR%%/SickRage/gui/slick/images/network/im1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/internet.png
+%%DATADIR%%/SickRage/gui/slick/images/network/investigation discovery.png
+%%DATADIR%%/SickRage/gui/slick/images/network/ion television.png
+%%DATADIR%%/SickRage/gui/slick/images/network/itv granada.png
 %%DATADIR%%/SickRage/gui/slick/images/network/itv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/itv1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/itv2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/itv3.png
 %%DATADIR%%/SickRage/gui/slick/images/network/itv4.png
+%%DATADIR%%/SickRage/gui/slick/images/network/joiz.png
+%%DATADIR%%/SickRage/gui/slick/images/network/junior.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kabel eins classics.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kabel eins hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kabel eins.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kanaaltwee.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kbs tv2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ketnet.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kids station.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kika hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kika.png
 %%DATADIR%%/SickRage/gui/slick/images/network/kro.png
+%%DATADIR%%/SickRage/gui/slick/images/network/kyoto broadcasting system.png
 %%DATADIR%%/SickRage/gui/slick/images/network/la1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/la2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/lasexta.png
 %%DATADIR%%/SickRage/gui/slick/images/network/lifetime.png
 %%DATADIR%%/SickRage/gui/slick/images/network/lmn.png
+%%DATADIR%%/SickRage/gui/slick/images/network/london weekend television (lwt).png
+%%DATADIR%%/SickRage/gui/slick/images/network/london weekend television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/m6.png
 %%DATADIR%%/SickRage/gui/slick/images/network/manhattan neighborhood network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/matv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/max.png
 %%DATADIR%%/SickRage/gui/slick/images/network/mbs.png
 %%DATADIR%%/SickRage/gui/slick/images/network/mdr.png
+%%DATADIR%%/SickRage/gui/slick/images/network/mgm.png
 %%DATADIR%%/SickRage/gui/slick/images/network/motorvision tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/motorvision.png
+%%DATADIR%%/SickRage/gui/slick/images/network/mtv (us).png
+%%DATADIR%%/SickRage/gui/slick/images/network/mtv network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/mtv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/mtv2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/n tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/n24 hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/n24.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nat geo wild.png
+%%DATADIR%%/SickRage/gui/slick/images/network/nat geo.png
+%%DATADIR%%/SickRage/gui/slick/images/network/national geographic channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/national geographic.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nbc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nbcu tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/ndr hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ndr.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nederland 1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nederland 2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nederland 3.png
+%%DATADIR%%/SickRage/gui/slick/images/network/neo kika.png
 %%DATADIR%%/SickRage/gui/slick/images/network/net 5.png
 %%DATADIR%%/SickRage/gui/slick/images/network/net5.png
 %%DATADIR%%/SickRage/gui/slick/images/network/netflix.png
@@ -639,112 +770,260 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/ngc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nhk.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nick at nite.png
+%%DATADIR%%/SickRage/gui/slick/images/network/nick comedy.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nickelodeon.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nicktoons network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/nicktoons.png
 %%DATADIR%%/SickRage/gui/slick/images/network/niconico.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nine network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/nippon television.png
+%%DATADIR%%/SickRage/gui/slick/images/network/nolife.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nonetwork.png
+%%DATADIR%%/SickRage/gui/slick/images/network/novatv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/npo 1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/npo 2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/npo 3.png
+%%DATADIR%%/SickRage/gui/slick/images/network/nps.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nrk1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/ntr.png
 %%DATADIR%%/SickRage/gui/slick/images/network/ntv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/oasis hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/omroep max.png
+%%DATADIR%%/SickRage/gui/slick/images/network/oprah winfrey network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/orf eins.png
 %%DATADIR%%/SickRage/gui/slick/images/network/orf.png
 %%DATADIR%%/SickRage/gui/slick/images/network/orf1 hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/own.png
 %%DATADIR%%/SickRage/gui/slick/images/network/oxygen.png
 %%DATADIR%%/SickRage/gui/slick/images/network/pay-per-view.png
 %%DATADIR%%/SickRage/gui/slick/images/network/pbs.png
+%%DATADIR%%/SickRage/gui/slick/images/network/phoenix hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/phoenix.png
 %%DATADIR%%/SickRage/gui/slick/images/network/playboy tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/playstation network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/private spice.png
+%%DATADIR%%/SickRage/gui/slick/images/network/pro7 hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/pro7.png
 %%DATADIR%%/SickRage/gui/slick/images/network/production i.g.png
+%%DATADIR%%/SickRage/gui/slick/images/network/prosieben fun.png
+%%DATADIR%%/SickRage/gui/slick/images/network/prosieben maxx.png
+%%DATADIR%%/SickRage/gui/slick/images/network/prosieben.png
+%%DATADIR%%/SickRage/gui/slick/images/network/quest.png
+%%DATADIR%%/SickRage/gui/slick/images/network/radio bremen tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/radio canada.png
 %%DATADIR%%/SickRage/gui/slick/images/network/radio west.png
+%%DATADIR%%/SickRage/gui/slick/images/network/radio-canada.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rbb.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rctv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/regio tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/revision3.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rooster teeth.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rte one.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl 4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl 5.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl 7.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl 8.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl crime hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl crime.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl ii.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl living hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl living.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl nitro.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl passion hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl passion.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl television.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl2 hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/rtl2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl5.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl7.png
 %%DATADIR%%/SickRage/gui/slick/images/network/rtl8.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sat.1 emotions.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sat.1 gold.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sat.1 hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sat.1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sat1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sbs 6.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sbs 9.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sbs australia.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sbs.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sbs6.png
 %%DATADIR%%/SickRage/gui/slick/images/network/science channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/scifi.png
+%%DATADIR%%/SickRage/gui/slick/images/network/series+.png
+%%DATADIR%%/SickRage/gui/slick/images/network/servustv hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/servustv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/set.png
 %%DATADIR%%/SickRage/gui/slick/images/network/seven network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/showcase (ca).png
 %%DATADIR%%/SickRage/gui/slick/images/network/showcase.png
 %%DATADIR%%/SickRage/gui/slick/images/network/showtime.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sixx hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sixx.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky action.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sky arts.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky atlantic hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky atlantic.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky bundesliga.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky cinema +1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky cinema +24.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky cinema.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky comedy.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky emotion.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky hits.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky krimi.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky nostalgie.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky select.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky sport austria.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky sport news hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky sport news.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky sport1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky sport2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sky sports.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sky.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sky1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/smithsonian channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sony entertainment television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/space.png
 %%DATADIR%%/SickRage/gui/slick/images/network/speed channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/speed.png
+%%DATADIR%%/SickRage/gui/slick/images/network/spiegel geschichte.png
 %%DATADIR%%/SickRage/gui/slick/images/network/spike tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sport1 hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sport1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sportsman channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sr.png
+%%DATADIR%%/SickRage/gui/slick/images/network/src.png
+%%DATADIR%%/SickRage/gui/slick/images/network/srf zwei.png
+%%DATADIR%%/SickRage/gui/slick/images/network/star plus.png
+%%DATADIR%%/SickRage/gui/slick/images/network/star tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/starz!.png
 %%DATADIR%%/SickRage/gui/slick/images/network/starz.png
+%%DATADIR%%/SickRage/gui/slick/images/network/stv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/style network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/subtv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sundance.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sundancetv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/sunrise.png
 %%DATADIR%%/SickRage/gui/slick/images/network/super channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/super rtl hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/super rtl.png
+%%DATADIR%%/SickRage/gui/slick/images/network/sveriges television.png
+%%DATADIR%%/SickRage/gui/slick/images/network/svt.png
+%%DATADIR%%/SickRage/gui/slick/images/network/svt1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/swr hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/swr.png
 %%DATADIR%%/SickRage/gui/slick/images/network/syfy.png
 %%DATADIR%%/SickRage/gui/slick/images/network/syndicated.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tagesschau24.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tbs superstation.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tbs.png
+%%DATADIR%%/SickRage/gui/slick/images/network/techtv canada.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tele 5 hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tele 5.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tele-quebec.png
 %%DATADIR%%/SickRage/gui/slick/images/network/telecinco.png
 %%DATADIR%%/SickRage/gui/slick/images/network/teletoon.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tf1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/thames television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the cw.png
+%%DATADIR%%/SickRage/gui/slick/images/network/the discovery channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/the history channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the hub.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the movie network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/the science channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the wb.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the-cw.png
 %%DATADIR%%/SickRage/gui/slick/images/network/thecw.png
 %%DATADIR%%/SickRage/gui/slick/images/network/thewb.png
-%%DATADIR%%/SickRage/gui/slick/images/network/tmf.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tlc.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tnt drama.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tnt glitz.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tnt serie.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tnt.png
 %%DATADIR%%/SickRage/gui/slick/images/network/toei animation.png
+%%DATADIR%%/SickRage/gui/slick/images/network/toei channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tokyo broadcasting system.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tokyo mx.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tqs.png
 %%DATADIR%%/SickRage/gui/slick/images/network/travel channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/treehouse tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tros.png
 %%DATADIR%%/SickRage/gui/slick/images/network/trutv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv 2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv 4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv asahi.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv azteca.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv guide channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv guide.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv kanagawa.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv land.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv one nz.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv saitama.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv tokyo.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv west.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv3, norway.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv3.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv4.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tv6.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tv7.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tva.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvb.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tve.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tve1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tve2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvg network.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvi.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvk.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvn.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvnorge.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvnz.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvo.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvp sa.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvp1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tvp2.png
+%%DATADIR%%/SickRage/gui/slick/images/network/uktv history.png
+%%DATADIR%%/SickRage/gui/slick/images/network/universal channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/univision.png
 %%DATADIR%%/SickRage/gui/slick/images/network/upn.png
 %%DATADIR%%/SickRage/gui/slick/images/network/usa network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/usa-network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/usa.png
 %%DATADIR%%/SickRage/gui/slick/images/network/usanetwork.png
+%%DATADIR%%/SickRage/gui/slick/images/network/v.png
 %%DATADIR%%/SickRage/gui/slick/images/network/vara.png
+%%DATADIR%%/SickRage/gui/slick/images/network/velocity.png
 %%DATADIR%%/SickRage/gui/slick/images/network/veronica.png
+%%DATADIR%%/SickRage/gui/slick/images/network/vh1 classics.png
 %%DATADIR%%/SickRage/gui/slick/images/network/vh1.png
+%%DATADIR%%/SickRage/gui/slick/images/network/viva hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/viva.png
 %%DATADIR%%/SickRage/gui/slick/images/network/viz %%USER%%.png
+%%DATADIR%%/SickRage/gui/slick/images/network/vox hd.png
 %%DATADIR%%/SickRage/gui/slick/images/network/vox.png
 %%DATADIR%%/SickRage/gui/slick/images/network/vpro.png
+%%DATADIR%%/SickRage/gui/slick/images/network/vrak.tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/vtm.png
+%%DATADIR%%/SickRage/gui/slick/images/network/watch.png
+%%DATADIR%%/SickRage/gui/slick/images/network/wdr hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/wdr.png
 %%DATADIR%%/SickRage/gui/slick/images/network/wgn america.png
 %%DATADIR%%/SickRage/gui/slick/images/network/wowow.png
 %%DATADIR%%/SickRage/gui/slick/images/network/xebec.png
 %%DATADIR%%/SickRage/gui/slick/images/network/yahoo! screen.png
 %%DATADIR%%/SickRage/gui/slick/images/network/youtube.png
+%%DATADIR%%/SickRage/gui/slick/images/network/ytv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdf hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdf.kultur hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdf.kultur.png
 %%DATADIR%%/SickRage/gui/slick/images/network/zdf.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdfinfo hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdfinfo.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdfneo hd.png
+%%DATADIR%%/SickRage/gui/slick/images/network/zdfneo.png
 %%DATADIR%%/SickRage/gui/slick/images/next.png
 %%DATADIR%%/SickRage/gui/slick/images/nfo-no.gif
 %%DATADIR%%/SickRage/gui/slick/images/nfo.gif
@@ -752,6 +1031,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/boxcar.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/boxcar2.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/email.png
+%%DATADIR%%/SickRage/gui/slick/images/notifiers/freemobile.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/growl.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/kodi.png
 %%DATADIR%%/SickRage/gui/slick/images/notifiers/libnotify.png
@@ -773,43 +1053,66 @@
 %%DATADIR%%/SickRage/gui/slick/images/poster.png
 %%DATADIR%%/SickRage/gui/slick/images/prev.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/6box.png
-%%DATADIR%%/SickRage/gui/slick/images/providers/anidb.gif
+%%DATADIR%%/SickRage/gui/slick/images/providers/alpharatio.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/animenzb.gif
 %%DATADIR%%/SickRage/gui/slick/images/providers/animezb.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/bin_req.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/binsearch.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/bitsoup.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/btn.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/dognzb.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/dognzb_cr.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/ezrss.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/eztv_bt_chat.png
-%%DATADIR%%/SickRage/gui/slick/images/providers/fanzub.gif
+%%DATADIR%%/SickRage/gui/slick/images/providers/fastnzb_info.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/freshontv.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/hdbits.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/hdtorrents.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/hounddawgs.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/iptorrents.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/kat.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/missing.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/morethantv.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/newzbin.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/newznab.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/newztown.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/newztown_co_za.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nextgen.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nmatrix_co_za.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nyaatorrents.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzb_is.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzb_su.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzbfinder.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbfinder_ws.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzbgeek.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbgeek_info.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbid_org.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbindex_in.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzbplanet.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbplanet_net.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzbs_org.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzbs_org_old.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbsooti_sx.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbstars_com.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbtv_net.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/nzbzombie.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/nzbzombie_com.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/oldpiratebay.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/omgwtfnzbs.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/opennzb_net.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/oznzb.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/oznzb_com.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/publichd.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/rarbg.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/scc.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/scenetime.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/shazbat.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/sick_beard_index.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/speedcd.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/t411.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/thepiratebay.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/thepiratebay_.png
+%%DATADIR%%/SickRage/gui/slick/images/providers/tntvillage.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/tokyotoshokan.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/torrentbytes.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/torrentday.png
@@ -817,7 +1120,6 @@
 %%DATADIR%%/SickRage/gui/slick/images/providers/torrentrss.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/tvbinz.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/tvnzb.png
-%%DATADIR%%/SickRage/gui/slick/images/providers/tvtorrents.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/usenet_crawler.png
 %%DATADIR%%/SickRage/gui/slick/images/providers/womble_s_index.png
 %%DATADIR%%/SickRage/gui/slick/images/queued.png
@@ -895,6 +1197,7 @@
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/manage_torrents.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/restart.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/restart_bare.tmpl
+%%DATADIR%%/SickRage/gui/slick/interfaces/default/status.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/testRename.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/trendingShows.tmpl
 %%DATADIR%%/SickRage/gui/slick/interfaces/default/viewlogs.tmpl
@@ -905,6 +1208,7 @@
 %%DATADIR%%/SickRage/gui/slick/js/ajaxEpSubtitles.js
 %%DATADIR%%/SickRage/gui/slick/js/ajaxNotifications.js
 %%DATADIR%%/SickRage/gui/slick/js/apibuilder.js
+%%DATADIR%%/SickRage/gui/slick/js/blackwhite.js
 %%DATADIR%%/SickRage/gui/slick/js/browser.js
 %%DATADIR%%/SickRage/gui/slick/js/config.js
 %%DATADIR%%/SickRage/gui/slick/js/configBackupRestore.js
@@ -927,12 +1231,14 @@
 %%DATADIR%%/SickRage/gui/slick/js/fancybox/jquery.fancybox.pack.js
 %%DATADIR%%/SickRage/gui/slick/js/formwizard.js
 %%DATADIR%%/SickRage/gui/slick/js/fuzzyMoment.js
-%%DATADIR%%/SickRage/gui/slick/js/jwplayer/jwplayer.html5.js
-%%DATADIR%%/SickRage/gui/slick/js/jwplayer/jwplayer.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/bootstrap-formhelpers-2.3.0.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/bootstrap-formhelpers.min-2.3.0.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/bootstrap-hover-dropdown.min.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/bootstrap.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/bootstrap.min.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/isotope.pkgd.min.js
-%%DATADIR%%/SickRage/gui/slick/js/lib/jquery-1.8.3.min.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/jquery-1.11.2.min.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/jquery-1.11.2.min.map
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery-ui-1.10.4.custom.min.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.bookmarkscroll.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.confirm.js
@@ -940,14 +1246,15 @@
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.cookiejar.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.form-3.35.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.json-2.2.min.js
-%%DATADIR%%/SickRage/gui/slick/js/lib/jquery.qtip-2.0.1.min.js
-%%DATADIR%%/SickRage/gui/slick/js/lib/jquery.qtip-2012-04-26.min.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/jquery.qtip-2.2.1.min.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.scrolltopcontrol-1.1.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.selectboxes.min.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.tablesorter-2.17.7.min.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/jquery.tablesorter.widget-columnSelector-2.17.7.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.tablesorter.widgets-2.17.7.min.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.tokeninput.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/jquery.ui.touch-punch-0.2.2.min.js
+%%DATADIR%%/SickRage/gui/slick/js/lib/npm.js
 %%DATADIR%%/SickRage/gui/slick/js/lib/pnotify.custom.min.js
 %%DATADIR%%/SickRage/gui/slick/js/manageEpisodeStatuses.js
 %%DATADIR%%/SickRage/gui/slick/js/manageSubtitleMissed.js
@@ -971,6 +1278,7 @@
 %%DATADIR%%/SickRage/init.solaris11
 %%DATADIR%%/SickRage/init.systemd
 %%DATADIR%%/SickRage/init.ubuntu
+%%DATADIR%%/SickRage/init.upstart
 %%DATADIR%%/SickRage/lib/MultipartPostHandler.py
 %%DATADIR%%/SickRage/lib/__init__.py
 %%DATADIR%%/SickRage/lib/adba/.gitignore
@@ -1125,13 +1433,9 @@
 %%DATADIR%%/SickRage/lib/feedcache/test_server.py
 %%DATADIR%%/SickRage/lib/feedcache/test_shovefilesystem.py
 %%DATADIR%%/SickRage/lib/feedparser/__init__.py
-%%DATADIR%%/SickRage/lib/feedparser/feedparser.egg-info/PKG-INFO
-%%DATADIR%%/SickRage/lib/feedparser/feedparser.egg-info/SOURCES.txt
-%%DATADIR%%/SickRage/lib/feedparser/feedparser.egg-info/dependency_links.txt
-%%DATADIR%%/SickRage/lib/feedparser/feedparser.egg-info/top_level.txt
 %%DATADIR%%/SickRage/lib/feedparser/feedparser.py
 %%DATADIR%%/SickRage/lib/feedparser/feedparsertest.py
-%%DATADIR%%/SickRage/lib/feedparser/sgmllib3.py
+%%DATADIR%%/SickRage/lib/feedparser/sgmllib.py
 %%DATADIR%%/SickRage/lib/feedparser/tests/compression/deflate-no-headers.z
 %%DATADIR%%/SickRage/lib/feedparser/tests/compression/deflate-not-compressed.z
 %%DATADIR%%/SickRage/lib/feedparser/tests/compression/deflate.z
@@ -4353,7 +4657,6 @@
 %%DATADIR%%/SickRage/lib/lockfile/sqlitelockfile.py
 %%DATADIR%%/SickRage/lib/lockfile/symlinklockfile.py
 %%DATADIR%%/SickRage/lib/oauth2/__init__.py
-%%DATADIR%%/SickRage/lib/pastebin.py
 %%DATADIR%%/SickRage/lib/pkg_resources.py
 %%DATADIR%%/SickRage/lib/profilehooks.py
 %%DATADIR%%/SickRage/lib/pynma/__init__.py
@@ -4437,7 +4740,14 @@
 %%DATADIR%%/SickRage/lib/requests/packages/urllib3/poolmanager.py
 %%DATADIR%%/SickRage/lib/requests/packages/urllib3/request.py
 %%DATADIR%%/SickRage/lib/requests/packages/urllib3/response.py
-%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/__init__.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/connection.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/request.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/response.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/retry.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/ssl_.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/timeout.py
+%%DATADIR%%/SickRage/lib/requests/packages/urllib3/util/url.py
 %%DATADIR%%/SickRage/lib/requests/sessions.py
 %%DATADIR%%/SickRage/lib/requests/status_codes.py
 %%DATADIR%%/SickRage/lib/requests/structures.py
@@ -4454,6 +4764,7 @@
 %%DATADIR%%/SickRage/lib/rtorrent/lib/xmlrpc/__init__.py
 %%DATADIR%%/SickRage/lib/rtorrent/lib/xmlrpc/basic_auth.py
 %%DATADIR%%/SickRage/lib/rtorrent/lib/xmlrpc/http.py
+%%DATADIR%%/SickRage/lib/rtorrent/lib/xmlrpc/requests_transport.py
 %%DATADIR%%/SickRage/lib/rtorrent/lib/xmlrpc/scgi.py
 %%DATADIR%%/SickRage/lib/rtorrent/peer.py
 %%DATADIR%%/SickRage/lib/rtorrent/rpc/__init__.py
@@ -4465,6 +4776,7 @@
 %%DATADIR%%/SickRage/lib/send2trash/plat_osx.py
 %%DATADIR%%/SickRage/lib/send2trash/plat_other.py
 %%DATADIR%%/SickRage/lib/send2trash/plat_win.py
+%%DATADIR%%/SickRage/lib/shutil_custom/__init__.py
 %%DATADIR%%/SickRage/lib/simplejson/__init__.py
 %%DATADIR%%/SickRage/lib/simplejson/_speedups.c
 %%DATADIR%%/SickRage/lib/simplejson/decoder.py
@@ -4886,7 +5198,6 @@
 %%DATADIR%%/SickRage/lib/unrar2/.hgignore
 %%DATADIR%%/SickRage/lib/unrar2/.hgtags
 %%DATADIR%%/SickRage/lib/unrar2/MANIFEST.in
-%%DATADIR%%/SickRage/lib/unrar2/PKG-INFO
 %%DATADIR%%/SickRage/lib/unrar2/UnRAR2.html
 %%DATADIR%%/SickRage/lib/unrar2/UnRARDLL/license.txt
 %%DATADIR%%/SickRage/lib/unrar2/UnRARDLL/unrar.dll
@@ -4897,6 +5208,8 @@
 %%DATADIR%%/SickRage/lib/unrar2/UnRARDLL/x64/readme.txt
 %%DATADIR%%/SickRage/lib/unrar2/UnRARDLL/x64/unrar64.dll
 %%DATADIR%%/SickRage/lib/unrar2/UnRARDLL/x64/unrar64.lib
+%%DATADIR%%/SickRage/lib/unrar2/[test].rar
+%%DATADIR%%/SickRage/lib/unrar2/[test].txt
 %%DATADIR%%/SickRage/lib/unrar2/__init__.py
 %%DATADIR%%/SickRage/lib/unrar2/license.txt
 %%DATADIR%%/SickRage/lib/unrar2/rar_exceptions.py
@@ -4906,6 +5219,10 @@
 %%DATADIR%%/SickRage/lib/unrar2/test_nulls.rar
 %%DATADIR%%/SickRage/lib/unrar2/test_protected_files.rar
 %%DATADIR%%/SickRage/lib/unrar2/test_protected_headers.rar
+%%DATADIR%%/SickRage/lib/unrar2/test_volumes.part1.rar
+%%DATADIR%%/SickRage/lib/unrar2/test_volumes.part2.rar
+%%DATADIR%%/SickRage/lib/unrar2/test_volumes_old.r00
+%%DATADIR%%/SickRage/lib/unrar2/test_volumes_old.rar
 %%DATADIR%%/SickRage/lib/unrar2/unix.py
 %%DATADIR%%/SickRage/lib/unrar2/windows.py
 %%DATADIR%%/SickRage/lib/xmltodict.py
@@ -4921,6 +5238,7 @@
 %%DATADIR%%/SickRage/sickbeard/clients/deluge.py
 %%DATADIR%%/SickRage/sickbeard/clients/download_station.py
 %%DATADIR%%/SickRage/sickbeard/clients/generic.py
+%%DATADIR%%/SickRage/sickbeard/clients/qbittorrent.py
 %%DATADIR%%/SickRage/sickbeard/clients/rtorrent.py
 %%DATADIR%%/SickRage/sickbeard/clients/transmission.py
 %%DATADIR%%/SickRage/sickbeard/clients/utorrent.py
@@ -4967,6 +5285,7 @@
 %%DATADIR%%/SickRage/sickbeard/notifiers/boxcar.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/boxcar2.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/emailnotify.py
+%%DATADIR%%/SickRage/sickbeard/notifiers/freemobile.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/growl.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/kodi.py
 %%DATADIR%%/SickRage/sickbeard/notifiers/libnotify.py
@@ -4989,31 +5308,40 @@
 %%DATADIR%%/SickRage/sickbeard/processTV.py
 %%DATADIR%%/SickRage/sickbeard/properFinder.py
 %%DATADIR%%/SickRage/sickbeard/providers/__init__.py
+%%DATADIR%%/SickRage/sickbeard/providers/alpharatio.py
+%%DATADIR%%/SickRage/sickbeard/providers/animenzb.py
 %%DATADIR%%/SickRage/sickbeard/providers/animezb.py
+%%DATADIR%%/SickRage/sickbeard/providers/binsearch.py
 %%DATADIR%%/SickRage/sickbeard/providers/bitsoup.py
 %%DATADIR%%/SickRage/sickbeard/providers/btn.py
 %%DATADIR%%/SickRage/sickbeard/providers/ezrss.py
-%%DATADIR%%/SickRage/sickbeard/providers/fanzub.py
+%%DATADIR%%/SickRage/sickbeard/providers/eztv.py
 %%DATADIR%%/SickRage/sickbeard/providers/freshontv.py
 %%DATADIR%%/SickRage/sickbeard/providers/generic.py
 %%DATADIR%%/SickRage/sickbeard/providers/hdbits.py
 %%DATADIR%%/SickRage/sickbeard/providers/hdtorrents.py
+%%DATADIR%%/SickRage/sickbeard/providers/hounddawgs.py
 %%DATADIR%%/SickRage/sickbeard/providers/iptorrents.py
 %%DATADIR%%/SickRage/sickbeard/providers/kat.py
+%%DATADIR%%/SickRage/sickbeard/providers/morethantv.py
 %%DATADIR%%/SickRage/sickbeard/providers/newznab.py
 %%DATADIR%%/SickRage/sickbeard/providers/nextgen.py
 %%DATADIR%%/SickRage/sickbeard/providers/nyaatorrents.py
+%%DATADIR%%/SickRage/sickbeard/providers/oldpiratebay.py
 %%DATADIR%%/SickRage/sickbeard/providers/omgwtfnzbs.py
+%%DATADIR%%/SickRage/sickbeard/providers/rarbg.py
 %%DATADIR%%/SickRage/sickbeard/providers/rsstorrent.py
 %%DATADIR%%/SickRage/sickbeard/providers/scc.py
+%%DATADIR%%/SickRage/sickbeard/providers/scenetime.py
+%%DATADIR%%/SickRage/sickbeard/providers/shazbat.py
 %%DATADIR%%/SickRage/sickbeard/providers/speedcd.py
 %%DATADIR%%/SickRage/sickbeard/providers/t411.py
 %%DATADIR%%/SickRage/sickbeard/providers/thepiratebay.py
+%%DATADIR%%/SickRage/sickbeard/providers/tntvillage.py
 %%DATADIR%%/SickRage/sickbeard/providers/tokyotoshokan.py
 %%DATADIR%%/SickRage/sickbeard/providers/torrentbytes.py
 %%DATADIR%%/SickRage/sickbeard/providers/torrentday.py
 %%DATADIR%%/SickRage/sickbeard/providers/torrentleech.py
-%%DATADIR%%/SickRage/sickbeard/providers/tvtorrents.py
 %%DATADIR%%/SickRage/sickbeard/providers/womble.py
 %%DATADIR%%/SickRage/sickbeard/rssfeeds.py
 %%DATADIR%%/SickRage/sickbeard/sab.py
@@ -5039,8 +5367,10 @@
 %%DATADIR%%/SickRage/tests/__init__.py
 %%DATADIR%%/SickRage/tests/all_tests.py
 %%DATADIR%%/SickRage/tests/common_tests.py
+%%DATADIR%%/SickRage/tests/config_tests.py
 %%DATADIR%%/SickRage/tests/db_tests.py
 %%DATADIR%%/SickRage/tests/encoding_tests.py
+%%DATADIR%%/SickRage/tests/feedparser_tests.py
 %%DATADIR%%/SickRage/tests/issue_submitter_tests.py
 %%DATADIR%%/SickRage/tests/name_parser_tests.py
 %%DATADIR%%/SickRage/tests/pp_tests.py
