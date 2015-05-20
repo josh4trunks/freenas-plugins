@@ -29,7 +29,7 @@ start_postcmd="%%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d ${mineos_b
 stop_precmd="export PATH=$PATH:%%PREFIX%%/bin && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d ${mineos_base_dir} stop"
 
 %%PORTNAME%%_update() {
-	%%PREFIX%%/bin/git --git-dir=$mineos_dir/mineos/.git --work-tree=$mineos_dir/mineos pull
+	%%PREFIX%%/bin/git --git-dir=%%DATADIR%%/mineos/.git --work-tree=%%DATADIR%%/mineos pull
 }
 
 run_rc_command "$1"
