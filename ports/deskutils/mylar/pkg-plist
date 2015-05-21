@@ -154,6 +154,7 @@
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/NoAlbumArt.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/ReadingList-icon.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/archive_icon.png
+%%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/bitcoin.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/boxcar_logo.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/button.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/checkmark.png
@@ -161,6 +162,7 @@
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/comictagger.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/copy_icon.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/cross.png
+%%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/donate.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/download_icon.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/failed.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/favicon.ico
@@ -253,6 +255,7 @@
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/images/x.png
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/importlog.html
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/importresults.html
+%%DATADIR%%/%%PORTNAME%%/data/interfaces/default/importresults_popup.html
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/index.html
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/js/fancybox/blank.gif
 %%DATADIR%%/%%PORTNAME%%/data/interfaces/default/js/fancybox/fancy_close.png
@@ -314,6 +317,15 @@
 %%DATADIR%%/%%PORTNAME%%/init-scripts/centos.init.d
 %%DATADIR%%/%%PORTNAME%%/init-scripts/ubuntu.default.%%PORTNAME%%
 %%DATADIR%%/%%PORTNAME%%/init-scripts/ubuntu.init.d
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1-py2.7.egg-info/PKG-INFO
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1-py2.7.egg-info/SOURCES.txt
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1-py2.7.egg-info/dependency_links.txt
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1-py2.7.egg-info/installed-files.txt
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1-py2.7.egg-info/top_level.txt
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/ConcurrentLogHandler-0.9.1-py2.7.egg-info/zip-safe
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/cloghandler.py
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/portalocker.py
+%%DATADIR%%/%%PORTNAME%%/lib/ConcurrentLogHandler/stresstest.py
 %%DATADIR%%/%%PORTNAME%%/lib/MultipartPostHandler.py
 %%DATADIR%%/%%PORTNAME%%/lib/__init__.py
 %%DATADIR%%/%%PORTNAME%%/lib/apscheduler/__init__.py
@@ -335,6 +347,7 @@
 %%DATADIR%%/%%PORTNAME%%/lib/apscheduler/triggers/simple.py
 %%DATADIR%%/%%PORTNAME%%/lib/apscheduler/util.py
 %%DATADIR%%/%%PORTNAME%%/lib/argparse.py
+%%DATADIR%%/%%PORTNAME%%/lib/certgen.py
 %%DATADIR%%/%%PORTNAME%%/lib/comictaggerlib/put.entire.comictaggerlib.directory.in.here
 %%DATADIR%%/%%PORTNAME%%/lib/configobj.py
 %%DATADIR%%/%%PORTNAME%%/lib/feedparser.py
@@ -389,6 +402,7 @@
 %%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/logger.py
 %%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/mb.py
 %%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/moveit.py
+%%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/newpull.py
 %%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/notifiers.py
 %%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/parseit.py
 %%DATADIR%%/%%PORTNAME%%/%%PORTNAME%%/rsscheck.py

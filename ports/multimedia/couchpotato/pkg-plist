@@ -21,9 +21,13 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/__init__.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/blackhole.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/deluge.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/hadouken.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/nzbget.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/nzbvortex.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/pneumatic.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/putio/__init__.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/putio/main.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/putio/static/putio.js
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/qbittorrent_.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/rtorrent_.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/downloaders/sabnzbd.py
@@ -64,10 +68,12 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/nzb/nzbclub.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/nzb/omgwtfnzbs.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/__init__.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/alpharatio.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/awesomehd.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/base.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/bithdtv.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/bitsoup.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/hdaccess.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/hdbits.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/ilovetorrents.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/iptorrents.py
@@ -77,6 +83,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/thepiratebay.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/torrentbytes.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/torrentday.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/torrentleech.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/torrentpotato.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/torrentshack.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/torrentz.py
@@ -109,6 +116,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/__init__.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/base.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/bluray.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/crowdai.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/flixster.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/goodfilms.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/imdb.py
@@ -119,7 +127,9 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/movies_io.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/popularmovies.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/rottentomatoes.py
-%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/trakt.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/trakt/__init__.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/trakt/main.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/automation/trakt/static/trakt.js
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/base.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/info/__init__.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/info/_modifier.py
@@ -140,9 +150,11 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/nzb/nzbclub.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/nzb/omgwtfnzbs.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/__init__.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/alpharatio.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/awesomehd.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/bithdtv.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/bitsoup.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/hdaccess.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/hdbits.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/ilovetorrents.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/iptorrents.py
@@ -152,6 +164,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/thepiratebay.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/torrentbytes.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/torrentday.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/torrentleech.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/torrentpotato.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/torrentshack.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/torrentz.py
@@ -208,6 +221,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/twitter/__init__.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/twitter/main.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/twitter/static/twitter.js
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/webhook.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/xbmc.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/xmpp_.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/__init__.py
@@ -615,6 +629,8 @@
 %%DATADIR%%/CouchPotatoServer/libs/oauthlib/oauth2/draft25/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/oauthlib/oauth2/draft25/tokens.py
 %%DATADIR%%/CouchPotatoServer/libs/oauthlib/oauth2/draft25/utils.py
+%%DATADIR%%/CouchPotatoServer/libs/pio/__init__.py
+%%DATADIR%%/CouchPotatoServer/libs/pio/api.py
 %%DATADIR%%/CouchPotatoServer/libs/pkg_resources.py
 %%DATADIR%%/CouchPotatoServer/libs/pyasn1/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/pyasn1/codec/__init__.py
@@ -827,7 +843,6 @@
 %%DATADIR%%/CouchPotatoServer/libs/subliminal/services/addic7ed.py
 %%DATADIR%%/CouchPotatoServer/libs/subliminal/services/bierdopje.py
 %%DATADIR%%/CouchPotatoServer/libs/subliminal/services/opensubtitles.py
-%%DATADIR%%/CouchPotatoServer/libs/subliminal/services/podnapisi.py
 %%DATADIR%%/CouchPotatoServer/libs/subliminal/services/subscenter.py
 %%DATADIR%%/CouchPotatoServer/libs/subliminal/services/subswiki.py
 %%DATADIR%%/CouchPotatoServer/libs/subliminal/services/subtitulos.py

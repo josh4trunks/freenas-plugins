@@ -66,7 +66,7 @@
 %%DATADIR%%/Sick-Beard/data/css/lib/images/ui-icons_2e83ff_256x240.png
 %%DATADIR%%/Sick-Beard/data/css/lib/images/ui-icons_8c291d_256x240.png
 %%DATADIR%%/Sick-Beard/data/css/lib/images/ui-icons_cd0a0a_256x240.png
-%%DATADIR%%/Sick-Beard/data/css/lib/jquery-ui-1.11.1.custom.css
+%%DATADIR%%/Sick-Beard/data/css/lib/jquery-ui-1.11.2.custom.css
 %%DATADIR%%/Sick-Beard/data/css/lib/jquery.pnotify.default.css
 %%DATADIR%%/Sick-Beard/data/css/lib/jquery.qtip.css
 %%DATADIR%%/Sick-Beard/data/css/style.css
@@ -271,7 +271,7 @@
 %%DATADIR%%/Sick-Beard/data/js/lib/bootstrap.min.js
 %%DATADIR%%/Sick-Beard/data/js/lib/formwizard.js
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery-1.7.2.min.js
-%%DATADIR%%/Sick-Beard/data/js/lib/jquery-ui-1.11.1.custom.min.js
+%%DATADIR%%/Sick-Beard/data/js/lib/jquery-ui-1.11.2.custom.min.js
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery.bookmarkscroll.js
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery.cookie.js
 %%DATADIR%%/Sick-Beard/data/js/lib/jquery.form-3.50.js
@@ -529,6 +529,7 @@
 %%DATADIR%%/Sick-Beard/lib/tvdb_api/tvdb_exceptions.py
 %%DATADIR%%/Sick-Beard/lib/tvdb_api/tvdb_ui.py
 %%DATADIR%%/Sick-Beard/readme.md
+%%DATADIR%%/Sick-Beard/requirements.txt
 %%DATADIR%%/Sick-Beard/%%PORTNAME%%/__init__.py
 %%DATADIR%%/Sick-Beard/%%PORTNAME%%/autoPostProcesser.py
 %%DATADIR%%/Sick-Beard/%%PORTNAME%%/browser.py
@@ -616,6 +617,7 @@
 %%DATADIR%%/Sick-Beard/tests/__init__.py
 %%DATADIR%%/Sick-Beard/tests/all_tests.py
 %%DATADIR%%/Sick-Beard/tests/common_tests.py
+%%DATADIR%%/Sick-Beard/tests/config_tests.py
 %%DATADIR%%/Sick-Beard/tests/db_tests.py
 %%DATADIR%%/Sick-Beard/tests/name_parser_tests.py
 %%DATADIR%%/Sick-Beard/tests/pp_tests.py

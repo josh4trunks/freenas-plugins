@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xdm
-PORTVERSION=	9.3.0
+PORTVERSION=	9.3.1
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com

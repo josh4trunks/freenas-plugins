@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mylar
-PORTVERSION=	9.3.0
+PORTVERSION=	9.3.1
 CATEGORIES=	deskutils
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -17,7 +17,7 @@ USES=	python:2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     evilhero
 GH_PROJECT=     mylar
-GH_COMMIT=      ac4f2ad
+GH_COMMIT=      0fe5ce2
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

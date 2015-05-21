@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	maraschino
-PORTVERSION=	9.3.0
+PORTVERSION=	9.3.1
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -17,7 +17,7 @@ USES=	python:2.5-2.7
 USE_GITHUB=	yes
 GH_ACCOUNT=	mrkipling
 GH_PROJECT=	maraschino
-GH_COMMIT=	de417a2
+GH_COMMIT=	ebd9222
 GH_TAGNAME=	${GH_COMMIT}
 
 NO_BUILD=	yes
