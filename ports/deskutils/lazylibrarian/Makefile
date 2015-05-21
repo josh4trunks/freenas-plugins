@@ -32,8 +32,7 @@ GROUPS=		${USERS}
 .include <bsd.port.pre.mk>
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${DATADIR}
-	${MKDIR} ${STAGEDIR}${DATADIR}/LazyLibrarian
-	cd ${WRKSRC} && ${COPYTREE_SHARE} \* ${STAGEDIR}${DATADIR}/LazyLibrarian
+	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
+	cd ${WRKSRC} && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/${GH_PROJECT}
 
 .include <bsd.port.post.mk>
