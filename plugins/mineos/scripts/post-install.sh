@@ -12,4 +12,9 @@ ln -s /usr/local/share/certs/ca-root-nss.crt /usr/local/openssl/cert.pem
 
 mkdir -p /usr/compat/linux/proc /var/games/minecraft/profiles
 install -g mcserver /dev/null /var/games/minecraft/profiles/profile.config
-echo 'mcserver' | pw mod user mcserver -h 0
+
+# Set default password only if it isn't set
+PASSWD_HASH=$(cat /etc/master.passwd | grep -e "^mcserver" | sed -e "s/^mcserver:\([^:]*\):.*$/\1/")
+if [ "${PASSWD_HASH}" = "*" ]; then
+	echo 'mcserver' | pw mod user mcserver -h 0
+fi
