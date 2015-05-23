@@ -2,6 +2,7 @@ from subprocess import Popen, PIPE
 import json
 import time
 import urllib2
+import ssl
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
@@ -48,6 +49,7 @@ class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
         req = urllib2.Request(request.to_url())
         req.add_header('Content-Type', 'text/json')
         req.add_data(request_body)
+        ssl._create_default_https_context = ssl._create_unverified_context
         f = urllib2.urlopen(req)
         return(self.parse_response(f))
 
