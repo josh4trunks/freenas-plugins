@@ -9,6 +9,7 @@
 %%DATADIR%%/SickRage/autoProcessTV/autoProcessTV.cfg.sample
 %%DATADIR%%/SickRage/autoProcessTV/autoProcessTV.py
 %%DATADIR%%/SickRage/autoProcessTV/hellaToSickBeard.py
+%%DATADIR%%/SickRage/autoProcessTV/lib/__init__.py
 %%DATADIR%%/SickRage/autoProcessTV/lib/requests/__init__.py
 %%DATADIR%%/SickRage/autoProcessTV/lib/requests/adapters.py
 %%DATADIR%%/SickRage/autoProcessTV/lib/requests/api.py
@@ -592,6 +593,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/cartoon network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cartoonnetwork.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbbc.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cbc (ca).png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbc.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbeebies.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cbs.png
@@ -609,6 +611,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/comedy central.png
 %%DATADIR%%/SickRage/gui/slick/images/network/comedycentral.png
 %%DATADIR%%/SickRage/gui/slick/images/network/cooking channel.png
+%%DATADIR%%/SickRage/gui/slick/images/network/cottage life.png
 %%DATADIR%%/SickRage/gui/slick/images/network/court tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/crackle.png
 %%DATADIR%%/SickRage/gui/slick/images/network/crime & investigation network.png
@@ -656,6 +659,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/endemol.png
 %%DATADIR%%/SickRage/gui/slick/images/network/entertainment.png
 %%DATADIR%%/SickRage/gui/slick/images/network/eo.png
+%%DATADIR%%/SickRage/gui/slick/images/network/espn 2.png
 %%DATADIR%%/SickRage/gui/slick/images/network/espn classic.png
 %%DATADIR%%/SickRage/gui/slick/images/network/espn.png
 %%DATADIR%%/SickRage/gui/slick/images/network/esquire network.png
@@ -679,6 +683,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/france 4.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fuji television.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fuji tv.png
+%%DATADIR%%/SickRage/gui/slick/images/network/funimation channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/funimation.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fuse.png
 %%DATADIR%%/SickRage/gui/slick/images/network/fx.png
@@ -744,6 +749,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/mgm.png
 %%DATADIR%%/SickRage/gui/slick/images/network/motorvision tv.png
 %%DATADIR%%/SickRage/gui/slick/images/network/motorvision.png
+%%DATADIR%%/SickRage/gui/slick/images/network/movie network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/mtv (us).png
 %%DATADIR%%/SickRage/gui/slick/images/network/mtv network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/mtv.png
@@ -753,6 +759,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/n24.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nat geo wild.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nat geo.png
+%%DATADIR%%/SickRage/gui/slick/images/network/national geographic (us).png
 %%DATADIR%%/SickRage/gui/slick/images/network/national geographic channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/national geographic.png
 %%DATADIR%%/SickRage/gui/slick/images/network/nbc.png
@@ -928,6 +935,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/teletoon.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tf1.png
 %%DATADIR%%/SickRage/gui/slick/images/network/thames television.png
+%%DATADIR%%/SickRage/gui/slick/images/network/the anime network.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the cw.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the discovery channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/the history channel.png
@@ -943,6 +951,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/tnt glitz.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tnt serie.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tnt.png
+%%DATADIR%%/SickRage/gui/slick/images/network/tntdrama.png
 %%DATADIR%%/SickRage/gui/slick/images/network/toei animation.png
 %%DATADIR%%/SickRage/gui/slick/images/network/toei channel.png
 %%DATADIR%%/SickRage/gui/slick/images/network/tokyo broadcasting system.png
@@ -1012,6 +1021,7 @@
 %%DATADIR%%/SickRage/gui/slick/images/network/wdr.png
 %%DATADIR%%/SickRage/gui/slick/images/network/wgn america.png
 %%DATADIR%%/SickRage/gui/slick/images/network/wowow.png
+%%DATADIR%%/SickRage/gui/slick/images/network/xbox live.png
 %%DATADIR%%/SickRage/gui/slick/images/network/xebec.png
 %%DATADIR%%/SickRage/gui/slick/images/network/yahoo! screen.png
 %%DATADIR%%/SickRage/gui/slick/images/network/youtube.png
@@ -1271,14 +1281,6 @@
 %%DATADIR%%/SickRage/gui/slick/js/sceneExceptionsTooltip.js
 %%DATADIR%%/SickRage/gui/slick/js/script.js
 %%DATADIR%%/SickRage/gui/slick/js/testRename.js
-%%DATADIR%%/SickRage/init.debian
-%%DATADIR%%/SickRage/init.fedora
-%%DATADIR%%/SickRage/init.freebsd
-%%DATADIR%%/SickRage/init.gentoo
-%%DATADIR%%/SickRage/init.solaris11
-%%DATADIR%%/SickRage/init.systemd
-%%DATADIR%%/SickRage/init.ubuntu
-%%DATADIR%%/SickRage/init.upstart
 %%DATADIR%%/SickRage/lib/MultipartPostHandler.py
 %%DATADIR%%/SickRage/lib/__init__.py
 %%DATADIR%%/SickRage/lib/adba/.gitignore
@@ -1333,6 +1335,8 @@
 %%DATADIR%%/SickRage/lib/certifi/__main__.py
 %%DATADIR%%/SickRage/lib/certifi/cacert.pem
 %%DATADIR%%/SickRage/lib/certifi/core.py
+%%DATADIR%%/SickRage/lib/certifi/mkcert.pem
+%%DATADIR%%/SickRage/lib/certifi/old_root.pem
 %%DATADIR%%/SickRage/lib/chardet/__init__.py
 %%DATADIR%%/SickRage/lib/chardet/big5freq.py
 %%DATADIR%%/SickRage/lib/chardet/big5prober.py
@@ -3784,12 +3788,6 @@
 %%DATADIR%%/SickRage/lib/futures/__init__.py
 %%DATADIR%%/SickRage/lib/futures/process.py
 %%DATADIR%%/SickRage/lib/futures/thread.py
-%%DATADIR%%/SickRage/lib/fuzzywuzzy/StringMatcher.py
-%%DATADIR%%/SickRage/lib/fuzzywuzzy/__init__.py
-%%DATADIR%%/SickRage/lib/fuzzywuzzy/fuzz.py
-%%DATADIR%%/SickRage/lib/fuzzywuzzy/process.py
-%%DATADIR%%/SickRage/lib/fuzzywuzzy/string_processing.py
-%%DATADIR%%/SickRage/lib/fuzzywuzzy/utils.py
 %%DATADIR%%/SickRage/lib/github/AuthenticatedUser.py
 %%DATADIR%%/SickRage/lib/github/Authorization.py
 %%DATADIR%%/SickRage/lib/github/AuthorizationApplication.py
@@ -4656,20 +4654,56 @@
 %%DATADIR%%/SickRage/lib/lockfile/pidlockfile.py
 %%DATADIR%%/SickRage/lib/lockfile/sqlitelockfile.py
 %%DATADIR%%/SickRage/lib/lockfile/symlinklockfile.py
+%%DATADIR%%/SickRage/lib/ndg/__init__.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/__init__.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/https.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/ssl_context_util.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/ssl_peer_verification.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/ssl_socket.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/subj_alt_name.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/README
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/__init__.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/pki/localhost.crt
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/pki/localhost.key
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/scripts/openssl_https_server.sh
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/test_https.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/test_urllib2.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/test/test_utils.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/urllib2_build_opener.py
+%%DATADIR%%/SickRage/lib/ndg/httpsclient/utils.py
 %%DATADIR%%/SickRage/lib/oauth2/__init__.py
 %%DATADIR%%/SickRage/lib/pkg_resources.py
 %%DATADIR%%/SickRage/lib/profilehooks.py
+%%DATADIR%%/SickRage/lib/pyasn1/LICENSE
+%%DATADIR%%/SickRage/lib/pyasn1/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/ber/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/ber/decoder.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/ber/encoder.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/ber/eoo.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/cer/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/cer/decoder.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/cer/encoder.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/der/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/der/decoder.py
+%%DATADIR%%/SickRage/lib/pyasn1/codec/der/encoder.py
+%%DATADIR%%/SickRage/lib/pyasn1/compat/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/compat/octets.py
+%%DATADIR%%/SickRage/lib/pyasn1/debug.py
+%%DATADIR%%/SickRage/lib/pyasn1/error.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/__init__.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/base.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/char.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/constraint.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/error.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/namedtype.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/namedval.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/tag.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/tagmap.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/univ.py
+%%DATADIR%%/SickRage/lib/pyasn1/type/useful.py
 %%DATADIR%%/SickRage/lib/pynma/__init__.py
 %%DATADIR%%/SickRage/lib/pynma/pynma.py
-%%DATADIR%%/SickRage/lib/pysrt/__init__.py
-%%DATADIR%%/SickRage/lib/pysrt/commands.py
-%%DATADIR%%/SickRage/lib/pysrt/comparablemixin.py
-%%DATADIR%%/SickRage/lib/pysrt/compat.py
-%%DATADIR%%/SickRage/lib/pysrt/srtexc.py
-%%DATADIR%%/SickRage/lib/pysrt/srtfile.py
-%%DATADIR%%/SickRage/lib/pysrt/srtitem.py
-%%DATADIR%%/SickRage/lib/pysrt/srttime.py
-%%DATADIR%%/SickRage/lib/pysrt/version.py
 %%DATADIR%%/SickRage/lib/pythontwitter/__init__.py
 %%DATADIR%%/SickRage/lib/requests/__init__.py
 %%DATADIR%%/SickRage/lib/requests/adapters.py
@@ -5227,6 +5261,14 @@
 %%DATADIR%%/SickRage/lib/unrar2/windows.py
 %%DATADIR%%/SickRage/lib/xmltodict.py
 %%DATADIR%%/SickRage/readme.md
+%%DATADIR%%/SickRage/runscripts/init.debian
+%%DATADIR%%/SickRage/runscripts/init.fedora
+%%DATADIR%%/SickRage/runscripts/init.freebsd
+%%DATADIR%%/SickRage/runscripts/init.gentoo
+%%DATADIR%%/SickRage/runscripts/init.solaris11
+%%DATADIR%%/SickRage/runscripts/init.systemd
+%%DATADIR%%/SickRage/runscripts/init.ubuntu
+%%DATADIR%%/SickRage/runscripts/init.upstart
 %%DATADIR%%/SickRage/setup.py
 %%DATADIR%%/SickRage/sickbeard/__init__.py
 %%DATADIR%%/SickRage/sickbeard/autoPostProcesser.py
@@ -5376,6 +5418,7 @@
 %%DATADIR%%/SickRage/tests/pp_tests.py
 %%DATADIR%%/SickRage/tests/scene_helpers_tests.py
 %%DATADIR%%/SickRage/tests/snatch_tests.py
+%%DATADIR%%/SickRage/tests/ssl_sni_tests.py
 %%DATADIR%%/SickRage/tests/test_lib.py
 %%DATADIR%%/SickRage/tests/torrent_tests.py
 %%DATADIR%%/SickRage/tests/tv_tests.py
