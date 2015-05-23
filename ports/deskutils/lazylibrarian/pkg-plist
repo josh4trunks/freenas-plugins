@@ -255,6 +255,9 @@
 %%DATADIR%%/LazyLibrarian/lib/apscheduler/util.py
 %%DATADIR%%/LazyLibrarian/lib/bencode.py
 %%DATADIR%%/LazyLibrarian/lib/configobj.py
+%%DATADIR%%/LazyLibrarian/lib/deluge_client/__init__.py
+%%DATADIR%%/LazyLibrarian/lib/deluge_client/client.py
+%%DATADIR%%/LazyLibrarian/lib/deluge_client/rencode.py
 %%DATADIR%%/LazyLibrarian/lib/dogpile/__init__.py
 %%DATADIR%%/LazyLibrarian/lib/dogpile/cache/__init__.py
 %%DATADIR%%/LazyLibrarian/lib/dogpile/cache/api.py
