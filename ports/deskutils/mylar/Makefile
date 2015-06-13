@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mylar
-PORTVERSION=	9.3.1
+PORTVERSION=	9.3.2
 CATEGORIES=	deskutils
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -17,7 +17,7 @@ USES=	python:2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     evilhero
 GH_PROJECT=     mylar
-GH_COMMIT=      0fe5ce2
+GH_COMMIT=      83dc652
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
@@ -29,7 +29,14 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		${USERS}
 
+OPTIONS_DEFINE=	OPENSSL
+OPTIONS_DEFAULT=	OPENSSL
+
 .include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MOPENSSL}
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+.endif
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
