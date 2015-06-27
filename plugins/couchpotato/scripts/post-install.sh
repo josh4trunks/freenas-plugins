@@ -7,5 +7,5 @@ ${couchpotato_pbi_path}/bin/python2.7 ${couchpotato_pbi_path}/couchpotatoUI/mana
 
 # Temporary workaround for a valid certificate store
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
-mkdir -p /usr/local/openssl
-ln -s /usr/local/share/certs/ca-root-nss.crt /usr/local/openssl/cert.pem
+mkdir -p ${couchpotato_pbi_path}/openssl
+ln -s /usr/local/share/certs/ca-root-nss.crt ${couchpotato_pbi_path}/openssl/cert.pem
