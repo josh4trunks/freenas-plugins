@@ -46,10 +46,6 @@ def get_transmission_oauth_creds():
     return key, secret
 
 transmission_settings = {
-    "download_dir": {
-        "field": "download-dir",
-        "type": "textbox",
-        },
     "incomplete_dir": {
         "field": "incomplete-dir",
         "type": "textbox",
@@ -58,10 +54,10 @@ transmission_settings = {
         "field": "watch-dir",
         "type": "textbox",
         },
-    "encryption": {
-        "field": "encryption",
+    "script_torrent_done": {
+        "field": "script-torrent-done-filename",
         "type": "textbox",
-        },
+         },
     "rpc_port": {
         "field": "rpc-port",
         "type": "textbox",
@@ -87,41 +83,17 @@ transmission_settings = {
         "field": "rpc-whitelist",
         "type": "textbox",
         },
-    "dht": {
-        "field": "dht-enabled",
-        "type": "checkbox",
-        },
-    "lpd": {
-        "field": "lpd-enabled",
-        "type": "checkbox",
-        },
     "utp": {
         "field": "utp-enabled",
         "type": "checkbox",
         },
-    "peer_port": {
-        "field": "peer-port",
+    "cache_size": {
+        "field": "cache-size-mb",
         "type": "textbox",
         },
-    "portmap": {
-        "field": "port-forwarding-enabled",
-        },
-    "peerlimit_global": {
-        "field": "peer-limit-global",
+    "peer_socket_tos": {
+        "field": "peer-socket-tos",
         "type": "textbox",
-        },
-    "peerlimit_torrent": {
-        "field": "peer-limit-per-torrent",
-        "type": "textbox",
-        },
-    "blocklist": {
-        "field": "blocklist-url",
-        "type": "textbox",
-        },
-    "global_seedratio": {
-        "field": "ratio-limit",
-        "type": "textbox",
-        "filter": lambda x: str(x)
         },
     "permissions": {
         "field": "umask",

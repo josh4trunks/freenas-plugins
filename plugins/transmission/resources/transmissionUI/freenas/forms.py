@@ -18,10 +18,7 @@ class TransmissionForm(forms.ModelForm):
         widgets = {
             'rpc_port': forms.widgets.TextInput(),
             'rpc_password': forms.widgets.PasswordInput(),
-            'peer_port': forms.widgets.TextInput(),
-            'global_seedratio': forms.widgets.TextInput(),
-            'peerlimit_global': forms.widgets.TextInput(),
-            'peerlimit_torrent': forms.widgets.TextInput(),
+            'cache_size': forms.widgets.TextInput(),
         }
         exclude = (
             'enable',
@@ -31,7 +28,12 @@ class TransmissionForm(forms.ModelForm):
         self.jail_path = kwargs.pop('jail_path')
         super(TransmissionForm, self).__init__(*args, **kwargs)
 
-        self.fields['download_dir'].widget = \
+        self.fields['script_torrent_done'].widget = forms.widgets.TextInput(attrs={
+            'data-dojo-type': 'freeadmin.form.PathSelector',
+            'root': self.jail_path,
+            'dirsonly': 'false',
+            })
+
         self.fields['incomplete_dir'].widget = \
         self.fields['watch_dir'].widget = forms.widgets.TextInput(attrs={
             'data-dojo-type': 'freeadmin.form.PathSelector',
@@ -86,7 +88,7 @@ class TransmissionForm(forms.ModelForm):
         settings['watch-dir-enabled'] = bool(obj.watch_dir)
         settings['rpc-whitelist-enabled'] = bool(obj.rpc_whitelist)
         settings['incomplete-dir-enabled'] = bool(obj.incomplete_dir)
-        settings['blocklist-enabled'] = bool(obj.blocklist)
+        settings['script-torrent-done-enabled'] = bool(obj.script_torrent_done)
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, sort_keys=True, indent=4))

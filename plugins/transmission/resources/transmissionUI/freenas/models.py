@@ -20,15 +20,15 @@ class Transmission(models.Model):
         max_length=500,
         blank=True,
         )
-    download_dir = models.CharField(
-        verbose_name="Download Directory",
-        max_length=500,
-        default=download_dir,
-        )
     incomplete_dir = models.CharField(
         verbose_name="Incomplete Download Directory",
         max_length=500,
         blank=True,
+        )
+    script_torrent_done = models.CharField(
+        verbose_name="Script Torrent Done",
+        max_length=500,
+        blank=True   
         )
     rpc_auth = models.BooleanField(
         verbose_name="RPC/WebUI Enabled",
@@ -37,7 +37,6 @@ class Transmission(models.Model):
     rpc_port = models.IntegerField(
         verbose_name="RPC Port",
         default=9091,
-        blank=True,
         )
     rpc_auth_required = models.BooleanField(
         verbose_name="RPC Auth. Required",
@@ -57,46 +56,25 @@ class Transmission(models.Model):
         verbose_name="RPC Whitelist",
         blank=True,
         )
-    dht = models.BooleanField(
-        default=True,
-        verbose_name="Distributed Hash Table (DHT)",
-        )
-    lpd = models.BooleanField(
-        default=False,
-        verbose_name="Local Peer Discovery (LPD)",
-        )
     utp = models.BooleanField(
         default=True,
         verbose_name=u"Micro Transport Protocol (\xb5TP)"
         )
-    peer_port = models.IntegerField(default=51413, blank=True)
-    portmap = models.BooleanField(default=True)
-    peerlimit_global = models.IntegerField(
-        verbose_name="Max. number of peers",
-        default=240,
+    cache_size = models.IntegerField(
+        verbose_name="Cache Size (MB)",
+        default=4,
         )
-    peerlimit_torrent = models.IntegerField(
-        verbose_name="Max. number of peers per torrent",
-        default=60,
-        )
-    encryption = models.IntegerField(
-        default=1,
+    peer_socket_tos = models.CharField(
+        verbose_name="Peer Socket ToS",
+        default="default",
         choices=(
-            (0, 'Prefer unencrypted'),
-            (1, 'Prefer encrypted'),
-            (2, 'Require encrypted'),
+            ("default", 'Default'),
+            ("lowcost", 'Low Cost'),
+            ("throughput", 'Throughput'),
+            ("lowdelay", 'Low Delay'),
+            ("reliability", 'Reliability'),
         ),
-        )
-    blocklist = models.CharField(
-        verbose_name="Blocklist URL",
-        max_length=500,
-        blank=True,
-        )
-    global_seedratio = models.DecimalField(
-        verbose_name="Global Seed Ratio",
-        decimal_places=2,
-        max_digits=6,
-        default=2,
+        max_length=120,
         )
     permissions = models.IntegerField(
         verbose_name="Downloaded Permissions",
