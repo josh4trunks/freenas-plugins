@@ -59,7 +59,7 @@ class TransmissionForm(forms.ModelForm):
                 stdout=PIPE,
                 stderr=PIPE)
 
-        settingsfile = os.path.join(utils.transmission_home_dir, "settings.json")
+        settingsfile = os.path.join(utils.transmission_conf_dir, "settings.json")
         if os.path.exists(settingsfile):
             with open(settingsfile, 'r') as f:
                 try:

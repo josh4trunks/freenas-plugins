@@ -3,9 +3,7 @@ import os
 import platform
 
 transmission_pbi_path = "/usr/pbi/transmission-" + platform.machine()
-transmission_etc_path = os.path.join(transmission_pbi_path, "etc")
-transmission_conf_dir = os.path.join(transmission_etc_path, "transmission")
-transmission_home_dir = os.path.join(transmission_conf_dir, "home")
+transmission_conf_dir = "/var/db/transmission"
 transmission_fcgi_pidfile = "/var/run/transmission_fcgi_server.pid"
 transmission_control = "/usr/local/etc/rc.d/transmission"
 transmission_icon = os.path.join(transmission_pbi_path, "default.png")
