@@ -28,9 +28,8 @@ crontab -u www ${tmp}
 cat << __EOF__ > ${owncloud_pbi_path}/etc/apache24/Includes/owncloud.conf
 AddType application/x-httpd-php .php
 
-Alias / ${owncloud_pbi_path}/www/owncloud/
+DocumentRoot ${owncloud_pbi_path}/www/owncloud
 <Directory ${owncloud_pbi_path}/www/owncloud>
-    Options Indexes FollowSymLinks
     AllowOverride All
     Require all granted
     SetEnv MOD_X_SENDFILE_ENABLED 1
