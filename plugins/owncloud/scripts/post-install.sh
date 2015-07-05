@@ -28,7 +28,7 @@ crontab -u www ${tmp}
 cat << __EOF__ > ${owncloud_pbi_path}/etc/apache24/Includes/owncloud.conf
 AddType application/x-httpd-php .php
 
-DocumentRoot ${owncloud_pbi_path}/www/owncloud
+Alias / ${owncloud_pbi_path}/www/owncloud/
 <Directory ${owncloud_pbi_path}/www/owncloud>
     AllowOverride All
     Require all granted
