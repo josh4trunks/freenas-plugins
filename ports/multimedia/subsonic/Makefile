@@ -26,14 +26,12 @@ USERS=		media
 GROUPS=		${USERS}
 
 OPTIONS_DEFINE=	TRANSCODING
-TRANSCODING_DESC=	Transcoding with FFmpeg
 OPTIONS_DEFAULT=	TRANSCODING
+TRANSCODING_DESC=	Transcoding with FFmpeg
+
+TRANSCODING_RUN_DEPENDS=        ffmpeg:${PORTSDIR}/multimedia/ffmpeg
 
 .include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MTRANSCODING}
-RUN_DEPENDS+=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
-.endif
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}/Subsonic
