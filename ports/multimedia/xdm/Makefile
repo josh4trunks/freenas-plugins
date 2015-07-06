@@ -29,14 +29,12 @@ USE_RC_SUBR=	${PORTNAME}
 USERS=		media
 GROUPS=		${USERS}
 
-OPTIONS_DEFIN=	OPENSSL UNRAR
+OPTIONS_DEFINE=	OPENSSL
 OPTIONS_DEFAULT=	OPENSSL
 
-.include <bsd.port.pre.mk>
+OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 
-.if ${PORT_OPTIONS:MOPENSSL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
-.endif
+.include <bsd.port.pre.mk>
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}

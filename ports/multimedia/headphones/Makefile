@@ -33,15 +33,10 @@ OPTIONS_DEFINE=	OPENSSL TRANSCODING
 TRANSCODING_DESC=	Transcoding with FFmpeg
 OPTIONS_DEFAULT=	OPENSSL TRANSCODING
 
+OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+TRANSCODING_RUN_DEPENDS=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
+
 .include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MOPENSSL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
-.endif
-
-.if ${PORT_OPTIONS:MTRANSCODING}
-RUN_DEPENDS+=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
-.endif
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}

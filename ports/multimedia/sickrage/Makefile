@@ -36,15 +36,10 @@ GROUPS=		${USERS}
 OPTIONS_DEFINE=	OPENSSL UNRAR
 OPTIONS_DEFAULT=	OPENSSL UNRAR
 
+OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+UNRAR_RUN_DEPENDS=	unrar:${PORTSDIR}/archivers/unrar
+
 .include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MOPENSSL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
-.endif
-
-.if ${PORT_OPTIONS:MUNRAR}
-RUN_DEPENDS+=	unrar:${PORTSDIR}/archivers/unrar
-.endif
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}

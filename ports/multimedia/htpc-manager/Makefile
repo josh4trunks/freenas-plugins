@@ -34,15 +34,10 @@ OPTIONS_DEFINE=	OPENSSL PIL
 OPTIONS_DEFAULT=	OPENSSL PIL
 PIL_DESC=	convert and resize images retrieved from the XBMC API
 
+OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+PIL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
+
 .include <bsd.port.pre.mk>
-
-.if ${PORT_OPTIONS:MOPENSSL}
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
-.endif
-
-.if ${PORT_OPTIONS:MPIL}
-RUN_DEPENDS+=   ${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
-.endif
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${DATADIR}/${GH_PROJECT}
