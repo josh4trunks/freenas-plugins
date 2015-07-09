@@ -22,3 +22,5 @@ if [ ! -f /usr/local/etc/fonts/fonts.conf ]; then
 </fontconfig>
 __EOF__
 fi
+
+${subsonic_pbi_path}/etc/rc.d/subsonic start

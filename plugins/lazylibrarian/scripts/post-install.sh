@@ -9,3 +9,5 @@ ${lazylibrarian_pbi_path}/bin/python2.7 ${lazylibrarian_pbi_path}/lazylibrarianU
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${lazylibrarian_pbi_path}/openssl
 ln -s /usr/local/share/certs/ca-root-nss.crt ${lazylibrarian_pbi_path}/openssl/cert.pem
+
+${lazylibrarian_pbi_path}/etc/rc.d/lazylibrarian start

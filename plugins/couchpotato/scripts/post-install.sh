@@ -9,3 +9,5 @@ ${couchpotato_pbi_path}/bin/python2.7 ${couchpotato_pbi_path}/couchpotatoUI/mana
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${couchpotato_pbi_path}/openssl
 ln -s /usr/local/share/certs/ca-root-nss.crt ${couchpotato_pbi_path}/openssl/cert.pem
+
+${couchpotato_pbi_path}/etc/rc.d/couchpotato start

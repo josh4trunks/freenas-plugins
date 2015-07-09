@@ -9,3 +9,5 @@ ${maraschino_pbi_path}/bin/python2.7 ${maraschino_pbi_path}/maraschinoUI/manage.
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${maraschino_pbi_path}/openssl
 ln -s /usr/local/share/certs/ca-root-nss.crt ${maraschino_pbi_path}/openssl/cert.pem
+
+${maraschino_pbi_path}/etc/rc.d/maraschino start
