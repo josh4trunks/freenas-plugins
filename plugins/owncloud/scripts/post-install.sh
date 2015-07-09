@@ -80,9 +80,4 @@ fi
 # Enable X-Sendfile
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
-# Set charset for PHP
-if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
-	echo 'default_charset = "UTF-8"' > ${owncloud_pbi_path}/etc/php.ini
-fi
-
 ${owncloud_pbi_path}/etc/rc.d/apache24 start
