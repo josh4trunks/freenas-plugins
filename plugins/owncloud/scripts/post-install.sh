@@ -12,10 +12,15 @@ else
 	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/autoconfig.php
 <?php
 \$AUTOCONFIG = array (
-  "dbtype" => "sqlite",
-  "directory" => "/media",
+  'dbtype' => 'sqlite',
+  'directory' => '/media',
 );
-?>
+__EOF__
+	cat << __EOF__ > ${owncloud_pbi_path}/www/owncloud/config/config.php
+<?php
+\$CONFIG = array (
+  'memcache.local' => '\OC\Memcache\APCu',
+);
 __EOF__
 fi
 
