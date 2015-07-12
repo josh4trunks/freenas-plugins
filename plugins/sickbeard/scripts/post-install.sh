@@ -9,5 +9,3 @@ ${sickbeard_pbi_path}/bin/python2.7 ${sickbeard_pbi_path}/sickbeardUI/manage.py 
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${sickbeard_pbi_path}/openssl
 ln -s /usr/local/share/certs/ca-root-nss.crt ${sickbeard_pbi_path}/openssl/cert.pem
-
-${sickbeard_pbi_path}/etc/rc.d/sickbeard start

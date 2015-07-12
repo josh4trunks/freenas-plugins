@@ -18,5 +18,3 @@ PASSWD_HASH=$(cat /etc/master.passwd | grep -e "^mcserver" | sed -e "s/^mcserver
 if [ "${PASSWD_HASH}" = "*" ]; then
 	echo 'mcserver' | pw mod user mcserver -h 0
 fi
-
-${mineos_pbi_path}/etc/rc.d/mineos start

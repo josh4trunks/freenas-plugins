@@ -9,5 +9,3 @@ ${sickrage_pbi_path}/bin/python2.7 ${sickrage_pbi_path}/sickrageUI/manage.py syn
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${sickrage_pbi_path}/openssl
 ln -s /usr/local/share/certs/ca-root-nss.crt ${sickrage_pbi_path}/openssl/cert.pem
-
-${sickrage_pbi_path}/etc/rc.d/sickrage start

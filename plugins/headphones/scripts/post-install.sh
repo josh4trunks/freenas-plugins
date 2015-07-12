@@ -9,5 +9,3 @@ ${headphones_pbi_path}/bin/python2.7 ${headphones_pbi_path}/headphonesUI/manage.
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${headphones_pbi_path}/openssl
 ln -s /usr/local/share/certs/ca-root-nss.crt ${headphones_pbi_path}/openssl/cert.pem
-
-${headphones_pbi_path}/etc/rc.d/headphones start

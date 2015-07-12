@@ -14,5 +14,3 @@ if [ ! -f /var/db/syncthing/config.xml ]; then
 	service syncthing onestop
 	sed -i '' -e 's|^\([[:space:]]*<address>\)127\.0\.0\.1\(:[[:digit:]]\{1,5\}</address>\)$|\10.0.0.0\2|' /var/db/syncthing/config.xml
 fi
-
-${syncthing_pbi_path}/etc/rc.d/syncthing start

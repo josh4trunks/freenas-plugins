@@ -79,5 +79,3 @@ fi
 
 # Enable X-Sendfile
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
-
-${owncloud_pbi_path}/etc/rc.d/apache24 start
