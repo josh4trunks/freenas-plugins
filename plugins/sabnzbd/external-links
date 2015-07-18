@@ -3,3 +3,5 @@ bin/par2	bin/par2	keep
 bin/unrar	bin/unrar	keep
 bin/7za		bin/7za		keep
 lib/libtbb.so	lib/libtbb.so	keep
+etc/rc.d/dbus	etc/rc.d/dbus	keep
+etc/rc.d/avahi-daemon	etc/rc.d/avahi-daemon	keep
