@@ -16,7 +16,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cheetah>0:${PORTSDIR}/devel/py-cheetah \
 		${PYTHON_PKGNAMEPREFIX}utils>0:${PORTSDIR}/devel/py-utils \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
-USES=		gettext python:2.5-2.7
+USES=		gettext python:2.6-2.7
 
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/SABnzbd-${PORTVERSION}
