@@ -16,7 +16,7 @@ class OwncloudForm(forms.ModelForm):
         model = models.Owncloud
         exclude = (
             'enable',
-        )
+            )
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
