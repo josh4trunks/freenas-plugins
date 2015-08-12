@@ -49,6 +49,7 @@ fi
 # Optimize Apache on ZFS
 sed -i '' -e 's/^#\(EnableMMAP[[:space:]]\).*$/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
+tmp=$(mktemp /tmp/tmp.XXXXXX)
 # Generate SSL certificate
 if [ ! -f "${owncloud_pbi_path}/etc/apache24/server.crt" ]; then
 
@@ -80,7 +81,6 @@ __EOF__
 fi
 
 # Create cronjob for ownCloud
-tmp=$(mktemp /tmp/tmp.XXXXXX)
 echo "*/15 * * * * ${owncloud_pbi_path}/bin/php -f ${owncloud_pbi_path}/www/owncloud/cron.php" > ${tmp}
 crontab -u www ${tmp}
 
