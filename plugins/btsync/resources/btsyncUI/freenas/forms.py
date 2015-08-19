@@ -80,10 +80,10 @@ class BtSyncForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
-	settings['vendor'] = "FreeNAS"
-	settings['display_new_version'] = false
+        settings['vendor'] = "FreeNAS"
+        settings['display_new_version'] = False
         settings['storage_path'] = utils.btsync_datadirectory
-	settings['pid_file'] = utils.btsync_pidfile
+        settings['pid_file'] = utils.btsync_pidfile
         settings['webui'] = {}
         settings['webui']['listen'] = "0.0.0.0:" + str(settings.pop("webui_port"))
         settings['webui']['force_https'] = settings.pop("force_https")
