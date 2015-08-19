@@ -80,6 +80,8 @@ class BtSyncForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
+	settings['vendor'] = "FreeNAS"
+	settings['display_new_version'] = false
         settings['storage_path'] = utils.btsync_datadirectory
 	settings['pid_file'] = utils.btsync_pidfile
         settings['webui'] = {}
