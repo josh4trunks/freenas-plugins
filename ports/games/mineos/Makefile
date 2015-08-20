@@ -14,12 +14,14 @@ COMMENT=	easy minecraft hosting solution
 LICENSE=	GPLv3
 
 RUN_DEPENDS=	npm:${PORTSDIR}/www/npm \
+		screen:${PORTSDIR}/sysutils/screen \
+		rsync:${PORTSDIR}/net/rsync \
 		rdiff-backup:${PORTSDIR}/sysutils/rdiff-backup \
 		rsync:${PORTSDIR}/net/rsync \
-		screen:${PORTSDIR}/sysutils/screen \
-		git:${PORTSDIR}/devel/git
+		git:${PORTSDIR}/devel/git \
+		gmake:${PORTSDIR}/devel/gmake
 
-USES=		gmake
+USES=		python
 USE_JAVA=	yes
 JAVA_RUN=	yes
 
@@ -37,7 +39,7 @@ GROUPS=		${USERS}
 
 do-install:
 	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/${GH_PROJECT}
-	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install
+	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install || true
 #	${CP} ${DATADIR}/${GH_PROJECT}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
 .include <bsd.port.post.mk>
