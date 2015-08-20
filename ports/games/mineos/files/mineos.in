@@ -29,8 +29,7 @@ status_cmd="${command} %%DATADIR%%/mineos-node/service.js status"
 
 %%PORTNAME%%_update() {
 	%%PREFIX%%/bin/git --git-dir=%%DATADIR%%/mineos-node/.git --work-tree=%%DATADIR%%/mineos-node pull
-	${start_precmd}
-	export PYTHON=%%PYTHON_CMD%%
+	${start_precmd} PYTHON=%%PYTHON_CMD%%
 	%%LOCALBASE%%/bin/npm --prefix %%DATADIR%%/mineos-node update
 }
 
