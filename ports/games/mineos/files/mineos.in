@@ -24,7 +24,7 @@ extra_commands="update"
 update_cmd="%%PORTNAME%%_update"
 
 start_precmd="export PATH=$PATH:%%PREFIX%%/bin"
-stop_precmd="${command} %%DATADIR%%/mineos-node/service.js stop"
+stop_cmd="${command} %%DATADIR%%/mineos-node/service.js stop"
 status_cmd="${command} %%DATADIR%%/mineos-node/service.js status"
 
 %%PORTNAME%%_update() {
