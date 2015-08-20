@@ -1,26 +1,25 @@
 # $FreeBSD$
 
 PORTNAME=	mineos
-PORTVERSION=	9.3.2
+PORTVERSION=	9.3.3
 CATEGORIES=	games
 MASTER_SITES=	#none
 DISTFILES=	#none
 GH_ACCOUNT=	hexparrot
-GH_PROJECT=	mineos
+GH_PROJECT=	mineos-node
 
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	easy minecraft hosting solution
 
 LICENSE=	GPLv3
 
-RUN_DEPENDS=	wget:${PORTSDIR}/ftp/wget \
+RUN_DEPENDS=	npm:${PORTSDIR}/www/npm \
 		rdiff-backup:${PORTSDIR}/sysutils/rdiff-backup \
 		rsync:${PORTSDIR}/net/rsync \
 		screen:${PORTSDIR}/sysutils/screen \
-		${PYTHON_PKGNAMEPREFIX}cherrypy>0:${PORTSDIR}/www/py-cherrypy \
 		git:${PORTSDIR}/devel/git
 
-USES=	python:2.7
+USES=		gmake
 USE_JAVA=	yes
 JAVA_RUN=	yes
 
@@ -38,7 +37,7 @@ GROUPS=		${USERS}
 
 do-install:
 	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/${GH_PROJECT}
-	${CP} ${DATADIR}/${GH_PROJECT}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
-	${REINPLACE_CMD} -e 's:\(^misc.require_https *= *\)True:\1False:' ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
+	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install
+#	${CP} ${DATADIR}/${GH_PROJECT}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
 .include <bsd.port.post.mk>

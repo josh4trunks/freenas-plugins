@@ -17,19 +17,20 @@ load_rc_config $name
 
 : ${%%PORTNAME%%_enable:="NO"}
 
-mineos_base_dir=$(grep -e "^misc.base_directory[[:space:]]*=[[:space:]]*" %%PREFIX%%/etc/%%PORTNAME%%.conf | cut -d '=' -f2)
 pidfile="/var/run/%%PORTNAME%%.pid"
-command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/mineos/server.py -c %%PREFIX%%/etc/%%PORTNAME%%.conf"
+command="%%LOCALBASE%%/bin/node"
+command_args="%%DATADIR%%/mineos-node/service.js start"
 extra_commands="update"
 update_cmd="%%PORTNAME%%_update"
 
 start_precmd="export PATH=$PATH:%%PREFIX%%/bin"
-start_postcmd="%%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d ${mineos_base_dir} restore && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d ${mineos_base_dir} start"
-stop_precmd="export PATH=$PATH:%%PREFIX%%/bin && %%PYTHON_CMD%% %%DATADIR%%/mineos/mineos_console.py -d ${mineos_base_dir} stop"
+stop_precmd="${command} %%DATADIR%%/mineos-node/service.js stop"
+status_cmd="${command} %%DATADIR%%/mineos-node/service.js status
 
 %%PORTNAME%%_update() {
-	%%PREFIX%%/bin/git --git-dir=%%DATADIR%%/mineos/.git --work-tree=%%DATADIR%%/mineos pull
+	%%PREFIX%%/bin/git --git-dir=%%DATADIR%%/mineos-node/.git --work-tree=%%DATADIR%%/mineos-node pull
+	${start_precmd}
+	%%LOCALBASE%%/bin/npm --prefix %%DATADIR%%/mineos-node update
 }
 
 run_rc_command "$1"
