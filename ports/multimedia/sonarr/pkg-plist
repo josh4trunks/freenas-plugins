@@ -1,3 +1,7 @@
+%%DATADIR%%/NzbDrone/CookComputing.XmlRpcV2.dll
+%%DATADIR%%/NzbDrone/CurlSharp.dll
+%%DATADIR%%/NzbDrone/CurlSharp.dll.config
+%%DATADIR%%/NzbDrone/CurlSharp.dll.mdb
 %%DATADIR%%/NzbDrone/DDay.iCal.dll
 %%DATADIR%%/NzbDrone/FluentMigrator.Runner.dll
 %%DATADIR%%/NzbDrone/FluentMigrator.Runner.dll.mdb
@@ -8,14 +12,13 @@
 %%DATADIR%%/NzbDrone/Growl.Connector.dll
 %%DATADIR%%/NzbDrone/Growl.CoreLibrary.dll
 %%DATADIR%%/NzbDrone/ICSharpCode.SharpZipLib.dll
+%%DATADIR%%/NzbDrone/ImageResizer.dll
 %%DATADIR%%/NzbDrone/LogentriesCore.dll
 %%DATADIR%%/NzbDrone/LogentriesCore.dll.mdb
 %%DATADIR%%/NzbDrone/LogentriesNLog.dll
 %%DATADIR%%/NzbDrone/LogentriesNLog.dll.mdb
 %%DATADIR%%/NzbDrone/Marr.Data.dll
 %%DATADIR%%/NzbDrone/Marr.Data.dll.mdb
-%%DATADIR%%/NzbDrone/MediaInfoDotNet.dll
-%%DATADIR%%/NzbDrone/MediaInfoDotNet.dll.config
 %%DATADIR%%/NzbDrone/Microsoft.AspNet.SignalR.Core.dll
 %%DATADIR%%/NzbDrone/Microsoft.AspNet.SignalR.Core.dll.mdb
 %%DATADIR%%/NzbDrone/Microsoft.AspNet.SignalR.Owin.dll
@@ -27,6 +30,7 @@
 %%DATADIR%%/NzbDrone/MonoTorrent.dll.mdb
 %%DATADIR%%/NzbDrone/NLog.dll
 %%DATADIR%%/NzbDrone/Nancy.Authentication.Basic.dll
+%%DATADIR%%/NzbDrone/Nancy.Authentication.Forms.dll
 %%DATADIR%%/NzbDrone/Nancy.Owin.dll
 %%DATADIR%%/NzbDrone/Nancy.dll
 %%DATADIR%%/NzbDrone/Newtonsoft.Json.dll
@@ -35,6 +39,7 @@
 %%DATADIR%%/NzbDrone/NzbDrone.Common.dll
 %%DATADIR%%/NzbDrone/NzbDrone.Common.dll.mdb
 %%DATADIR%%/NzbDrone/NzbDrone.Core.dll
+%%DATADIR%%/NzbDrone/NzbDrone.Core.dll.config
 %%DATADIR%%/NzbDrone/NzbDrone.Core.dll.mdb
 %%DATADIR%%/NzbDrone/NzbDrone.Host.dll
 %%DATADIR%%/NzbDrone/NzbDrone.Host.dll.mdb
@@ -42,6 +47,8 @@
 %%DATADIR%%/NzbDrone/NzbDrone.Mono.dll.mdb
 %%DATADIR%%/NzbDrone/NzbDrone.SignalR.dll
 %%DATADIR%%/NzbDrone/NzbDrone.SignalR.dll.mdb
+%%DATADIR%%/NzbDrone/NzbDrone.Update/CurlSharp.dll
+%%DATADIR%%/NzbDrone/NzbDrone.Update/CurlSharp.dll.mdb
 %%DATADIR%%/NzbDrone/NzbDrone.Update/ICSharpCode.SharpZipLib.dll
 %%DATADIR%%/NzbDrone/NzbDrone.Update/LogentriesCore.dll
 %%DATADIR%%/NzbDrone/NzbDrone.Update/LogentriesCore.dll.mdb
@@ -64,15 +71,15 @@
 %%DATADIR%%/NzbDrone/Prowlin.dll
 %%DATADIR%%/NzbDrone/RestSharp.dll
 %%DATADIR%%/NzbDrone/System.Data.SQLite.dll
-%%DATADIR%%/NzbDrone/TVDBSharp.dll
-%%DATADIR%%/NzbDrone/TVDBSharp.dll.mdb
 %%DATADIR%%/NzbDrone/UI/Content/FontAwesome/FontAwesome.otf
 %%DATADIR%%/NzbDrone/UI/Content/FontAwesome/fontawesome-webfont.eot
 %%DATADIR%%/NzbDrone/UI/Content/FontAwesome/fontawesome-webfont.svg
 %%DATADIR%%/NzbDrone/UI/Content/FontAwesome/fontawesome-webfont.ttf
 %%DATADIR%%/NzbDrone/UI/Content/FontAwesome/fontawesome-webfont.woff
+%%DATADIR%%/NzbDrone/UI/Content/FontAwesome/fontawesome-webfont.woff2
 %%DATADIR%%/NzbDrone/UI/Content/Images/404.png
 %%DATADIR%%/NzbDrone/UI/Content/Images/background/logo.png
+%%DATADIR%%/NzbDrone/UI/Content/Images/favicon-debug.ico
 %%DATADIR%%/NzbDrone/UI/Content/Images/favicon.ico
 %%DATADIR%%/NzbDrone/UI/Content/Images/logos/128.png
 %%DATADIR%%/NzbDrone/UI/Content/Images/logos/32.png
@@ -106,25 +113,24 @@
 %%DATADIR%%/NzbDrone/UI/Content/fullcalendar.css
 %%DATADIR%%/NzbDrone/UI/Content/info.css
 %%DATADIR%%/NzbDrone/UI/Content/logs.css
+%%DATADIR%%/NzbDrone/UI/Content/manualimport.css
 %%DATADIR%%/NzbDrone/UI/Content/overrides.css
+%%DATADIR%%/NzbDrone/UI/Content/robots.txt
 %%DATADIR%%/NzbDrone/UI/Content/series.css
 %%DATADIR%%/NzbDrone/UI/Content/settings.css
 %%DATADIR%%/NzbDrone/UI/Content/theme.css
 %%DATADIR%%/NzbDrone/UI/Content/update.css
 %%DATADIR%%/NzbDrone/UI/Content/zero.clipboard.swf
-%%DATADIR%%/NzbDrone/UI/Handlebars/Helpers/Enumerable.js
-%%DATADIR%%/NzbDrone/UI/JsLibraries/handlebars.runtime.js
-%%DATADIR%%/NzbDrone/UI/JsLibraries/handlebars.runtime.min.js
-%%DATADIR%%/NzbDrone/UI/JsLibraries/jquery.knob.js
-%%DATADIR%%/NzbDrone/UI/JsLibraries/require.js
-%%DATADIR%%/NzbDrone/UI/JsLibraries/xrayquire.js
-%%DATADIR%%/NzbDrone/UI/app.js
+%%DATADIR%%/NzbDrone/UI/handlebars.runtime.js
 %%DATADIR%%/NzbDrone/UI/index.html
+%%DATADIR%%/NzbDrone/UI/login.html
 %%DATADIR%%/NzbDrone/UI/main.js
-%%DATADIR%%/NzbDrone/UI/piwikCheck.js
+%%DATADIR%%/NzbDrone/UI/main.map
 %%DATADIR%%/NzbDrone/UI/polyfills.js
 %%DATADIR%%/NzbDrone/UI/templates.js
+%%DATADIR%%/NzbDrone/UI/vendor.js
+%%DATADIR%%/NzbDrone/UI/vendor.map
 %%DATADIR%%/NzbDrone/libsqlite3.0.dylib
 %%DATADIR%%/NzbDrone/libsqlite3.dylib
-@unexec rm -r %D/share/%%PORTNAME%%
+@unexec rm -r %D/share/%%PORTNAME%%   
 @exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*

@@ -39,7 +39,7 @@ GROUPS=		${USERS}
 
 do-install:
 	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/${GH_PROJECT}
-	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install --python=${PYTHON_CMD}
+	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install --python=${PYTHON_CMD} || true
 #	${CP} ${DATADIR}/${GH_PROJECT}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
 .include <bsd.port.post.mk>
