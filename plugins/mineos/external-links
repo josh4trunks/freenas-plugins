@@ -1,3 +1,4 @@
 lib/libpopt.so.0	lib/libpopt.so.0	keep
 lib/librsync.so.1	lib/librsync.so.1	keep
 lib/libexecinfo.so.1	lib/libexecinfo.so.1	keep
+etc/mineos.conf		etc/mineos.conf		keep
