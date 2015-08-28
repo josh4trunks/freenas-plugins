@@ -1,1 +1,2 @@
+@sample etc/%%PORTNAME%%.conf.sample
 @unexec rm -rf %D/share/%%PORTNAME%%
