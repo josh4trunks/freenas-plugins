@@ -4,6 +4,7 @@ import platform
 
 mineos_pbi_path = "/usr/pbi/mineos-" + platform.machine()
 mineos_etc_path = os.path.join(mineos_pbi_path, "etc")
+linprocfs_path = "/usr/compat/linux/proc"
 mineos_fcgi_pidfile = "/var/run/mineos_fcgi_server.pid"
 mineos_control = "/usr/local/etc/rc.d/mineos"
 mineos_icon = os.path.join(mineos_pbi_path, "default.png")

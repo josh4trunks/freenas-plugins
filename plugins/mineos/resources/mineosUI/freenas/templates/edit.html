@@ -10,7 +10,10 @@
 
     {{ form }}
     <h3>MineOS can be found <a href="{{ scheme }}://{{ ipv4 }}:{{ port }}" target="_blank">here</a>.<br/>
-    Default Username & Password = "mcserver"</h3>
+    Default Username & Password = "mcserver"<br/>
+    <br/>
+    For MineOS to work upon (re)boot, add the Pre Init command below...<br/>
+    mount -t linprocfs linprocfs {{ linprocfs_path }}</h3>
     <tr>
         <td>&nbsp;</td>
         <td>&nbsp;</td>
