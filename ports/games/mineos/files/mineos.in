@@ -19,14 +19,13 @@ load_rc_config $name
 
 pidfile="/var/run/%%PORTNAME%%.pid"
 command="%%LOCALBASE%%/bin/node"
-command_args="%%DATADIR%%/mineos-node/service.js start"
-extra_commands="update"
-update_cmd="%%PORTNAME%%_update"
+procname="mineos"
 
 start_precmd="export PATH=$PATH:%%PREFIX%%/bin"
-stop_cmd="${command} %%DATADIR%%/mineos-node/service.js stop"
-status_cmd="${command} %%DATADIR%%/mineos-node/service.js status"
+command_args="%%DATADIR%%/mineos-node/service.js start"
 
+extra_commands="update"
+update_cmd="%%PORTNAME%%_update"
 %%PORTNAME%%_update() {
 	%%PREFIX%%/bin/git --git-dir=%%DATADIR%%/mineos-node/.git --work-tree=%%DATADIR%%/mineos-node pull
 	${start_precmd}
