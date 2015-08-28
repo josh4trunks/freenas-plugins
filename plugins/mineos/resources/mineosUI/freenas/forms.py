@@ -69,7 +69,7 @@ class MineOSForm(forms.ModelForm):
         with open(settingsfile, 'w') as f:
             f.write("socket_host = '0.0.0.0'\n")
             f.write("socket_port = %d\n" % (obj.mineos_port, ))
-            f.write("use_https = %r\n" % (obj.mineos_ssl, ))
+            f.write("use_https = %s\n" % (str(obj.mineos_ssl).lower, ))
             f.write("ssl_certificate = '%s'\n" % (obj.mineos_cert, ))
             f.write("ssl_private_key = '%s'\n" % (obj.mineos_key, ))
             f.write("ssl_cert_chain = ''\n")
