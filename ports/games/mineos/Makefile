@@ -32,9 +32,6 @@ SUB_LIST=	PORTNAME=${PORTNAME} PYTHON_CMD=${PYTHON_CMD}
 SUB_FILES=	pkg-message
 USE_RC_SUBR=	${PORTNAME}
 
-USERS=		mcserver
-GROUPS=		${USERS}
-
 .include <bsd.port.pre.mk>
 
 do-install:
