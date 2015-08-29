@@ -16,7 +16,6 @@ class MineOSForm(forms.ModelForm):
         model = models.MineOS
         widgets = {
             'mineos_port': forms.widgets.TextInput(),
-            'mineos_delay': forms.widgets.TextInput(),
         }
         exclude = (
             'enable',
@@ -27,8 +26,7 @@ class MineOSForm(forms.ModelForm):
         super(MineOSForm, self).__init__(*args, **kwargs)
 
         self.fields['mineos_cert'].widget = \
-        self.fields['mineos_key'].widget = \
-        self.fields['mineos_log'].widget = forms.widgets.TextInput(attrs={
+        self.fields['mineos_key'].widget = forms.widgets.TextInput(attrs={
             'data-dojo-type': 'freeadmin.form.PathSelector',
             'root': self.jail_path,
             'dirsonly': 'false',

@@ -61,24 +61,8 @@ mineos_settings = {
         "field": "mineos_port",
         "type": "textbox",
         },
-    "mineos_mask": {
-        "field": "mineos_mask",
-        "type": "checkbox",
-        },
-    "mineos_locale": {
-        "field": "mineos_locale",
-        "type": "textbox",
-        },
-    "mineos_delay": {
-        "field": "mineos_delay",
-        "type": "textbox",
-        },
     "mineos_basedir": {
         "field": "mineos_basedir",
-        "type": "textbox",
-        },
-    "mineos_log": {
-        "field": "mineos_log",
         "type": "textbox",
         }
 }

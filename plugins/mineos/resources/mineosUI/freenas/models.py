@@ -11,7 +11,7 @@ class MineOS(models.Model):
     enable = models.BooleanField(default=False)
     mineos_ssl = models.BooleanField(
         verbose_name="Enable SSL",
-        default=False,
+        default=True,
         )
     mineos_cert = models.CharField(
         verbose_name="SSL Certificate",
@@ -25,34 +25,10 @@ class MineOS(models.Model):
         )
     mineos_port = models.IntegerField(
         verbose_name="WebUI Port",
-        default=8080,
-        )
-    mineos_mask = models.BooleanField(
-        verbose_name="Mask Password",
-        default=False,
-        )
-    mineos_locale = models.CharField(
-        verbose_name="Localization",
-        default="en",
-        choices=(
-            ("en", 'English'),
-            ("nl", 'Dutch'),
-            ("ru", 'Russian'),
-            ("fr", 'French'),
-        ),
-        max_length=120,
-        )
-    mineos_delay = models.IntegerField(
-        verbose_name="Commit Delay (seconds)",
-        default=10,
+        default=8443,
         )
     mineos_basedir = models.CharField(
         verbose_name="Base Directory",
         max_length=500,
         default='/var/games/minecraft',
-        )
-    mineos_log = models.CharField(
-        verbose_name="Logfile",
-        max_length=500,
-        default='/var/log/mineos.log',
         )
