@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	sickrage
-PORTVERSION=	9.3.3
+PORTVERSION=	9.auto
+PORTREVISION=	4
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -21,7 +22,7 @@ USES=	python:2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     SiCKRAGETV
 GH_PROJECT=     SickRage
-GH_COMMIT=      26a1aae
+GH_COMMIT=      9edd012
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
