@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	couchpotato
-PORTVERSION=	9.3.1
+PORTVERSION=	9.auto
+PORTREVISION=	2
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -10,14 +11,15 @@ COMMENT=	Automatic Movie Downloading via NZBs & Torrents
 LICENSE=	GPLv3 PSFL
 LICENSE_COMB=	multi
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
+		{PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
 
 USES=	python:2.6-2.7
 
 USE_GITHUB=     yes
 GH_ACCOUNT=     RuudBurger  
 GH_PROJECT=     CouchPotatoServer
-GH_COMMIT=      c295b34
+GH_COMMIT=      63560ef
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

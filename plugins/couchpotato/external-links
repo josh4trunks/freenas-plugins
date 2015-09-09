@@ -1,2 +1,4 @@
 lib/libffi.so.6 lib/libffi.so.6 keep
+lib/libexslt.so.8	lib/libexslt.so.8	keep
+lib/libxslt.so.2	lib/libxslt.so.2	keep
 bin/unrar	bin/unrar	keep
