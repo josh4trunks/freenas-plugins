@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sickrage
-PORTVERSION=	9.auto
+PORTVERSION=	autoupdate.9
 PORTREVISION=	4
 CATEGORIES=	multimedia
 

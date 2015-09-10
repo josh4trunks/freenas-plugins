@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	couchpotato
-PORTVERSION=	9.auto
+PORTVERSION=	autoupdate.9
 PORTREVISION=	2
 CATEGORIES=	multimedia
 
