@@ -102,8 +102,16 @@ btsync_settings = {
         "field": "peer_expiration_days",
         "type": "textbox",
         },
+    "profiler_enabled": {
+        "field": "profiler_enabled",
+        "type": "checkbox",
+        },
     "rate_limit_local_peers": {
         "field": "rate_limit_local_peers",
+        "type": "checkbox",
+        },
+    "send_statistics": {
+        "field": "send_statistics",
         "type": "checkbox",
         },
     "sync_max_time_diff": {

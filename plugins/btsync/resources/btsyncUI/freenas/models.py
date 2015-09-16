@@ -67,9 +67,17 @@ class BtSync(models.Model):
         verbose_name="Peer Expiration (days)",
         default=7,
         )
+    profiler_enabled = models.BooleanField(
+        verbose_name="Enable Profiler",
+        default=False,
+        )
     rate_limit_local_peers = models.BooleanField(
         verbose_name="Rate Limit Local Peers",
         default=False,
+        )
+    send_statistics = models.BooleanField(
+        verbose_name="Send Statistics",
+        default=True,
         )
     sync_max_time_diff = models.IntegerField(
         verbose_name="Max. Time Difference (seconds)",
