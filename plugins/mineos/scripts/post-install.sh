@@ -9,8 +9,7 @@ if [ ! -d /usr/compat/linux/proc ]; then
 	mkdir -p /usr/compat/linux/proc
 
 	export O=FreeNAS
-	chmod +x ${mineos_pbi_path}/share/mineos/mineos-node/generate-sslcert.sh
-	${mineos_pbi_path}/share/mineos/mineos-node/generate-sslcert.sh
+	/bin/sh ${mineos_pbi_path}/share/mineos/mineos-node/generate-sslcert.sh
 
 	echo 'mcserver' | pw useradd -n mcserver -u 199 -d /nonexistent -s /bin/sh -h 0
 fi
