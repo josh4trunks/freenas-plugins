@@ -32,9 +32,6 @@ Alias / ${owncloud_pbi_path}/www/owncloud/
 <Directory ${owncloud_pbi_path}/www/owncloud>
     AllowOverride All
     Require all granted
-    SetEnv MOD_X_SENDFILE_ENABLED 1
-    XSendFile On
-    XSendFilePath /media
 </Directory>
 __EOF__
 
@@ -68,9 +65,6 @@ fi
 sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1|' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*ssl_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*socache_shmcb_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
-
-# Enable X-Sendfile
-sed -i '' -e 's/^#\(LoadModule[[:space:]]*xsendfile_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
 # Create PHP configuration file
 if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
