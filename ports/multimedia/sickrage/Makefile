@@ -11,18 +11,17 @@ COMMENT=	Video File Manager for TV Shows
 LICENSE=	GPLv3 PSFL
 LICENSE_COMB=	multi
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cheetah>0:${PORTSDIR}/devel/py-cheetah \
-		${PYTHON_PKGNAMEPREFIX}utils>0:${PORTSDIR}/devel/py-utils \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}utils>0:${PORTSDIR}/devel/py-utils \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging \
 		${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
 
-USES=	python:2.6-2.7
+USES=	python:2.7
 
 USE_GITHUB=     yes
-GH_ACCOUNT=     SiCKRAGETV
+GH_ACCOUNT=     SickRage
 GH_PROJECT=     SickRage
-GH_COMMIT=      9edd012
+GH_COMMIT=      ea24e7b
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
