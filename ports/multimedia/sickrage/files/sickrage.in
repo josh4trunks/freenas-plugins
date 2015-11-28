@@ -37,6 +37,8 @@ command_args="%%DATADIR%%/SickRage/SickBeard.py --datadir ${sickrage_data_dir} -
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
+	export LC_CTYPE="en_US.UTF-8"
+
 	if [ -f ${pidfile} ]; then
 		rm -f ${pidfile}
 		echo "Removing stale pidfile."

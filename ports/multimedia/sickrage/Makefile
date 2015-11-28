@@ -2,7 +2,7 @@
 
 PORTNAME=	sickrage
 PORTVERSION=	autoupdate.9
-PORTREVISION=	4
+PORTREVISION=	1
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -21,7 +21,7 @@ USES=	python:2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     SickRage
 GH_PROJECT=     SickRage
-GH_COMMIT=      ea24e7b
+GH_COMMIT=      1a78faa
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

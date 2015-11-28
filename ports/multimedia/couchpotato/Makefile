@@ -2,7 +2,7 @@
 
 PORTNAME=	couchpotato
 PORTVERSION=	autoupdate.9
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -19,7 +19,7 @@ USES=	python:2.6-2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     RuudBurger  
 GH_PROJECT=     CouchPotatoServer
-GH_COMMIT=      63560ef
+GH_COMMIT=      de141aa
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
