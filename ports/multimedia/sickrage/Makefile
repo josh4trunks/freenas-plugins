@@ -21,7 +21,7 @@ USES=	python:2.7
 USE_GITHUB=     yes
 GH_ACCOUNT=     SickRage
 GH_PROJECT=     SickRage
-GH_COMMIT=      1a78faa
+GH_COMMIT=      a89bf7f
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
