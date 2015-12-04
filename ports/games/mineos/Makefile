@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mineos
-PORTVERSION=	9.3.5
+PORTVERSION=	9.3.6
 CATEGORIES=	games
 MASTER_SITES=	#none
 DISTFILES=	#none
@@ -36,6 +36,7 @@ USE_RC_SUBR=	${PORTNAME}
 
 do-install:
 	${PREFIX}/bin/git clone git://github.com/${GH_ACCOUNT}/${GH_PROJECT}.git ${DATADIR}/${GH_PROJECT}
+	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install gmake
 	${PREFIX}/bin/npm --prefix ${DATADIR}/${GH_PROJECT} install --python=${PYTHON_CMD}
 	${CP} ${DATADIR}/${GH_PROJECT}/${PORTNAME}.conf ${STAGEDIR}${PREFIX}/etc/${PORTNAME}.conf.sample
 
