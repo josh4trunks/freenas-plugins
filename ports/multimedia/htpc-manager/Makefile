@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	htpc-manager
-PORTVERSION=	9.3.1
+PORTVERSION=	autoupdate.9
+PORTREVISION=	1
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
