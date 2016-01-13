@@ -5,7 +5,6 @@ lib/libavfilter.so.5	lib/libavfilter.so.5	keep
 lib/libavformat.so.56	lib/libavformat.so.56	keep
 lib/libavresample.so.2	lib/libavresample.so.2	keep
 lib/libavutil.so.54	lib/libavutil.so.54	keep
-lib/libfftw3f.so.3	lib/libfftw3f.so.3	keep
 lib/libfontconfig.so.1	lib/libfontconfig.so.1	keep
 lib/libfreetype.so.6	lib/libfreetype.so.6	keep
 lib/libgmp.so.10	lib/libgmp.so.10	keep
