@@ -2,7 +2,7 @@
 
 PORTNAME=	htpc-manager
 PORTVERSION=	autoupdate.9
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -17,9 +17,9 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 USES=	python:2.7
 
 USE_GITHUB=     yes
-GH_ACCOUNT=     styxit  
+GH_ACCOUNT=     Hellowlol
 GH_PROJECT=     HTPC-Manager
-GH_COMMIT=      cd983bf
+GH_COMMIT=      9efb173
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes
