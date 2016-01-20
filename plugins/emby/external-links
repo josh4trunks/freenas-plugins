@@ -10,6 +10,7 @@ lib/libfreetype.so.6	lib/libfreetype.so.6	keep
 lib/libgmp.so.10	lib/libgmp.so.10	keep
 lib/libgnutls.so.28	lib/libgnutls.so.28	keep
 lib/libmp3lame.so.0	lib/libmp3lame.so.0	keep
+lib/libopus.so.0	lib/libopus.so.0	keep
 lib/libpostproc.so.53	lib/libpostproc.so.53	keep
 lib/libschroedinger-1.0.so.11	lib/libschroedinger-1.0.so.11	keep
 lib/libswresample.so.1	lib/libswresample.so.1	keep
