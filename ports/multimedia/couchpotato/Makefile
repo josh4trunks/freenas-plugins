@@ -12,7 +12,7 @@ LICENSE=	GPLv3 PSFL
 LICENSE_COMB=	multi
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
-		{PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
+		${PYTHON_PKGNAMEPREFIX}lxml>0:${PORTSDIR}/devel/py-lxml
 
 USES=	python:2.6-2.7
 
