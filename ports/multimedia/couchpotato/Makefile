@@ -2,7 +2,7 @@
 
 PORTNAME=	couchpotato
 PORTVERSION=	autoupdate.9
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	multimedia
 
 MAINTAINER=	joshruehlig@gmail.com
@@ -17,9 +17,9 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 USES=	python:2.6-2.7
 
 USE_GITHUB=     yes
-GH_ACCOUNT=     RuudBurger  
+GH_ACCOUNT=     CouchPotato
 GH_PROJECT=     CouchPotatoServer
-GH_COMMIT=      de141aa
+GH_COMMIT=      4476423
 GH_TAGNAME=     ${GH_COMMIT}
 
 NO_BUILD=	yes

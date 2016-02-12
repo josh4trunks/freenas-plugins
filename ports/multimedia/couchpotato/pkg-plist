@@ -1,5 +1,8 @@
+%%DATADIR%%/CouchPotatoServer/.coveragerc
 %%DATADIR%%/CouchPotatoServer/.editorconfig
 %%DATADIR%%/CouchPotatoServer/.gitignore
+%%DATADIR%%/CouchPotatoServer/.nosetestsrc
+%%DATADIR%%/CouchPotatoServer/.travis.yml
 %%DATADIR%%/CouchPotatoServer/CouchPotato.py
 %%DATADIR%%/CouchPotatoServer/Gruntfile.js
 %%DATADIR%%/CouchPotatoServer/README.md
@@ -82,6 +85,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/ilovetorrents.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/iptorrents.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/kickasstorrents.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/morethantv.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/passthepopcorn.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/rarbg.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/_base/providers/torrent/sceneaccess.py
@@ -167,6 +171,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/ilovetorrents.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/iptorrents.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/kickasstorrents.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/morethantv.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/passthepopcorn.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/rarbg.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/providers/torrent/sceneaccess.py
@@ -201,6 +206,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/searcher.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/%%USER%%/movie/suggestion.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/__init__.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/androidpn.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/base.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/boxcar2.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/notifications/core/__init__.py
@@ -235,6 +241,7 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/automation.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/base.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/browser.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/browser_test.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/category/__init__.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/category/index.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/category/main.py
@@ -280,7 +287,11 @@
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/wizard/static/wizard.js
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/plugins/wizard/static/wizard.scss
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/settings.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/settings_test.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/softchroot.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/core/softchroot_test.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/environment.py
+%%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/environment_test.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/runner.py
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/static/fonts/Lobster-webfont.eot
 %%DATADIR%%/CouchPotatoServer/%%PORTNAME%%/static/fonts/Lobster-webfont.svg
@@ -756,11 +767,7 @@
 %%DATADIR%%/CouchPotatoServer/libs/pyutil/xor/xor.py
 %%DATADIR%%/CouchPotatoServer/libs/pyutil/zlibutil.py
 %%DATADIR%%/CouchPotatoServer/libs/qbittorrent/__init__.py
-%%DATADIR%%/CouchPotatoServer/libs/qbittorrent/base.py
 %%DATADIR%%/CouchPotatoServer/libs/qbittorrent/client.py
-%%DATADIR%%/CouchPotatoServer/libs/qbittorrent/file.py
-%%DATADIR%%/CouchPotatoServer/libs/qbittorrent/helpers.py
-%%DATADIR%%/CouchPotatoServer/libs/qbittorrent/torrent.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/adapters.py
 %%DATADIR%%/CouchPotatoServer/libs/requests/api.py
@@ -823,6 +830,7 @@
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/common.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/compat.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/connection.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/err.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/file.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/group.py
@@ -830,9 +838,13 @@
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/bencode.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/torrentparser.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/__init__.py
-%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/basic_auth.py
-%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/http.py
-%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/scgi.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/clients/__init__.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/clients/http.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/clients/scgi.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/transports/__init__.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/transports/basic_auth.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/transports/requests_.py
+%%DATADIR%%/CouchPotatoServer/libs/rtorrent/lib/xmlrpc/transports/scgi.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/peer.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/rpc/__init__.py
 %%DATADIR%%/CouchPotatoServer/libs/rtorrent/torrent.py
@@ -985,6 +997,7 @@
 %%DATADIR%%/CouchPotatoServer/libs/xmpp/transports.py
 %%DATADIR%%/CouchPotatoServer/license.txt
 %%DATADIR%%/CouchPotatoServer/package.json
+%%DATADIR%%/CouchPotatoServer/py-dev-requirements.txt
 %%DATADIR%%/CouchPotatoServer/version.py
 @unexec rm -r %D/share/%%PORTNAME%%
 @exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
