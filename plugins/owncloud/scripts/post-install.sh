@@ -60,6 +60,10 @@ commonName_default = ownCloud\
 	openssl rsa -passin file:"${tmp}" -in ${owncloud_pbi_path}/etc/apache24/server.key.out -out ${owncloud_pbi_path}/etc/apache24/server.key
 
 fi
+# Make sure SSL config exists
+if [ ! -f "${owncloud_pbi_path}/openssl/openssl.cnf" ];
+	ln -s openssl.cnf.sample ${owncloud_pbi_path}/openssl/openssl.cnf
+fi
 
 # Enable SSL
 sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1|' ${owncloud_pbi_path}/etc/apache24/httpd.conf
