@@ -89,10 +89,6 @@ transmission_settings = {
         "field": "cache-size-mb",
         "type": "textbox",
         },
-    "peer_socket_tos": {
-        "field": "peer-socket-tos",
-        "type": "textbox",
-        },
     "permissions": {
         "field": "umask",
         "type": "textbox",

@@ -64,18 +64,6 @@ class Transmission(models.Model):
         verbose_name="Cache Size (MB)",
         default=4,
         )
-    peer_socket_tos = models.CharField(
-        verbose_name="Peer Socket ToS",
-        default="default",
-        choices=(
-            ("default", 'Default'),
-            ("lowcost", 'Low Cost'),
-            ("throughput", 'Throughput'),
-            ("lowdelay", 'Low Delay'),
-            ("reliability", 'Reliability'),
-        ),
-        max_length=120,
-        )
     permissions = models.IntegerField(
         verbose_name="Downloaded Permissions",
         default=18,
