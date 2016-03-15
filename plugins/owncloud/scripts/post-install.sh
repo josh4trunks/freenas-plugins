@@ -31,7 +31,7 @@ sed -i '' -e 's/^#\(LoadModule[[:space:]]*ssl_module[[:space:]].*$\)/\1/' ${ownc
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*socache_shmcb_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
 # Make sure SSL config exists
-if [ ! -f "${owncloud_pbi_path}/openssl/openssl.cnf" ];
+if [ ! -f "${owncloud_pbi_path}/openssl/openssl.cnf" ]; then
         ln -s openssl.cnf.sample ${owncloud_pbi_path}/openssl/openssl.cnf
 fi
 
