@@ -1,2 +1,5 @@
 lib/libffi.so.6	lib/libffi.so.6	keep
+bin/par2	bin/par2	keep
+bin/unrar	bin/unrar	keep
+bin/7za		bin/7za		keep
 lib/libtbb.so	lib/libtbb.so	keep
