@@ -5,6 +5,9 @@ sabnzbd_pbi_path=/usr/pbi/sabnzbd-$(uname -m)
 
 ${sabnzbd_pbi_path}/bin/python2.7 ${sabnzbd_pbi_path}/sabnzbdUI/manage.py syncdb --migrate --noinput
 
+# Modify init script so sabnzbd listens on all interfaces
+sed -i '' -e 's/\(^command_args=.\)\(.*\)/\1-s 0.0.0.0 \2/' ${sabnzbd_pbi_path}/etc/rc.d/sabnzbd
+
 # Temporary workaround for a valid certificate store
 ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 mkdir -p ${sabnzbd_pbi_path}/openssl
