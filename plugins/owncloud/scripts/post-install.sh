@@ -25,6 +25,9 @@ __EOF__
 # Optimize Apache on ZFS
 sed -i '' -e 's/^#\(EnableMMAP[[:space:]]\).*$/\1Off/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 
+# Enable "Pretty URLs"
+sed -i '' -e 's/^#\(LoadModule[[:space:]]*rewrite_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
+
 # Enable SSL
 sed -i '' -e 's|^#\(Include[[:space:]].*/httpd-ssl.conf$\)|\1|' ${owncloud_pbi_path}/etc/apache24/httpd.conf
 sed -i '' -e 's/^#\(LoadModule[[:space:]]*ssl_module[[:space:]].*$\)/\1/' ${owncloud_pbi_path}/etc/apache24/httpd.conf
@@ -78,6 +81,7 @@ fi
 
 # Allow ownCloud updater to work
 chown -R www:www ${owncloud_pbi_path}/www/owncloud /media
+chmod -R u+w ${owncloud_pbi_path}/www/owncloud
 
 # Create cronjob for ownCloud
 echo "*/15 * * * * ${owncloud_pbi_path}/bin/php -f ${owncloud_pbi_path}/www/owncloud/cron.php" > ${tmp}
