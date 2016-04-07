@@ -74,7 +74,6 @@ __EOF__
 <?php
 \$CONFIG = array (
   'memcache.local' => '\OC\Memcache\APCu',
-  'asset-pipeline.enabled' => true,
 );
 __EOF__
 fi
