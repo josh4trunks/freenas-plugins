@@ -9,6 +9,7 @@ ${subsonic_pbi_path}/bin/python2.7 ${subsonic_pbi_path}/subsonicUI/manage.py syn
 if [ ! -d /usr/local/lib/X11/fonts/dejavu ]; then
 	fetch "http://sourceforge.net/projects/dejavu/files/dejavu/2.34/dejavu-fonts-ttf-2.34.tar.bz2"
 	tar xjf dejavu-fonts-ttf-*.tar.bz2
+	mkdir -p /usr/local/lib/X11/fonts/dejavu
 	mv dejavu-fonts-ttf-*/ttf /usr/local/lib/X11/fonts/dejavu
 	rm -r dejavu-fonts-ttf-*
 fi
