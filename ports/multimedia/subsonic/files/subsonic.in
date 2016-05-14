@@ -46,7 +46,7 @@ command_args="-f ${procname} -Xmx${SUBSONIC_MAX_MEMORY}m -Dsubsonic.home=${subso
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
-	export LC_CTYPE="${SUBSONIC_LOCALE}"
+	export LC_CTYPE="UTF-8"
 
 	if [ ! -d ${%%PORTNAME%%_data_dir} ]; then
 		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${%%PORTNAME%%_data_dir}
