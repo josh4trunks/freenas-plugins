@@ -36,8 +36,3 @@ class Subsonic(models.Model):
         max_length=120,
         default="/",
         )
-    subsonic_locale = models.CharField(
-        verbose_name="Locale",
-        max_length=120,
-        default="en_US.UTF-8",
-        )

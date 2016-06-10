@@ -72,5 +72,4 @@ class SubsonicForm(forms.ModelForm):
             f.write('SUBSONIC_SSL_KEYSTORE="%s"\n' % (obj.subsonic_ssl_keystore, ))
             f.write('SUBSONIC_SSL_PASSWORD="%s"\n' % (obj.subsonic_ssl_password, ))
             f.write('SUBSONIC_PORT="%d"\n' % (obj.subsonic_port, ))
-            f.write('SUBSONIC_CONTEXT_PATH="%s"\n' % (obj.subsonic_context_path, ))
-            f.write('SUBSONIC_LOCALE="%s"' % (obj.subsonic_locale, ))
+            f.write('SUBSONIC_CONTEXT_PATH="%s"' % (obj.subsonic_context_path, ))
