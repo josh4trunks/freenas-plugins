@@ -14,3 +14,9 @@ if [ ! -f /var/db/syncthing/config.xml ]; then
 	service syncthing onestop
 	sed -i '' -e 's|^\([[:space:]]*<address>\)127\.0\.0\.1\(:[[:digit:]]\{1,5\}</address>\)$|\10.0.0.0\2|' /var/db/syncthing/config.xml
 fi
+
+# Allow auto-updates
+# You must first modify net/syncthing port to and change the '-no-upgrade' flag to "false"
+install -d -o syncthing ${syncthing_pbi_path}/bin/ST
+install -o syncthing ${syncthing_pbi_path}/bin/syncthing ${syncthing_pbi_path}/bin/ST
+sed -i '' -e 's|^procname="\(.*/bin\)/syncthing"$|procname="\1/ST/syncthing"|' ${syncthing_pbi_path}/etc/rc.d/syncthing
