@@ -519,4 +519,4 @@
 %%DATADIR%%/%%PORTNAME%%/screens/%%PORTNAME%%_search.jpg
 %%DATADIR%%/%%PORTNAME%%/substitutes_sample.csv
 @unexec rm -r %D/share/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
+@exec chown -R %%USERS%%:%%GROUPS%% %D/share/%%PORTNAME%%/*

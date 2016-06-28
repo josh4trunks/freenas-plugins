@@ -1000,4 +1000,4 @@
 %%DATADIR%%/CouchPotatoServer/py-dev-requirements.txt
 %%DATADIR%%/CouchPotatoServer/version.py
 @unexec rm -r %D/share/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
+@exec chown -R %%USERS%%:%%GROUPS%% %D/share/%%PORTNAME%%/*

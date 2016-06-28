@@ -1364,4 +1364,4 @@
 %%DATADIR%%/%%PORTNAME%%/lib/yaml/tokens.py
 %%DATADIR%%/%%PORTNAME%%/pylintrc
 @unexec rm -r %D/share/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
+@exec chown -R %%USERS%%:%%GROUPS%% %D/share/%%PORTNAME%%/*

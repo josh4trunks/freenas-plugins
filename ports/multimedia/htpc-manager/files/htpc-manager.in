@@ -10,11 +10,11 @@
 # htpc_manager_enable (bool):	Set to NO by default.
 #			Set it to YES to enable it.
 # htpc_manager_user:	The user account %%PORTNAME%% daemon runs as what
-#			you want it to be. It uses '%%USER%%' user by
+#			you want it to be. It uses '%%USERS%%' user by
 #			default. Do not sets it as empty or it will run
 #			as root.
 # htpc_manager_group:	The group account %%PORTNAME%% daemon runs as what
-#			you want it to be. It uses '%%GROUP%%' group by
+#			you want it to be. It uses '%%GROUPS%%' group by
 #			default. Do not sets it as empty or it will run
 #			as wheel.
 # htpc_manager_data_dir:	Directory where %%PORTNAME%% configuration
@@ -27,8 +27,8 @@ rcvar="${name}_enable"
 load_rc_config ${name}
 
 : ${htpc_manager_enable:="NO"}
-: ${htpc_manager_user:="%%USER%%"}
-: ${htpc_manager_group:="%%GROUP%%"}
+: ${htpc_manager_user:="%%USERS%%"}
+: ${htpc_manager_group:="%%GROUPS%%"}
 : ${htpc_manager_data_dir:="/var/db/%%PORTNAME%%"}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"

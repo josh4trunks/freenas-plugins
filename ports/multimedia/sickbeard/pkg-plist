@@ -625,4 +625,4 @@
 %%DATADIR%%/Sick-Beard/tests/test_lib.py
 %%DATADIR%%/Sick-Beard/tests/tv_tests.py
 @unexec rm -r %D/share/%%PORTNAME%%
-@exec chown -R %%USER%%:%%GROUP%% %D/share/%%PORTNAME%%/*
+@exec chown -R %%USERS%%:%%GROUPS%% %D/share/%%PORTNAME%%/*
