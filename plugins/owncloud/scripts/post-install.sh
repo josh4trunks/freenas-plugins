@@ -74,6 +74,7 @@ __EOF__
 <?php
 \$CONFIG = array (
   'memcache.local' => '\OC\Memcache\APCu',
+  'htaccess.RewriteBase' => '/',
 );
 __EOF__
 fi
