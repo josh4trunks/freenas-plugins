@@ -1,5 +1,0 @@
-%%DATADIR%%/Subsonic/subsonic-booter-jar-with-dependencies.jar
-%%DATADIR%%/Subsonic/subsonic.war
-@dirrmtry %%DATADIR%%/Subsonic
-@dirrmtry %%DATADIR%%
-@sample etc/%%PORTNAME%%.conf.sample
