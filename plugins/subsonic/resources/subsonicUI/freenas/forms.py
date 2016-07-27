@@ -66,6 +66,9 @@ class SubsonicForm(forms.ModelForm):
                 settings[info.get("field")] = value
 
         subsonic_ssl = str(obj.subsonic_ssl).lower()
+        Popen(["/usr/sbin/sysrc", "subsonic_max_memory=%s" % obj.subsonic_max_memory, "subsonic_ssl=%s" % subsonic_ssl, ],
+            stdout=PIPE,
+            stderr=PIPE)
         with open(settingsfile, 'w') as f:
             f.write('SUBSONIC_MAX_MEMORY="%d"\n' % (obj.subsonic_max_memory, ))
             f.write('SUBSONIC_SSL="%s"\n' % (subsonic_ssl, ))

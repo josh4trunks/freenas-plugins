@@ -23,3 +23,11 @@ if [ ! -f /usr/local/etc/fonts/fonts.conf ]; then
 </fontconfig>
 __EOF__
 fi
+
+# Temporary workaround, create and set Subsonic's user as 'media'
+if [ ! -d /var/db/subsonic ]; then
+	pw useradd -n media -u 816 -d /nonexistent -s /sbin/nologin
+	install -d -o media /var/db/subsonic /var/db/subsonic/transcode
+	ln -s ${subsonic_pbi_path}/bin/ffmpeg /var/db/subsonic/transcode
+fi
+sysrc 'subsonic_home=/var/db/subsonic' 'subsonic_user=media'
