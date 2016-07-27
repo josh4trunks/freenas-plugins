@@ -37,7 +37,7 @@ command_args="%%DATADIR%%/CouchPotatoServer/CouchPotato.py --data_dir ${couchpot
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
-	export LC_CTYPE="en_US.UTF-8"
+	export LC_CTYPE="UTF-8"
 
 	if [ ! -d ${pidfile%/*} ]; then
 		install -d -o ${%%PORTNAME%%_user} -g ${%%PORTNAME%%_group} ${pidfile%/*}
