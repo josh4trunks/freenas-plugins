@@ -17,5 +17,5 @@ sysrc 'sabnzbd_conf_dir=/var/db/sabnzbd'
 # Temporary workaround, create and set Sabnzbd's user as 'media'
 if [ ! -d /var/db/sabnzbd ]; then
 	pw useradd -n media -u 816 -d /nonexistent -s /sbin/nologin
+	sysrc 'sabnzbd_user=media' 'sabnzbd_group=media'
 fi
-sysrc 'sabnzbd_user=media' 'sabnzbd_group=media'
