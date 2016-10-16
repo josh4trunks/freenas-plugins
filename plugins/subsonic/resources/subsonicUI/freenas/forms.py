@@ -1,7 +1,6 @@
 from subprocess import Popen, PIPE
 import hashlib
 import json
-import os
 import pwd
 import urllib
 
@@ -51,7 +50,6 @@ class SubsonicForm(forms.ModelForm):
                 stdout=PIPE,
                 stderr=PIPE)
 
-        settingsfile = os.path.join(utils.subsonic_etc_path, "subsonic.conf")
         settings = {}
 
         for field in obj._meta.local_fields:
@@ -65,14 +63,15 @@ class SubsonicForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
-        subsonic_ssl = str(obj.subsonic_ssl).lower()
-        Popen(["/usr/sbin/sysrc", "subsonic_max_memory=%s" % obj.subsonic_max_memory, "subsonic_ssl=%s" % subsonic_ssl, ],
+        Popen(["/usr/sbin/sysrc", "subsonic_max_memory=%d" % obj.subsonic_max_memory, "subsonic_ssl_keystore=%s" % obj.subsonic_ssl_keystore, "subsonic_ssl_password=%s" % obj.subsonic_ssl_password, "subsonic_port=%d" % obj.subsonic_port, "subsonic_context_path=%s" % obj.subsonic_context_path],
             stdout=PIPE,
             stderr=PIPE)
-        with open(settingsfile, 'w') as f:
-            f.write('SUBSONIC_MAX_MEMORY="%d"\n' % (obj.subsonic_max_memory, ))
-            f.write('SUBSONIC_SSL="%s"\n' % (subsonic_ssl, ))
-            f.write('SUBSONIC_SSL_KEYSTORE="%s"\n' % (obj.subsonic_ssl_keystore, ))
-            f.write('SUBSONIC_SSL_PASSWORD="%s"\n' % (obj.subsonic_ssl_password, ))
-            f.write('SUBSONIC_PORT="%d"\n' % (obj.subsonic_port, ))
-            f.write('SUBSONIC_CONTEXT_PATH="%s"' % (obj.subsonic_context_path, ))
+
+        if obj.subsonic_ssl:
+            Popen(["/usr/sbin/sysrc", "subsonic_ssl=YES"],
+                stdout=PIPE,
+                stderr=PIPE)
+        else:
+            Popen(["/usr/sbin/sysrc", "subsonic_ssl=NO"],
+                stdout=PIPE,
+                stderr=PIPE)

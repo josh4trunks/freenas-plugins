@@ -3,7 +3,6 @@ import os
 import platform
 
 subsonic_pbi_path = "/usr/pbi/subsonic-" + platform.machine()
-subsonic_etc_path = os.path.join(subsonic_pbi_path, "etc")
 subsonic_fcgi_pidfile = "/var/run/subsonic_fcgi_server.pid"
 subsonic_control = "/usr/local/etc/rc.d/subsonic"
 subsonic_icon = os.path.join(subsonic_pbi_path, "default.png")
