@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/madsonic-$(uname -m)/bin/python2.7 /usr/pbi/madsonic-$(uname -m)/control.py $*
