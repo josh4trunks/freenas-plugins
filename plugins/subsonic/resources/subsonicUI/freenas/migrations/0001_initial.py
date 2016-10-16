@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table('freenas_subsonic', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('enable', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('subsonic_max_memory', self.gf('django.db.models.fields.IntegerField')(default=150)),
+            ('subsonic_max_memory', self.gf('django.db.models.fields.IntegerField')(default=100)),
             ('subsonic_ssl', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('subsonic_ssl_keystore', self.gf('django.db.models.fields.CharField')(max_length=500, blank=True)),
             ('subsonic_ssl_password', self.gf('django.db.models.fields.CharField')(max_length=120, blank=True)),
@@ -34,7 +34,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Subsonic'},
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'subsonic_max_memory': ('django.db.models.fields.IntegerField', [], {'default': '150'}),
+            'subsonic_max_memory': ('django.db.models.fields.IntegerField', [], {'default': '100'}),
             'subsonic_ssl': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'subsonic_ssl_keystore': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
             'subsonic_ssl_password': ('django.db.models.fields.CharField', [], {'max_length': '120', 'blank': 'True'}),

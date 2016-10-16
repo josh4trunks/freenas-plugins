@@ -25,7 +25,7 @@ class Migration(SchemaMigration):
             'enable': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'subsonic_context_path': ('django.db.models.fields.CharField', [], {'default': "'/'", 'max_length': '120'}),
-            'subsonic_max_memory': ('django.db.models.fields.IntegerField', [], {'default': '150'}),
+            'subsonic_max_memory': ('django.db.models.fields.IntegerField', [], {'default': '100'}),
             'subsonic_port': ('django.db.models.fields.IntegerField', [], {'default': '4040'}),
             'subsonic_ssl': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'subsonic_ssl_keystore': ('django.db.models.fields.CharField', [], {'max_length': '500', 'blank': 'True'}),
