@@ -8,8 +8,7 @@ CATEGORIES=	multimedia
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Htpc Manager combines all your favorite software into one slick interface.
 
-LICENSE=	MIT PSFL
-LICENSE_COMB=	multi
+LICENSE=	MIT
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}psutil>0:${PORTSDIR}/sysutils/py-psutil
@@ -37,6 +36,8 @@ PIL_DESC=	convert and resize images retrieved from the XBMC API
 
 OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 PIL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}imaging>0:${PORTSDIR}/graphics/py-imaging
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}

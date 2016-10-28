@@ -7,8 +7,7 @@ CATEGORIES=	multimedia
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Automatic music downloader for SABnzbd
 
-LICENSE=	GPLv3 PSFL
-LICENSE_COMB=	multi
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
@@ -35,6 +34,8 @@ OPTIONS_DEFAULT=	OPENSSL TRANSCODING
 
 OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 TRANSCODING_RUN_DEPENDS=	ffmpeg:${PORTSDIR}/multimedia/ffmpeg
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}

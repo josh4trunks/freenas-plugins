@@ -7,8 +7,7 @@ CATEGORIES=	deskutils
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	An automated book downloader for SABnzbd.
 
-LICENSE=	GPLv3 PSFL
-LICENSE_COMB=	multi
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
@@ -28,6 +27,8 @@ USE_RC_SUBR=	${PORTNAME}
 
 USERS=		media
 GROUPS=		${USERS}
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}

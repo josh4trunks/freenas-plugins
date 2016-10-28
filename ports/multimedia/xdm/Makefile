@@ -7,8 +7,7 @@ CATEGORIES=	multimedia
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Plugin based media collection manager
 
-LICENSE=	GPLv3 PSFL
-LICENSE_COMB=	multi
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
@@ -33,6 +32,8 @@ OPTIONS_DEFINE=	OPENSSL
 OPTIONS_DEFAULT=	OPENSSL
 
 OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}

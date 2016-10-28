@@ -7,8 +7,7 @@ CATEGORIES=	multimedia
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	A simple web interface to act as a nice overview/front page for an XBMC HTPC.
 
-LICENSE=	MIT PSFL
-LICENSE_COMB=	multi
+LICENSE=	MIT
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3
 
@@ -28,6 +27,8 @@ USE_RC_SUBR=	${PORTNAME}
 
 USERS=		media
 GROUPS=		${USERS}
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}

@@ -7,8 +7,7 @@ CATEGORIES=	multimedia
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	PVR & episode guide that downloads and manages all your TV shows
 
-LICENSE=	GPLv3 PSFL
-LICENSE_COMB=	multi
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cheetah>0:${PORTSDIR}/devel/py-cheetah \
 		${PYTHON_PKGNAMEPREFIX}utils>0:${PORTSDIR}/devel/py-utils \
@@ -36,6 +35,8 @@ OPTIONS_DEFINE=	OPENSSL
 OPTIONS_DEFAULT=	OPENSSL
 
 OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}

@@ -8,8 +8,7 @@ CATEGORIES=	multimedia
 MAINTAINER=	joshruehlig@gmail.com
 COMMENT=	Video File Manager for TV Shows
 
-LICENSE=	GPLv3 PSFL
-LICENSE_COMB=	multi
+LICENSE=	GPLv3
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}utils>0:${PORTSDIR}/devel/py-utils \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:${PORTSDIR}/databases/py-sqlite3 \
@@ -38,6 +37,8 @@ OPTIONS_DEFAULT=	OPENSSL UNRAR
 
 OPENSSL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}openssl>0:${PORTSDIR}/security/py-openssl
 UNRAR_RUN_DEPENDS=	unrar:${PORTSDIR}/archivers/unrar
+
+.include <bsd.port.pre.mk>
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/${GH_PROJECT}
