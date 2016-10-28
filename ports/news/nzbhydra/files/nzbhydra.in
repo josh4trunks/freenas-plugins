@@ -33,7 +33,7 @@ load_rc_config ${name}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/nzbhydra/nzbhydra.py --config ${nzbhydra_data_dir}/settings.cfg --database ${nzbhydra_data_dir}/nzbhydra.db --pidfile ${pidfile} --nobrowser --daemon"
+command_args="%%DATADIR%%/nzbhydra/nzbhydra.py --config ${nzbhydra_data_dir}/settings.cfg --database ${nzbhydra_data_dir}/nzbhydra.db --pidfile ${pidfile} --daemon --nobrowser"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {

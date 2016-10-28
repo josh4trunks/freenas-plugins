@@ -33,7 +33,7 @@ load_rc_config ${name}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/XDM/XDM.py -b ${xdm_data_dir} -p ${pidfile} -d -n"
+command_args="%%DATADIR%%/XDM/XDM.py --datadir ${xdm_data_dir} --pidfile ${pidfile} --daemonize --nolaunch"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {

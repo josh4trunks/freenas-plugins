@@ -33,7 +33,7 @@ load_rc_config ${name}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/maraschino/Maraschino.py --datadir=${maraschino_data_dir} -d --pidfile=${pidfile}"
+command_args="%%DATADIR%%/maraschino/Maraschino.py --datadir ${maraschino_data_dir} --daemon --pidfile ${pidfile}"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {

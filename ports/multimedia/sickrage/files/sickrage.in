@@ -33,7 +33,7 @@ load_rc_config ${name}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/SickRage/SickBeard.py --datadir ${sickrage_data_dir} -d --pidfile ${pidfile} -q --nolaunch"
+command_args="%%DATADIR%%/SickRage/SickBeard.py --datadir ${sickrage_data_dir} --daemon --pidfile ${pidfile} --nolaunch"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {

@@ -33,7 +33,7 @@ load_rc_config ${name}
 
 pidfile="/var/run/%%PORTNAME%%/%%PORTNAME%%.pid"
 command="%%PYTHON_CMD%%"
-command_args="%%DATADIR%%/headphones/Headphones.py --datadir ${headphones_data_dir} --pidfile ${pidfile} -d --nolaunch"
+command_args="%%DATADIR%%/headphones/Headphones.py --datadir ${headphones_data_dir} --pidfile ${pidfile} --daemon --nolaunch"
 
 start_precmd="%%PORTNAME%%_prestart"
 %%PORTNAME%%_prestart() {
