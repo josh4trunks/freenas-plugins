@@ -7,22 +7,22 @@ from flup.server.fcgi import WSGIServer
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "lib/python2.7/site-packages"))
-btsync_fcgi_pidfile = "/var/run/btsync_fcgi_server.pid"
+resilio_fcgi_pidfile = "/var/run/resilio_fcgi_server.pid"
 
 
-def btsync_fcgi_start(args):
+def resilio_fcgi_start(args):
     if len(args) < 2:
         return False
 
     ip = args[0]
     port = long(args[1])
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'btsyncUI.settings'
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'resilioUI.settings'
     import django.core.handlers.wsgi
     app = django.core.handlers.wsgi.WSGIHandler()
 
     res = False
-    with open(btsync_fcgi_pidfile, "wb") as fp:
+    with open(resilio_fcgi_pidfile, "wb") as fp:
         fp.write(str(os.getpid()))
         fp.close()
 
@@ -31,26 +31,26 @@ def btsync_fcgi_start(args):
     return res
 
 
-def btsync_fcgi_stop(args):
+def resilio_fcgi_stop(args):
     res = False
-    if os.access(btsync_fcgi_pidfile, os.F_OK):
-        with open(btsync_fcgi_pidfile, "r") as fp:
+    if os.access(resilio_fcgi_pidfile, os.F_OK):
+        with open(resilio_fcgi_pidfile, "r") as fp:
             pid = long(fp.read())
             fp.close()
 
             os.kill(pid, signal.SIGHUP)
             res = True
 
-    if os.access(btsync_fcgi_pidfile, os.F_OK):
-        os.unlink(btsync_fcgi_pidfile)
+    if os.access(resilio_fcgi_pidfile, os.F_OK):
+        os.unlink(resilio_fcgi_pidfile)
 
     return res
 
 
-def btsync_fcgi_status(args):
+def resilio_fcgi_status(args):
     res = False
-    if os.access(btsync_fcgi_pidfile, os.F_OK):
-        with open(btsync_fcgi_pidfile, "r") as fp:
+    if os.access(resilio_fcgi_pidfile, os.F_OK):
+        with open(resilio_fcgi_pidfile, "r") as fp:
             pid = long(fp.read())
             fp.close()
             res = True
@@ -58,7 +58,7 @@ def btsync_fcgi_status(args):
     return res
 
 
-def btsync_fcgi_configure(args):
+def resilio_fcgi_configure(args):
     return True
 
 
@@ -67,10 +67,10 @@ def main(argc, argv):
         sys.exit(1)
 
     commands = {
-        'start': btsync_fcgi_start,
-        'stop': btsync_fcgi_stop,
-        'status': btsync_fcgi_status,
-        'configure': btsync_fcgi_configure
+        'start': resilio_fcgi_start,
+        'stop': resilio_fcgi_stop,
+        'status': resilio_fcgi_status,
+        'configure': resilio_fcgi_configure
     }
 
     with daemon.DaemonContext():

@@ -13,7 +13,7 @@ from django.utils import simplejson
 
 import jsonrpclib
 import oauth2 as oauth
-from btsyncUI.freenas import forms, models, utils
+from resilioUI.freenas import forms, models, utils
 
 
 class OAuthTransport(jsonrpclib.jsonrpc.SafeTransport):
@@ -167,12 +167,12 @@ class JsonResponse(HttpResponse):
 
 
 def start(request, plugin_id):
-    (btsync_key,
-    btsync_secret) = utils.get_btsync_oauth_creds()
+    (resilio_key,
+    resilio_secret) = utils.get_resilio_oauth_creds()
 
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=btsync_key,
-        secret=btsync_secret)
+    trans = OAuthTransport(url, key=resilio_key,
+        secret=resilio_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -182,26 +182,26 @@ def start(request, plugin_id):
     assert auth
 
     try:
-        btsync = models.BtSync.objects.order_by('-id')[0]
-        btsync.enable = True
-        btsync.save()
+        resilio = models.Resilio.objects.order_by('-id')[0]
+        resilio.enable = True
+        resilio.save()
     except IndexError:
-        btsync = models.BtSync.objects.create(enable=True)
+        resilio = models.Resilio.objects.create(enable=True)
 
     try:
-        form = forms.BtSyncForm(btsync.__dict__,
-            instance=btsync,
+        form = forms.ResilioForm(resilio.__dict__,
+            instance=resilio,
             jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
         return HttpResponse(simplejson.dumps({
             'error': True,
-            'message': ('BtSync data did not validate, configure '
+            'message': ('Resilio data did not validate, configure '
                 'it first.'),
             }), content_type='application/json')
 
-    cmd = "%s onestart" % utils.btsync_control
+    cmd = "%s onestart" % utils.resilio_control
     pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
         shell=True, close_fds=True)
 
@@ -213,11 +213,11 @@ def start(request, plugin_id):
 
 
 def stop(request, plugin_id):
-    (btsync_key,
-    btsync_secret) = utils.get_btsync_oauth_creds()
+    (resilio_key,
+    resilio_secret) = utils.get_resilio_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=btsync_key,
-        secret=btsync_secret)
+    trans = OAuthTransport(url, key=resilio_key,
+        secret=resilio_secret)
 
     server = jsonrpclib.Server(url, transport=trans)
     auth = server.plugins.is_authenticated(
@@ -227,22 +227,22 @@ def stop(request, plugin_id):
     assert auth
 
     try:
-        btsync = models.BtSync.objects.order_by('-id')[0]
-        btsync.enable = False
-        btsync.save()
+        resilio = models.Resilio.objects.order_by('-id')[0]
+        resilio.enable = False
+        resilio.save()
     except IndexError:
-        btsync = models.BtSync.objects.create(enable=False)
+        resilio = models.Resilio.objects.create(enable=False)
 
     try:
-        form = forms.BtSyncForm(btsync.__dict__,
-            instance=btsync,
+        form = forms.ResilioForm(resilio.__dict__,
+            instance=resilio,
             jail_path=jail_path)
         form.is_valid()
         form.save()
     except ValueError:
         pass
 
-    cmd = "%s onestop" % utils.btsync_control
+    cmd = "%s onestop" % utils.resilio_control
     pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
         shell=True, close_fds=True)
 
@@ -254,27 +254,27 @@ def stop(request, plugin_id):
 
 
 def edit(request, plugin_id):
-    (btsync_key,
-    btsync_secret) = utils.get_btsync_oauth_creds()
+    (resilio_key,
+    resilio_secret) = utils.get_resilio_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=btsync_key,
-        secret=btsync_secret)
+    trans = OAuthTransport(url, key=resilio_key,
+        secret=resilio_secret)
 
     """
-    Get the BtSync object
+    Get the Resilio object
     If it does not exist create a new entry
     """
     try:
-        btsync = models.BtSync.objects.order_by('-id')[0]
+        resilio = models.Resilio.objects.order_by('-id')[0]
     except IndexError:
-        btsync = models.BtSync.objects.create()
+        resilio = models.Resilio.objects.create()
 
     try:
         server = jsonrpclib.Server(url, transport=trans)
         jail_path = server.plugins.jail.path(plugin_id)
         jail = json.loads(server.plugins.jail.info(plugin_id))[0]['fields']
         jail_ipv4 = jail['jail_ipv4'].split('/')[0]
-        if btsync.force_https:
+        if resilio.force_https:
             scheme = "https"
         else:
             scheme = "http"
@@ -286,30 +286,30 @@ def edit(request, plugin_id):
         raise
 
     if request.method == "GET":
-        form = forms.BtSyncForm(instance=btsync,
+        form = forms.ResilioForm(instance=resilio,
             jail_path=jail_path)
         return render(request, "edit.html", {
             'form': form,
             'ipv4': jail_ipv4,
             'scheme' : scheme,
-            'port': btsync.webui_port
+            'port': resilio.webui_port
         })
 
     if not request.POST:
         return JsonResponse(request, error=True, message="A problem occurred.")
 
-    form = forms.BtSyncForm(request.POST,
-        instance=btsync,
+    form = forms.ResilioForm(request.POST,
+        instance=resilio,
         jail_path=jail_path)
     if form.is_valid():
         form.save()
 
-        cmd = "%s restart" % utils.btsync_control
+        cmd = "%s restart" % utils.resilio_control
         pipe = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE,
             shell=True, close_fds=True)
 
         return JsonResponse(request, error=True,
-            message="BtSync settings successfully saved.")
+            message="Resilio settings successfully saved.")
 
     return JsonResponse(request, form=form)
 
@@ -322,21 +322,21 @@ def treemenu(request, plugin_id):
     that describes a node and possible some children.
     """
 
-    (btsync_key,
-    btsync_secret) = utils.get_btsync_oauth_creds()
+    (resilio_key,
+    resilio_secret) = utils.get_resilio_oauth_creds()
     url = utils.get_rpc_url(request)
-    trans = OAuthTransport(url, key=btsync_key,
-        secret=btsync_secret)
+    trans = OAuthTransport(url, key=resilio_key,
+        secret=resilio_secret)
     server = jsonrpclib.Server(url, transport=trans)
     jail = json.loads(server.plugins.jail.info(plugin_id))[0]
     jail_name = jail['fields']['jail_host']
     number = jail_name.rsplit('_', 1)
-    name = "BtSync"
+    name = "Resilio"
     if len(number) == 2:
         try:
             number = int(number)
             if number > 1:
-                name = "BtSync (%d)" % number
+                name = "Resilio (%d)" % number
         except:
             pass
 
@@ -345,8 +345,8 @@ def treemenu(request, plugin_id):
         'append_to': 'plugins',
         'icon': reverse('treemenu_icon', kwargs={'plugin_id': plugin_id}),
         'type': 'pluginsfcgi',
-        'url': reverse('btsync_edit', kwargs={'plugin_id': plugin_id}),
-        'kwargs': {'plugin_name': 'btsync', 'plugin_id': plugin_id },
+        'url': reverse('resilio_edit', kwargs={'plugin_id': plugin_id}),
+        'kwargs': {'plugin_name': 'resilio', 'plugin_id': plugin_id },
     }
 
     return HttpResponse(json.dumps([plugin]), content_type='application/json')
@@ -364,7 +364,7 @@ def status(request, plugin_id):
     """
     pid = None
 
-    proc = Popen([utils.btsync_control, "onestatus"],
+    proc = Popen([utils.resilio_control, "onestatus"],
         stdout=PIPE,
         stderr=PIPE)
 
@@ -385,7 +385,7 @@ def status(request, plugin_id):
 
 def treemenu_icon(request, plugin_id):
 
-    with open(utils.btsync_icon, 'rb') as f:
+    with open(utils.resilio_icon, 'rb') as f:
         icon = f.read()
 
     return HttpResponse(icon, content_type='image/png')

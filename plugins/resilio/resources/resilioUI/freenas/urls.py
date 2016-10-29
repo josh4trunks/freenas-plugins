@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('btsyncUI.freenas.views',
-     url(r'^edit$', 'edit', name="btsync_edit"),
+urlpatterns = patterns('resilioUI.freenas.views',
+     url(r'^edit$', 'edit', name="resilio_edit"),
      url(r'^treemenu-icon$', 'treemenu_icon', name="treemenu_icon"),
      url(r'^_s/treemenu$', 'treemenu', name="treemenu"),
      url(r'^_s/start$', 'start', name="start"),

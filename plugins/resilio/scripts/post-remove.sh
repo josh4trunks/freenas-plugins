@@ -1,4 +1,4 @@
 #!/bin/sh
 #########################################
 
-rmdir /var/db/btsync
+rmdir /var/db/resilio

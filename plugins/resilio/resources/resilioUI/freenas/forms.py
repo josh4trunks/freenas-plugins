@@ -8,12 +8,12 @@ import urllib
 from django.utils.translation import ugettext_lazy as _
 
 from dojango import forms
-from btsyncUI.freenas import models, utils
+from resilioUI.freenas import models, utils
 
-class BtSyncForm(forms.ModelForm):
+class ResilioForm(forms.ModelForm):
 
     class Meta:
-        model = models.BtSync
+        model = models.Resilio
         widgets = {
             'webui_port': forms.widgets.TextInput(),
         }
@@ -23,7 +23,7 @@ class BtSyncForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         self.jail_path = kwargs.pop('jail_path')
-        super(BtSyncForm, self).__init__(*args, **kwargs)
+        super(ResilioForm, self).__init__(*args, **kwargs)
 
         self.fields['ssl_certificate'].widget = \
         self.fields['ssl_private_key'].widget = forms.widgets.TextInput(attrs={
@@ -33,18 +33,18 @@ class BtSyncForm(forms.ModelForm):
             })
 
     def save(self, *args, **kwargs):
-        obj = super(BtSyncForm, self).save(*args, **kwargs)
+        obj = super(ResilioForm, self).save(*args, **kwargs)
 
         if obj.enable:
-            Popen(["/usr/sbin/sysrc", "btsync_enable=YES"],
+            Popen(["/usr/sbin/sysrc", "resilio_enable=YES"],
                 stdout=PIPE,
                 stderr=PIPE)
         else:
-            Popen(["/usr/sbin/sysrc", "btsync_enable=NO"],
+            Popen(["/usr/sbin/sysrc", "resilio_enable=NO"],
                 stdout=PIPE,
                 stderr=PIPE)
 
-        settingsfile = os.path.join(utils.btsync_etc_path, "btsync.conf")
+        settingsfile = os.path.join(utils.resilio_etc_path, "resilio.conf")
         if os.path.exists(settingsfile):
             with open(settingsfile, 'r') as f:
                 try:
@@ -60,9 +60,9 @@ class BtSyncForm(forms.ModelForm):
             settings = {}
 
         for field in obj._meta.local_fields:
-            if field.attname not in utils.btsync_settings:
+            if field.attname not in utils.resilio_settings:
                 continue
-            info = utils.btsync_settings.get(field.attname)
+            info = utils.resilio_settings.get(field.attname)
             value = getattr(obj, field.attname)
             _filter = info.get("filter")
             if _filter:
@@ -72,8 +72,7 @@ class BtSyncForm(forms.ModelForm):
 
         settings['vendor'] = "FreeNAS"
         settings['display_new_version'] = False
-        settings['storage_path'] = utils.btsync_datadirectory
-        settings['pid_file'] = utils.btsync_pidfile
+        settings['storage_path'] = utils.resilio_datadirectory
         settings['webui'] = {}
         settings['webui']['listen'] = "0.0.0.0:" + str(settings.pop("webui_port"))
         settings['webui']['force_https'] = settings.pop("force_https")

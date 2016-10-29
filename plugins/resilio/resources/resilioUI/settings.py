@@ -1,4 +1,4 @@
-# Django settings for btsyncUI project.
+# Django settings for resilioUI project.
 
 import os
 import sys
@@ -18,7 +18,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(HERE, "btsync.db"),                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(HERE, "resilio.db"),                      # Or path to database file if using sqlite3.
     }
 }
 
@@ -104,7 +104,7 @@ MIDDLEWARE_CLASSES = (
 
 FORCE_SCRIPT_NAME = ''
 
-ROOT_URLCONF = 'btsyncUI.urls'
+ROOT_URLCONF = 'resilioUI.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -130,7 +130,7 @@ INSTALLED_APPS = (
     #'django.contrib.sites',
     #'django.contrib.messages',
     'django.contrib.staticfiles',
-    'btsyncUI.freenas',
+    'resilioUI.freenas',
     'south',
 )
 

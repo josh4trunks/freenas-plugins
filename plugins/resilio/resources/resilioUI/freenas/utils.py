@@ -2,14 +2,13 @@ import hashlib
 import os
 import platform
 
-btsync_pbi_path = "/usr/pbi/btsync-" + platform.machine()
-btsync_etc_path = os.path.join(btsync_pbi_path, "etc")
-btsync_datadirectory = "/var/db/btsync"
-btsync_pidfile = "/var/run/btsync/btsync.pid"
-btsync_fcgi_pidfile = "/var/run/btsync_fcgi_server.pid"
-btsync_control = "/usr/local/etc/rc.d/btsync"
-btsync_icon = os.path.join(btsync_pbi_path, "default.png")
-btsync_oauth_file = os.path.join(btsync_pbi_path, ".oauth")
+resilio_pbi_path = "/usr/pbi/resilio-" + platform.machine()
+resilio_etc_path = os.path.join(resilio_pbi_path, "etc")
+resilio_datadirectory = "/var/db/resilio"
+resilio_fcgi_pidfile = "/var/run/resilio_fcgi_server.pid"
+resilio_control = "/usr/local/etc/rc.d/resilio"
+resilio_icon = os.path.join(resilio_pbi_path, "default.png")
+resilio_oauth_file = os.path.join(resilio_pbi_path, ".oauth")
 
 
 def get_rpc_url(request):
@@ -24,8 +23,8 @@ def get_rpc_url(request):
     )
 
 
-def get_btsync_oauth_creds():
-    f = open(btsync_oauth_file)
+def get_resilio_oauth_creds():
+    f = open(resilio_oauth_file)
     lines = f.readlines()
     f.close()
 
@@ -45,7 +44,7 @@ def get_btsync_oauth_creds():
 
     return key, secret
 
-btsync_settings = {
+resilio_settings = {
     "force_https": {
         "field": "force_https",
         "type": "checkbox",
