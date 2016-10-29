@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec /usr/pbi/nzbhydra-$(uname -m)/bin/python2.7 /usr/pbi/nzbhydra-$(uname -m)/control.py $*
