@@ -76,16 +76,12 @@ __EOF__
 fi
 
 sysrc 'mysql_enable=YES'
-${nextcloud_pbi_path}/etc/rc.d/mysql-server start
+service mysql-server start
 
 # Restore Nextcloud config otherwise set /media as the Nextcloud data-directory
 if [ -f "/media/config.php" ]; then
         mv /media/config.php ${nextcloud_pbi_path}/www/nextcloud/config
 else
-	${nextcloud_pbi_path}/bin/mysql -e "CREATE DATABASE nextcloud;"
-	${nextcloud_pbi_path}/bin/mysql -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'ncuser'@'localhost' IDENTIFIED BY 'ncpass';"
-	${nextcloud_pbi_path}/bin/mysql -e "FLUSH PRIVILEGES;"
-
         cat << __EOF__ > ${nextcloud_pbi_path}/www/nextcloud/config/autoconfig.php
 <?php
 \$AUTOCONFIG = array (
@@ -104,6 +100,10 @@ __EOF__
   'htaccess.RewriteBase' => '/',
 );
 __EOF__
+
+	${nextcloud_pbi_path}/bin/mysql -e "CREATE DATABASE nextcloud;"
+	${nextcloud_pbi_path}/bin/mysql -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'ncuser'@'localhost' IDENTIFIED BY 'ncpass';"
+	${nextcloud_pbi_path}/bin/mysql -e "FLUSH PRIVILEGES;"
 fi
 
 # Allow Nextcloud updater to work
