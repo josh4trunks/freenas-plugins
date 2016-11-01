@@ -1,1 +1,2 @@
+etc/rc.d/mysql-server	etc/rc.d/mysql-server	keep
 etc/rc.d/apache24	etc/rc.d/apache24	keep

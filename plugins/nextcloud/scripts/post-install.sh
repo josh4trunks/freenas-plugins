@@ -54,19 +54,46 @@ commonName_default = Nextcloud\
 fi
 
 # Create PHP configuration file
-cat << __EOF__ > ${nextcloud_pbi_path}/etc/php.ini
+if [ ! -f "${nextcloud_pbi_path}/etc/php.ini" ]; then
+	cat << __EOF__ > ${nextcloud_pbi_path}/etc/php.ini
 [PHP]
 apc.enable_cli=1
 __EOF__
+fi
+
+# Create MySQL server configuration file
+if [ ! -f "${nextcloud_pbi_path}/etc/my.cnf" ]; then
+	cat << __EOF__ > ${nextcloud_pbi_path}/etc/my.cnf
+[server]
+skip-networking
+skip-name-resolve
+expire_logs_days = 1
+innodb_flush_method = O_DIRECT
+skip-innodb_doublewrite
+innodb_flush_log_at_trx_commit = 2
+innodb_file_per_table
+__EOF__
+fi
+
+sysrc 'mysql_enable=YES'
+${nextcloud_pbi_path}/etc/rc.d/mysql-server start
 
 # Restore Nextcloud config otherwise set /media as the Nextcloud data-directory
 if [ -f "/media/config.php" ]; then
         mv /media/config.php ${nextcloud_pbi_path}/www/nextcloud/config
 else
+	${nextcloud_pbi_path}/bin/mysql -e "CREATE DATABASE nextcloud;"
+	${nextcloud_pbi_path}/bin/mysql -e "GRANT ALL PRIVILEGES ON nextcloud.* TO 'ncuser'@'localhost' IDENTIFIED BY 'ncpass';"
+	${nextcloud_pbi_path}/bin/mysql -e "FLUSH PRIVILEGES;"
+
         cat << __EOF__ > ${nextcloud_pbi_path}/www/nextcloud/config/autoconfig.php
 <?php
 \$AUTOCONFIG = array (
-  'dbtype' => 'sqlite',
+  'dbtype' => 'mysql',
+  'dbname' => 'nextcloud',
+  'dbuser' => 'ncuser',
+  'dbpass' => 'ncpass',
+  'dbhost' => 'localhost:/tmp/mysql.sock',
   'directory' => '/media',
 );
 __EOF__
