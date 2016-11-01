@@ -54,10 +54,12 @@ commonName_default = ownCloud\
 fi
 
 # Create PHP configuration file
-cat << __EOF__ > ${owncloud_pbi_path}/etc/php.ini
+if [ ! -f "${owncloud_pbi_path}/etc/php.ini" ]; then
+	cat << __EOF__ > ${owncloud_pbi_path}/etc/php.ini
 [PHP]
 apc.enable_cli=1
 __EOF__
+fi
 
 # Restore ownCloud config otherwise set /media as the ownCloud data-directory
 if [ -f "/media/config.php" ]; then
