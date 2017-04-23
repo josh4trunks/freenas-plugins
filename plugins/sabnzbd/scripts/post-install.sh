@@ -5,6 +5,9 @@ sabnzbd_pbi_path=/usr/pbi/sabnzbd-$(uname -m)
 
 ${sabnzbd_pbi_path}/bin/python2.7 ${sabnzbd_pbi_path}/sabnzbdUI/manage.py syncdb --migrate --noinput
 
+# Modify init script so SABnzbd listens on all interfaces 
+sed -i '' -e 's/\(^command_args=\"\)/\1-s 0.0.0.0 /' ${sabnzbd_pbi_path}/etc/rc.d/sabnzbd
+
 # Install SABYenc
 ${sabnzbd_pbi_path}/bin/pip install sabyenc
 
