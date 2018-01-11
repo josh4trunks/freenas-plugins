@@ -17,8 +17,6 @@ class XMRigForm(forms.ModelForm):
         widgets = {
             'threads': forms.widgets.TextInput(),
             'max_cpu_usage': forms.widgets.TextInput(),
-            'retries': forms.widgets.TextInput(),
-            'retry_pause': forms.widgets.TextInput(),
             'donate_level': forms.widgets.TextInput(),
             'port': forms.widgets.TextInput(),
         }
