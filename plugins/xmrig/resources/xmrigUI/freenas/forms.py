@@ -15,7 +15,11 @@ class XMRigForm(forms.ModelForm):
     class Meta:
         model = models.XMRig
         widgets = {
-            'donate': forms.widgets.TextInput(),
+            'threads': forms.widgets.TextInput(),
+            'max_cpu_usage': forms.widgets.TextInput(),
+            'retries': forms.widgets.TextInput(),
+            'retry_pause': forms.widgets.TextInput(),
+            'donate_level': forms.widgets.TextInput(),
             'port': forms.widgets.TextInput(),
         }
         exclude = (
@@ -68,6 +72,12 @@ class XMRigForm(forms.ModelForm):
         settings['pools'].append({'url':settings.pop("url"), 'user':settings.pop("user"), 'pass':settings.pop("pass"), 'keepalive':settings.pop("keepalive"), 'nicehash':settings.pop("nicehash")})
         settings['api'] = {}
         settings['api']['port'] = settings.pop("port")
+        if obj.access_token:
+            settings['api']['access-token'] = obj.access_token
+        settings.pop("access-token")
+        if obj.worker_id:
+            settings['api']['worker-id'] = obj.worker_id
+        settings.pop("worker-id")
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, sort_keys=True, indent=4))

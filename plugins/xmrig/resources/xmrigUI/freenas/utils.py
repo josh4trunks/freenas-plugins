@@ -49,14 +49,6 @@ xmrig_settings = {
         "field": "algo",
         "type": "textbox",
         },
-    "cpu_affinity": {
-        "field": "cpu-affinity",
-        "type": "textbox",
-        },
-    "donate_level": {
-        "field": "donate-level",
-        "type": "textbox",
-        },
     "url": {
         "field": "url",
         "type": "textbox",
@@ -77,8 +69,44 @@ xmrig_settings = {
         "field": "nicehash",
         "type": "checkbox",
         },
+    "av": {
+        "field": "av",
+        "type": "textbox",
+        },
+    "threads": {
+        "field": "threads",
+        "type": "textbox",
+        },
+    "safe": {
+        "field": "safe",
+        "type": "checkbox",
+        },
+    "cpu_affinity": {
+        "field": "cpu-affinity",
+        "type": "textbox",
+        },
+    "max_cpu_usage": {
+        "field": "max-cpu-usage",
+        "type": "textbox",
+        },
+    "cpu_priority": {
+        "field": "cpu-priority",
+        "type": "textbox",
+        },
+    "donate_level": {
+        "field": "donate-level",
+        "type": "textbox",
+        },
     "port": {
         "field": "port",
+        "type": "textbox",
+        },
+    "access_token": {
+        "field": "access-token",
+        "type": "textbox",
+        },
+    "worker_id": {
+        "field": "worker-id",
         "type": "textbox",
         },
 }
