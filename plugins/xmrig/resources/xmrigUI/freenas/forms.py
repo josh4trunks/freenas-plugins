@@ -67,7 +67,7 @@ class XMRigForm(forms.ModelForm):
                 settings[info.get("field")] = value
 
         settings['pools'] = []
-        settings['pools'].append({'url':settings.pop("url"), 'user':settings.pop("user"), 'pass':settings.pop("pass"), 'keepalive':settings.pop("keepalive"), 'nicehash':settings.pop("nicehash")})
+        settings['pools'].append({'url':settings.pop("url"), 'user':settings.pop("user"), 'pass':settings.pop("pass"), 'keepalive':settings.pop("keepalive"), 'nicehash':settings.pop("nicehash"), 'variant':settings.pop("variant")})
         settings['api'] = {}
         settings['api']['port'] = settings.pop("port")
         if obj.access_token:

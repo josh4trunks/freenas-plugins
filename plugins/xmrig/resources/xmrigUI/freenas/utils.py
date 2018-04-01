@@ -49,6 +49,10 @@ xmrig_settings = {
         "field": "algo",
         "type": "textbox",
         },
+    "variant": {  
+        "field": "variant",
+        "type": "textbox",
+        },
     "url": {
         "field": "url",
         "type": "textbox",

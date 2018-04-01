@@ -16,20 +16,30 @@ class XMRig(models.Model):
             ('cryptonight-lite', 'CryptoNight-Lite'),
         ),
         )
+    variant = models.IntegerField(
+        verbose_name="Algorithm PoW Variant",
+        default=-1,
+        choices=(
+            (-1, 'Autodetect'),
+            (0, 'Original'),
+            (1, 'Monero v1'),
+        ),
+        )
     url = models.CharField(
         verbose_name="URL of Mining Pool",
+        default="failover.xmrig.com:443",
         max_length=500,
-        default="pool.minemonero.pro:5555",
         )
     user = models.CharField(
         verbose_name="Username for Mining Pool",
+        default="YOUR_WALLET",
         max_length=500,
         blank=True,
         )
     password = models.CharField(
         verbose_name="Password for Mining Pool",
-        max_length=500,
         default="x",
+        max_length=500,
         )
     keepalive = models.BooleanField(
         verbose_name="Keep-Alive",
