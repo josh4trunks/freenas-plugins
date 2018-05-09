@@ -65,6 +65,14 @@ xmrig_settings = {
         "field": "pass",
         "type": "textbox",
         },
+    "rig_id": {
+        "field": "rig-id",
+        "type": "textbox",
+        },
+    "user_agent": {
+        "field": "user-agent",
+        "type": "textbox",
+        },
     "keepalive": {
         "field": "keepalive",
         "type": "checkbox",
@@ -112,5 +120,13 @@ xmrig_settings = {
     "worker_id": {
         "field": "worker-id",
         "type": "textbox",
+        },
+    "ipv6": {
+        "field": "ipv6",
+        "type": "checkbox",
+        },
+    "restricted": {
+        "field": "restricted",
+        "type": "checkbox",
         },
 }

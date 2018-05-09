@@ -14,20 +14,24 @@ class XMRig(models.Model):
         choices=(
             ('cryptonight', 'CryptoNight'),
             ('cryptonight-lite', 'CryptoNight-Lite'),
+            ('cryptonight-heavy', 'CryptoNight-Heavy'),
         ),
         )
-    variant = models.IntegerField(
+    variant = models.CharField(
         verbose_name="Algorithm PoW Variant",
-        default=-1,
+        default="1",
+        max_length=120,
         choices=(
-            (-1, 'Autodetect'),
-            (0, 'Original'),
-            (1, 'Monero v1'),
+            ('-1', 'Autodetect'),
+            ('0', '0 - Original'),
+            ('1', '1 - v7 / TurtleCoin'),
+            ('xtl', 'Stellite'),
+            ('ipbc', 'IPBC'),
         ),
         )
     url = models.CharField(
         verbose_name="URL of Mining Pool",
-        default="failover.xmrig.com:443",
+        default="proxy.fee.xmrig.com:9999",
         max_length=500,
         )
     user = models.CharField(
@@ -41,23 +45,41 @@ class XMRig(models.Model):
         default="x",
         max_length=500,
         )
-    keepalive = models.BooleanField(
-        verbose_name="Keep-Alive",
-        default=True,
+    rig_id = models.CharField(
+        verbose_name="Rig Identifier",
+        max_length=120,
+        blank=True,
+        null=True,
+        )
+    user_agent = models.CharField(
+        verbose_name="Custom User-Agent",
+        max_length=120,
+        blank=True,
+        null=True,
         )
     nicehash = models.BooleanField(
         verbose_name="NiceHash/XMRig-Proxy support",
         default=False,
+        )
+    keepalive = models.BooleanField(
+        verbose_name="Keep-Alive",
+        default=True,                                                                                                                                                                                
         )
     av = models.IntegerField(
         verbose_name="Algorithm Variation",
         default=0,
         choices=(
             (0, 'Auto Select'),
-            (1, 'Hardware AES'),
-            (2, 'Hardware AES Low Power Mode'),
-            (3, 'Software AES'),
-            (4, 'Software AES Low Power Mode'),
+            (1, 'Single Hash Mode'),
+            (2, 'Double Hash Mode'),
+            (3, 'Single Hash Mode (Software AES)'),
+            (4, 'Double Hash Mode (Software AES)'),
+            (5, 'Triple Hash Mode'),
+            (6, 'Quard Hash Mode'),
+            (7, 'Penta Hash Mode'),
+            (8, 'Triple Hash Mode (Software AES)'),
+            (9, 'Quard Hash Mode (Software AES)'),
+            (10, 'Penta Hash Mode (Software AES)'),
         ),
         )
     threads = models.IntegerField(
@@ -111,4 +133,12 @@ class XMRig(models.Model):
         max_length=500,
         blank=True,
         null=True,
+        )
+    ipv6 = models.BooleanField(
+        verbose_name="API Enable IPv6",
+        default=False,
+        )
+    restricted = models.BooleanField(
+        verbose_name="API Restrict Remote Configuration",
+        default=False,
         )
