@@ -66,6 +66,8 @@ class XMRigForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
+        if not obj.rig_id:
+            settings['rig-id'] = None
         settings['pools'] = []
         settings['pools'].append({'url':settings.pop("url"), 'user':settings.pop("user"), 'pass':settings.pop("pass"), 'rig-id':settings.pop("rig-id"), 'nicehash':settings.pop("nicehash"), 'keepalive':settings.pop("keepalive"), 'variant':settings.pop("variant")})
         settings['api'] = {}
@@ -78,6 +80,8 @@ class XMRigForm(forms.ModelForm):
         settings.pop("worker-id")
         settings['api']['ipv6'] = settings.pop("ipv6")
         settings['api']['restricted'] = settings.pop("restricted")
+        if not obj.user_agent:
+            settings.pop("user-agent")
 
         with open(settingsfile, 'w') as f:
             f.write(json.dumps(settings, sort_keys=True, indent=4))
