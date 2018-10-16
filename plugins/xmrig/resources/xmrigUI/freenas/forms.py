@@ -66,6 +66,7 @@ class XMRigForm(forms.ModelForm):
             else:
                 settings[info.get("field")] = value
 
+        settings['autosave'] = False
         if not obj.rig_id:
             settings['rig-id'] = None
         if not obj.tls_fingerprint:
