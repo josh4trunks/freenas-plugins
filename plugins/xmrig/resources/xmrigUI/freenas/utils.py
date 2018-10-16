@@ -81,6 +81,14 @@ xmrig_settings = {
         "field": "nicehash",
         "type": "checkbox",
         },
+    "tls": {
+        "field": "tls",
+        "type": "checkbox",
+        },
+    "tls_fingerprint": {
+        "field": "tls-fingerprint",
+        "type": "textbox",
+        },
     "av": {
         "field": "av",
         "type": "textbox",
@@ -103,6 +111,10 @@ xmrig_settings = {
         },
     "cpu_priority": {
         "field": "cpu-priority",
+        "type": "textbox",
+        },
+    "asm": {
+        "field": "asm",
         "type": "textbox",
         },
     "donate_level": {

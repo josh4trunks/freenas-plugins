@@ -68,8 +68,10 @@ class XMRigForm(forms.ModelForm):
 
         if not obj.rig_id:
             settings['rig-id'] = None
+        if not obj.tls_fingerprint:
+            settings['tls-fingerprint'] = None
         settings['pools'] = []
-        settings['pools'].append({'url':settings.pop("url"), 'user':settings.pop("user"), 'pass':settings.pop("pass"), 'rig-id':settings.pop("rig-id"), 'nicehash':settings.pop("nicehash"), 'keepalive':settings.pop("keepalive"), 'variant':settings.pop("variant")})
+        settings['pools'].append({'url':settings.pop("url"), 'user':settings.pop("user"), 'pass':settings.pop("pass"), 'rig-id':settings.pop("rig-id"), 'nicehash':settings.pop("nicehash"), 'keepalive':settings.pop("keepalive"), 'variant':settings.pop("variant"), 'tls':settings.pop("tls"), 'tls-fingerprint':settings.pop("tls-fingerprint")})
         settings['api'] = {}
         settings['api']['port'] = settings.pop("port")
         if obj.access_token:

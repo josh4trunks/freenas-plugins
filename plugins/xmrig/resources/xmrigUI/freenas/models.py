@@ -19,24 +19,29 @@ class XMRig(models.Model):
         )
     variant = models.CharField(
         verbose_name="Algorithm PoW Variant",
-        default="1",
+        default="-1",
         max_length=120,
         choices=(
             ('-1', 'Autodetect'),
             ('0', '0 - Original'),
-            ('1', '1 - v7 / TurtleCoin'),
+            ('1', '1 - v7'),
+            ('2', '2 - v8'),
             ('xtl', 'Stellite'),
-            ('ipbc', 'IPBC'),
+            ('msr', 'Masari'),
+            ('xao', 'Alloy (XAO)'),
+            ('rto', 'Arto (RTO)'),
+            ('xhv', 'Haven'),
+            ('tube', 'Bittube (TUBE)'),
         ),
         )
     url = models.CharField(
         verbose_name="URL of Mining Pool",
-        default="proxy.fee.xmrig.com:9999",
+        default="donate.v2.xmrig.com:3333",
         max_length=500,
         )
     user = models.CharField(
         verbose_name="Username for Mining Pool",
-        default="YOUR_WALLET",
+        default="YOUR_WALLET_ADDRESS",
         max_length=500,
         blank=True,
         )
@@ -63,7 +68,17 @@ class XMRig(models.Model):
         )
     keepalive = models.BooleanField(
         verbose_name="Keep-Alive",
-        default=True,                                                                                                                                                                                
+        default=False,                                                                                                                                                                                
+        )
+    tls = models.BooleanField(
+        verbose_name="SSL/TLS Pool",
+        default=False,
+        )
+    tls_fingerprint = models.CharField(
+        verbose_name="TLS Certificate Fingerprint",
+        max_length=120,
+        blank=True,
+        null=True,
         )
     av = models.IntegerField(
         verbose_name="Algorithm Variation",
@@ -112,6 +127,17 @@ class XMRig(models.Model):
             (3, '3'),
             (4, '4'),
             (5, '5 - Highest'),
+        ),
+        )
+    asm = models.CharField(
+        verbose_name="Assemby Code",
+        default="auto",
+        max_length=120,
+        choices=(
+            ('auto', 'Automatic'),
+            ('none', 'Disabled'),
+            ('intel', 'Intel CPUs'),
+            ('ryzen', 'AMD Ryzen CPUs'),
         ),
         )
     donate_level = models.IntegerField(
